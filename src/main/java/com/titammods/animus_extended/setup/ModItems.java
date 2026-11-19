@@ -28,6 +28,7 @@ public class ModItems {
     public static final DeferredItem<SigilItem> SIGIL_SOUL_PHOENIX_GREATER = registerSigil("sigil_soul_phoenix_greater", "soul_phoenix_greater");
     public static final DeferredItem<SigilItem> SIGIL_ARCHMAGE = registerSigil("sigil_archmage", "archmage");
     public static final DeferredItem<SigilItem> SIGIL_SPIRITUAL_MONK = registerSigil("sigil_spiritual_monk", "spiritual_monk");
+    public static final DeferredItem<SigilItem> SIGIL_PONYMEAL = registerSigil("sigil_ponymeal", "ponymeal");
 
     public static final DeferredItem<GreaterHoldingSigilItem> SIGIL_HOLDING_GREATER =
             ITEMS.register("sigil_holding_greater", () -> new GreaterHoldingSigilItem(9, "tooltip.animus_extended.sigil_holding_greater.desc"));
@@ -48,6 +49,8 @@ public class ModItems {
     public static final DeferredItem<Item> REAGENT_VEIN_SEEKER = ITEMS.registerSimpleItem("reagent_vein_seeker");
     public static final DeferredItem<Item> REAGENT_WARDING_GALE = ITEMS.registerSimpleItem("reagent_warding_gale");
     public static final DeferredItem<Item> REAGENT_BULLET_TIME = ITEMS.registerSimpleItem("reagent_bullet_time");
+
+    public static final DeferredItem<Item> REAGENT_PONYMEAL = ITEMS.registerSimpleItem("reagent_ponymeal");
 
     public static final DeferredItem<Item> NINJA_KNIFE = ITEMS.registerSimpleItem("ninja_knife");
     public static final DeferredItem<Item> NINJA_KNIFE_EXPLOSIVE = ITEMS.registerSimpleItem("ninja_knife_explosive");

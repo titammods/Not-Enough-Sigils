@@ -8,6 +8,7 @@ import com.titammods.animus_extended.sigil.effect.BerserkSigilEffect;
 import com.titammods.animus_extended.sigil.effect.BrunimneetsSigilEffect;
 import com.titammods.animus_extended.sigil.effect.DemonNinjaSigilEffect;
 import com.titammods.animus_extended.sigil.effect.MagicianSigilEffect;
+import com.titammods.animus_extended.sigil.effect.PonymealSigilEffect;
 import com.titammods.animus_extended.sigil.effect.SoulPhoenixSigilEffect;
 import com.titammods.animus_extended.sigil.effect.SpiritualMonkSigilEffect;
 import com.titammods.animus_extended.sigil.effect.SanguineAegisSigilEffect;
@@ -77,4 +78,7 @@ public class ModSigilEffects {
 
     public static final Supplier<MapCodec<BulletTimeSigilEffect>> BULLET_TIME =
             SIGIL_EFFECTS.register("bullet_time", () -> BulletTimeSigilEffect.CODEC);
+
+    public static final Supplier<MapCodec<PonymealSigilEffect>> PONYMEAL =
+            SIGIL_EFFECTS.register("ponymeal", () -> PonymealSigilEffect.CODEC);
 }
