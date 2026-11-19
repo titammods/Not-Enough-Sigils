@@ -1,0 +1,42 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="All rights reserved"
+issueTrackerURL=""
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="Animus Extended"
+authors="titammods"
+description="New sigils and upgrades for Animus and Neo Vitae."
+
+[[mixins]]
+config="animus_extended.mixins.json"
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[21.1,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="[${minecraft_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="animusnv"
+type="required"
+versionRange="[5.2,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="neovitae"
+type="required"
+versionRange="[1.1.45,)"
+ordering="AFTER"
+side="BOTH"

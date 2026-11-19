@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:array",
+  "addedinput": {
+    "item": "neovitae:tabula_animata"
+  },
+  "baseinput": {
+    "item": "animus_extended:reagent_vein_seeker"
+  },
+  "output": {
+    "count": 1,
+    "id": "animus_extended:sigil_vein_seeker"
+  },
+  "texture": "neovitae:textures/models/alchemyarrays/sightsigil.png"
+}

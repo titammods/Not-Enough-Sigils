@@ -1,0 +1,7 @@
+{
+  "lp_cost_active": 50,
+  "drain_interval": 100,
+  "effect": {
+    "type": "animus_extended:soul_phoenix"
+  }
+}

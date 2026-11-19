@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:array",
+  "addedinput": {
+    "item": "neovitae:tabula_aetherea"
+  },
+  "baseinput": {
+    "item": "animus_extended:reagent_skyward_soul"
+  },
+  "output": {
+    "count": 1,
+    "id": "animus_extended:sigil_skyward_soul"
+  },
+  "texture": "neovitae:textures/models/alchemyarrays/airsigil.png"
+}

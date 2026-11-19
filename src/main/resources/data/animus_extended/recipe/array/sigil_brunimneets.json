@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:array",
+  "addedinput": {
+    "item": "neovitae:tabula_spiritus"
+  },
+  "baseinput": {
+    "item": "animus_extended:reagent_brunimneets"
+  },
+  "output": {
+    "count": 1,
+    "id": "animus_extended:sigil_brunimneets"
+  },
+  "texture": "neovitae:textures/models/alchemyarrays/movementarray.png"
+}

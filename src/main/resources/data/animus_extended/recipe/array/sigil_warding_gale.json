@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:array",
+  "addedinput": {
+    "item": "neovitae:tabula_spiritus"
+  },
+  "baseinput": {
+    "item": "animus_extended:reagent_warding_gale"
+  },
+  "output": {
+    "count": 1,
+    "id": "animus_extended:sigil_warding_gale"
+  },
+  "texture": "neovitae:textures/models/alchemyarrays/repulsionarray.png"
+}

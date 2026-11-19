@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:array",
+  "addedinput": {
+    "item": "neovitae:tabula_animata"
+  },
+  "baseinput": {
+    "item": "animus_extended:reagent_ethereal_step"
+  },
+  "output": {
+    "count": 1,
+    "id": "animus_extended:sigil_ethereal_step"
+  },
+  "texture": "neovitae:textures/models/alchemyarrays/teleportation.png"
+}

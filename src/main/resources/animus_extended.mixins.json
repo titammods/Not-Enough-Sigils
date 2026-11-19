@@ -1,0 +1,20 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.titammods.animus_extended.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "AnvilMenuMixin",
+    "ItemSigilHoldingMixin",
+    "LivingEntityMixin",
+    "MonkSigilEventHandlerMixin",
+    "ServerPlayerGameModeMixin",
+    "SigilItemMixin"
+  ],
+  "client": [
+    "client.AnvilScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

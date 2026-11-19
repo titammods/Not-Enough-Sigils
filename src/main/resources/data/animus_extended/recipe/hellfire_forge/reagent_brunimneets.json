@@ -1,0 +1,23 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 256.0,
+  "inputs": [
+    {
+      "item": "minecraft:spyglass"
+    },
+    {
+      "item": "minecraft:echo_shard"
+    },
+    {
+      "item": "minecraft:ender_pearl"
+    },
+    {
+      "item": "minecraft:pufferfish"
+    }
+  ],
+  "minDrain": 512.0,
+  "output": {
+    "count": 1,
+    "id": "animus_extended:reagent_brunimneets"
+  }
+}

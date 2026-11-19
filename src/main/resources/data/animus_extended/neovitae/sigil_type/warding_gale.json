@@ -1,0 +1,7 @@
+{
+  "lp_cost_active": 40,
+  "drain_interval": 100,
+  "effect": {
+    "type": "animus_extended:warding_gale"
+  }
+}
