@@ -1,0 +1,7 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:soul_phoenix",
+    "greater": true
+  },
+  "lp_cost_active": 80
+}

@@ -1,0 +1,23 @@
+{
+  "type": "neovitae:hellfire_forge_transform",
+  "catalysts": [
+    {
+      "item": "neovitae:raw_crystal_shard"
+    },
+    {
+      "item": "minecraft:blast_furnace"
+    },
+    {
+      "item": "minecraft:netherite_ingot"
+    }
+  ],
+  "drain": 2000.0,
+  "minDrain": 4096.0,
+  "output": {
+    "count": 1,
+    "id": "not_enough_sigils:sigil_spiritual_monk"
+  },
+  "transformInput": {
+    "item": "animusnv:sigil_monk"
+  }
+}

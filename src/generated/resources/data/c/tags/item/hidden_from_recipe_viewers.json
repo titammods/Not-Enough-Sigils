@@ -1,9 +1,9 @@
 {
   "values": [
-    "animus_extended:ninja_knife",
-    "animus_extended:ninja_knife_explosive",
-    "animus_extended:ninja_knife_lightning",
-    "animus_extended:ninja_knife_frost",
-    "animus_extended:ninja_knife_fire"
+    "not_enough_sigils:ninja_knife",
+    "not_enough_sigils:ninja_knife_explosive",
+    "not_enough_sigils:ninja_knife_lightning",
+    "not_enough_sigils:ninja_knife_frost",
+    "not_enough_sigils:ninja_knife_fire"
   ]
 }

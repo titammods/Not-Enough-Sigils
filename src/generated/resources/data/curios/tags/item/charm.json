@@ -1,18 +1,18 @@
 {
   "values": [
-    "animus_extended:sigil_soul_phoenix",
-    "animus_extended:sigil_demon_ninja",
-    "animus_extended:sigil_berserk",
-    "animus_extended:sigil_brunimneets",
-    "animus_extended:sigil_holding_greater",
-    "animus_extended:sigil_sanguine_aegis",
-    "animus_extended:sigil_vampire_lord",
-    "animus_extended:sigil_skyward_soul",
-    "animus_extended:sigil_reaper",
-    "animus_extended:sigil_hellbrand",
-    "animus_extended:sigil_warding_gale",
-    "animus_extended:sigil_soul_phoenix_greater",
-    "animus_extended:sigil_holding_supreme",
-    "animus_extended:sigil_spiritual_monk"
+    "not_enough_sigils:sigil_soul_phoenix",
+    "not_enough_sigils:sigil_demon_ninja",
+    "not_enough_sigils:sigil_berserk",
+    "not_enough_sigils:sigil_brunimneets",
+    "not_enough_sigils:sigil_holding_greater",
+    "not_enough_sigils:sigil_sanguine_aegis",
+    "not_enough_sigils:sigil_vampire_lord",
+    "not_enough_sigils:sigil_skyward_soul",
+    "not_enough_sigils:sigil_reaper",
+    "not_enough_sigils:sigil_hellbrand",
+    "not_enough_sigils:sigil_warding_gale",
+    "not_enough_sigils:sigil_soul_phoenix_greater",
+    "not_enough_sigils:sigil_holding_supreme",
+    "not_enough_sigils:sigil_spiritual_monk"
   ]
 }

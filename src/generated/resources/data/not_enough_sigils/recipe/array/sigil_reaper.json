@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:array",
+  "addedinput": {
+    "item": "neovitae:tabula_spiritus"
+  },
+  "baseinput": {
+    "item": "not_enough_sigils:reagent_reaper"
+  },
+  "output": {
+    "count": 1,
+    "id": "not_enough_sigils:sigil_reaper"
+  },
+  "texture": "neovitae:textures/models/alchemyarrays/collectionarray.png"
+}

@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.titammods.not_enough_sigils.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "AnvilMenuMixin",
+    "ItemSigilHoldingMixin",
+    "LivingEntityMixin",
+    "MonkSigilEventHandlerMixin",
+    "ServerPlayerGameModeMixin",
+    "SigilItemMixin",
+    "TemporalDominanceAccessor"
+  ],
+  "client": [
+    "client.AnvilScreenMixin",
+    "compat.jei.ForgeUpgradeRecipeCategoryMixin",
+    "compat.jei.HellfireForgeRecipeCategoryMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

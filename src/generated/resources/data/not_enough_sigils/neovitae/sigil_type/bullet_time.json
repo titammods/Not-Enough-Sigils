@@ -1,0 +1,6 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:bullet_time"
+  },
+  "lp_cost_air": 300
+}

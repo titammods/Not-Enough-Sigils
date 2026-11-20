@@ -1,0 +1,6 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:reaper"
+  },
+  "lp_cost_active": 25
+}

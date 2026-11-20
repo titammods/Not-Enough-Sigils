@@ -1,0 +1,23 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 32.0,
+  "inputs": [
+    {
+      "item": "minecraft:bone_block"
+    },
+    {
+      "item": "minecraft:sunflower"
+    },
+    {
+      "item": "minecraft:peony"
+    },
+    {
+      "item": "minecraft:pink_tulip"
+    }
+  ],
+  "minDrain": 64.0,
+  "output": {
+    "count": 1,
+    "id": "not_enough_sigils:reagent_ponymeal"
+  }
+}

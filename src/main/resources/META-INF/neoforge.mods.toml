@@ -6,12 +6,12 @@ issueTrackerURL=""
 [[mods]]
 modId="${mod_id}"
 version="${mod_version}"
-displayName="Animus Extended"
+displayName="Not Enough Sigils"
 authors="titammods"
 description="New sigils and upgrades for Animus and Neo Vitae."
 
 [[mixins]]
-config="animus_extended.mixins.json"
+config="not_enough_sigils.mixins.json"
 
 [[dependencies.${mod_id}]]
 modId="neoforge"

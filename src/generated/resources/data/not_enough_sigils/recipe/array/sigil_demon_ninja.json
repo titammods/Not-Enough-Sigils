@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:array",
+  "addedinput": {
+    "item": "neovitae:tabula_animata"
+  },
+  "baseinput": {
+    "item": "not_enough_sigils:reagent_demon_ninja"
+  },
+  "output": {
+    "count": 1,
+    "id": "not_enough_sigils:sigil_demon_ninja"
+  },
+  "texture": "neovitae:textures/models/alchemyarrays/sightsigil.png"
+}

@@ -1,0 +1,6 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:vampire_lord"
+  },
+  "lp_cost_active": 25
+}

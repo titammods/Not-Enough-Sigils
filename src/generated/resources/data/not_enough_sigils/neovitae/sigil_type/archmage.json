@@ -1,0 +1,9 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:magician",
+    "cooldown": 30,
+    "homing": true,
+    "missiles": 3
+  },
+  "lp_cost_air": 100
+}

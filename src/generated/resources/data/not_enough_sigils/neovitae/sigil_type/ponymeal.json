@@ -1,0 +1,6 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:ponymeal"
+  },
+  "lp_cost_block": 10
+}

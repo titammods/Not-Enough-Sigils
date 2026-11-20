@@ -1,0 +1,7 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:demon_ninja"
+  },
+  "lp_cost_active": 25,
+  "lp_cost_air": 20
+}

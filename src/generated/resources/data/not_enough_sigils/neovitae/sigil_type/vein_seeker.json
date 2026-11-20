@@ -1,0 +1,7 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:vein_seeker"
+  },
+  "lp_cost_air": 75,
+  "lp_cost_block": 75
+}

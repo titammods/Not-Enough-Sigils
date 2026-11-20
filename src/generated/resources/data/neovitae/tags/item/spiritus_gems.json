@@ -1,6 +1,6 @@
 {
   "values": [
-    "animus_extended:spiritus_gem_exalted",
-    "animus_extended:spiritus_gem_primordial"
+    "not_enough_sigils:spiritus_gem_exalted",
+    "not_enough_sigils:spiritus_gem_primordial"
   ]
 }

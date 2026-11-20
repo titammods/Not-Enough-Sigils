@@ -1,0 +1,39 @@
+package com.titammods.not_enough_sigils;
+
+import com.titammods.not_enough_sigils.client.ClientSetup;
+import com.titammods.not_enough_sigils.datagen.DataGenerators;
+import com.titammods.not_enough_sigils.network.ModNetworking;
+import com.titammods.not_enough_sigils.setup.ModCreativeTabs;
+import com.titammods.not_enough_sigils.setup.ModEntities;
+import com.titammods.not_enough_sigils.setup.ModItems;
+import com.titammods.not_enough_sigils.setup.ModMenus;
+import com.titammods.not_enough_sigils.setup.ModSigilEffects;
+import net.minecraft.resources.ResourceLocation;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.loading.FMLEnvironment;
+
+@Mod(NotEnoughSigils.MODID)
+public class NotEnoughSigils {
+    public static final String MODID = "not_enough_sigils";
+
+    public NotEnoughSigils(IEventBus modEventBus) {
+        ModSigilEffects.SIGIL_EFFECTS.register(modEventBus);
+        ModItems.ITEMS.register(modEventBus);
+        ModEntities.ENTITY_TYPES.register(modEventBus);
+        ModMenus.MENUS.register(modEventBus);
+        ModCreativeTabs.TABS.register(modEventBus);
+
+        modEventBus.addListener(ModNetworking::register);
+        modEventBus.addListener(DataGenerators::gather);
+
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            ClientSetup.register(modEventBus);
+        }
+    }
+
+    public static ResourceLocation rl(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
+    }
+}
