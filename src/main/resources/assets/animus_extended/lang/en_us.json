@@ -41,6 +41,7 @@
   "item.animus_extended.sigil_soul_phoenix": "Soul of the Phoenix",
   "item.animus_extended.sigil_soul_phoenix_greater": "Soul of the Phoenix II",
   "item.animus_extended.sigil_spiritual_monk": "Sigil of the Spiritual Monk",
+  "item.animus_extended.sigil_temporal_mastery": "Sigil of Temporal Mastery",
   "item.animus_extended.sigil_vampire_lord": "Sigil of the Vampire Lord",
   "item.animus_extended.sigil_vein_seeker": "Sigil of the Vein Seeker",
   "item.animus_extended.sigil_warding_gale": "Sigil of the Warding Gale",
@@ -63,6 +64,7 @@
   "sigil.animus_extended.soul_phoenix": "Soul of the Phoenix",
   "sigil.animus_extended.soul_phoenix_greater": "Soul of the Phoenix II",
   "sigil.animus_extended.spiritual_monk": "Sigil of the Spiritual Monk",
+  "sigil.animus_extended.temporal_mastery": "Sigil of Temporal Mastery",
   "sigil.animus_extended.vampire_lord": "Sigil of the Vampire Lord",
   "sigil.animus_extended.vein_seeker": "Sigil of the Vein Seeker",
   "sigil.animus_extended.warding_gale": "Sigil of the Warding Gale",
@@ -83,6 +85,7 @@
   "tooltip.neovitae.sigil.soul_phoenix.desc": "Survives one lethal blow, recharges in 15 seconds",
   "tooltip.neovitae.sigil.soul_phoenix_greater.desc": "Survives one lethal blow at half health, recharges in 8 seconds",
   "tooltip.neovitae.sigil.spiritual_monk.desc": "Everything the Demon Monk does, plus smelted ores and punches shaped by your Spiritus",
+  "tooltip.neovitae.sigil.temporal_mastery.desc": "Accelerates block entities, doubling speed with each use, up to 512x",
   "tooltip.neovitae.sigil.vampire_lord.desc": "Melee hits steal 15% of the damage as health, overkill feeds your network",
   "tooltip.neovitae.sigil.vein_seeker.desc": "Reveals nearby ores through walls for 10 seconds",
   "tooltip.neovitae.sigil.warding_gale.desc": "Pushes hostile mobs away and deflects incoming projectiles"

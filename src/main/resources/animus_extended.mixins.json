@@ -9,7 +9,8 @@
     "LivingEntityMixin",
     "MonkSigilEventHandlerMixin",
     "ServerPlayerGameModeMixin",
-    "SigilItemMixin"
+    "SigilItemMixin",
+    "TemporalDominanceAccessor"
   ],
   "client": [
     "client.AnvilScreenMixin"

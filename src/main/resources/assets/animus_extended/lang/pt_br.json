@@ -41,6 +41,7 @@
   "item.animus_extended.sigil_soul_phoenix": "Alma da Fênix",
   "item.animus_extended.sigil_soul_phoenix_greater": "Alma da Fênix II",
   "item.animus_extended.sigil_spiritual_monk": "Selo do Monge Espiritual",
+  "item.animus_extended.sigil_temporal_mastery": "Selo do Domínio Temporal Supremo",
   "item.animus_extended.sigil_vampire_lord": "Selo do Lorde Vampiro",
   "item.animus_extended.sigil_vein_seeker": "Selo do Buscador de Veios",
   "item.animus_extended.sigil_warding_gale": "Selo do Vendaval Protetor",
@@ -63,6 +64,7 @@
   "sigil.animus_extended.soul_phoenix": "Alma da Fênix",
   "sigil.animus_extended.soul_phoenix_greater": "Alma da Fênix II",
   "sigil.animus_extended.spiritual_monk": "Selo do Monge Espiritual",
+  "sigil.animus_extended.temporal_mastery": "Selo do Domínio Temporal Supremo",
   "sigil.animus_extended.vampire_lord": "Selo do Lorde Vampiro",
   "sigil.animus_extended.vein_seeker": "Selo do Buscador de Veios",
   "sigil.animus_extended.warding_gale": "Selo do Vendaval Protetor",
@@ -83,6 +85,7 @@
   "tooltip.neovitae.sigil.soul_phoenix.desc": "Sobrevive a um golpe fatal, recarrega em 15 segundos",
   "tooltip.neovitae.sigil.soul_phoenix_greater.desc": "Sobrevive a um golpe fatal com metade da vida, recarrega em 8 segundos",
   "tooltip.neovitae.sigil.spiritual_monk.desc": "Tudo que o Monge Demoníaco faz, mais minérios fundidos e socos moldados pelo seu Spiritus",
+  "tooltip.neovitae.sigil.temporal_mastery.desc": "Acelera entidades de bloco, dobrando a velocidade a cada uso, até 512x",
   "tooltip.neovitae.sigil.vampire_lord.desc": "Golpes roubam 15% do dano como vida, o dano excedente alimenta sua rede",
   "tooltip.neovitae.sigil.vein_seeker.desc": "Revela minérios próximos através das paredes por 10 segundos",
   "tooltip.neovitae.sigil.warding_gale.desc": "Empurra mobs hostis e desvia projéteis que vêm em sua direção"

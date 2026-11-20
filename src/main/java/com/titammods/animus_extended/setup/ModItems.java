@@ -29,6 +29,7 @@ public class ModItems {
     public static final DeferredItem<SigilItem> SIGIL_ARCHMAGE = registerSigil("sigil_archmage", "archmage");
     public static final DeferredItem<SigilItem> SIGIL_SPIRITUAL_MONK = registerSigil("sigil_spiritual_monk", "spiritual_monk");
     public static final DeferredItem<SigilItem> SIGIL_PONYMEAL = registerSigil("sigil_ponymeal", "ponymeal");
+    public static final DeferredItem<SigilItem> SIGIL_TEMPORAL_MASTERY = registerSigil("sigil_temporal_mastery", "temporal_mastery");
 
     public static final DeferredItem<GreaterHoldingSigilItem> SIGIL_HOLDING_GREATER =
             ITEMS.register("sigil_holding_greater", () -> new GreaterHoldingSigilItem(9, "tooltip.animus_extended.sigil_holding_greater.desc"));

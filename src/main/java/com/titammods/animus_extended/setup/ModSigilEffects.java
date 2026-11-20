@@ -11,6 +11,7 @@ import com.titammods.animus_extended.sigil.effect.MagicianSigilEffect;
 import com.titammods.animus_extended.sigil.effect.PonymealSigilEffect;
 import com.titammods.animus_extended.sigil.effect.SoulPhoenixSigilEffect;
 import com.titammods.animus_extended.sigil.effect.SpiritualMonkSigilEffect;
+import com.titammods.animus_extended.sigil.effect.TemporalMasterySigilEffect;
 import com.titammods.animus_extended.sigil.effect.SanguineAegisSigilEffect;
 import com.titammods.animus_extended.sigil.effect.VampireLordSigilEffect;
 import com.titammods.animus_extended.sigil.effect.EtherealStepSigilEffect;
@@ -81,4 +82,7 @@ public class ModSigilEffects {
 
     public static final Supplier<MapCodec<PonymealSigilEffect>> PONYMEAL =
             SIGIL_EFFECTS.register("ponymeal", () -> PonymealSigilEffect.CODEC);
+
+    public static final Supplier<MapCodec<TemporalMasterySigilEffect>> TEMPORAL_MASTERY =
+            SIGIL_EFFECTS.register("temporal_mastery", () -> TemporalMasterySigilEffect.CODEC);
 }
