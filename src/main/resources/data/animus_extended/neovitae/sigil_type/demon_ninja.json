@@ -1,8 +1,0 @@
-{
-  "lp_cost_active": 25,
-  "drain_interval": 100,
-  "effect": {
-    "type": "animus_extended:demon_ninja"
-  },
-  "lp_cost_air": 20
-}

@@ -1,17 +1,17 @@
 package com.titammods.animus_extended.event;
 
 import com.breakinblocks.animusnv.events.MonkSigilEventHandler;
-import com.breakinblocks.neovitae.common.datacomponent.SpiritusType;
 import com.titammods.animus_extended.AnimusExtended;
 import com.titammods.animus_extended.setup.ModItems;
 import com.titammods.animus_extended.sigil.DelayedDamage;
+import com.titammods.animus_extended.sigil.SigilTracker;
 import com.titammods.animus_extended.sigil.SpiritusAffinity;
+import com.titammods.animus_extended.sigil.config.PunchProfile;
+import com.titammods.animus_extended.sigil.effect.SpiritualMonkSigilEffect;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
@@ -22,7 +22,6 @@ import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 
@@ -30,17 +29,6 @@ import java.util.Optional;
 
 @EventBusSubscriber(modid = AnimusExtended.MODID)
 public class SpiritualMonkEvents {
-    private static final float RAW_DAMAGE_MULTIPLIER = 1.25F;
-    private static final int WITHER_TICKS = 100;
-    private static final int WITHER_AMPLIFIER = 1;
-    private static final int FIRE_SECONDS = 4;
-    private static final int FROST_SLOW_TICKS = 60;
-    private static final int FROST_SLOW_AMPLIFIER = 2;
-    private static final int FROST_FREEZE_TICKS = 100;
-    private static final float MAGIC_BASE_DAMAGE = 4.0F;
-    private static final float MAGIC_HEALTH_RATIO = 0.05F;
-    private static final float MAGIC_MAX_DAMAGE = 20.0F;
-
     public static boolean hasSpiritualMonk(ServerPlayer player) {
         ItemStack active = MonkSigilEventHandler.findActiveMonkSigil(player);
         return active != null && active.is(ModItems.SIGIL_SPIRITUAL_MONK.get());
@@ -51,7 +39,7 @@ public class SpiritualMonkEvents {
         if (!(event.getBreaker() instanceof ServerPlayer player)) {
             return;
         }
-        if (!event.getState().is(Tags.Blocks.ORES) || !hasSpiritualMonk(player)) {
+        if (!hasSpiritualMonk(player) || !event.getState().is(config(player).smeltable())) {
             return;
         }
 
@@ -97,22 +85,29 @@ public class SpiritualMonkEvents {
             return;
         }
 
-        SpiritusType type = SpiritusAffinity.of(player);
-        switch (type) {
-            case RUINA -> target.addEffect(new MobEffectInstance(MobEffects.WITHER, WITHER_TICKS, WITHER_AMPLIFIER), player);
-            case VINDICTA -> target.igniteForSeconds(FIRE_SECONDS);
-            case INVICTUS -> {
-                target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, FROST_SLOW_TICKS, FROST_SLOW_AMPLIFIER), player);
-                if (target.canFreeze()) {
-                    target.setTicksFrozen(Math.max(target.getTicksFrozen(), target.getTicksRequiredToFreeze() + FROST_FREEZE_TICKS));
-                }
-            }
-            case NIHILUM -> {
-                float magic = Math.min(MAGIC_MAX_DAMAGE, MAGIC_BASE_DAMAGE + target.getMaxHealth() * MAGIC_HEALTH_RATIO);
-                DelayedDamage.arcane(target, player, magic, SpiritualMonkEvents::magicEffects);
-            }
-            default -> event.setAmount(event.getAmount() * RAW_DAMAGE_MULTIPLIER);
+        PunchProfile punch = config(player).punch(SpiritusAffinity.of(player));
+        if (punch.damageMultiplier() != 1.0F) {
+            event.setAmount(event.getAmount() * punch.damageMultiplier());
         }
+        punch.effect().ifPresent(spec -> spec.apply(target, player));
+        if (punch.freezeTicks() > 0 && target.canFreeze()) {
+            target.setTicksFrozen(Math.max(target.getTicksFrozen(), target.getTicksRequiredToFreeze() + punch.freezeTicks()));
+        }
+        if (punch.fireSeconds() > 0) {
+            target.igniteForSeconds(punch.fireSeconds());
+        }
+        float magic = punch.arcaneDamage() + target.getMaxHealth() * punch.arcaneHealthRatio();
+        if (punch.arcaneMaxDamage() > 0.0F) {
+            magic = Math.min(punch.arcaneMaxDamage(), magic);
+        }
+        if (magic > 0.0F) {
+            DelayedDamage.arcane(target, player, magic, SpiritualMonkEvents::magicEffects);
+        }
+    }
+
+    private static SpiritualMonkSigilEffect config(ServerPlayer player) {
+        SpiritualMonkSigilEffect config = SigilTracker.getEffect(player, SigilTracker.Kind.SPIRITUAL_MONK, SpiritualMonkSigilEffect.class);
+        return config == null ? SpiritualMonkSigilEffect.DEFAULT : config;
     }
 
     private static void magicEffects(LivingEntity target) {

@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:array",
+  "addedinput": {
+    "item": "neovitae:tabula_aetherea"
+  },
+  "baseinput": {
+    "item": "animus_extended:reagent_soul_phoenix"
+  },
+  "output": {
+    "count": 1,
+    "id": "animus_extended:sigil_soul_phoenix"
+  },
+  "texture": "neovitae:textures/models/alchemyarrays/sunarray.png"
+}

@@ -1,5 +1,6 @@
 package com.titammods.animus_extended.sigil;
 
+import com.titammods.animus_extended.sigil.effect.SkywardSoulSigilEffect;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -8,9 +9,8 @@ import net.minecraft.world.item.ItemStack;
 public class SkywardSoulState {
     public static final String FLIGHT_TAG = "animus_extended_skyward_flight";
     public static final String FALL_SAFE_TAG = "animus_extended_skyward_fall_safe";
-    private static final int FLIGHT_EV_PER_SECOND = 60;
 
-    public static void grantFlight(Player player, ItemStack stack) {
+    public static void grantFlight(Player player, ItemStack stack, SkywardSoulSigilEffect config) {
         if (!(player instanceof ServerPlayer serverPlayer) || isExempt(serverPlayer)) {
             return;
         }
@@ -25,7 +25,7 @@ public class SkywardSoulState {
         }
 
         if (serverPlayer.getAbilities().flying && serverPlayer.tickCount % 20 == 0
-                && !SigilTracker.drainEV(serverPlayer, stack, FLIGHT_EV_PER_SECOND)) {
+                && !SigilTracker.drainEV(serverPlayer, stack, config.flightEvPerSecond())) {
             SigilTracker.deactivate(stack);
             revokeFlight(serverPlayer);
         }

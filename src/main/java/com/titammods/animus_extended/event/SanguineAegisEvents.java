@@ -1,5 +1,6 @@
 package com.titammods.animus_extended.event;
 
+import com.titammods.animus_extended.sigil.effect.SanguineAegisSigilEffect;
 import com.titammods.animus_extended.AnimusExtended;
 import com.titammods.animus_extended.sigil.SigilTracker;
 import net.minecraft.network.chat.Component;
@@ -15,8 +16,6 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
 @EventBusSubscriber(modid = AnimusExtended.MODID)
 public class SanguineAegisEvents {
-    private static final int EV_PER_HEALTH = 40;
-
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void onDamage(LivingDamageEvent.Pre event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) {
@@ -30,9 +29,11 @@ public class SanguineAegisEvents {
         if (sigil.isEmpty()) {
             return;
         }
+        SanguineAegisSigilEffect config = SigilTracker.getEffect(player, SigilTracker.Kind.SANGUINE_AEGIS, SanguineAegisSigilEffect.class);
+        int evPerHealth = Math.max(1, (config == null ? SanguineAegisSigilEffect.DEFAULT : config).evPerHealth());
 
         int available = SigilTracker.getEV(sigil);
-        int cost = (int) Math.ceil(damage * EV_PER_HEALTH);
+        int cost = (int) Math.ceil(damage * evPerHealth);
         if (available >= cost) {
             SigilTracker.drainEV(player, sigil, cost);
             event.setNewDamage(0.0F);
@@ -40,7 +41,7 @@ public class SanguineAegisEvents {
             return;
         }
 
-        float absorbed = (float) available / EV_PER_HEALTH;
+        float absorbed = (float) available / evPerHealth;
         if (available > 0) {
             SigilTracker.drainEV(player, sigil, available);
         }

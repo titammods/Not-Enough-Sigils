@@ -15,6 +15,14 @@ base {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/generated/resources'
+        }
+    }
+}
+
 neoForge {
     version = project.neoforge_version
 
@@ -28,6 +36,11 @@ neoForge {
             server()
             programArgument '--nogui'
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        data {
+            data()
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
         }
     }
 
@@ -91,6 +104,15 @@ tasks.withType(ProcessResources).configureEach {
 
     filesMatching(['META-INF/neoforge.mods.toml']) {
         expand replaceProperties + [project: project]
+    }
+}
+
+tasks.named('runData').configure {
+    doLast {
+        def cacheDir = file('src/generated/resources/.cache')
+        if (cacheDir.exists()) {
+            cacheDir.deleteDir()
+        }
     }
 }
 

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "animus_extended:item/ninja_knife_fire"
-  }
-}

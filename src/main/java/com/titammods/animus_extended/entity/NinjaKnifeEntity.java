@@ -3,14 +3,15 @@ package com.titammods.animus_extended.entity;
 import com.breakinblocks.neovitae.common.datacomponent.SpiritusType;
 import com.titammods.animus_extended.setup.ModEntities;
 import com.titammods.animus_extended.setup.ModItems;
+import com.titammods.animus_extended.sigil.config.KnifeProfile;
+import com.titammods.animus_extended.sigil.effect.DemonNinjaSigilEffect;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
@@ -25,24 +26,19 @@ import net.minecraft.world.phys.HitResult;
 public class NinjaKnifeEntity extends ThrowableItemProjectile {
     private static final String TYPE_TAG = "KnifeSpiritus";
     private static final int MAX_LIFETIME = 60;
-    private static final float RAW_DAMAGE = 8.0F;
-    private static final float ELEMENT_DAMAGE = 5.0F;
-    private static final float LIGHTNING_BONUS = 5.0F;
-    private static final float EXPLOSION_POWER = 1.5F;
-    private static final int FROST_SLOW_TICKS = 100;
-    private static final int FROST_SLOW_AMPLIFIER = 2;
-    private static final int FROST_FREEZE_TICKS = 100;
-    private static final int FIRE_SECONDS = 5;
+    private static final String PROFILE_TAG = "KnifeProfile";
 
     private SpiritusType spiritusType = SpiritusType.RAW;
+    private KnifeProfile profile = DemonNinjaSigilEffect.DEFAULT.knife(SpiritusType.RAW);
 
     public NinjaKnifeEntity(EntityType<? extends NinjaKnifeEntity> type, Level level) {
         super(type, level);
     }
 
-    public NinjaKnifeEntity(Level level, LivingEntity thrower, SpiritusType spiritusType) {
+    public NinjaKnifeEntity(Level level, LivingEntity thrower, SpiritusType spiritusType, KnifeProfile profile) {
         super(ModEntities.NINJA_KNIFE.get(), thrower, level);
         this.spiritusType = spiritusType;
+        this.profile = profile;
         this.setItem(new ItemStack(itemFor(spiritusType)));
     }
 
@@ -90,23 +86,20 @@ public class NinjaKnifeEntity extends ThrowableItemProjectile {
             return;
         }
 
-        float damage = spiritusType == SpiritusType.RAW ? RAW_DAMAGE : ELEMENT_DAMAGE;
-        boolean hit = target.hurt(level().damageSources().thrown(this, owner), damage);
+        boolean hit = target.hurt(level().damageSources().thrown(this, owner), profile.damage());
         if (!hit || !(target instanceof LivingEntity living)) {
             return;
         }
 
-        switch (spiritusType) {
-            case RUINA -> strikeLightning(living, owner);
-            case INVICTUS -> {
-                living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, FROST_SLOW_TICKS, FROST_SLOW_AMPLIFIER), owner);
-                if (living.canFreeze()) {
-                    living.setTicksFrozen(Math.max(living.getTicksFrozen(), living.getTicksRequiredToFreeze() + FROST_FREEZE_TICKS));
-                }
-            }
-            case VINDICTA -> living.igniteForSeconds(FIRE_SECONDS);
-            default -> {
-            }
+        if (profile.lightningDamage() > 0.0F) {
+            strikeLightning(living, owner);
+        }
+        profile.effect().ifPresent(spec -> spec.apply(living, owner));
+        if (profile.freezeTicks() > 0 && living.canFreeze()) {
+            living.setTicksFrozen(Math.max(living.getTicksFrozen(), living.getTicksRequiredToFreeze() + profile.freezeTicks()));
+        }
+        if (profile.fireSeconds() > 0) {
+            living.igniteForSeconds(profile.fireSeconds());
         }
     }
 
@@ -116,8 +109,8 @@ public class NinjaKnifeEntity extends ThrowableItemProjectile {
         if (level().isClientSide()) {
             return;
         }
-        if (spiritusType == SpiritusType.NIHILUM) {
-            level().explode(this, getX(), getY(), getZ(), EXPLOSION_POWER, Level.ExplosionInteraction.NONE);
+        if (profile.explosionPower() > 0.0F) {
+            level().explode(this, getX(), getY(), getZ(), profile.explosionPower(), Level.ExplosionInteraction.NONE);
         } else {
             level().playSound(null, getX(), getY(), getZ(), SoundEvents.ARROW_HIT, SoundSource.PLAYERS, 0.6F, 1.6F);
         }
@@ -138,13 +131,14 @@ public class NinjaKnifeEntity extends ThrowableItemProjectile {
             serverLevel.addFreshEntity(bolt);
         }
         target.invulnerableTime = 0;
-        target.hurt(serverLevel.damageSources().lightningBolt(), LIGHTNING_BONUS);
+        target.hurt(serverLevel.damageSources().lightningBolt(), profile.lightningDamage());
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putString(TYPE_TAG, spiritusType.getSerializedName());
+        KnifeProfile.CODEC.encodeStart(NbtOps.INSTANCE, profile).result().ifPresent(encoded -> tag.put(PROFILE_TAG, encoded));
     }
 
     @Override
@@ -158,6 +152,11 @@ public class NinjaKnifeEntity extends ThrowableItemProjectile {
                     break;
                 }
             }
+        }
+        if (tag.contains(PROFILE_TAG)) {
+            KnifeProfile.CODEC.parse(NbtOps.INSTANCE, tag.get(PROFILE_TAG)).result().ifPresent(decoded -> profile = decoded);
+        } else {
+            profile = DemonNinjaSigilEffect.DEFAULT.knife(spiritusType);
         }
     }
 }

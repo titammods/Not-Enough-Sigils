@@ -1,11 +1,16 @@
 package com.titammods.animus_extended.sigil.effect;
 
 import com.breakinblocks.neovitae.api.sigil.ISigilEffect;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.titammods.animus_extended.setup.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BoneMealItem;
@@ -25,10 +30,16 @@ import net.minecraft.world.phys.Vec3;
 import java.util.ArrayList;
 import java.util.List;
 
-public record PonymealSigilEffect() implements ISigilEffect {
-    public static final MapCodec<PonymealSigilEffect> CODEC = MapCodec.unit(PonymealSigilEffect::new);
+public record PonymealSigilEffect(int bloomAttempts, TagKey<Block> excluded) implements ISigilEffect {
+    public static final int DEFAULT_BLOOM_ATTEMPTS = 64;
 
-    private static final int BLOOM_ATTEMPTS = 64;
+    public static final PonymealSigilEffect DEFAULT = new PonymealSigilEffect(DEFAULT_BLOOM_ATTEMPTS, ModTags.Blocks.PONYMEAL_EXCLUDED);
+
+    public static final MapCodec<PonymealSigilEffect> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+            Codec.INT.optionalFieldOf("bloom_attempts", DEFAULT_BLOOM_ATTEMPTS).forGetter(PonymealSigilEffect::bloomAttempts),
+            TagKey.codec(Registries.BLOCK).optionalFieldOf("excluded", ModTags.Blocks.PONYMEAL_EXCLUDED).forGetter(PonymealSigilEffect::excluded)
+    ).apply(instance, PonymealSigilEffect::new));
+
     private static final int PLANT_GROWTH_PARTICLES = 15;
 
     private static List<Block> flowers;
@@ -92,15 +103,20 @@ public record PonymealSigilEffect() implements ISigilEffect {
         level.levelEvent(LevelEvent.PARTICLES_AND_SOUND_PLANT_GROWTH, pos, PLANT_GROWTH_PARTICLES);
     }
 
-    private static void bloom(Level level, BlockPos grass) {
-        List<Block> candidates = flowers();
+    private void bloom(Level level, BlockPos grass) {
+        List<Block> candidates = new ArrayList<>();
+        for (Block block : flowers()) {
+            if (!block.defaultBlockState().is(excluded)) {
+                candidates.add(block);
+            }
+        }
         if (candidates.isEmpty()) {
             return;
         }
         RandomSource random = level.getRandom();
         BlockPos start = grass.above();
 
-        for (int attempt = 0; attempt < BLOOM_ATTEMPTS; attempt++) {
+        for (int attempt = 0; attempt < bloomAttempts; attempt++) {
             BlockPos target = start;
             boolean valid = true;
             for (int step = 0; step < attempt / 16; step++) {
@@ -133,9 +149,6 @@ public record PonymealSigilEffect() implements ISigilEffect {
         if (flowers == null) {
             List<Block> found = new ArrayList<>();
             for (Block block : BuiltInRegistries.BLOCK) {
-                if (block == Blocks.WITHER_ROSE) {
-                    continue;
-                }
                 BlockState state = block.defaultBlockState();
                 boolean smallFlower = block instanceof FlowerBlock;
                 boolean tallFlower = block instanceof DoublePlantBlock && state.is(BlockTags.FLOWERS);

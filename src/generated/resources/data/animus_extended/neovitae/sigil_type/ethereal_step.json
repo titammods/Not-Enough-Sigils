@@ -1,0 +1,7 @@
+{
+  "effect": {
+    "type": "animus_extended:ethereal_step"
+  },
+  "lp_cost_air": 30,
+  "lp_cost_block": 30
+}

@@ -4,6 +4,7 @@ import com.breakinblocks.neovitae.common.datacomponent.Anima;
 import com.breakinblocks.neovitae.common.datacomponent.Binding;
 import com.breakinblocks.neovitae.common.item.IActivatable;
 import com.breakinblocks.neovitae.common.item.IBindable;
+import com.breakinblocks.neovitae.api.sigil.ISigilEffect;
 import com.breakinblocks.neovitae.api.soul.AnimaTicket;
 import com.breakinblocks.neovitae.util.helper.AnimaHelper;
 import net.minecraft.world.entity.player.Player;
@@ -33,15 +34,23 @@ public class SigilTracker {
         WARDING_GALE
     }
 
-    private record Entry(long tick, ItemStack stack) {
+    private record Entry(long tick, ItemStack stack, ISigilEffect effect) {
     }
 
-    public static void mark(Player player, Kind kind, ItemStack stack) {
+    public static void mark(Player player, Kind kind, ItemStack stack, ISigilEffect effect) {
         if (player.level().isClientSide()) {
             return;
         }
         ACTIVE.computeIfAbsent(player.getUUID(), id -> new EnumMap<>(Kind.class))
-                .put(kind, new Entry(player.level().getGameTime(), stack));
+                .put(kind, new Entry(player.level().getGameTime(), stack, effect));
+    }
+
+    public static <T extends ISigilEffect> T getEffect(Player player, Kind kind, Class<T> type) {
+        Entry entry = getEntry(player, kind);
+        if (entry == null || !type.isInstance(entry.effect())) {
+            return null;
+        }
+        return type.cast(entry.effect());
     }
 
     public static boolean isActive(Player player, Kind kind) {
@@ -49,18 +58,23 @@ public class SigilTracker {
     }
 
     public static ItemStack getStack(Player player, Kind kind) {
+        Entry entry = getEntry(player, kind);
+        return entry == null ? ItemStack.EMPTY : entry.stack();
+    }
+
+    private static Entry getEntry(Player player, Kind kind) {
         if (player.level().isClientSide()) {
-            return ItemStack.EMPTY;
+            return null;
         }
         EnumMap<Kind, Entry> entries = ACTIVE.get(player.getUUID());
         if (entries == null) {
-            return ItemStack.EMPTY;
+            return null;
         }
         Entry entry = entries.get(kind);
         if (entry == null || player.level().getGameTime() - entry.tick() > ACTIVE_WINDOW) {
-            return ItemStack.EMPTY;
+            return null;
         }
-        return entry.stack();
+        return entry;
     }
 
     public static void deactivate(ItemStack stack) {

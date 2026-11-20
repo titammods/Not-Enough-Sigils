@@ -9,24 +9,55 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.titammods.animus_extended.entity.MagicMissileEntity;
 import com.titammods.animus_extended.sigil.SpiritusAffinity;
+import com.titammods.animus_extended.sigil.config.MissileProfile;
+import com.titammods.animus_extended.sigil.config.MobEffectSpec;
+import com.titammods.animus_extended.sigil.config.SpiritusProfiles;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public record MagicianSigilEffect(int missiles, boolean homing, int cooldown) implements ISigilEffect {
+import java.util.Map;
+import java.util.Optional;
+
+public record MagicianSigilEffect(int missiles, boolean homing, int cooldown, float baseDamage, float bonusDamage,
+                                  double maxSpiritus, float velocity, float spreadDegrees,
+                                  Map<SpiritusType, MissileProfile> profiles) implements ISigilEffect {
+    public static final int DEFAULT_MISSILES = 1;
+    public static final int DEFAULT_COOLDOWN = 20;
+    public static final float DEFAULT_BASE_DAMAGE = 20.0F;
+    public static final float DEFAULT_BONUS_DAMAGE = 20.0F;
+    public static final double DEFAULT_MAX_SPIRITUS = 4096.0D;
+    public static final float DEFAULT_VELOCITY = 2.5F;
+    public static final float DEFAULT_SPREAD = 10.0F;
+    public static final Map<SpiritusType, MissileProfile> DEFAULT_PROFILES = Map.of(
+            SpiritusType.RAW, MissileProfile.NEUTRAL,
+            SpiritusType.RUINA, new MissileProfile(0.75F, 1.0F, true, Optional.empty()),
+            SpiritusType.VINDICTA, new MissileProfile(1.4F, 0.6F, false, Optional.empty()),
+            SpiritusType.INVICTUS, new MissileProfile(0.75F, 1.6F, false, Optional.empty()),
+            SpiritusType.NIHILUM, new MissileProfile(0.7F, 1.0F, false, Optional.of(new MobEffectSpec(MobEffects.MOVEMENT_SLOWDOWN, 80, 2)))
+    );
+
+    public static final MagicianSigilEffect DEFAULT = basic(DEFAULT_MISSILES, false, DEFAULT_COOLDOWN);
+
     public static final MapCodec<MagicianSigilEffect> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-            Codec.INT.optionalFieldOf("missiles", 1).forGetter(MagicianSigilEffect::missiles),
+            Codec.INT.optionalFieldOf("missiles", DEFAULT_MISSILES).forGetter(MagicianSigilEffect::missiles),
             Codec.BOOL.optionalFieldOf("homing", false).forGetter(MagicianSigilEffect::homing),
-            Codec.INT.optionalFieldOf("cooldown", 20).forGetter(MagicianSigilEffect::cooldown)
+            Codec.INT.optionalFieldOf("cooldown", DEFAULT_COOLDOWN).forGetter(MagicianSigilEffect::cooldown),
+            Codec.FLOAT.optionalFieldOf("base_damage", DEFAULT_BASE_DAMAGE).forGetter(MagicianSigilEffect::baseDamage),
+            Codec.FLOAT.optionalFieldOf("bonus_damage", DEFAULT_BONUS_DAMAGE).forGetter(MagicianSigilEffect::bonusDamage),
+            Codec.DOUBLE.optionalFieldOf("max_spiritus", DEFAULT_MAX_SPIRITUS).forGetter(MagicianSigilEffect::maxSpiritus),
+            Codec.FLOAT.optionalFieldOf("velocity", DEFAULT_VELOCITY).forGetter(MagicianSigilEffect::velocity),
+            Codec.FLOAT.optionalFieldOf("spread_degrees", DEFAULT_SPREAD).forGetter(MagicianSigilEffect::spreadDegrees),
+            SpiritusProfiles.codec(MissileProfile.CODEC).optionalFieldOf("profiles", Map.of()).forGetter(MagicianSigilEffect::profiles)
     ).apply(instance, MagicianSigilEffect::new));
 
-    public static final float BASE_DAMAGE = 20.0F;
-    public static final float MAX_BONUS_DAMAGE = 20.0F;
-    public static final double MAX_SPIRITUS = 4096.0D;
-    private static final float VELOCITY = 2.5F;
-    private static final float SPREAD_DEGREES = 10.0F;
+    public static MagicianSigilEffect basic(int missiles, boolean homing, int cooldown) {
+        return new MagicianSigilEffect(missiles, homing, cooldown, DEFAULT_BASE_DAMAGE, DEFAULT_BONUS_DAMAGE, DEFAULT_MAX_SPIRITUS,
+                DEFAULT_VELOCITY, DEFAULT_SPREAD, Map.of());
+    }
 
     @Override
     public MapCodec<? extends ISigilEffect> codec() {
@@ -42,47 +73,31 @@ public record MagicianSigilEffect(int missiles, boolean homing, int cooldown) im
             return true;
         }
 
-        SpiritusType affinity = SpiritusAffinity.of(player);
-        float damage = computeDamage(player) * damageMultiplier(affinity);
-        float velocity = VELOCITY * velocityMultiplier(affinity);
-        boolean seeking = homing || affinity == SpiritusType.RUINA;
-        boolean slowing = affinity == SpiritusType.NIHILUM;
+        MissileProfile profile = SpiritusProfiles.resolve(profiles, DEFAULT_PROFILES, SpiritusAffinity.of(player), MissileProfile.NEUTRAL);
+        float damage = computeDamage(player) * profile.damageMultiplier();
+        float speed = velocity * profile.velocityMultiplier();
+        boolean seeking = homing || profile.homing();
         int count = Math.max(1, missiles);
         for (int i = 0; i < count; i++) {
-            float yawOffset = (i - (count - 1) / 2.0F) * SPREAD_DEGREES;
-            MagicMissileEntity missile = new MagicMissileEntity(level, player, damage, seeking, slowing);
-            missile.shootFromRotation(player, player.getXRot(), player.getYRot() + yawOffset, 0.0F, velocity, 0.0F);
+            float yawOffset = (i - (count - 1) / 2.0F) * spreadDegrees;
+            MagicMissileEntity missile = new MagicMissileEntity(level, player, damage, seeking, profile.effect());
+            missile.shootFromRotation(player, player.getXRot(), player.getYRot() + yawOffset, 0.0F, speed, 0.0F);
             level.addFreshEntity(missile);
         }
-        player.getCooldowns().addCooldown(stack.getItem(), Math.max(1, cooldown));
+        if (cooldown > 0) {
+            player.getCooldowns().addCooldown(stack.getItem(), cooldown);
+        }
         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.EVOKER_CAST_SPELL, SoundSource.PLAYERS, 0.8F, 1.4F);
         return true;
     }
 
-    public static float damageMultiplier(SpiritusType type) {
-        return switch (type) {
-            case RUINA, INVICTUS -> 0.75F;
-            case VINDICTA -> 1.4F;
-            case NIHILUM -> 0.7F;
-            default -> 1.0F;
-        };
-    }
-
-    public static float velocityMultiplier(SpiritusType type) {
-        return switch (type) {
-            case VINDICTA -> 0.6F;
-            case INVICTUS -> 1.6F;
-            default -> 1.0F;
-        };
-    }
-
-    public static float computeDamage(Player player) {
+    public float computeDamage(Player player) {
         IPlayerSpiritusHandler handler = NeoVitaeAPI.getInstance().getPlayerSpiritusHandler();
         double total = 0.0D;
         for (SpiritusType type : SpiritusType.values()) {
             total += handler.getTotalSpiritus(type, player);
         }
-        double ratio = Math.min(total, MAX_SPIRITUS) / MAX_SPIRITUS;
-        return BASE_DAMAGE + (float) (ratio * MAX_BONUS_DAMAGE);
+        double ratio = maxSpiritus <= 0.0D ? 1.0D : Math.min(total, maxSpiritus) / maxSpiritus;
+        return baseDamage + (float) (ratio * bonusDamage);
     }
 }

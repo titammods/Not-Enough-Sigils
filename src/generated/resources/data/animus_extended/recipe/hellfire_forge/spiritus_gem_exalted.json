@@ -1,0 +1,23 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 1600.0,
+  "inputs": [
+    {
+      "item": "neovitae:spiritus_gem_grand"
+    },
+    {
+      "item": "neovitae:animus_mote"
+    },
+    {
+      "item": "neovitae:deus_shard"
+    },
+    {
+      "item": "minecraft:nether_star"
+    }
+  ],
+  "minDrain": 16000.0,
+  "output": {
+    "count": 1,
+    "id": "animus_extended:spiritus_gem_exalted"
+  }
+}

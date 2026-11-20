@@ -1,7 +1,0 @@
-{
-  "lp_cost_active": 150,
-  "drain_interval": 100,
-  "effect": {
-    "type": "animus_extended:sanguine_aegis"
-  }
-}

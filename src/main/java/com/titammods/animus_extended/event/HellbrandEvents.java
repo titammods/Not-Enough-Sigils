@@ -3,6 +3,7 @@ package com.titammods.animus_extended.event;
 import com.titammods.animus_extended.AnimusExtended;
 import com.titammods.animus_extended.sigil.DelayedDamage;
 import com.titammods.animus_extended.sigil.SigilTracker;
+import com.titammods.animus_extended.sigil.effect.HellbrandSigilEffect;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -19,11 +20,6 @@ import net.neoforged.neoforge.event.tick.ServerTickEvent;
 public class HellbrandEvents {
     private static final String STACKS_TAG = "animus_extended_hellbrand_stacks";
     private static final String TICK_TAG = "animus_extended_hellbrand_tick";
-    private static final int MAX_STACKS = 5;
-    private static final long STACK_DURATION = 200L;
-    private static final float BASE_BURST = 5.0F;
-    private static final float BURST_HEALTH_RATIO = 0.15F;
-    private static final float MAX_BURST = 50.0F;
 
     @SubscribeEvent
     public static void onHit(LivingDamageEvent.Post event) {
@@ -34,20 +30,21 @@ public class HellbrandEvents {
         if (target == player || event.getNewDamage() <= 0.0F || !target.isAlive()) {
             return;
         }
-        if (!SigilTracker.isActive(player, SigilTracker.Kind.HELLBRAND)) {
+        HellbrandSigilEffect config = SigilTracker.getEffect(player, SigilTracker.Kind.HELLBRAND, HellbrandSigilEffect.class);
+        if (config == null) {
             return;
         }
 
         ServerLevel level = player.serverLevel();
         long now = level.getGameTime();
         CompoundTag data = target.getPersistentData();
-        int stacks = now - data.getLong(TICK_TAG) > STACK_DURATION ? 0 : data.getInt(STACKS_TAG);
+        int stacks = now - data.getLong(TICK_TAG) > config.stackDuration() ? 0 : data.getInt(STACKS_TAG);
         stacks++;
         data.putLong(TICK_TAG, now);
 
-        if (stacks >= MAX_STACKS) {
+        if (stacks >= Math.max(1, config.maxStacks())) {
             data.remove(STACKS_TAG);
-            float damage = Math.min(MAX_BURST, BASE_BURST + target.getMaxHealth() * BURST_HEALTH_RATIO);
+            float damage = Math.min(config.maxBurst(), config.baseBurst() + target.getMaxHealth() * config.burstHealthRatio());
             DelayedDamage.arcane(target, player, damage, HellbrandEvents::burstEffects);
         } else {
             data.putInt(STACKS_TAG, stacks);

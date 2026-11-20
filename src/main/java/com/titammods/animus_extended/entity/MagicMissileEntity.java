@@ -2,14 +2,14 @@ package com.titammods.animus_extended.entity;
 
 import com.titammods.animus_extended.setup.ModDamageTypes;
 import com.titammods.animus_extended.setup.ModEntities;
+import com.titammods.animus_extended.sigil.config.MobEffectSpec;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,29 +21,29 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
+import java.util.Optional;
+
 public class MagicMissileEntity extends ThrowableProjectile {
     private static final int MAX_LIFETIME = 100;
     private static final String DAMAGE_TAG = "MissileDamage";
     private static final String HOMING_TAG = "MissileHoming";
-    private static final String SLOWING_TAG = "MissileSlowing";
-    private static final int SLOW_TICKS = 80;
-    private static final int SLOW_AMPLIFIER = 2;
+    private static final String EFFECT_TAG = "MissileEffect";
     private static final double HOMING_RANGE = 16.0D;
     private static final double HOMING_STRENGTH = 0.25D;
 
     private float damage = 20.0F;
     private boolean homing;
-    private boolean slowing;
+    private Optional<MobEffectSpec> effect = Optional.empty();
 
     public MagicMissileEntity(EntityType<? extends MagicMissileEntity> type, Level level) {
         super(type, level);
     }
 
-    public MagicMissileEntity(Level level, LivingEntity shooter, float damage, boolean homing, boolean slowing) {
+    public MagicMissileEntity(Level level, LivingEntity shooter, float damage, boolean homing, Optional<MobEffectSpec> effect) {
         super(ModEntities.MAGIC_MISSILE.get(), shooter, level);
         this.damage = damage;
         this.homing = homing;
-        this.slowing = slowing;
+        this.effect = effect;
     }
 
     @Override
@@ -116,8 +116,8 @@ public class MagicMissileEntity extends ThrowableProjectile {
             return;
         }
         boolean hit = living.hurt(ModDamageTypes.arcane(level(), this, owner), damage);
-        if (hit && slowing) {
-            living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, SLOW_TICKS, SLOW_AMPLIFIER), owner);
+        if (hit) {
+            effect.ifPresent(spec -> spec.apply(living, owner));
         }
     }
 
@@ -155,7 +155,7 @@ public class MagicMissileEntity extends ThrowableProjectile {
         super.addAdditionalSaveData(tag);
         tag.putFloat(DAMAGE_TAG, damage);
         tag.putBoolean(HOMING_TAG, homing);
-        tag.putBoolean(SLOWING_TAG, slowing);
+        effect.flatMap(spec -> MobEffectSpec.CODEC.encodeStart(NbtOps.INSTANCE, spec).result()).ifPresent(encoded -> tag.put(EFFECT_TAG, encoded));
     }
 
     @Override
@@ -165,6 +165,6 @@ public class MagicMissileEntity extends ThrowableProjectile {
             damage = tag.getFloat(DAMAGE_TAG);
         }
         homing = tag.getBoolean(HOMING_TAG);
-        slowing = tag.getBoolean(SLOWING_TAG);
+        effect = tag.contains(EFFECT_TAG) ? MobEffectSpec.CODEC.parse(NbtOps.INSTANCE, tag.get(EFFECT_TAG)).result() : Optional.empty();
     }
 }

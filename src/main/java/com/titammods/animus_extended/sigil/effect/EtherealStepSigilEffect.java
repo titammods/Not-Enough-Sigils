@@ -1,7 +1,9 @@
 package com.titammods.animus_extended.sigil.effect;
 
 import com.breakinblocks.neovitae.api.sigil.ISigilEffect;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -17,13 +19,19 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
-public record EtherealStepSigilEffect() implements ISigilEffect {
-    public static final MapCodec<EtherealStepSigilEffect> CODEC = MapCodec.unit(EtherealStepSigilEffect::new);
+public record EtherealStepSigilEffect(double range, int cooldown) implements ISigilEffect {
+    public static final double DEFAULT_RANGE = 16.0D;
+    public static final int DEFAULT_COOLDOWN = 60;
 
-    private static final double RANGE = 16.0D;
+    public static final EtherealStepSigilEffect DEFAULT = new EtherealStepSigilEffect(DEFAULT_RANGE, DEFAULT_COOLDOWN);
+
+    public static final MapCodec<EtherealStepSigilEffect> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+            Codec.DOUBLE.optionalFieldOf("range", DEFAULT_RANGE).forGetter(EtherealStepSigilEffect::range),
+            Codec.INT.optionalFieldOf("cooldown", DEFAULT_COOLDOWN).forGetter(EtherealStepSigilEffect::cooldown)
+    ).apply(instance, EtherealStepSigilEffect::new));
+
     private static final double WALL_PADDING = 0.6D;
     private static final double STEP = 0.5D;
-    private static final int COOLDOWN_TICKS = 60;
 
     @Override
     public MapCodec<? extends ISigilEffect> codec() {
@@ -53,9 +61,9 @@ public record EtherealStepSigilEffect() implements ISigilEffect {
 
         Vec3 eye = player.getEyePosition();
         Vec3 look = player.getLookAngle();
-        Vec3 end = eye.add(look.scale(RANGE));
+        Vec3 end = eye.add(look.scale(range));
         BlockHitResult hit = level.clip(new ClipContext(eye, end, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player));
-        double distance = hit.getType() == HitResult.Type.MISS ? RANGE : hit.getLocation().distanceTo(eye) - WALL_PADDING;
+        double distance = hit.getType() == HitResult.Type.MISS ? range : hit.getLocation().distanceTo(eye) - WALL_PADDING;
 
         Vec3 destination = null;
         for (double d = distance; d >= 1.0D && destination == null; d -= STEP) {
@@ -75,7 +83,9 @@ public record EtherealStepSigilEffect() implements ISigilEffect {
         Vec3 origin = player.position();
         serverPlayer.teleportTo(destination.x, destination.y, destination.z);
         serverPlayer.resetFallDistance();
-        player.getCooldowns().addCooldown(stack.getItem(), COOLDOWN_TICKS);
+        if (cooldown > 0) {
+            player.getCooldowns().addCooldown(stack.getItem(), cooldown);
+        }
 
         serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, origin.x, origin.y + 1.0D, origin.z, 30, 0.3D, 0.6D, 0.3D, 0.05D);
         serverLevel.sendParticles(ParticleTypes.SOUL, destination.x, destination.y + 1.0D, destination.z, 15, 0.3D, 0.6D, 0.3D, 0.02D);

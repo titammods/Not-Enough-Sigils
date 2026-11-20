@@ -1,5 +1,6 @@
 package com.titammods.animus_extended.event;
 
+import com.titammods.animus_extended.sigil.effect.BrunimneetsSigilEffect;
 import com.titammods.animus_extended.AnimusExtended;
 import com.titammods.animus_extended.sigil.SigilTracker;
 import net.minecraft.core.Holder;
@@ -16,9 +17,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 @EventBusSubscriber(modid = AnimusExtended.MODID)
 public class BrunimneetsEvents {
     private static final double PLAYER_HEIGHT = 1.8D;
-    private static final double HEIGHT_REDUCTION = 4.0D / 16.0D;
-    private static final double SCALE_MODIFIER = -HEIGHT_REDUCTION / PLAYER_HEIGHT;
-    private static final double RANGE_BONUS = 10.0D;
+    private static final double PIXEL = 1.0D / 16.0D;
 
     private static final ResourceLocation SCALE_ID = AnimusExtended.rl("brunimneets_scale");
     private static final ResourceLocation BLOCK_RANGE_ID = AnimusExtended.rl("brunimneets_block_range");
@@ -31,10 +30,14 @@ public class BrunimneetsEvents {
             return;
         }
 
-        boolean active = SigilTracker.isActive(player, SigilTracker.Kind.BRUNIMNEETS);
-        update(player, Attributes.SCALE, SCALE_ID, SCALE_MODIFIER, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, active);
-        update(player, Attributes.BLOCK_INTERACTION_RANGE, BLOCK_RANGE_ID, RANGE_BONUS, AttributeModifier.Operation.ADD_VALUE, active);
-        update(player, Attributes.ENTITY_INTERACTION_RANGE, ENTITY_RANGE_ID, RANGE_BONUS, AttributeModifier.Operation.ADD_VALUE, active);
+        BrunimneetsSigilEffect config = SigilTracker.getEffect(player, SigilTracker.Kind.BRUNIMNEETS, BrunimneetsSigilEffect.class);
+        boolean active = config != null;
+        double scale = active ? -(config.heightReductionPixels() * PIXEL) / PLAYER_HEIGHT : 0.0D;
+        double blockRange = active ? config.blockRangeBonus() : 0.0D;
+        double entityRange = active ? config.entityRangeBonus() : 0.0D;
+        update(player, Attributes.SCALE, SCALE_ID, scale, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, active);
+        update(player, Attributes.BLOCK_INTERACTION_RANGE, BLOCK_RANGE_ID, blockRange, AttributeModifier.Operation.ADD_VALUE, active);
+        update(player, Attributes.ENTITY_INTERACTION_RANGE, ENTITY_RANGE_ID, entityRange, AttributeModifier.Operation.ADD_VALUE, active);
     }
 
     private static void update(Player player, Holder<Attribute> attribute, ResourceLocation id, double amount,
@@ -43,11 +46,19 @@ public class BrunimneetsEvents {
         if (instance == null) {
             return;
         }
-        boolean present = instance.hasModifier(id);
-        if (active && !present) {
-            instance.addTransientModifier(new AttributeModifier(id, amount, operation));
-        } else if (!active && present) {
+        AttributeModifier current = instance.getModifier(id);
+        if (!active || amount == 0.0D) {
+            if (current != null) {
+                instance.removeModifier(id);
+            }
+            return;
+        }
+        if (current != null && current.amount() == amount && current.operation() == operation) {
+            return;
+        }
+        if (current != null) {
             instance.removeModifier(id);
         }
+        instance.addTransientModifier(new AttributeModifier(id, amount, operation));
     }
 }

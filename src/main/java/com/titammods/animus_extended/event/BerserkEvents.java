@@ -1,5 +1,6 @@
 package com.titammods.animus_extended.event;
 
+import com.titammods.animus_extended.sigil.effect.BerserkSigilEffect;
 import com.titammods.animus_extended.AnimusExtended;
 import com.titammods.animus_extended.sigil.SigilTracker;
 import net.minecraft.network.chat.Component;
@@ -20,13 +21,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @EventBusSubscriber(modid = AnimusExtended.MODID)
 public class BerserkEvents {
-    private static final int HITS_REQUIRED = 10;
-    private static final long COMBO_WINDOW = 300L;
-    private static final int RAGE_TICKS = 400;
-    private static final int STRENGTH_AMPLIFIER = 2;
-    private static final int COMBO_SPEED_TICKS = 100;
-    private static final int SPEED_AMPLIFIER = 1;
-
     private static final Map<UUID, State> STATES = new ConcurrentHashMap<>();
 
     private static class State {
@@ -47,7 +41,8 @@ public class BerserkEvents {
         if (target == player || event.getNewDamage() <= 0.0F) {
             return;
         }
-        if (!SigilTracker.isActive(player, SigilTracker.Kind.BERSERK)) {
+        BerserkSigilEffect config = SigilTracker.getEffect(player, SigilTracker.Kind.BERSERK, BerserkSigilEffect.class);
+        if (config == null) {
             return;
         }
 
@@ -55,26 +50,28 @@ public class BerserkEvents {
         State state = STATES.computeIfAbsent(player.getUUID(), id -> new State());
 
         if (state.rageUntil > now) {
-            state.rageUntil = now + RAGE_TICKS;
-            applyRage(player);
+            state.rageUntil = now + config.rageDuration();
+            applyRage(player, config);
             return;
         }
 
-        if (state.comboStart < 0L || now - state.comboStart > COMBO_WINDOW) {
+        if (state.comboStart < 0L || now - state.comboStart > config.comboWindow()) {
             state.comboStart = now;
             state.hits = 0;
         }
 
         state.hits++;
-        if (state.hits < HITS_REQUIRED) {
-            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, COMBO_SPEED_TICKS, SPEED_AMPLIFIER, false, true, true));
+        if (state.hits < config.hitsRequired()) {
+            if (config.speedAmplifier() >= 0 && config.comboSpeedDuration() > 0) {
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, config.comboSpeedDuration(), config.speedAmplifier(), false, true, true));
+            }
             return;
         }
 
         state.comboStart = -1L;
         state.hits = 0;
-        state.rageUntil = now + RAGE_TICKS;
-        applyRage(player);
+        state.rageUntil = now + config.rageDuration();
+        applyRage(player, config);
         player.displayClientMessage(Component.translatable("message.animus_extended.berserk.rage"), true);
         player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.RAVAGER_ROAR, SoundSource.PLAYERS, 0.6F, 1.3F);
     }
@@ -84,8 +81,12 @@ public class BerserkEvents {
         STATES.remove(event.getEntity().getUUID());
     }
 
-    private static void applyRage(ServerPlayer player) {
-        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, RAGE_TICKS, STRENGTH_AMPLIFIER, false, true, true));
-        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, RAGE_TICKS, SPEED_AMPLIFIER, false, true, true));
+    private static void applyRage(ServerPlayer player, BerserkSigilEffect config) {
+        if (config.strengthAmplifier() >= 0) {
+            player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, config.rageDuration(), config.strengthAmplifier(), false, true, true));
+        }
+        if (config.speedAmplifier() >= 0) {
+            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, config.rageDuration(), config.speedAmplifier(), false, true, true));
+        }
     }
 }

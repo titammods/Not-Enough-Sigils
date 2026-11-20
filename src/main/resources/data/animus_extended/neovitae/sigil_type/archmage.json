@@ -1,9 +1,0 @@
-{
-  "lp_cost_air": 100,
-  "effect": {
-    "type": "animus_extended:magician",
-    "missiles": 3,
-    "homing": true,
-    "cooldown": 30
-  }
-}

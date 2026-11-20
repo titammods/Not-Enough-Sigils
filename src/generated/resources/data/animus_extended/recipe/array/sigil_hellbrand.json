@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:array",
+  "addedinput": {
+    "item": "neovitae:tabula_spiritus"
+  },
+  "baseinput": {
+    "item": "animus_extended:reagent_hellbrand"
+  },
+  "output": {
+    "count": 1,
+    "id": "animus_extended:sigil_hellbrand"
+  },
+  "texture": "neovitae:textures/models/alchemyarrays/lavasigil.png"
+}

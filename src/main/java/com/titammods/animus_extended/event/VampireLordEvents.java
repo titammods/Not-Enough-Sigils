@@ -1,5 +1,6 @@
 package com.titammods.animus_extended.event;
 
+import com.titammods.animus_extended.sigil.effect.VampireLordSigilEffect;
 import com.titammods.animus_extended.AnimusExtended;
 import com.titammods.animus_extended.sigil.SigilTracker;
 import net.minecraft.server.level.ServerPlayer;
@@ -11,10 +12,6 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
 @EventBusSubscriber(modid = AnimusExtended.MODID)
 public class VampireLordEvents {
-    private static final float LIFESTEAL_RATIO = 0.15F;
-    private static final int EV_PER_OVERKILL = 50;
-    private static final int MAX_EV_PER_KILL = 5000;
-
     @SubscribeEvent
     public static void onDamagePre(LivingDamageEvent.Pre event) {
         ServerPlayer player = meleeAttacker(event.getSource().getEntity(), event.getSource().getDirectEntity(), event.getEntity());
@@ -25,10 +22,11 @@ public class VampireLordEvents {
         if (sigil.isEmpty()) {
             return;
         }
+        VampireLordSigilEffect config = config(player);
         LivingEntity target = event.getEntity();
         float overkill = event.getNewDamage() - (target.getHealth() + target.getAbsorptionAmount());
         if (overkill > 0.0F) {
-            SigilTracker.addEV(player, sigil, Math.min(MAX_EV_PER_KILL, Math.round(overkill * EV_PER_OVERKILL)));
+            SigilTracker.addEV(player, sigil, Math.min(config.maxEvPerKill(), Math.round(overkill * config.evPerOverkill())));
         }
     }
 
@@ -41,7 +39,12 @@ public class VampireLordEvents {
         if (!SigilTracker.isActive(player, SigilTracker.Kind.VAMPIRE_LORD)) {
             return;
         }
-        player.heal(event.getNewDamage() * LIFESTEAL_RATIO);
+        player.heal(event.getNewDamage() * config(player).lifesteal());
+    }
+
+    private static VampireLordSigilEffect config(ServerPlayer player) {
+        VampireLordSigilEffect config = SigilTracker.getEffect(player, SigilTracker.Kind.VAMPIRE_LORD, VampireLordSigilEffect.class);
+        return config == null ? VampireLordSigilEffect.DEFAULT : config;
     }
 
     private static ServerPlayer meleeAttacker(Object attacker, Object direct, LivingEntity target) {

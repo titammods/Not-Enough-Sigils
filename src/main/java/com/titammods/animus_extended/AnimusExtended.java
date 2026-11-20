@@ -1,6 +1,7 @@
 package com.titammods.animus_extended;
 
 import com.titammods.animus_extended.client.ClientSetup;
+import com.titammods.animus_extended.datagen.DataGenerators;
 import com.titammods.animus_extended.network.ModNetworking;
 import com.titammods.animus_extended.setup.ModCreativeTabs;
 import com.titammods.animus_extended.setup.ModEntities;
@@ -25,6 +26,7 @@ public class AnimusExtended {
         ModCreativeTabs.TABS.register(modEventBus);
 
         modEventBus.addListener(ModNetworking::register);
+        modEventBus.addListener(DataGenerators::gather);
 
         if (FMLEnvironment.dist == Dist.CLIENT) {
             ClientSetup.register(modEventBus);

@@ -1,5 +1,6 @@
 package com.titammods.animus_extended.sigil;
 
+import com.titammods.animus_extended.sigil.effect.WardingGaleSigilEffect;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Mob;
@@ -11,20 +12,15 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
 public class WardingGaleAura {
-    private static final double RADIUS = 4.0D;
-    private static final double PUSH_STRENGTH = 0.45D;
-    private static final double PUSH_LIFT = 0.15D;
-    private static final double DEFLECT_FACTOR = -0.6D;
-    private static final int PULSE_INTERVAL = 2;
-
-    public static void pulse(Level level, Player player) {
-        if (!(level instanceof ServerLevel serverLevel) || player.tickCount % PULSE_INTERVAL != 0) {
+    public static void pulse(Level level, Player player, WardingGaleSigilEffect config) {
+        if (!(level instanceof ServerLevel serverLevel) || player.tickCount % Math.max(1, config.pulseInterval()) != 0) {
             return;
         }
 
-        AABB area = player.getBoundingBox().inflate(RADIUS);
+        double radius = config.radius();
+        AABB area = player.getBoundingBox().inflate(radius);
         Vec3 center = player.position();
-        double radiusSqr = RADIUS * RADIUS;
+        double radiusSqr = radius * radius;
 
         for (Mob mob : serverLevel.getEntitiesOfClass(Mob.class, area, entity -> entity.isAlive() && entity instanceof Enemy)) {
             Vec3 offset = mob.position().subtract(center);
@@ -35,8 +31,8 @@ public class WardingGaleAura {
             if (horizontal.lengthSqr() < 1.0E-4D) {
                 horizontal = new Vec3(1.0D, 0.0D, 0.0D);
             }
-            Vec3 push = horizontal.normalize().scale(PUSH_STRENGTH);
-            mob.push(push.x, PUSH_LIFT, push.z);
+            Vec3 push = horizontal.normalize().scale(config.pushStrength());
+            mob.push(push.x, config.pushLift(), push.z);
             mob.hurtMarked = true;
         }
 
@@ -46,7 +42,7 @@ public class WardingGaleAura {
             if (motion.lengthSqr() < 1.0E-3D || motion.dot(toPlayer) <= 0.0D) {
                 continue;
             }
-            projectile.setDeltaMovement(motion.scale(DEFLECT_FACTOR));
+            projectile.setDeltaMovement(motion.scale(config.deflectFactor()));
             projectile.hasImpulse = true;
             projectile.hurtMarked = true;
             serverLevel.sendParticles(ParticleTypes.GUST, projectile.getX(), projectile.getY(), projectile.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);

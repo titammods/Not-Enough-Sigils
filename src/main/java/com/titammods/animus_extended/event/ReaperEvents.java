@@ -1,5 +1,6 @@
 package com.titammods.animus_extended.event;
 
+import com.titammods.animus_extended.sigil.effect.ReaperSigilEffect;
 import com.breakinblocks.neovitae.api.NeoVitaeAPI;
 import com.breakinblocks.neovitae.api.spiritus.IPlayerSpiritusHandler;
 import com.breakinblocks.neovitae.common.datacomponent.SpiritusType;
@@ -20,11 +21,6 @@ import net.neoforged.neoforge.event.entity.living.LivingExperienceDropEvent;
 
 @EventBusSubscriber(modid = AnimusExtended.MODID)
 public class ReaperEvents {
-    private static final double SPIRITUS_PER_HEALTH = 0.075D;
-    private static final double MAX_SPIRITUS_PER_KILL = 96.0D;
-    private static final float BASE_XP_MULTIPLIER = 1.5F;
-    private static final float XP_PER_LOOTING = 0.25F;
-
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void onKill(LivingDeathEvent event) {
         if (!(event.getSource().getEntity() instanceof ServerPlayer player)) {
@@ -38,8 +34,9 @@ public class ReaperEvents {
             return;
         }
 
+        ReaperSigilEffect config = config(player);
         int looting = getLooting(player);
-        double amount = Math.min(MAX_SPIRITUS_PER_KILL, target.getMaxHealth() * SPIRITUS_PER_HEALTH * (1 + looting));
+        double amount = Math.min(config.maxSpiritusPerKill(), target.getMaxHealth() * config.spiritusPerHealth() * (1 + looting));
         if (amount <= 0.0D) {
             return;
         }
@@ -56,8 +53,14 @@ public class ReaperEvents {
         if (!SigilTracker.isActive(player, SigilTracker.Kind.REAPER)) {
             return;
         }
-        float multiplier = BASE_XP_MULTIPLIER + XP_PER_LOOTING * getLooting(player);
+        ReaperSigilEffect config = config(player);
+        float multiplier = config.xpMultiplier() + config.xpPerLooting() * getLooting(player);
         event.setDroppedExperience(Math.round(event.getDroppedExperience() * multiplier));
+    }
+
+    private static ReaperSigilEffect config(ServerPlayer player) {
+        ReaperSigilEffect config = SigilTracker.getEffect(player, SigilTracker.Kind.REAPER, ReaperSigilEffect.class);
+        return config == null ? ReaperSigilEffect.DEFAULT : config;
     }
 
     private static int getLooting(ServerPlayer player) {

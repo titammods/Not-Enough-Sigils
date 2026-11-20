@@ -3,6 +3,7 @@ package com.titammods.animus_extended.event;
 import com.titammods.animus_extended.AnimusExtended;
 import com.titammods.animus_extended.sigil.DemonNinjaState;
 import com.titammods.animus_extended.sigil.SigilTracker;
+import com.titammods.animus_extended.sigil.effect.DemonNinjaSigilEffect;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -26,10 +27,11 @@ public class DemonNinjaEvents {
         if (attacker == null || attacker == player) {
             return;
         }
-        if (!SigilTracker.isActive(player, SigilTracker.Kind.DEMON_NINJA)) {
+        DemonNinjaSigilEffect config = SigilTracker.getEffect(player, SigilTracker.Kind.DEMON_NINJA, DemonNinjaSigilEffect.class);
+        if (config == null) {
             return;
         }
-        DemonNinjaState.reveal(player);
+        DemonNinjaState.reveal(player, config.revealTicks());
     }
 
     @SubscribeEvent

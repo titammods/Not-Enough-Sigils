@@ -1,5 +1,6 @@
 package com.titammods.animus_extended.sigil;
 
+import com.titammods.animus_extended.sigil.effect.BulletTimeSigilEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Mob;
@@ -13,30 +14,30 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class BulletTimeState {
     private static final String SLOWED_TAG = "animus_extended_bullet_time";
-    private static final double RADIUS = 16.0D;
-    private static final double PROJECTILE_SPEED_FACTOR = 0.2D;
     private static final int SLOW_DURATION = 20;
-    private static final int SLOW_AMPLIFIER = 4;
     private static final int PULSE_INTERVAL = 5;
 
-    private static final Map<UUID, Long> ACTIVE_UNTIL = new ConcurrentHashMap<>();
+    private record Active(long until, BulletTimeSigilEffect config) {}
 
-    public static void start(Player player, int duration) {
-        ACTIVE_UNTIL.put(player.getUUID(), player.level().getGameTime() + duration);
+    private static final Map<UUID, Active> ACTIVE = new ConcurrentHashMap<>();
+
+    public static void start(Player player, BulletTimeSigilEffect config) {
+        ACTIVE.put(player.getUUID(), new Active(player.level().getGameTime() + config.duration(), config));
     }
 
     public static void tick(Player player) {
-        Long until = ACTIVE_UNTIL.get(player.getUUID());
-        if (until == null) {
+        Active active = ACTIVE.get(player.getUUID());
+        if (active == null) {
             return;
         }
-        if (player.level().getGameTime() >= until || !player.isAlive()) {
-            ACTIVE_UNTIL.remove(player.getUUID());
+        if (player.level().getGameTime() >= active.until() || !player.isAlive()) {
+            ACTIVE.remove(player.getUUID());
             return;
         }
 
-        AABB area = player.getBoundingBox().inflate(RADIUS);
-        double radiusSqr = RADIUS * RADIUS;
+        BulletTimeSigilEffect config = active.config();
+        AABB area = player.getBoundingBox().inflate(config.radius());
+        double radiusSqr = config.radius() * config.radius();
 
         for (Projectile projectile : player.level().getEntitiesOfClass(Projectile.class, area,
                 entity -> entity.isAlive() && entity.getOwner() != player && entity.distanceToSqr(player) <= radiusSqr)) {
@@ -44,21 +45,21 @@ public class BulletTimeState {
                 continue;
             }
             projectile.getPersistentData().putBoolean(SLOWED_TAG, true);
-            projectile.setDeltaMovement(projectile.getDeltaMovement().scale(PROJECTILE_SPEED_FACTOR));
+            projectile.setDeltaMovement(projectile.getDeltaMovement().scale(config.projectileSpeedFactor()));
             projectile.hasImpulse = true;
             projectile.hurtMarked = true;
         }
 
-        if (player.tickCount % PULSE_INTERVAL != 0) {
+        if (config.slowAmplifier() < 0 || player.tickCount % PULSE_INTERVAL != 0) {
             return;
         }
         for (Mob mob : player.level().getEntitiesOfClass(Mob.class, area,
                 entity -> entity.isAlive() && entity.distanceToSqr(player) <= radiusSqr)) {
-            mob.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, SLOW_DURATION, SLOW_AMPLIFIER, false, true, true), player);
+            mob.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, SLOW_DURATION, config.slowAmplifier(), false, true, true), player);
         }
     }
 
     public static void clear(UUID playerId) {
-        ACTIVE_UNTIL.remove(playerId);
+        ACTIVE.remove(playerId);
     }
 }

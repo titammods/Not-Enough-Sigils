@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:array",
+  "addedinput": {
+    "item": "neovitae:tabula_aetherea"
+  },
+  "baseinput": {
+    "item": "animus_extended:reagent_sanguine_aegis"
+  },
+  "output": {
+    "count": 1,
+    "id": "animus_extended:sigil_sanguine_aegis"
+  },
+  "texture": "neovitae:textures/models/alchemyarrays/deflectionarray.png"
+}

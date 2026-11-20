@@ -1,6 +1,6 @@
 package com.titammods.animus_extended.sigil;
 
-import com.titammods.animus_extended.setup.ModItems;
+import com.titammods.animus_extended.sigil.effect.SoulPhoenixSigilEffect;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -18,15 +18,8 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class PhoenixGuard {
-    public static final int REVIVE_EV_COST = 1000;
-    private static final int COOLDOWN_TICKS = 300;
-    private static final int GREATER_COOLDOWN_TICKS = 160;
-    private static final float REVIVE_HEALTH = 4.0F;
-    private static final float GREATER_REVIVE_RATIO = 0.5F;
-    private static final int REVIVE_INVULNERABILITY = 20;
-    private static final long GREATER_GRACE_TICKS = 20L;
-
     private static final Map<UUID, Long> GRACE_UNTIL = new ConcurrentHashMap<>();
+    private static final Map<UUID, Long> GRACE_LENGTH = new ConcurrentHashMap<>();
     private static final Set<UUID> PENDING_VOID_ESCAPE = ConcurrentHashMap.newKeySet();
     private static final ThreadLocal<Boolean> REVIVING = ThreadLocal.withInitial(() -> false);
 
@@ -47,43 +40,46 @@ public class PhoenixGuard {
     }
 
     public static boolean tryGreaterRevive(ServerPlayer player, boolean fromVoid) {
-        ItemStack sigil = SigilTracker.getStack(player, SigilTracker.Kind.SOUL_PHOENIX_GREATER);
+        return tryRevive(player, SigilTracker.Kind.SOUL_PHOENIX_GREATER, SoulPhoenixSigilEffect.GREATER, fromVoid);
+    }
+
+    public static boolean tryLesserRevive(ServerPlayer player) {
+        return tryRevive(player, SigilTracker.Kind.SOUL_PHOENIX, SoulPhoenixSigilEffect.LESSER, false);
+    }
+
+    private static boolean tryRevive(ServerPlayer player, SigilTracker.Kind kind, SoulPhoenixSigilEffect fallback, boolean fromVoid) {
+        ItemStack sigil = SigilTracker.getStack(player, kind);
         if (sigil.isEmpty()) {
             return false;
         }
-        Item item = ModItems.SIGIL_SOUL_PHOENIX_GREATER.get();
-        if (player.getCooldowns().isOnCooldown(item) || !SigilTracker.drainEV(player, sigil, REVIVE_EV_COST)) {
+        SoulPhoenixSigilEffect config = SigilTracker.getEffect(player, kind, SoulPhoenixSigilEffect.class);
+        if (config == null) {
+            config = fallback;
+        }
+        Item item = sigil.getItem();
+        if (player.getCooldowns().isOnCooldown(item) || !SigilTracker.drainEV(player, sigil, config.evCost())) {
             return false;
         }
-        revive(player, item, GREATER_COOLDOWN_TICKS, player.getMaxHealth() * GREATER_REVIVE_RATIO);
-        GRACE_UNTIL.put(player.getUUID(), player.level().getGameTime() + GREATER_GRACE_TICKS);
-        if (fromVoid || player.getY() < player.level().getMinBuildHeight()) {
+        float health = Math.max(config.reviveHealth(), player.getMaxHealth() * config.reviveHealthRatio());
+        revive(player, item, config.cooldown(), health, config.invulnerability());
+        if (config.graceTicks() > 0) {
+            GRACE_UNTIL.put(player.getUUID(), player.level().getGameTime() + config.graceTicks());
+            GRACE_LENGTH.put(player.getUUID(), (long) config.graceTicks());
+        }
+        if (config.voidEscape() && (fromVoid || player.getY() < player.level().getMinBuildHeight())) {
             PENDING_VOID_ESCAPE.add(player.getUUID());
         }
         return true;
     }
 
-    public static boolean tryLesserRevive(ServerPlayer player) {
-        ItemStack sigil = SigilTracker.getStack(player, SigilTracker.Kind.SOUL_PHOENIX);
-        if (sigil.isEmpty()) {
-            return false;
-        }
-        Item item = ModItems.SIGIL_SOUL_PHOENIX.get();
-        if (player.getCooldowns().isOnCooldown(item) || !SigilTracker.drainEV(player, sigil, REVIVE_EV_COST)) {
-            return false;
-        }
-        revive(player, item, COOLDOWN_TICKS, REVIVE_HEALTH);
-        return true;
-    }
-
-    private static void revive(ServerPlayer player, Item item, int cooldown, float health) {
+    private static void revive(ServerPlayer player, Item item, int cooldown, float health, int invulnerability) {
         REVIVING.set(true);
         try {
             player.setHealth(Math.max(1.0F, Math.min(player.getMaxHealth(), health)));
         } finally {
             REVIVING.set(false);
         }
-        player.invulnerableTime = REVIVE_INVULNERABILITY;
+        player.invulnerableTime = invulnerability;
         player.getCooldowns().addCooldown(item, cooldown);
         player.displayClientMessage(Component.translatable("message.animus_extended.soul_phoenix.revived"), true);
 
@@ -109,11 +105,15 @@ public class PhoenixGuard {
         }
         player.teleportTo(target, safe.getX() + 0.5D, safe.getY(), safe.getZ() + 0.5D, player.getYRot(), player.getXRot());
         player.resetFallDistance();
-        GRACE_UNTIL.put(player.getUUID(), player.level().getGameTime() + GREATER_GRACE_TICKS);
+        long grace = GRACE_LENGTH.getOrDefault(player.getUUID(), 0L);
+        if (grace > 0L) {
+            GRACE_UNTIL.put(player.getUUID(), player.level().getGameTime() + grace);
+        }
     }
 
     public static void clear(UUID playerId) {
         GRACE_UNTIL.remove(playerId);
+        GRACE_LENGTH.remove(playerId);
         PENDING_VOID_ESCAPE.remove(playerId);
     }
 }

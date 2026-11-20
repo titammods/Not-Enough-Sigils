@@ -17,7 +17,6 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
-import net.neoforged.neoforge.common.Tags;
 
 import java.util.List;
 import java.util.OptionalDouble;
@@ -73,7 +72,7 @@ public class VeinSeekerClient {
 
         for (BlockPos pos : positions) {
             BlockState state = minecraft.level.getBlockState(pos);
-            if (!state.is(Tags.Blocks.ORES)) {
+            if (state.isAir()) {
                 continue;
             }
             int color = state.getMapColor(minecraft.level, pos).col;

@@ -12,7 +12,6 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class DemonNinjaState {
-    public static final int REVEAL_TICKS = 600;
     private static final int NIGHT_VISION_TICKS = 400;
     private static final int NIGHT_VISION_REFRESH = 220;
     private static final int INVISIBILITY_TICKS = 60;
@@ -33,8 +32,11 @@ public class DemonNinjaState {
         refresh(player, MobEffects.INVISIBILITY, INVISIBILITY_TICKS, INVISIBILITY_REFRESH);
     }
 
-    public static void reveal(Player player) {
-        REVEALED_UNTIL.put(player.getUUID(), player.level().getGameTime() + REVEAL_TICKS);
+    public static void reveal(Player player, int revealTicks) {
+        if (revealTicks <= 0) {
+            return;
+        }
+        REVEALED_UNTIL.put(player.getUUID(), player.level().getGameTime() + revealTicks);
         removeOwnEffect(player, MobEffects.INVISIBILITY, INVISIBILITY_TICKS);
     }
 
