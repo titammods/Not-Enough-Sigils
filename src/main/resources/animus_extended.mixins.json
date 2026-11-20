@@ -13,7 +13,9 @@
     "TemporalDominanceAccessor"
   ],
   "client": [
-    "client.AnvilScreenMixin"
+    "client.AnvilScreenMixin",
+    "compat.jei.ForgeUpgradeRecipeCategoryMixin",
+    "compat.jei.HellfireForgeRecipeCategoryMixin"
   ],
   "injectors": {
     "defaultRequire": 1
