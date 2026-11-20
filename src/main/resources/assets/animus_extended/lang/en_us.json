@@ -45,6 +45,8 @@
   "item.animus_extended.sigil_vampire_lord": "Sigil of the Vampire Lord",
   "item.animus_extended.sigil_vein_seeker": "Sigil of the Vein Seeker",
   "item.animus_extended.sigil_warding_gale": "Sigil of the Warding Gale",
+  "item.animus_extended.spiritus_gem_exalted": "Exalted Spiritus Gem",
+  "item.animus_extended.spiritus_gem_primordial": "Primordial Spiritus Gem",
   "itemGroup.animus_extended": "Animus Extended",
   "message.animus_extended.berserk.rage": "Berserk!",
   "message.animus_extended.sanguine_aegis.broken": "Your Sanguine Aegis shatters!",
@@ -88,5 +90,7 @@
   "tooltip.neovitae.sigil.temporal_mastery.desc": "Accelerates block entities, doubling speed with each use, up to 512x",
   "tooltip.neovitae.sigil.vampire_lord.desc": "Melee hits steal 15% of the damage as health, overkill feeds your network",
   "tooltip.neovitae.sigil.vein_seeker.desc": "Reveals nearby ores through walls for 10 seconds",
-  "tooltip.neovitae.sigil.warding_gale.desc": "Pushes hostile mobs away and deflects incoming projectiles"
+  "tooltip.neovitae.sigil.warding_gale.desc": "Pushes hostile mobs away and deflects incoming projectiles",
+  "tooltip.neovitae.spiritus_gem.spiritus_gem_exalted": "A gem used to contain an exalted amount of Spiritus.",
+  "tooltip.neovitae.spiritus_gem.spiritus_gem_primordial": "A gem used to contain a primordial amount of Spiritus."
 }

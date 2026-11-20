@@ -45,6 +45,8 @@
   "item.animus_extended.sigil_vampire_lord": "Selo do Lorde Vampiro",
   "item.animus_extended.sigil_vein_seeker": "Selo do Buscador de Veios",
   "item.animus_extended.sigil_warding_gale": "Selo do Vendaval Protetor",
+  "item.animus_extended.spiritus_gem_exalted": "Gema de Espírito Exaltada",
+  "item.animus_extended.spiritus_gem_primordial": "Gema de Espírito Primordial",
   "itemGroup.animus_extended": "Animus Extended",
   "message.animus_extended.berserk.rage": "Fúria!",
   "message.animus_extended.sanguine_aegis.broken": "Sua Égide Sanguínea se despedaçou!",
@@ -88,5 +90,7 @@
   "tooltip.neovitae.sigil.temporal_mastery.desc": "Acelera entidades de bloco, dobrando a velocidade a cada uso, até 512x",
   "tooltip.neovitae.sigil.vampire_lord.desc": "Golpes roubam 15% do dano como vida, o dano excedente alimenta sua rede",
   "tooltip.neovitae.sigil.vein_seeker.desc": "Revela minérios próximos através das paredes por 10 segundos",
-  "tooltip.neovitae.sigil.warding_gale.desc": "Empurra mobs hostis e desvia projéteis que vêm em sua direção"
+  "tooltip.neovitae.sigil.warding_gale.desc": "Empurra mobs hostis e desvia projéteis que vêm em sua direção",
+  "tooltip.neovitae.spiritus_gem.spiritus_gem_exalted": "Uma gema usada para conter uma quantidade exaltada de Espírito.",
+  "tooltip.neovitae.spiritus_gem.spiritus_gem_primordial": "Uma gema usada para conter uma quantidade primordial de Espírito."
 }

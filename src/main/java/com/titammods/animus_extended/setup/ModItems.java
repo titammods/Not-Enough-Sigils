@@ -1,5 +1,6 @@
 package com.titammods.animus_extended.setup;
 
+import com.breakinblocks.neovitae.common.item.SpiritusGemItem;
 import com.breakinblocks.neovitae.common.item.sigil.SigilItem;
 import com.breakinblocks.neovitae.registry.SigilTypeRegistry;
 import com.titammods.animus_extended.AnimusExtended;
@@ -52,6 +53,9 @@ public class ModItems {
     public static final DeferredItem<Item> REAGENT_BULLET_TIME = ITEMS.registerSimpleItem("reagent_bullet_time");
 
     public static final DeferredItem<Item> REAGENT_PONYMEAL = ITEMS.registerSimpleItem("reagent_ponymeal");
+
+    public static final DeferredItem<SpiritusGemItem> SPIRITUS_GEM_EXALTED = ITEMS.register("spiritus_gem_exalted", SpiritusGemItem::new);
+    public static final DeferredItem<SpiritusGemItem> SPIRITUS_GEM_PRIMORDIAL = ITEMS.register("spiritus_gem_primordial", SpiritusGemItem::new);
 
     public static final DeferredItem<Item> NINJA_KNIFE = ITEMS.registerSimpleItem("ninja_knife");
     public static final DeferredItem<Item> NINJA_KNIFE_EXPLOSIVE = ITEMS.registerSimpleItem("ninja_knife_explosive");

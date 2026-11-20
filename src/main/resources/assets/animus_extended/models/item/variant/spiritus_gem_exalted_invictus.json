@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "animus_extended:item/spiritus_gem_exalted_invictus"
+  }
+}
