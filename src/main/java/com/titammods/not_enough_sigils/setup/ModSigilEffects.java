@@ -14,6 +14,7 @@ import com.titammods.not_enough_sigils.sigil.effect.SpiritualMonkSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.TemporalMasterySigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.SanguineAegisSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.VampireLordSigilEffect;
+import com.titammods.not_enough_sigils.sigil.effect.CurseOfGluttonySigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.EtherealStepSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.SkywardSoulSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.ReaperSigilEffect;
@@ -85,4 +86,7 @@ public class ModSigilEffects {
 
     public static final Supplier<MapCodec<TemporalMasterySigilEffect>> TEMPORAL_MASTERY =
             SIGIL_EFFECTS.register("temporal_mastery", () -> TemporalMasterySigilEffect.CODEC);
+
+    public static final Supplier<MapCodec<CurseOfGluttonySigilEffect>> CURSE_OF_GLUTTONY =
+            SIGIL_EFFECTS.register("curse_of_gluttony", () -> CurseOfGluttonySigilEffect.CODEC);
 }

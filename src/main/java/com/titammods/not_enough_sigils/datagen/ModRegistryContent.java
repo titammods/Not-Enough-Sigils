@@ -8,6 +8,7 @@ import com.titammods.not_enough_sigils.setup.ModDamageTypes;
 import com.titammods.not_enough_sigils.sigil.effect.BerserkSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.BrunimneetsSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.BulletTimeSigilEffect;
+import com.titammods.not_enough_sigils.sigil.effect.CurseOfGluttonySigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.DemonNinjaSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.EtherealStepSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.HellbrandSigilEffect;
@@ -54,6 +55,7 @@ public class ModRegistryContent {
         toggle(context, "spiritual_monk", 20, SpiritualMonkSigilEffect.DEFAULT);
         register(context, "ponymeal", 0, 10, 0, PonymealSigilEffect.DEFAULT);
         register(context, "temporal_mastery", 0, 0, 0, TemporalMasterySigilEffect.DEFAULT);
+        toggle(context, "curse_of_gluttony", 0, CurseOfGluttonySigilEffect.DEFAULT);
     }
 
     private static void toggle(BootstrapContext<SigilType> context, String name, int active, ISigilEffect effect) {

@@ -92,5 +92,9 @@
   "tooltip.neovitae.sigil.vein_seeker.desc": "Reveals nearby ores through walls for 10 seconds",
   "tooltip.neovitae.sigil.warding_gale.desc": "Pushes hostile mobs away and deflects incoming projectiles",
   "tooltip.neovitae.spiritus_gem.spiritus_gem_exalted": "A gem used to contain an exalted amount of Spiritus.",
-  "tooltip.neovitae.spiritus_gem.spiritus_gem_primordial": "A gem used to contain a primordial amount of Spiritus."
+  "tooltip.neovitae.spiritus_gem.spiritus_gem_primordial": "A gem used to contain a primordial amount of Spiritus.",
+  "item.not_enough_sigils.sigil_curse_of_gluttony": "Sigil of the Curse of Gluttony",
+  "item.not_enough_sigils.reagent_curse_of_gluttony": "Reagent: Curse of Gluttony",
+  "sigil.not_enough_sigils.curse_of_gluttony": "Sigil of the Curse of Gluttony",
+  "tooltip.neovitae.sigil.curse_of_gluttony.desc": "When your saturation runs out and you lose a shank of hunger, drinks a little blood to fill your hunger and saturation completely"
 }

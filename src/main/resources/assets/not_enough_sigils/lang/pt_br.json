@@ -92,5 +92,9 @@
   "tooltip.neovitae.sigil.vein_seeker.desc": "Revela minérios próximos através das paredes por 10 segundos",
   "tooltip.neovitae.sigil.warding_gale.desc": "Empurra mobs hostis e desvia projéteis que vêm em sua direção",
   "tooltip.neovitae.spiritus_gem.spiritus_gem_exalted": "Uma gema usada para conter uma quantidade exaltada de Espírito.",
-  "tooltip.neovitae.spiritus_gem.spiritus_gem_primordial": "Uma gema usada para conter uma quantidade primordial de Espírito."
+  "tooltip.neovitae.spiritus_gem.spiritus_gem_primordial": "Uma gema usada para conter uma quantidade primordial de Espírito.",
+  "item.not_enough_sigils.sigil_curse_of_gluttony": "Selo da Maldição da Gula",
+  "item.not_enough_sigils.reagent_curse_of_gluttony": "Reagente: Maldição da Gula",
+  "sigil.not_enough_sigils.curse_of_gluttony": "Selo da Maldição da Gula",
+  "tooltip.neovitae.sigil.curse_of_gluttony.desc": "Quando a saturação acaba e você perde um pernil de fome, consome um pouco de sangue para encher toda a fome e a saturação"
 }
