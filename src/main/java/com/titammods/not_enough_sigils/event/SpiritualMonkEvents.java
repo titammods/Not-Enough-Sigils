@@ -4,11 +4,14 @@ import com.breakinblocks.animusnv.events.MonkSigilEventHandler;
 import com.titammods.not_enough_sigils.NotEnoughSigils;
 import com.titammods.not_enough_sigils.setup.ModItems;
 import com.titammods.not_enough_sigils.sigil.DelayedDamage;
+import com.titammods.not_enough_sigils.sigil.MonkMode;
 import com.titammods.not_enough_sigils.sigil.SigilTracker;
 import com.titammods.not_enough_sigils.sigil.SpiritusAffinity;
 import com.titammods.not_enough_sigils.sigil.config.PunchProfile;
 import com.titammods.not_enough_sigils.sigil.effect.SpiritualMonkSigilEffect;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
@@ -23,6 +26,7 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 
 import java.util.Optional;
@@ -35,11 +39,21 @@ public class SpiritualMonkEvents {
     }
 
     @SubscribeEvent
+    public static void onTooltip(ItemTooltipEvent event) {
+        ItemStack stack = event.getItemStack();
+        if (!MonkMode.isSpiritualMonk(stack)) {
+            return;
+        }
+        event.getToolTip().add(Component.translatable("tooltip.not_enough_sigils.spiritual_monk.mode", MonkMode.get(stack).displayName()).withStyle(ChatFormatting.GRAY));
+        event.getToolTip().add(Component.translatable("tooltip.not_enough_sigils.spiritual_monk.mode_hint").withStyle(ChatFormatting.DARK_GRAY));
+    }
+
+    @SubscribeEvent
     public static void onBlockDrops(BlockDropsEvent event) {
         if (!(event.getBreaker() instanceof ServerPlayer player)) {
             return;
         }
-        if (!hasSpiritualMonk(player) || !event.getState().is(config(player).smeltable())) {
+        if (!hasSpiritualMonk(player) || !MonkMode.allowsMining(player) || !event.getState().is(config(player).smeltable())) {
             return;
         }
 
@@ -81,7 +95,7 @@ public class SpiritualMonkEvents {
             return;
         }
         LivingEntity target = event.getEntity();
-        if (target == player || !player.getMainHandItem().isEmpty() || !hasSpiritualMonk(player)) {
+        if (target == player || !player.getMainHandItem().isEmpty() || !hasSpiritualMonk(player) || !MonkMode.allowsCombat(player)) {
             return;
         }
 

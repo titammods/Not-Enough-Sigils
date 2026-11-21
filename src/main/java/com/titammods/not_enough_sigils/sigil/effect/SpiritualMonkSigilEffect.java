@@ -4,11 +4,13 @@ import com.breakinblocks.neovitae.api.sigil.ISigilEffect;
 import com.breakinblocks.neovitae.common.datacomponent.SpiritusType;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.titammods.not_enough_sigils.sigil.MonkMode;
 import com.titammods.not_enough_sigils.sigil.SigilTracker;
 import com.titammods.not_enough_sigils.sigil.config.MobEffectSpec;
 import com.titammods.not_enough_sigils.sigil.config.PunchProfile;
 import com.titammods.not_enough_sigils.sigil.config.SpiritusProfiles;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
@@ -49,6 +51,16 @@ public record SpiritualMonkSigilEffect(TagKey<Block> smeltable, Map<SpiritusType
 
     @Override
     public boolean isToggleable() {
+        return true;
+    }
+
+    @Override
+    public boolean useOnAir(Level level, Player player, ItemStack stack) {
+        if (!level.isClientSide()) {
+            MonkMode mode = MonkMode.get(stack).next();
+            MonkMode.set(stack, mode);
+            player.displayClientMessage(Component.translatable("monk_mode.not_enough_sigils.changed", mode.displayName()), true);
+        }
         return true;
     }
 

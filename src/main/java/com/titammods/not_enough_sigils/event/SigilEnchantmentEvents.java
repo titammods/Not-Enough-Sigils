@@ -1,6 +1,7 @@
 package com.titammods.not_enough_sigils.event;
 
 import com.titammods.not_enough_sigils.NotEnoughSigils;
+import com.titammods.not_enough_sigils.sigil.MonkMode;
 import com.titammods.not_enough_sigils.sigil.MonkSigilEnchantments;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -17,7 +18,7 @@ public class SigilEnchantmentEvents {
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void onBreakSpeed(PlayerEvent.BreakSpeed event) {
         ItemStack sigil = MonkSigilEnchantments.getEnchantedFistSigil(event.getEntity());
-        if (sigil.isEmpty()) {
+        if (sigil.isEmpty() || !MonkMode.of(sigil).mining()) {
             return;
         }
 
@@ -37,7 +38,7 @@ public class SigilEnchantmentEvents {
         }
 
         ItemStack sigil = MonkSigilEnchantments.getEnchantedFistSigil(player);
-        if (sigil.isEmpty()) {
+        if (sigil.isEmpty() || !MonkMode.of(sigil).combat()) {
             return;
         }
 

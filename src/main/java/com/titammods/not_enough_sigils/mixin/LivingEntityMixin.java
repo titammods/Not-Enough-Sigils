@@ -1,5 +1,6 @@
 package com.titammods.not_enough_sigils.mixin;
 
+import com.titammods.not_enough_sigils.sigil.MonkMode;
 import com.titammods.not_enough_sigils.sigil.MonkSigilEnchantments;
 import com.titammods.not_enough_sigils.sigil.PhoenixGuard;
 import net.minecraft.server.level.ServerPlayer;
@@ -25,7 +26,7 @@ public abstract class LivingEntityMixin {
         }
 
         ItemStack sigil = MonkSigilEnchantments.getEnchantedFistSigil(player);
-        if (!sigil.isEmpty()) {
+        if (!sigil.isEmpty() && MonkMode.of(sigil).combat()) {
             cir.setReturnValue(sigil);
         }
     }

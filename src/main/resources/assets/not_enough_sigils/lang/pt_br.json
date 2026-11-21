@@ -135,5 +135,11 @@
   "item.not_enough_sigils.sigil_fairys_blessing": "Selo da Bênção da Fada",
   "item.not_enough_sigils.reagent_fairys_blessing": "Reagente: Bênção da Fada",
   "sigil.not_enough_sigils.fairys_blessing": "Selo da Bênção da Fada",
-  "tooltip.neovitae.sigil.fairys_blessing.desc": "Enquanto ativo, concede Regeneração III sem fim por um pouco de sangue a cada poucos segundos"
+  "tooltip.neovitae.sigil.fairys_blessing.desc": "Enquanto ativo, concede Regeneração III sem fim por um pouco de sangue a cada poucos segundos",
+  "monk_mode.not_enough_sigils.both": "Mineração e Combate",
+  "monk_mode.not_enough_sigils.mining": "Só Mineração",
+  "monk_mode.not_enough_sigils.combat": "Só Combate",
+  "monk_mode.not_enough_sigils.changed": "Modo do monge: %s",
+  "tooltip.not_enough_sigils.spiritual_monk.mode": "Modo: %s",
+  "tooltip.not_enough_sigils.spiritual_monk.mode_hint": "Clique direito no ar para trocar o modo"
 }

@@ -135,5 +135,11 @@
   "item.not_enough_sigils.sigil_fairys_blessing": "Sigil of the Fairy's Blessing",
   "item.not_enough_sigils.reagent_fairys_blessing": "Reagent: Fairy's Blessing",
   "sigil.not_enough_sigils.fairys_blessing": "Sigil of the Fairy's Blessing",
-  "tooltip.neovitae.sigil.fairys_blessing.desc": "While active, grants endless Regeneration III for a small amount of blood every few seconds"
+  "tooltip.neovitae.sigil.fairys_blessing.desc": "While active, grants endless Regeneration III for a small amount of blood every few seconds",
+  "monk_mode.not_enough_sigils.both": "Mining and Combat",
+  "monk_mode.not_enough_sigils.mining": "Mining Only",
+  "monk_mode.not_enough_sigils.combat": "Combat Only",
+  "monk_mode.not_enough_sigils.changed": "Monk mode: %s",
+  "tooltip.not_enough_sigils.spiritual_monk.mode": "Mode: %s",
+  "tooltip.not_enough_sigils.spiritual_monk.mode_hint": "Right-click in the air to change mode"
 }

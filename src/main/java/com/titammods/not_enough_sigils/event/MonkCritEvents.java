@@ -2,6 +2,7 @@ package com.titammods.not_enough_sigils.event;
 
 import com.breakinblocks.animusnv.events.MonkSigilEventHandler;
 import com.titammods.not_enough_sigils.NotEnoughSigils;
+import com.titammods.not_enough_sigils.sigil.MonkMode;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -31,7 +32,7 @@ public class MonkCritEvents {
         if (!event.isCriticalHit() || !player.getMainHandItem().isEmpty()) {
             return;
         }
-        if (!MonkSigilEventHandler.hasActiveMonkSigil(player)) {
+        if (!MonkSigilEventHandler.hasActiveMonkSigil(player) || !MonkMode.allowsCombat(player)) {
             return;
         }
         event.setDamageMultiplier(1.0F);

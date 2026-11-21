@@ -1,5 +1,6 @@
 package com.titammods.not_enough_sigils.mixin;
 
+import com.titammods.not_enough_sigils.sigil.MonkMode;
 import com.titammods.not_enough_sigils.sigil.MonkSigilEnchantments;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerPlayerGameMode;
@@ -31,6 +32,6 @@ public abstract class ServerPlayerGameModeMixin {
         }
 
         ItemStack sigil = MonkSigilEnchantments.getEnchantedFistSigil(this.player);
-        return sigil.isEmpty() ? tool : sigil;
+        return sigil.isEmpty() || !MonkMode.of(sigil).mining() ? tool : sigil;
     }
 }
