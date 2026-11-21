@@ -29,5 +29,6 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new ModDamageTypeTagsProvider(output, event.getLookupProvider(), fileHelper));
         generator.addProvider(event.includeServer(), new ModDataMapProvider(output, event.getLookupProvider()));
         generator.addProvider(event.includeServer(), new ModRecipeProvider(output, event.getLookupProvider()));
+        generator.addProvider(event.includeServer(), new SaerethSettingsProvider(output));
     }
 }

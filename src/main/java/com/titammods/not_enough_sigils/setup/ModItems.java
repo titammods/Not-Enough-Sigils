@@ -5,6 +5,7 @@ import com.breakinblocks.neovitae.common.item.sigil.SigilItem;
 import com.breakinblocks.neovitae.registry.SigilTypeRegistry;
 import com.titammods.not_enough_sigils.NotEnoughSigils;
 import com.titammods.not_enough_sigils.holding.GreaterHoldingSigilItem;
+import com.titammods.not_enough_sigils.saereth.SaerethSigilItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -32,6 +33,7 @@ public class ModItems {
     public static final DeferredItem<SigilItem> SIGIL_PONYMEAL = registerSigil("sigil_ponymeal", "ponymeal");
     public static final DeferredItem<SigilItem> SIGIL_TEMPORAL_MASTERY = registerSigil("sigil_temporal_mastery", "temporal_mastery");
     public static final DeferredItem<SigilItem> SIGIL_CURSE_OF_GLUTTONY = registerSigil("sigil_curse_of_gluttony", "curse_of_gluttony");
+    public static final DeferredItem<SaerethSigilItem> SAERETH_SIGIL = ITEMS.register("saereth_sigil", SaerethSigilItem::new);
 
     public static final DeferredItem<GreaterHoldingSigilItem> SIGIL_HOLDING_GREATER =
             ITEMS.register("sigil_holding_greater", () -> new GreaterHoldingSigilItem(9, "tooltip.not_enough_sigils.sigil_holding_greater.desc"));

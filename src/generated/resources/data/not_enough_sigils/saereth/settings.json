@@ -1,0 +1,7 @@
+{
+  "cast_timeout": 600,
+  "draw_ticks": 40,
+  "link_range": 8,
+  "place_ticks": 15,
+  "scan_interval": 40
+}

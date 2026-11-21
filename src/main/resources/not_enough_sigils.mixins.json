@@ -15,7 +15,8 @@
   "client": [
     "client.AnvilScreenMixin",
     "compat.jei.ForgeUpgradeRecipeCategoryMixin",
-    "compat.jei.HellfireForgeRecipeCategoryMixin"
+    "compat.jei.HellfireForgeRecipeCategoryMixin",
+    "compat.jei.RitualRecipeCategoryMixin"
   ],
   "injectors": {
     "defaultRequire": 1

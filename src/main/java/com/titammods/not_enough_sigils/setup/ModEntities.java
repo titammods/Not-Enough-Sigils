@@ -3,9 +3,11 @@ package com.titammods.not_enough_sigils.setup;
 import com.titammods.not_enough_sigils.NotEnoughSigils;
 import com.titammods.not_enough_sigils.entity.MagicMissileEntity;
 import com.titammods.not_enough_sigils.entity.NinjaKnifeEntity;
+import com.titammods.not_enough_sigils.saereth.SaerethEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -30,4 +32,17 @@ public class ModEntities {
                     .updateInterval(10)
                     .build("ninja_knife")
     );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<SaerethEntity>> SAERETH = ENTITY_TYPES.register(
+            "saereth",
+            () -> EntityType.Builder.<SaerethEntity>of(SaerethEntity::new, MobCategory.MISC)
+                    .sized(0.6F, 1.8F)
+                    .eyeHeight(1.62F)
+                    .clientTrackingRange(10)
+                    .build("saereth")
+    );
+
+    public static void registerAttributes(EntityAttributeCreationEvent event) {
+        event.put(SAERETH.get(), SaerethEntity.createAttributes().build());
+    }
 }

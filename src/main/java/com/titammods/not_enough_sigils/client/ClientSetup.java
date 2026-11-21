@@ -29,6 +29,7 @@ public class ClientSetup {
     private static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntities.MAGIC_MISSILE.get(), NoopRenderer::new);
         event.registerEntityRenderer(ModEntities.NINJA_KNIFE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ModEntities.SAERETH.get(), SaerethRenderer::new);
     }
 
     private static void registerScreens(RegisterMenuScreensEvent event) {
