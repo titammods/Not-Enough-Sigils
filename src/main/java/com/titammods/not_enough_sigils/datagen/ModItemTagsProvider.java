@@ -44,7 +44,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 ModItems.SIGIL_SOUL_PHOENIX_GREATER.get(),
                 ModItems.SIGIL_HOLDING_SUPREME.get(),
                 ModItems.SIGIL_SPIRITUAL_MONK.get(),
-                ModItems.SIGIL_CURSE_OF_GLUTTONY.get()
+                ModItems.SIGIL_CURSE_OF_GLUTTONY.get(),
+                ModItems.SIGIL_FAIRYS_BLESSING.get()
         );
         tag(CURIOS_NECKLACE).add(ModItems.SPIRITUS_GEM_EXALTED.get(), ModItems.SPIRITUS_GEM_PRIMORDIAL.get());
         tag(CURIOS_SENTIENT_SOCKET).add(ModItems.SPIRITUS_GEM_EXALTED.get(), ModItems.SPIRITUS_GEM_PRIMORDIAL.get());

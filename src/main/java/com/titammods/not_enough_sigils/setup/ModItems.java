@@ -33,6 +33,7 @@ public class ModItems {
     public static final DeferredItem<SigilItem> SIGIL_PONYMEAL = registerSigil("sigil_ponymeal", "ponymeal");
     public static final DeferredItem<SigilItem> SIGIL_TEMPORAL_MASTERY = registerSigil("sigil_temporal_mastery", "temporal_mastery");
     public static final DeferredItem<SigilItem> SIGIL_CURSE_OF_GLUTTONY = registerSigil("sigil_curse_of_gluttony", "curse_of_gluttony");
+    public static final DeferredItem<SigilItem> SIGIL_FAIRYS_BLESSING = registerSigil("sigil_fairys_blessing", "fairys_blessing");
     public static final DeferredItem<SaerethSigilItem> SAERETH_SIGIL = ITEMS.register("saereth_sigil", SaerethSigilItem::new);
 
     public static final DeferredItem<GreaterHoldingSigilItem> SIGIL_HOLDING_GREATER =
@@ -57,6 +58,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> REAGENT_PONYMEAL = ITEMS.registerSimpleItem("reagent_ponymeal");
     public static final DeferredItem<Item> REAGENT_CURSE_OF_GLUTTONY = ITEMS.registerSimpleItem("reagent_curse_of_gluttony");
+    public static final DeferredItem<Item> REAGENT_FAIRYS_BLESSING = ITEMS.registerSimpleItem("reagent_fairys_blessing");
 
     public static final DeferredItem<SpiritusGemItem> SPIRITUS_GEM_EXALTED = ITEMS.register("spiritus_gem_exalted", SpiritusGemItem::new);
     public static final DeferredItem<SpiritusGemItem> SPIRITUS_GEM_PRIMORDIAL = ITEMS.register("spiritus_gem_primordial", SpiritusGemItem::new);

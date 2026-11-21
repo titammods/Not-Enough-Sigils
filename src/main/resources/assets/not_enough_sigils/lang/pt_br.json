@@ -131,5 +131,9 @@
   "tooltip.not_enough_sigils.saereth_sigil.chest": "Baú: %s",
   "tooltip.not_enough_sigils.saereth_sigil.array": "Array: %s",
   "tooltip.not_enough_sigils.saereth_sigil.usage": "Clique em um baú ou no topo de um bloco para marcar, depois clique no Saereth para vincular. Agachado + usar no ar apaga",
-  "tooltip.not_enough_sigils.saereth_sigil.capture": "Agachado + clique no Saereth para selá-lo"
+  "tooltip.not_enough_sigils.saereth_sigil.capture": "Agachado + clique no Saereth para selá-lo",
+  "item.not_enough_sigils.sigil_fairys_blessing": "Selo da Bênção da Fada",
+  "item.not_enough_sigils.reagent_fairys_blessing": "Reagente: Bênção da Fada",
+  "sigil.not_enough_sigils.fairys_blessing": "Selo da Bênção da Fada",
+  "tooltip.neovitae.sigil.fairys_blessing.desc": "Enquanto ativo, concede Regeneração III sem fim por um pouco de sangue a cada poucos segundos"
 }

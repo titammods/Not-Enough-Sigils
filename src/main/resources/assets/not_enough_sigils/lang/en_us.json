@@ -131,5 +131,9 @@
   "tooltip.not_enough_sigils.saereth_sigil.chest": "Chest: %s",
   "tooltip.not_enough_sigils.saereth_sigil.array": "Array: %s",
   "tooltip.not_enough_sigils.saereth_sigil.usage": "Click a chest or the top of a block to mark, then click Saereth to link. Sneak + use in the air to clear",
-  "tooltip.not_enough_sigils.saereth_sigil.capture": "Sneak + click Saereth to bind him to the sigil"
+  "tooltip.not_enough_sigils.saereth_sigil.capture": "Sneak + click Saereth to bind him to the sigil",
+  "item.not_enough_sigils.sigil_fairys_blessing": "Sigil of the Fairy's Blessing",
+  "item.not_enough_sigils.reagent_fairys_blessing": "Reagent: Fairy's Blessing",
+  "sigil.not_enough_sigils.fairys_blessing": "Sigil of the Fairy's Blessing",
+  "tooltip.neovitae.sigil.fairys_blessing.desc": "While active, grants endless Regeneration III for a small amount of blood every few seconds"
 }

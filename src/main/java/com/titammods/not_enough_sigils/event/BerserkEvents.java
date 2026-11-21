@@ -63,7 +63,7 @@ public class BerserkEvents {
         state.hits++;
         if (state.hits < config.hitsRequired()) {
             if (config.speedAmplifier() >= 0 && config.comboSpeedDuration() > 0) {
-                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, config.comboSpeedDuration(), config.speedAmplifier(), false, true, true));
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, config.comboSpeedDuration(), config.speedAmplifier(), false, true, false));
             }
             return;
         }
@@ -83,10 +83,10 @@ public class BerserkEvents {
 
     private static void applyRage(ServerPlayer player, BerserkSigilEffect config) {
         if (config.strengthAmplifier() >= 0) {
-            player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, config.rageDuration(), config.strengthAmplifier(), false, true, true));
+            player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, config.rageDuration(), config.strengthAmplifier(), false, true, false));
         }
         if (config.speedAmplifier() >= 0) {
-            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, config.rageDuration(), config.speedAmplifier(), false, true, true));
+            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, config.rageDuration(), config.speedAmplifier(), false, true, false));
         }
     }
 }

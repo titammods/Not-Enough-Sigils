@@ -16,6 +16,7 @@ import com.titammods.not_enough_sigils.sigil.effect.SanguineAegisSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.VampireLordSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.CurseOfGluttonySigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.EtherealStepSigilEffect;
+import com.titammods.not_enough_sigils.sigil.effect.FairysBlessingSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.SkywardSoulSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.ReaperSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.HellbrandSigilEffect;
@@ -89,4 +90,7 @@ public class ModSigilEffects {
 
     public static final Supplier<MapCodec<CurseOfGluttonySigilEffect>> CURSE_OF_GLUTTONY =
             SIGIL_EFFECTS.register("curse_of_gluttony", () -> CurseOfGluttonySigilEffect.CODEC);
+
+    public static final Supplier<MapCodec<FairysBlessingSigilEffect>> FAIRYS_BLESSING =
+            SIGIL_EFFECTS.register("fairys_blessing", () -> FairysBlessingSigilEffect.CODEC);
 }

@@ -74,7 +74,7 @@ public class DemonNinjaState {
         if (current != null && (current.isInfiniteDuration() || current.getDuration() > refreshBelow)) {
             return;
         }
-        player.addEffect(new MobEffectInstance(effect, duration, 0, true, false, true));
+        player.addEffect(new MobEffectInstance(effect, duration, 0, true, false, false));
     }
 
     private static void removeOwnEffect(Player player, Holder<MobEffect> effect, int maxDuration) {
