@@ -50,6 +50,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(CURIOS_NECKLACE).add(ModItems.SPIRITUS_GEM_EXALTED.get(), ModItems.SPIRITUS_GEM_PRIMORDIAL.get());
         tag(CURIOS_SENTIENT_SOCKET).add(ModItems.SPIRITUS_GEM_EXALTED.get(), ModItems.SPIRITUS_GEM_PRIMORDIAL.get());
         tag(NVTags.Items.SPIRITUS_GEM).add(ModItems.SPIRITUS_GEM_EXALTED.get(), ModItems.SPIRITUS_GEM_PRIMORDIAL.get());
+        tag(neovitae("orbs/tier_7")).add(ModItems.BLOOD_ORB_ASCENDANT.get());
+        tag(neovitae("orbs/tier_8")).add(ModItems.BLOOD_ORB_DIVINE.get());
         tag(Tags.Items.HIDDEN_FROM_RECIPE_VIEWERS).add(
                 ModItems.NINJA_KNIFE.get(),
                 ModItems.NINJA_KNIFE_EXPLOSIVE.get(),
@@ -57,6 +59,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 ModItems.NINJA_KNIFE_FROST.get(),
                 ModItems.NINJA_KNIFE_FIRE.get()
         );
+    }
+
+    private static TagKey<Item> neovitae(String path) {
+        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("neovitae", path));
     }
 
     private static TagKey<Item> curios(String path) {

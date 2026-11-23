@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:ara_vitae_recipe",
+  "bloodNeeded": 1200000,
+  "craftSpeed": 200,
+  "drainSpeed": 400,
+  "input": {
+    "item": "not_enough_sigils:spiritus_gem_primordial"
+  },
+  "minTier": 7,
+  "output": {
+    "count": 1,
+    "id": "not_enough_sigils:blood_orb_divine"
+  }
+}

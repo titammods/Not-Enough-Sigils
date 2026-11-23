@@ -1,0 +1,16 @@
+{
+  "values": {
+    "not_enough_sigils:blood_orb_ascendant": {
+      "animaCapacity": 75000000,
+      "fillRate": 400,
+      "fluidCapacity": 20000,
+      "tier": 6
+    },
+    "not_enough_sigils:blood_orb_divine": {
+      "animaCapacity": 200000000,
+      "fillRate": 650,
+      "fluidCapacity": 24000,
+      "tier": 7
+    }
+  }
+}

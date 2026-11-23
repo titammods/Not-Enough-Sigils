@@ -90,6 +90,8 @@ public class ModRecipeProvider extends RecipeProvider {
         altar(output, ModItems.SIGIL_ARCHMAGE.get(), ModItems.SIGIL_MAGICIAN.get(), 4, 60000, 40, 100);
         altar(output, ModItems.SIGIL_HOLDING_SUPREME.get(), ModItems.SIGIL_HOLDING_GREATER.get(), 5, 100000, 40, 100);
         altar(output, ModItems.SIGIL_TEMPORAL_MASTERY.get(), item("animusnv", "sigil_temporal_dominance"), 5, 100000, 40, 100);
+        orb(output, ModItems.BLOOD_ORB_ASCENDANT.get(), ModItems.SPIRITUS_GEM_EXALTED.get(), 6, 500000, 150, 300);
+        orb(output, ModItems.BLOOD_ORB_DIVINE.get(), ModItems.SPIRITUS_GEM_PRIMORDIAL.get(), 7, 1200000, 200, 400);
     }
 
     private static void forge(RecipeOutput output, Item result, double drain, double minDrain, ItemLike... inputs) {
@@ -107,6 +109,11 @@ public class ModRecipeProvider extends RecipeProvider {
 
     private static void altar(RecipeOutput output, Item result, ItemLike input, int tier, int blood, int craftSpeed, int drainSpeed) {
         AraVitaeRecipe recipe = new AraVitaeRecipe(Ingredient.of(input), new ItemStack(result), tier, blood, craftSpeed, drainSpeed, true);
+        output.accept(id("ara_vitae/", result), recipe, null);
+    }
+
+    private static void orb(RecipeOutput output, Item result, ItemLike input, int tier, int blood, int craftSpeed, int drainSpeed) {
+        AraVitaeRecipe recipe = new AraVitaeRecipe(Ingredient.of(input), new ItemStack(result), tier, blood, craftSpeed, drainSpeed, false);
         output.accept(id("ara_vitae/", result), recipe, null);
     }
 

@@ -1,5 +1,6 @@
 package com.titammods.not_enough_sigils;
 
+import com.breakinblocks.neovitae.common.item.OrbFluidHandler;
 import com.titammods.not_enough_sigils.altar.AltarBookSync;
 import com.titammods.not_enough_sigils.client.ClientSetup;
 import com.titammods.not_enough_sigils.datagen.DataGenerators;
@@ -16,6 +17,8 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.NeoForge;
 
 @Mod(NotEnoughSigils.MODID)
@@ -33,6 +36,7 @@ public class NotEnoughSigils {
         modEventBus.addListener(ModNetworking::register);
         modEventBus.addListener(DataGenerators::gather);
         modEventBus.addListener(ModEntities::registerAttributes);
+        modEventBus.addListener(NotEnoughSigils::registerCapabilities);
         NeoForge.EVENT_BUS.addListener(SaerethSettings::onAddReloadListeners);
         AltarBookSync.register(NeoForge.EVENT_BUS);
 
@@ -43,5 +47,9 @@ public class NotEnoughSigils {
 
     public static ResourceLocation rl(String path) {
         return ResourceLocation.fromNamespaceAndPath(MODID, path);
+    }
+
+    private static void registerCapabilities(RegisterCapabilitiesEvent event) {
+        event.registerItem(Capabilities.FluidHandler.ITEM, (stack, context) -> new OrbFluidHandler(stack), ModItems.bloodOrbs());
     }
 }

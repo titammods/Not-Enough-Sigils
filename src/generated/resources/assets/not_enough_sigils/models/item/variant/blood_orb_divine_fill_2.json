@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "not_enough_sigils:item/blood_orb_divine",
+    "layer1": "not_enough_sigils:item/blood_orb_divine_fill_2"
+  }
+}

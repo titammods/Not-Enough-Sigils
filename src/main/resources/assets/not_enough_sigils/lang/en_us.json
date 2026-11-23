@@ -152,5 +152,7 @@
   "book.not_enough_sigils.guide.altar.ascended_tiers.tier7_text.text": "[#](B8860B)Tier 7[#]() adds a final ring of runes with radius 17, another level down. Twelve-block pillars rise at the cardinals, capped with [#](8B0000)Sanguine Deus Blocks[#](), while [#](8B0000)Prismatic Demonite[#]() anchors the four diagonals on the outer ring.",
   "book.not_enough_sigils.guide.altar.ascended_tiers.tier7.title": "Tier 7 Ara Vitae",
   "book.not_enough_sigils.guide.altar.ascended_tiers.tier7.text": "372 total runes. A shrine fit for the divine.",
-  "book.neovitae.guide.altar.ara_vitae.description": "The sacred Ara Vitae where blood becomes power, growing through eight tiers of mastery."
+  "book.neovitae.guide.altar.ara_vitae.description": "The sacred Ara Vitae where blood becomes power, growing through eight tiers of mastery.",
+  "item.not_enough_sigils.blood_orb_ascendant": "Ascensus Orb of Vitae",
+  "item.not_enough_sigils.blood_orb_divine": "Aeternus Orb of Vitae"
 }

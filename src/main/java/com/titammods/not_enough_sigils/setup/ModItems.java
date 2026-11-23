@@ -1,5 +1,6 @@
 package com.titammods.not_enough_sigils.setup;
 
+import com.breakinblocks.neovitae.common.item.BloodOrbItem;
 import com.breakinblocks.neovitae.common.item.SpiritusGemItem;
 import com.breakinblocks.neovitae.common.item.sigil.SigilItem;
 import com.breakinblocks.neovitae.registry.SigilTypeRegistry;
@@ -34,6 +35,8 @@ public class ModItems {
     public static final DeferredItem<SigilItem> SIGIL_TEMPORAL_MASTERY = registerSigil("sigil_temporal_mastery", "temporal_mastery");
     public static final DeferredItem<SigilItem> SIGIL_CURSE_OF_GLUTTONY = registerSigil("sigil_curse_of_gluttony", "curse_of_gluttony");
     public static final DeferredItem<SigilItem> SIGIL_FAIRYS_BLESSING = registerSigil("sigil_fairys_blessing", "fairys_blessing");
+    public static final DeferredItem<BloodOrbItem> BLOOD_ORB_ASCENDANT = ITEMS.register("blood_orb_ascendant", BloodOrbItem::new);
+    public static final DeferredItem<BloodOrbItem> BLOOD_ORB_DIVINE = ITEMS.register("blood_orb_divine", BloodOrbItem::new);
     public static final DeferredItem<SaerethSigilItem> SAERETH_SIGIL = ITEMS.register("saereth_sigil", SaerethSigilItem::new);
 
     public static final DeferredItem<GreaterHoldingSigilItem> SIGIL_HOLDING_GREATER =
@@ -76,5 +79,9 @@ public class ModItems {
 
     private static DeferredItem<SigilItem> registerSigil(String name, String sigilType) {
         return ITEMS.register(name, () -> new SigilItem(SigilTypeRegistry.key(NotEnoughSigils.rl(sigilType))));
+    }
+
+    public static Item[] bloodOrbs() {
+        return new Item[]{BLOOD_ORB_ASCENDANT.get(), BLOOD_ORB_DIVINE.get()};
     }
 }
