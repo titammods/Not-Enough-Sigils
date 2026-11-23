@@ -1,5 +1,6 @@
 package com.titammods.not_enough_sigils;
 
+import com.titammods.not_enough_sigils.altar.AltarBookSync;
 import com.titammods.not_enough_sigils.client.ClientSetup;
 import com.titammods.not_enough_sigils.datagen.DataGenerators;
 import com.titammods.not_enough_sigils.network.ModNetworking;
@@ -33,6 +34,7 @@ public class NotEnoughSigils {
         modEventBus.addListener(DataGenerators::gather);
         modEventBus.addListener(ModEntities::registerAttributes);
         NeoForge.EVENT_BUS.addListener(SaerethSettings::onAddReloadListeners);
+        AltarBookSync.register(NeoForge.EVENT_BUS);
 
         if (FMLEnvironment.dist == Dist.CLIENT) {
             ClientSetup.register(modEventBus);

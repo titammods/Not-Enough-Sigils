@@ -1,0 +1,355 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "altar",
+  "description": "book.neovitae.guide.altar.ara_vitae.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "neovitae:ara_vitae"
+  },
+  "name": "book.neovitae.guide.altar.ara_vitae.name",
+  "pages": [
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.intro.text",
+      "title": "book.neovitae.guide.altar.ara_vitae.intro.title",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:crafting_recipe",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "recipe_id_1": "neovitae:ara_vitae",
+      "text": "",
+      "title1": "",
+      "title2": ""
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.usage.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:multiblock",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "multiblock_id": "altar_one",
+      "multiblock_name": "book.neovitae.guide.altar.ara_vitae.tier1.title",
+      "show_visualize_button": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.tier1.text"
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.feeding.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.orb_bleed.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.reservoir.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.overflow.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.crafting_process.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.first_craft.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "neovitae:altar_tier_info",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "title": "book.neovitae.guide.altar.ara_vitae.tier_table.title"
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.blank_rune.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:crafting_recipe",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "recipe_id_1": "neovitae:rune_blank",
+      "text": "",
+      "title1": "",
+      "title2": ""
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.tier2_text.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:multiblock",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "multiblock_id": "altar_two",
+      "multiblock_name": "book.neovitae.guide.altar.ara_vitae.tier2.title",
+      "show_visualize_button": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.tier2.text"
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.tier3_text.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:multiblock",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "multiblock_id": "altar_three",
+      "multiblock_name": "book.neovitae.guide.altar.ara_vitae.tier3.title",
+      "show_visualize_button": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.tier3.text"
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.tier4_text.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:multiblock",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "multiblock_id": "altar_four",
+      "multiblock_name": "book.neovitae.guide.altar.ara_vitae.tier4.title",
+      "show_visualize_button": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.tier4.text"
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.tier5_text.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:multiblock",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "multiblock_id": "altar_five",
+      "multiblock_name": "book.neovitae.guide.altar.ara_vitae.tier5.title",
+      "show_visualize_button": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.tier5.text"
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.tier6_text.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "neovitae:hellfire_forge_recipe",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "recipe_id_1": "neovitae:hellfire_forge/crystal_cluster",
+      "text": "",
+      "title1": "",
+      "title2": ""
+    },
+    {
+      "type": "modonomicon:multiblock",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "multiblock_id": "altar_six",
+      "multiblock_name": "book.neovitae.guide.altar.ara_vitae.tier6.title",
+      "show_visualize_button": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.tier6.text"
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.altar.ascended_tiers.intro.text",
+      "title": "book.not_enough_sigils.guide.altar.ascended_tiers.intro.title",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.altar.ascended_tiers.tier6_text.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:multiblock",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "multiblock_id": "not_enough_sigils:altar_seven",
+      "multiblock_name": "book.not_enough_sigils.guide.altar.ascended_tiers.tier6.title",
+      "show_visualize_button": true,
+      "text": "book.not_enough_sigils.guide.altar.ascended_tiers.tier6.text"
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.altar.ascended_tiers.tier7_text.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:multiblock",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "multiblock_id": "not_enough_sigils:altar_eight",
+      "multiblock_name": "book.not_enough_sigils.guide.altar.ascended_tiers.tier7.title",
+      "show_visualize_button": true,
+      "text": "book.not_enough_sigils.guide.altar.ascended_tiers.tier7.text"
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.fluid_bottleneck.text",
+      "title": "book.neovitae.guide.altar.ara_vitae.fluid_bottleneck.title",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.neovitae.guide.altar.ara_vitae.fluid_runes.text",
+      "title": "book.neovitae.guide.altar.ara_vitae.fluid_runes.title",
+      "use_markdown_in_title": false
+    }
+  ],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 0,
+  "x": -3,
+  "y": -3
+}

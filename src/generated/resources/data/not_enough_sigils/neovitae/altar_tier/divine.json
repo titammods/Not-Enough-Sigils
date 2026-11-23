@@ -1,0 +1,5075 @@
+{
+  "components": [
+    {
+      "pos": [
+        0,
+        0,
+        0
+      ],
+      "upgrade": false,
+      "valid": "neovitae:ara_vitae"
+    },
+    {
+      "pos": [
+        -1,
+        -1,
+        -1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -1,
+        -1,
+        0
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -1,
+        -1,
+        1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        0,
+        -1,
+        -1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        0,
+        -1,
+        1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        1,
+        -1,
+        -1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        1,
+        -1,
+        0
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        1,
+        -1,
+        1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -3,
+        -2,
+        -1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -3,
+        -2,
+        0
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -3,
+        -2,
+        1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -2,
+        -2,
+        -2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -2,
+        -2,
+        2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -1,
+        -2,
+        -3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -1,
+        -2,
+        3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        0,
+        -2,
+        -3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        0,
+        -2,
+        3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        1,
+        -2,
+        -3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        1,
+        -2,
+        3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        2,
+        -2,
+        -2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        2,
+        -2,
+        2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        3,
+        -2,
+        -1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        3,
+        -2,
+        0
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        3,
+        -2,
+        1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "optional": true,
+      "pos": [
+        4,
+        -1,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        4,
+        0,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -4,
+        -1,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -4,
+        0,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -1,
+        4
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        0,
+        4
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -1,
+        -4
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        0,
+        -4
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "pos": [
+        4,
+        1,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/t3_capstones"
+    },
+    {
+      "pos": [
+        -4,
+        1,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/t3_capstones"
+    },
+    {
+      "pos": [
+        0,
+        1,
+        4
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/t3_capstones"
+    },
+    {
+      "pos": [
+        0,
+        1,
+        -4
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/t3_capstones"
+    },
+    {
+      "pos": [
+        -5,
+        -3,
+        -2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -5,
+        -3,
+        -1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -5,
+        -3,
+        0
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -5,
+        -3,
+        1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -5,
+        -3,
+        2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -4,
+        -3,
+        -3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -4,
+        -3,
+        3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -3,
+        -3,
+        -4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -3,
+        -3,
+        4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -2,
+        -3,
+        -5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -2,
+        -3,
+        5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -1,
+        -3,
+        -5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -1,
+        -3,
+        5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        0,
+        -3,
+        -5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        0,
+        -3,
+        5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        1,
+        -3,
+        -5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        1,
+        -3,
+        5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        2,
+        -3,
+        -5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        2,
+        -3,
+        5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        3,
+        -3,
+        -4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        3,
+        -3,
+        4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        4,
+        -3,
+        -3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        4,
+        -3,
+        3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        5,
+        -3,
+        -2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        5,
+        -3,
+        -1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        5,
+        -3,
+        0
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        5,
+        -3,
+        1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        5,
+        -3,
+        2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        6,
+        2,
+        6
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/t4_capstones"
+    },
+    {
+      "pos": [
+        -6,
+        2,
+        6
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/t4_capstones"
+    },
+    {
+      "pos": [
+        6,
+        2,
+        -6
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/t4_capstones"
+    },
+    {
+      "pos": [
+        -6,
+        2,
+        -6
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/t4_capstones"
+    },
+    {
+      "pos": [
+        -8,
+        -4,
+        -2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -8,
+        -4,
+        -1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -8,
+        -4,
+        0
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -8,
+        -4,
+        1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -8,
+        -4,
+        2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -7,
+        -4,
+        -4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -7,
+        -4,
+        -3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -7,
+        -4,
+        3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -7,
+        -4,
+        4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -6,
+        -4,
+        -6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -6,
+        -4,
+        -5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -6,
+        -4,
+        5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -6,
+        -4,
+        6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -5,
+        -4,
+        -6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -5,
+        -4,
+        6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -4,
+        -4,
+        -7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -4,
+        -4,
+        7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -3,
+        -4,
+        -7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -3,
+        -4,
+        7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -2,
+        -4,
+        -8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -2,
+        -4,
+        8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -1,
+        -4,
+        -8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -1,
+        -4,
+        8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        0,
+        -4,
+        -8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        0,
+        -4,
+        8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        1,
+        -4,
+        -8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        1,
+        -4,
+        8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        2,
+        -4,
+        -8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        2,
+        -4,
+        8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        3,
+        -4,
+        -7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        3,
+        -4,
+        7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        4,
+        -4,
+        -7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        4,
+        -4,
+        7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        5,
+        -4,
+        -6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        5,
+        -4,
+        6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        6,
+        -4,
+        -6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        6,
+        -4,
+        -5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        6,
+        -4,
+        5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        6,
+        -4,
+        6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        7,
+        -4,
+        -4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        7,
+        -4,
+        -3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        7,
+        -4,
+        3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        7,
+        -4,
+        4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        8,
+        -4,
+        -2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        8,
+        -4,
+        -1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        8,
+        -4,
+        0
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        8,
+        -4,
+        1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        8,
+        -4,
+        2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        9,
+        -4,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/t5_capstones"
+    },
+    {
+      "pos": [
+        -9,
+        -4,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/t5_capstones"
+    },
+    {
+      "pos": [
+        0,
+        -4,
+        9
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/t5_capstones"
+    },
+    {
+      "pos": [
+        0,
+        -4,
+        -9
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/t5_capstones"
+    },
+    {
+      "pos": [
+        -11,
+        -5,
+        -3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -11,
+        -5,
+        -2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -11,
+        -5,
+        -1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -11,
+        -5,
+        0
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -11,
+        -5,
+        1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -11,
+        -5,
+        2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -11,
+        -5,
+        3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -10,
+        -5,
+        -5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -10,
+        -5,
+        -4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -10,
+        -5,
+        4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -10,
+        -5,
+        5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -9,
+        -5,
+        -7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -9,
+        -5,
+        -6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -9,
+        -5,
+        6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -9,
+        -5,
+        7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -8,
+        -5,
+        -8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -8,
+        -5,
+        -7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -8,
+        -5,
+        7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -8,
+        -5,
+        8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -7,
+        -5,
+        -9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -7,
+        -5,
+        -8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -7,
+        -5,
+        8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -7,
+        -5,
+        9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -6,
+        -5,
+        -9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -6,
+        -5,
+        9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -5,
+        -5,
+        -10
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -5,
+        -5,
+        10
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -4,
+        -5,
+        -10
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -4,
+        -5,
+        10
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -3,
+        -5,
+        -11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -3,
+        -5,
+        11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -2,
+        -5,
+        -11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -2,
+        -5,
+        11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -1,
+        -5,
+        -11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -1,
+        -5,
+        11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        0,
+        -5,
+        -11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        0,
+        -5,
+        11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        1,
+        -5,
+        -11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        1,
+        -5,
+        11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        2,
+        -5,
+        -11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        2,
+        -5,
+        11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        3,
+        -5,
+        -11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        3,
+        -5,
+        11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        4,
+        -5,
+        -10
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        4,
+        -5,
+        10
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        5,
+        -5,
+        -10
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        5,
+        -5,
+        10
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        6,
+        -5,
+        -9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        6,
+        -5,
+        9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        7,
+        -5,
+        -9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        7,
+        -5,
+        -8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        7,
+        -5,
+        8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        7,
+        -5,
+        9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        8,
+        -5,
+        -8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        8,
+        -5,
+        -7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        8,
+        -5,
+        7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        8,
+        -5,
+        8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        9,
+        -5,
+        -7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        9,
+        -5,
+        -6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        9,
+        -5,
+        6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        9,
+        -5,
+        7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        10,
+        -5,
+        -5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        10,
+        -5,
+        -4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        10,
+        -5,
+        4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        10,
+        -5,
+        5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        11,
+        -5,
+        -3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        11,
+        -5,
+        -2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        11,
+        -5,
+        -1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        11,
+        -5,
+        0
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        11,
+        -5,
+        1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        11,
+        -5,
+        2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        11,
+        -5,
+        3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "optional": true,
+      "pos": [
+        12,
+        -4,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        12,
+        -3,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        12,
+        -2,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        12,
+        -1,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        12,
+        0,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        12,
+        1,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        12,
+        2,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -12,
+        -4,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -12,
+        -3,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -12,
+        -2,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -12,
+        -1,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -12,
+        0,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -12,
+        1,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -12,
+        2,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -4,
+        12
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -3,
+        12
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -2,
+        12
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -1,
+        12
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        0,
+        12
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        1,
+        12
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        2,
+        12
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -4,
+        -12
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -3,
+        -12
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -2,
+        -12
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -1,
+        -12
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        0,
+        -12
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        1,
+        -12
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        2,
+        -12
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "pos": [
+        12,
+        3,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/t6_capstones"
+    },
+    {
+      "pos": [
+        -12,
+        3,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/t6_capstones"
+    },
+    {
+      "pos": [
+        0,
+        3,
+        12
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/t6_capstones"
+    },
+    {
+      "pos": [
+        0,
+        3,
+        -12
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/t6_capstones"
+    },
+    {
+      "pos": [
+        -14,
+        -6,
+        -3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -14,
+        -6,
+        -2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -14,
+        -6,
+        -1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -14,
+        -6,
+        0
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -14,
+        -6,
+        1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -14,
+        -6,
+        2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -14,
+        -6,
+        3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -13,
+        -6,
+        -6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -13,
+        -6,
+        -5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -13,
+        -6,
+        -4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -13,
+        -6,
+        4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -13,
+        -6,
+        5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -13,
+        -6,
+        6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -12,
+        -6,
+        -8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -12,
+        -6,
+        -7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -12,
+        -6,
+        7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -12,
+        -6,
+        8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -11,
+        -6,
+        -9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -11,
+        -6,
+        -8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -11,
+        -6,
+        8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -11,
+        -6,
+        9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -10,
+        -6,
+        -10
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -10,
+        -6,
+        10
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -9,
+        -6,
+        -11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -9,
+        -6,
+        11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -8,
+        -6,
+        -12
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -8,
+        -6,
+        -11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -8,
+        -6,
+        11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -8,
+        -6,
+        12
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -7,
+        -6,
+        -12
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -7,
+        -6,
+        12
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -6,
+        -6,
+        -13
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -6,
+        -6,
+        13
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -5,
+        -6,
+        -13
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -5,
+        -6,
+        13
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -4,
+        -6,
+        -13
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -4,
+        -6,
+        13
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -3,
+        -6,
+        -14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -3,
+        -6,
+        14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -2,
+        -6,
+        -14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -2,
+        -6,
+        14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -1,
+        -6,
+        -14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -1,
+        -6,
+        14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        0,
+        -6,
+        -14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        0,
+        -6,
+        14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        1,
+        -6,
+        -14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        1,
+        -6,
+        14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        2,
+        -6,
+        -14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        2,
+        -6,
+        14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        3,
+        -6,
+        -14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        3,
+        -6,
+        14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        4,
+        -6,
+        -13
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        4,
+        -6,
+        13
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        5,
+        -6,
+        -13
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        5,
+        -6,
+        13
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        6,
+        -6,
+        -13
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        6,
+        -6,
+        13
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        7,
+        -6,
+        -12
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        7,
+        -6,
+        12
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        8,
+        -6,
+        -12
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        8,
+        -6,
+        -11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        8,
+        -6,
+        11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        8,
+        -6,
+        12
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        9,
+        -6,
+        -11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        9,
+        -6,
+        11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        10,
+        -6,
+        -10
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        10,
+        -6,
+        10
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        11,
+        -6,
+        -9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        11,
+        -6,
+        -8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        11,
+        -6,
+        8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        11,
+        -6,
+        9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        12,
+        -6,
+        -8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        12,
+        -6,
+        -7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        12,
+        -6,
+        7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        12,
+        -6,
+        8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        13,
+        -6,
+        -6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        13,
+        -6,
+        -5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        13,
+        -6,
+        -4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        13,
+        -6,
+        4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        13,
+        -6,
+        5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        13,
+        -6,
+        6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        14,
+        -6,
+        -3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        14,
+        -6,
+        -2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        14,
+        -6,
+        -1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        14,
+        -6,
+        0
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        14,
+        -6,
+        1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        14,
+        -6,
+        2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        14,
+        -6,
+        3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        -5,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        -4,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        -3,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        -2,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        -1,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        0,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        1,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        2,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        3,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        -5,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        -4,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        -3,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        -2,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        -1,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        0,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        1,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        2,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        3,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        -5,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        -4,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        -3,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        -2,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        -1,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        0,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        1,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        2,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        10,
+        3,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        -5,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        -4,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        -3,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        -2,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        -1,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        0,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        1,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        2,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -10,
+        3,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "pos": [
+        10,
+        4,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#not_enough_sigils:altar/t7_capstones_ruina"
+    },
+    {
+      "pos": [
+        -10,
+        4,
+        10
+      ],
+      "upgrade": false,
+      "valid": "#not_enough_sigils:altar/t7_capstones_nihilum"
+    },
+    {
+      "pos": [
+        -10,
+        4,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#not_enough_sigils:altar/t7_capstones_invictus"
+    },
+    {
+      "pos": [
+        10,
+        4,
+        -10
+      ],
+      "upgrade": false,
+      "valid": "#not_enough_sigils:altar/t7_capstones_vindicta"
+    },
+    {
+      "pos": [
+        -17,
+        -7,
+        -4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -17,
+        -7,
+        -3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -17,
+        -7,
+        -2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -17,
+        -7,
+        -1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -17,
+        -7,
+        0
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -17,
+        -7,
+        1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -17,
+        -7,
+        2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -17,
+        -7,
+        3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -17,
+        -7,
+        4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -16,
+        -7,
+        -7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -16,
+        -7,
+        -6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -16,
+        -7,
+        -5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -16,
+        -7,
+        5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -16,
+        -7,
+        6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -16,
+        -7,
+        7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -15,
+        -7,
+        -9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -15,
+        -7,
+        -8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -15,
+        -7,
+        -7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -15,
+        -7,
+        7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -15,
+        -7,
+        8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -15,
+        -7,
+        9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -14,
+        -7,
+        -10
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -14,
+        -7,
+        -9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -14,
+        -7,
+        9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -14,
+        -7,
+        10
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -13,
+        -7,
+        -11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -13,
+        -7,
+        11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -12,
+        -7,
+        -12
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -12,
+        -7,
+        12
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -11,
+        -7,
+        -13
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -11,
+        -7,
+        13
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -10,
+        -7,
+        -14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -10,
+        -7,
+        14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -9,
+        -7,
+        -15
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -9,
+        -7,
+        -14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -9,
+        -7,
+        14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -9,
+        -7,
+        15
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -8,
+        -7,
+        -15
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -8,
+        -7,
+        15
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -7,
+        -7,
+        -16
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -7,
+        -7,
+        -15
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -7,
+        -7,
+        15
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -7,
+        -7,
+        16
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -6,
+        -7,
+        -16
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -6,
+        -7,
+        16
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -5,
+        -7,
+        -16
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -5,
+        -7,
+        16
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -4,
+        -7,
+        -17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -4,
+        -7,
+        17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -3,
+        -7,
+        -17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -3,
+        -7,
+        17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -2,
+        -7,
+        -17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -2,
+        -7,
+        17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -1,
+        -7,
+        -17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        -1,
+        -7,
+        17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        0,
+        -7,
+        -17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        0,
+        -7,
+        17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        1,
+        -7,
+        -17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        1,
+        -7,
+        17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        2,
+        -7,
+        -17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        2,
+        -7,
+        17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        3,
+        -7,
+        -17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        3,
+        -7,
+        17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        4,
+        -7,
+        -17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        4,
+        -7,
+        17
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        5,
+        -7,
+        -16
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        5,
+        -7,
+        16
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        6,
+        -7,
+        -16
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        6,
+        -7,
+        16
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        7,
+        -7,
+        -16
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        7,
+        -7,
+        -15
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        7,
+        -7,
+        15
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        7,
+        -7,
+        16
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        8,
+        -7,
+        -15
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        8,
+        -7,
+        15
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        9,
+        -7,
+        -15
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        9,
+        -7,
+        -14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        9,
+        -7,
+        14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        9,
+        -7,
+        15
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        10,
+        -7,
+        -14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        10,
+        -7,
+        14
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        11,
+        -7,
+        -13
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        11,
+        -7,
+        13
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        12,
+        -7,
+        -12
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        12,
+        -7,
+        12
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        13,
+        -7,
+        -11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        13,
+        -7,
+        11
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        14,
+        -7,
+        -10
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        14,
+        -7,
+        -9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        14,
+        -7,
+        9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        14,
+        -7,
+        10
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        15,
+        -7,
+        -9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        15,
+        -7,
+        -8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        15,
+        -7,
+        -7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        15,
+        -7,
+        7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        15,
+        -7,
+        8
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        15,
+        -7,
+        9
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        16,
+        -7,
+        -7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        16,
+        -7,
+        -6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        16,
+        -7,
+        -5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        16,
+        -7,
+        5
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        16,
+        -7,
+        6
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        16,
+        -7,
+        7
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        17,
+        -7,
+        -4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        17,
+        -7,
+        -3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        17,
+        -7,
+        -2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        17,
+        -7,
+        -1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        17,
+        -7,
+        0
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        17,
+        -7,
+        1
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        17,
+        -7,
+        2
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        17,
+        -7,
+        3
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "pos": [
+        17,
+        -7,
+        4
+      ],
+      "upgrade": true,
+      "valid": "#neovitae:altar/runes"
+    },
+    {
+      "optional": true,
+      "pos": [
+        17,
+        -6,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        17,
+        -5,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        17,
+        -4,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        17,
+        -3,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        17,
+        -2,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        17,
+        -1,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        17,
+        0,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        17,
+        1,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        17,
+        2,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        17,
+        3,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        17,
+        4,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        17,
+        5,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -17,
+        -6,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -17,
+        -5,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -17,
+        -4,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -17,
+        -3,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -17,
+        -2,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -17,
+        -1,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -17,
+        0,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -17,
+        1,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -17,
+        2,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -17,
+        3,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -17,
+        4,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        -17,
+        5,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -6,
+        17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -5,
+        17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -4,
+        17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -3,
+        17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -2,
+        17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -1,
+        17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        0,
+        17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        1,
+        17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        2,
+        17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        3,
+        17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        4,
+        17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        5,
+        17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -6,
+        -17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -5,
+        -17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -4,
+        -17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -3,
+        -17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -2,
+        -17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        -1,
+        -17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        0,
+        -17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        1,
+        -17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        2,
+        -17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        3,
+        -17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        4,
+        -17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "optional": true,
+      "pos": [
+        0,
+        5,
+        -17
+      ],
+      "upgrade": false,
+      "valid": "#neovitae:altar/pillars"
+    },
+    {
+      "pos": [
+        17,
+        6,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#not_enough_sigils:altar/t8_capstones"
+    },
+    {
+      "pos": [
+        -17,
+        6,
+        0
+      ],
+      "upgrade": false,
+      "valid": "#not_enough_sigils:altar/t8_capstones"
+    },
+    {
+      "pos": [
+        0,
+        6,
+        17
+      ],
+      "upgrade": false,
+      "valid": "#not_enough_sigils:altar/t8_capstones"
+    },
+    {
+      "pos": [
+        0,
+        6,
+        -17
+      ],
+      "upgrade": false,
+      "valid": "#not_enough_sigils:altar/t8_capstones"
+    },
+    {
+      "pos": [
+        12,
+        -6,
+        12
+      ],
+      "upgrade": false,
+      "valid": "#not_enough_sigils:altar/t8_cornerstones"
+    },
+    {
+      "pos": [
+        -12,
+        -6,
+        12
+      ],
+      "upgrade": false,
+      "valid": "#not_enough_sigils:altar/t8_cornerstones"
+    },
+    {
+      "pos": [
+        12,
+        -6,
+        -12
+      ],
+      "upgrade": false,
+      "valid": "#not_enough_sigils:altar/t8_cornerstones"
+    },
+    {
+      "pos": [
+        -12,
+        -6,
+        -12
+      ],
+      "upgrade": false,
+      "valid": "#not_enough_sigils:altar/t8_cornerstones"
+    }
+  ],
+  "effects": [
+    {
+      "type": "cap_orbit_life_pulse",
+      "color": 12268288,
+      "origins": [
+        [
+          4,
+          1,
+          0
+        ],
+        [
+          -4,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          1,
+          -4
+        ]
+      ]
+    },
+    {
+      "type": "cap_orbit_spiral_staggered",
+      "color": 8912913,
+      "origins": [
+        [
+          6,
+          2,
+          6
+        ],
+        [
+          -6,
+          2,
+          6
+        ],
+        [
+          6,
+          2,
+          -6
+        ],
+        [
+          -6,
+          2,
+          -6
+        ]
+      ]
+    },
+    {
+      "type": "cap_burst",
+      "color": 8913100,
+      "origins": [
+        [
+          9,
+          -4,
+          0
+        ],
+        [
+          -9,
+          -4,
+          0
+        ],
+        [
+          0,
+          -4,
+          9
+        ],
+        [
+          0,
+          -4,
+          -9
+        ]
+      ]
+    },
+    {
+      "type": "cap_render_hover_array",
+      "origins": [
+        [
+          9,
+          -4,
+          0
+        ],
+        [
+          -9,
+          -4,
+          0
+        ],
+        [
+          0,
+          -4,
+          9
+        ],
+        [
+          0,
+          -4,
+          -9
+        ]
+      ]
+    },
+    {
+      "type": "cap_crystal_cascade",
+      "color": 8913100,
+      "origins": [
+        [
+          12,
+          3,
+          0
+        ],
+        [
+          -12,
+          3,
+          0
+        ],
+        [
+          0,
+          3,
+          12
+        ],
+        [
+          0,
+          3,
+          -12
+        ]
+      ]
+    },
+    {
+      "type": "cap_crystal_cascade",
+      "color": 3394730,
+      "origins": [
+        [
+          10,
+          4,
+          10
+        ],
+        [
+          -10,
+          4,
+          10
+        ],
+        [
+          10,
+          4,
+          -10
+        ],
+        [
+          -10,
+          4,
+          -10
+        ]
+      ]
+    },
+    {
+      "type": "cap_orbit_spiral_staggered",
+      "color": 6697932,
+      "origins": [
+        [
+          10,
+          4,
+          10
+        ],
+        [
+          -10,
+          4,
+          10
+        ],
+        [
+          10,
+          4,
+          -10
+        ],
+        [
+          -10,
+          4,
+          -10
+        ]
+      ]
+    },
+    {
+      "type": "cap_burst",
+      "color": 16763955,
+      "origins": [
+        [
+          17,
+          6,
+          0
+        ],
+        [
+          -17,
+          6,
+          0
+        ],
+        [
+          0,
+          6,
+          17
+        ],
+        [
+          0,
+          6,
+          -17
+        ]
+      ]
+    },
+    {
+      "type": "cap_render_hover_array",
+      "color": 16768392,
+      "origins": [
+        [
+          17,
+          6,
+          0
+        ],
+        [
+          -17,
+          6,
+          0
+        ],
+        [
+          0,
+          6,
+          17
+        ],
+        [
+          0,
+          6,
+          -17
+        ]
+      ]
+    },
+    {
+      "type": "cap_orbit_life_pulse",
+      "color": 13378116,
+      "origins": [
+        [
+          12,
+          -6,
+          12
+        ],
+        [
+          -12,
+          -6,
+          12
+        ],
+        [
+          12,
+          -6,
+          -12
+        ],
+        [
+          -12,
+          -6,
+          -12
+        ]
+      ]
+    }
+  ],
+  "tier": 7
+}

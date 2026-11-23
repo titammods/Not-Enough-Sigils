@@ -88,6 +88,7 @@ dependencies {
     runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
     implementation "com.breakinblocks.animusnv:AnimusNV:${animus_version}"
     implementation "com.breakinblocks.neovitae:neovitae:${neovitae_version}"
+    compileOnly "com.klikli_dev:modonomicon-${minecraft_version}-neoforge:${modonomicon_version}"
     runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 }
 

@@ -141,5 +141,16 @@
   "monk_mode.not_enough_sigils.combat": "Combat Only",
   "monk_mode.not_enough_sigils.changed": "Monk mode: %s",
   "tooltip.not_enough_sigils.spiritual_monk.mode": "Mode: %s",
-  "tooltip.not_enough_sigils.spiritual_monk.mode_hint": "Right-click in the air to change mode"
+  "tooltip.not_enough_sigils.spiritual_monk.mode_hint": "Right-click in the air to change mode",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.name": "The Ascended Ara Vitae",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.description": "Two tiers beyond the Transcendent altar.",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.intro.title": "Beyond Transcendence",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.intro.text": "The Transcendent altar was never the summit. Those who master all five [#](4A0080)Spiritus[#]() and wrest the rarest stones from the [#](4A0080)Demon Realm[#]() may raise the [#](8B0000)Ara Vitae[#]() two tiers higher.\\\n\\\nBoth tiers keep the full Tier 5 structure. Pillar bodies are optional; only runes and capstones are checked.",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.tier6_text.text": "[#](B8860B)Tier 6[#]() adds a ring of runes with radius 14, one level below the previous ring. Pillars rise from that ring at the four diagonals, crowned by one [#](8B0000)Spiritus Crystal Cluster[#]() of each kind: [#](2E8B57)Ruina[#](), [#](B8860B)Nihilum[#](), [#](4A0080)Invictus[#]() and [#](8B0000)Vindicta[#]().",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.tier6.title": "Tier 6 Ara Vitae",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.tier6.text": "260 total runes. The four Spiritus answer as one.",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.tier7_text.text": "[#](B8860B)Tier 7[#]() adds a final ring of runes with radius 17, another level down. Twelve-block pillars rise at the cardinals, capped with [#](8B0000)Sanguine Deus Blocks[#](), while [#](8B0000)Prismatic Demonite[#]() anchors the four diagonals on the outer ring.",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.tier7.title": "Tier 7 Ara Vitae",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.tier7.text": "372 total runes. A shrine fit for the divine.",
+  "book.neovitae.guide.altar.ara_vitae.description": "The sacred Ara Vitae where blood becomes power, growing through eight tiers of mastery."
 }

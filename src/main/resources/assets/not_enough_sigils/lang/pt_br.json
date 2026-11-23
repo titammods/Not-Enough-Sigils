@@ -141,5 +141,16 @@
   "monk_mode.not_enough_sigils.combat": "Só Combate",
   "monk_mode.not_enough_sigils.changed": "Modo do monge: %s",
   "tooltip.not_enough_sigils.spiritual_monk.mode": "Modo: %s",
-  "tooltip.not_enough_sigils.spiritual_monk.mode_hint": "Clique direito no ar para trocar o modo"
+  "tooltip.not_enough_sigils.spiritual_monk.mode_hint": "Clique direito no ar para trocar o modo",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.name": "O Ara Vitae Ascendido",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.description": "Dois tiers além do altar Transcendente.",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.intro.title": "Além da Transcendência",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.intro.text": "O altar Transcendente nunca foi o ápice. Quem domina os cinco [#](4A0080)Spiritus[#]() e arranca as pedras mais raras do [#](4A0080)Reino Demoníaco[#]() pode erguer o [#](8B0000)Ara Vitae[#]() mais dois tiers.\\\n\\\nOs dois tiers mantêm toda a estrutura do Tier 5. Os corpos dos pilares são opcionais; só as runas e os capstones são verificados.",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.tier6_text.text": "O [#](B8860B)Tier 6[#]() adiciona um anel de runas com raio 14, um nível abaixo do anel anterior. Pilares sobem desse anel nas quatro diagonais, coroados por um [#](8B0000)Cristal de Spiritus[#]() de cada tipo: [#](2E8B57)Ruina[#](), [#](B8860B)Nihilum[#](), [#](4A0080)Invictus[#]() e [#](8B0000)Vindicta[#]().",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.tier6.title": "Ara Vitae Tier 6",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.tier6.text": "260 runas no total. Os quatro Spiritus respondem como um só.",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.tier7_text.text": "O [#](B8860B)Tier 7[#]() adiciona um último anel de runas com raio 17, mais um nível abaixo. Pilares de doze blocos sobem nos pontos cardeais, coroados com [#](8B0000)Sanguine Deus Blocks[#](), enquanto [#](8B0000)Prismatic Demonite[#]() ancora as quatro diagonais no anel externo.",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.tier7.title": "Ara Vitae Tier 7",
+  "book.not_enough_sigils.guide.altar.ascended_tiers.tier7.text": "372 runas no total. Um santuário digno do divino.",
+  "book.neovitae.guide.altar.ara_vitae.description": "O sagrado Ara Vitae, onde o sangue se torna poder, crescendo por oito tiers de maestria."
 }
