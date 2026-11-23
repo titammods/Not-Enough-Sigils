@@ -86,10 +86,10 @@ public class ModRecipeProvider extends RecipeProvider {
 
     private void altarRecipes(RecipeOutput output) {
         altar(output, ModItems.SIGIL_HOLDING_GREATER.get(), nv("sigil_holding"), 4, 50000, 30, 50);
-        altar(output, ModItems.SIGIL_SOUL_PHOENIX_GREATER.get(), ModItems.SIGIL_SOUL_PHOENIX.get(), 5, 100000, 40, 100);
-        altar(output, ModItems.SIGIL_ARCHMAGE.get(), ModItems.SIGIL_MAGICIAN.get(), 4, 60000, 40, 100);
-        altar(output, ModItems.SIGIL_HOLDING_SUPREME.get(), ModItems.SIGIL_HOLDING_GREATER.get(), 5, 100000, 40, 100);
-        altar(output, ModItems.SIGIL_TEMPORAL_MASTERY.get(), item("animusnv", "sigil_temporal_dominance"), 5, 100000, 40, 100);
+        altar(output, ModItems.SIGIL_SOUL_PHOENIX_GREATER.get(), ModItems.SIGIL_SOUL_PHOENIX.get(), 6, 250000, 80, 200);
+        altar(output, ModItems.SIGIL_ARCHMAGE.get(), ModItems.SIGIL_MAGICIAN.get(), 6, 250000, 80, 200);
+        altar(output, ModItems.SIGIL_HOLDING_SUPREME.get(), ModItems.SIGIL_HOLDING_GREATER.get(), 6, 300000, 80, 200);
+        altar(output, ModItems.SIGIL_TEMPORAL_MASTERY.get(), item("animusnv", "sigil_temporal_dominance"), 7, 600000, 120, 300);
         orb(output, ModItems.BLOOD_ORB_ASCENDANT.get(), ModItems.SPIRITUS_GEM_EXALTED.get(), 6, 500000, 150, 300);
         orb(output, ModItems.BLOOD_ORB_DIVINE.get(), ModItems.SPIRITUS_GEM_PRIMORDIAL.get(), 7, 1200000, 200, 400);
     }

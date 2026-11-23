@@ -1,13 +1,13 @@
 {
   "type": "neovitae:ara_vitae_recipe",
-  "bloodNeeded": 60000,
+  "bloodNeeded": 250000,
   "copyInputComponents": true,
-  "craftSpeed": 40,
-  "drainSpeed": 100,
+  "craftSpeed": 80,
+  "drainSpeed": 200,
   "input": {
     "item": "not_enough_sigils:sigil_magician"
   },
-  "minTier": 4,
+  "minTier": 6,
   "output": {
     "count": 1,
     "id": "not_enough_sigils:sigil_archmage"
