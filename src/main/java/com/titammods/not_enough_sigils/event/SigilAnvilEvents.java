@@ -63,7 +63,7 @@ public class SigilAnvilEvents {
         }
 
         event.setOutput(output);
-        event.setCost(Math.max(1, cost));
+        event.setXpCost(Math.max(1, cost));
         event.setMaterialCost(1);
     }
 

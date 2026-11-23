@@ -4,11 +4,12 @@ import com.titammods.not_enough_sigils.sigil.effect.SoulPhoenixSigilEffect;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.entity.Relative;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.levelgen.Heightmap;
 
@@ -56,23 +57,22 @@ public class PhoenixGuard {
         if (config == null) {
             config = fallback;
         }
-        Item item = sigil.getItem();
-        if (player.getCooldowns().isOnCooldown(item) || !SigilTracker.drainEV(player, sigil, config.evCost())) {
+        if (player.getCooldowns().isOnCooldown(sigil) || !SigilTracker.drainEV(player, sigil, config.evCost())) {
             return false;
         }
         float health = Math.max(config.reviveHealth(), player.getMaxHealth() * config.reviveHealthRatio());
-        revive(player, item, config.cooldown(), health, config.invulnerability());
+        revive(player, sigil, config.cooldown(), health, config.invulnerability());
         if (config.graceTicks() > 0) {
             GRACE_UNTIL.put(player.getUUID(), player.level().getGameTime() + config.graceTicks());
             GRACE_LENGTH.put(player.getUUID(), (long) config.graceTicks());
         }
-        if (config.voidEscape() && (fromVoid || player.getY() < player.level().getMinBuildHeight())) {
+        if (config.voidEscape() && (fromVoid || player.getY() < player.level().getMinY())) {
             PENDING_VOID_ESCAPE.add(player.getUUID());
         }
         return true;
     }
 
-    private static void revive(ServerPlayer player, Item item, int cooldown, float health, int invulnerability) {
+    private static void revive(ServerPlayer player, ItemStack sigil, int cooldown, float health, int invulnerability) {
         REVIVING.set(true);
         try {
             player.setHealth(Math.max(1.0F, Math.min(player.getMaxHealth(), health)));
@@ -80,10 +80,10 @@ public class PhoenixGuard {
             REVIVING.set(false);
         }
         player.invulnerableTime = invulnerability;
-        player.getCooldowns().addCooldown(item, cooldown);
-        player.displayClientMessage(Component.translatable("message.not_enough_sigils.soul_phoenix.revived"), true);
+        player.getCooldowns().addCooldown(sigil, cooldown);
+        player.sendOverlayMessage(Component.translatable("message.not_enough_sigils.soul_phoenix.revived"));
 
-        ServerLevel level = player.serverLevel();
+        ServerLevel level = (ServerLevel) player.level();
         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 1.0F, 1.2F);
         level.sendParticles(ParticleTypes.FLAME, player.getX(), player.getY() + 1.0, player.getZ(), 40, 0.5, 0.8, 0.5, 0.08);
         level.sendParticles(ParticleTypes.LAVA, player.getX(), player.getY() + 1.0, player.getZ(), 12, 0.4, 0.4, 0.4, 0.0);
@@ -93,17 +93,19 @@ public class PhoenixGuard {
         if (!PENDING_VOID_ESCAPE.remove(player.getUUID())) {
             return;
         }
-        ServerLevel target = player.server.getLevel(player.getRespawnDimension());
-        BlockPos anchor = player.getRespawnPosition();
+        MinecraftServer server = ((ServerLevel) player.level()).getServer();
+        ServerPlayer.RespawnConfig respawn = player.getRespawnConfig();
+        ServerLevel target = respawn == null || respawn.respawnData() == null ? null : server.getLevel(respawn.respawnData().dimension());
+        BlockPos anchor = target == null ? null : respawn.respawnData().pos();
         if (target == null || anchor == null) {
-            target = player.server.overworld();
-            anchor = target.getSharedSpawnPos();
+            target = server.overworld();
+            anchor = target.getLevelData().getRespawnData().pos();
         }
         BlockPos safe = target.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, anchor);
-        if (safe.getY() <= target.getMinBuildHeight()) {
+        if (safe.getY() <= target.getMinY()) {
             safe = new BlockPos(anchor.getX(), Math.max(anchor.getY(), target.getSeaLevel()), anchor.getZ());
         }
-        player.teleportTo(target, safe.getX() + 0.5D, safe.getY(), safe.getZ() + 0.5D, player.getYRot(), player.getXRot());
+        player.teleportTo(target, safe.getX() + 0.5D, safe.getY(), safe.getZ() + 0.5D, Set.<Relative>of(), player.getYRot(), player.getXRot(), true);
         player.resetFallDistance();
         long grace = GRACE_LENGTH.getOrDefault(player.getUUID(), 0L);
         if (grace > 0L) {

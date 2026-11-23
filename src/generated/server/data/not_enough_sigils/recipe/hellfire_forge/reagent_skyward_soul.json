@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 512.0,
+  "inputs": [
+    "minecraft:elytra",
+    "neovitae:sigil_air",
+    "minecraft:phantom_membrane",
+    "minecraft:ghast_tear"
+  ],
+  "minDrain": 1024.0,
+  "output": {
+    "id": "not_enough_sigils:reagent_skyward_soul"
+  }
+}

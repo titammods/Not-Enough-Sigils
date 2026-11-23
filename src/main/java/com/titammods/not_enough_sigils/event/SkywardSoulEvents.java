@@ -19,10 +19,10 @@ public class SkywardSoulEvents {
             return;
         }
         CompoundTag data = player.getPersistentData();
-        if (data.getBoolean(SkywardSoulState.FLIGHT_TAG) && !SigilTracker.isActive(player, SigilTracker.Kind.SKYWARD_SOUL)) {
+        if (data.getBooleanOr(SkywardSoulState.FLIGHT_TAG, false) && !SigilTracker.isActive(player, SigilTracker.Kind.SKYWARD_SOUL)) {
             SkywardSoulState.revokeFlight(player);
         }
-        if (data.getBoolean(SkywardSoulState.FALL_SAFE_TAG) && (player.onGround() || player.isInWater())) {
+        if (data.getBooleanOr(SkywardSoulState.FALL_SAFE_TAG, false) && (player.onGround() || player.isInWater())) {
             data.remove(SkywardSoulState.FALL_SAFE_TAG);
         }
     }
@@ -33,7 +33,7 @@ public class SkywardSoulEvents {
             return;
         }
         CompoundTag data = player.getPersistentData();
-        if (data.getBoolean(SkywardSoulState.FALL_SAFE_TAG) || SigilTracker.isActive(player, SigilTracker.Kind.SKYWARD_SOUL)) {
+        if (data.getBooleanOr(SkywardSoulState.FALL_SAFE_TAG, false) || SigilTracker.isActive(player, SigilTracker.Kind.SKYWARD_SOUL)) {
             data.remove(SkywardSoulState.FALL_SAFE_TAG);
             event.setCanceled(true);
         }

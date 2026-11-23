@@ -13,6 +13,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -37,12 +38,12 @@ public class RitualSaereth extends Ritual {
         BlockPos master = masterRitualStone.getMasterBlockPos();
         BlockPos spawn = master.above();
 
-        SaerethEntity saereth = ModEntities.SAERETH.get().create(level);
+        SaerethEntity saereth = ModEntities.SAERETH.get().create(level, EntitySpawnReason.MOB_SUMMONED);
         if (saereth != null) {
             UUID owner = masterRitualStone.getOwner();
             ServerPlayer ownerPlayer = owner == null ? null : level.getServer().getPlayerList().getPlayer(owner);
-            saereth.setOwner(owner, ownerPlayer == null ? "" : ownerPlayer.getGameProfile().getName());
-            saereth.moveTo(spawn.getX() + 0.5D, spawn.getY(), spawn.getZ() + 0.5D, level.random.nextFloat() * 360.0F, 0.0F);
+            saereth.setOwner(owner, ownerPlayer == null ? "" : ownerPlayer.getGameProfile().name());
+            saereth.snapTo(spawn.getX() + 0.5D, spawn.getY(), spawn.getZ() + 0.5D, level.getRandom().nextFloat() * 360.0F, 0.0F);
             level.addFreshEntity(saereth);
         }
 
@@ -50,9 +51,9 @@ public class RitualSaereth extends Ritual {
         sigil.setDefaultPickUpDelay();
         level.addFreshEntity(sigil);
 
-        LightningBolt bolt = EntityType.LIGHTNING_BOLT.create(level);
+        LightningBolt bolt = EntityType.LIGHTNING_BOLT.create(level, EntitySpawnReason.TRIGGERED);
         if (bolt != null) {
-            bolt.moveTo(spawn.getX() + 0.5D, spawn.getY(), spawn.getZ() + 0.5D);
+            bolt.snapTo(spawn.getX() + 0.5D, spawn.getY(), spawn.getZ() + 0.5D);
             bolt.setVisualOnly(true);
             level.addFreshEntity(bolt);
         }

@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 256.0,
+  "inputs": [
+    "minecraft:wither_skeleton_skull",
+    "minecraft:glistering_melon_slice",
+    "minecraft:ghast_tear",
+    "minecraft:iron_sword"
+  ],
+  "minDrain": 512.0,
+  "output": {
+    "id": "not_enough_sigils:reagent_vampire_lord"
+  }
+}

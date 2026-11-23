@@ -4,6 +4,7 @@ import com.breakinblocks.animusnv.events.MonkSigilEventHandler;
 import com.titammods.not_enough_sigils.setup.ModItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -46,7 +47,7 @@ public enum MonkMode {
     }
 
     public static MonkMode get(ItemStack stack) {
-        String name = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getString(TAG);
+        String name = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getStringOr(TAG, "");
         for (MonkMode mode : values()) {
             if (mode.key.equals(name)) {
                 return mode;
@@ -56,7 +57,11 @@ public enum MonkMode {
     }
 
     public static void set(ItemStack stack, MonkMode mode) {
-        CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> tag.putString(TAG, mode.key));
+        stack.update(DataComponents.CUSTOM_DATA, CustomData.EMPTY, data -> {
+            CompoundTag tag = data.copyTag();
+            tag.putString(TAG, mode.key);
+            return CustomData.of(tag);
+        });
     }
 
     public static boolean isSpiritualMonk(ItemStack stack) {

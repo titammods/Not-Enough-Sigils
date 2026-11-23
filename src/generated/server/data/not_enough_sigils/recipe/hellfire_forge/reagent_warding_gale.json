@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 128.0,
+  "inputs": [
+    "minecraft:breeze_rod",
+    "minecraft:shield",
+    "minecraft:feather",
+    "minecraft:piston"
+  ],
+  "minDrain": 256.0,
+  "output": {
+    "id": "not_enough_sigils:reagent_warding_gale"
+  }
+}

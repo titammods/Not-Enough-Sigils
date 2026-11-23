@@ -63,15 +63,15 @@ public record TemporalMasterySigilEffect(int startLevel, int maxLevel, int start
         }
 
         if (level.getBlockEntity(pos) == null) {
-            player.displayClientMessage(Component.translatable(Constants.Localizations.Text.TEMPORAL_NO_TILE).withStyle(ChatFormatting.RED), true);
+            player.sendOverlayMessage(Component.translatable(Constants.Localizations.Text.TEMPORAL_NO_TILE).withStyle(ChatFormatting.RED));
             return false;
         }
         if (level.getBlockState(pos).is(Constants.Tags.DISALLOW_ACCELERATION)) {
-            player.displayClientMessage(Component.translatable(Constants.Localizations.Text.TEMPORAL_DISALLOWED).withStyle(ChatFormatting.RED), true);
+            player.sendOverlayMessage(Component.translatable(Constants.Localizations.Text.TEMPORAL_DISALLOWED).withStyle(ChatFormatting.RED));
             return false;
         }
         if (hasForeignAccelerator(level, pos)) {
-            player.displayClientMessage(Component.translatable(Constants.Localizations.Text.TEMPORAL_GAG_ACTIVE).withStyle(ChatFormatting.RED), true);
+            player.sendOverlayMessage(Component.translatable(Constants.Localizations.Text.TEMPORAL_GAG_ACTIVE).withStyle(ChatFormatting.RED));
             return false;
         }
 
@@ -100,14 +100,14 @@ public record TemporalMasterySigilEffect(int startLevel, int maxLevel, int start
         }
 
         if (network.getCurrentEV() < evCost) {
-            player.displayClientMessage(Component.translatable(Constants.Localizations.Text.TEMPORAL_NO_EV, evCost).withStyle(ChatFormatting.RED), true);
+            player.sendOverlayMessage(Component.translatable(Constants.Localizations.Text.TEMPORAL_NO_EV, evCost).withStyle(ChatFormatting.RED));
             return false;
         }
         network.syphon(AnimaTicket.create(evCost));
 
         accelerated.put(key, new TemporalDominanceSigilEffect.AccelerationState(newLevel, level.getGameTime() + duration, level.dimension()));
-        player.displayClientMessage(Component.translatable(Constants.Localizations.Text.TEMPORAL_ACTIVATED, 1 << newLevel, duration / 20)
-                .withStyle(ChatFormatting.GOLD), true);
+        player.sendOverlayMessage(Component.translatable(Constants.Localizations.Text.TEMPORAL_ACTIVATED, 1 << newLevel, duration / 20)
+                .withStyle(ChatFormatting.GOLD));
         return false;
     }
 

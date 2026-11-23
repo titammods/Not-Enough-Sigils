@@ -1,0 +1,7 @@
+// 26.1.2	2026-11-22T22:39:38.3559372	Tags for minecraft:damage_type mod id vanilla
+0656c931cfd6fa0377b3b845e431b3d640250a24 data/minecraft/tags/damage_type/bypasses_armor.json
+0656c931cfd6fa0377b3b845e431b3d640250a24 data/minecraft/tags/damage_type/bypasses_cooldown.json
+0656c931cfd6fa0377b3b845e431b3d640250a24 data/minecraft/tags/damage_type/bypasses_effects.json
+0656c931cfd6fa0377b3b845e431b3d640250a24 data/minecraft/tags/damage_type/bypasses_enchantments.json
+0656c931cfd6fa0377b3b845e431b3d640250a24 data/minecraft/tags/damage_type/bypasses_resistance.json
+0656c931cfd6fa0377b3b845e431b3d640250a24 data/minecraft/tags/damage_type/bypasses_shield.json

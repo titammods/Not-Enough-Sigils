@@ -47,7 +47,7 @@ public class SanguineAegisEvents {
         }
         event.setNewDamage(Math.max(0.0F, damage - absorbed));
         SigilTracker.deactivate(sigil);
-        player.displayClientMessage(Component.translatable("message.not_enough_sigils.sanguine_aegis.broken"), true);
-        player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SHIELD_BREAK, SoundSource.PLAYERS, 0.8F, 0.8F);
+        player.sendOverlayMessage(Component.translatable("message.not_enough_sigils.sanguine_aegis.broken"));
+        player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SHIELD_BREAK.value(), SoundSource.PLAYERS, 0.8F, 0.8F);
     }
 }

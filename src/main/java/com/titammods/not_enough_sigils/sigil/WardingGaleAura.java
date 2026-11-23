@@ -43,7 +43,7 @@ public class WardingGaleAura {
                 continue;
             }
             projectile.setDeltaMovement(motion.scale(config.deflectFactor()));
-            projectile.hasImpulse = true;
+            projectile.needsSync = true;
             projectile.hurtMarked = true;
             serverLevel.sendParticles(ParticleTypes.GUST, projectile.getX(), projectile.getY(), projectile.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
         }

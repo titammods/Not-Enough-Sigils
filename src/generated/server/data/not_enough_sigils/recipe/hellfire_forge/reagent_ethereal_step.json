@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 64.0,
+  "inputs": [
+    "minecraft:ender_pearl",
+    "minecraft:chorus_fruit",
+    "minecraft:feather",
+    "minecraft:phantom_membrane"
+  ],
+  "minDrain": 128.0,
+  "output": {
+    "id": "not_enough_sigils:reagent_ethereal_step"
+  }
+}

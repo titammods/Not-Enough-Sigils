@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 512.0,
+  "inputs": [
+    "minecraft:clock",
+    "minecraft:echo_shard",
+    "minecraft:honey_block",
+    "minecraft:cobweb"
+  ],
+  "minDrain": 1024.0,
+  "output": {
+    "id": "not_enough_sigils:reagent_bullet_time"
+  }
+}

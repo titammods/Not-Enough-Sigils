@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[4,)"
+loaderVersion="${loader_version_range}"
 license="All rights reserved"
 issueTrackerURL=""
 
@@ -16,27 +16,27 @@ config="not_enough_sigils.mixins.json"
 [[dependencies.${mod_id}]]
 modId="neoforge"
 type="required"
-versionRange="[21.1,)"
+versionRange="${neoforge_version_range}"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.${mod_id}]]
 modId="minecraft"
 type="required"
-versionRange="[${minecraft_version},)"
+versionRange="${minecraft_version_range}"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.${mod_id}]]
 modId="animusnv"
 type="required"
-versionRange="[5.2,)"
+versionRange="[5.2.22,)"
 ordering="AFTER"
 side="BOTH"
 
 [[dependencies.${mod_id}]]
 modId="neovitae"
 type="required"
-versionRange="[1.1.45,)"
+versionRange="[1.1.54,)"
 ordering="AFTER"
 side="BOTH"

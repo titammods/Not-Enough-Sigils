@@ -6,20 +6,21 @@ import com.titammods.not_enough_sigils.setup.ModItems;
 import com.titammods.not_enough_sigils.sigil.config.KnifeProfile;
 import com.titammods.not_enough_sigils.sigil.effect.DemonNinjaSigilEffect;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
@@ -36,10 +37,9 @@ public class NinjaKnifeEntity extends ThrowableItemProjectile {
     }
 
     public NinjaKnifeEntity(Level level, LivingEntity thrower, SpiritusType spiritusType, KnifeProfile profile) {
-        super(ModEntities.NINJA_KNIFE.get(), thrower, level);
+        super(ModEntities.NINJA_KNIFE.get(), thrower, level, new ItemStack(itemFor(spiritusType)));
         this.spiritusType = spiritusType;
         this.profile = profile;
-        this.setItem(new ItemStack(itemFor(spiritusType)));
     }
 
     public static Item itemFor(SpiritusType type) {
@@ -82,11 +82,11 @@ public class NinjaKnifeEntity extends ThrowableItemProjectile {
         }
         Entity target = result.getEntity();
         Entity owner = getOwner();
-        if (target == owner) {
+        if (target == owner || !(level() instanceof ServerLevel serverLevel)) {
             return;
         }
 
-        boolean hit = target.hurt(level().damageSources().thrown(this, owner), profile.damage());
+        boolean hit = target.hurtServer(serverLevel, serverLevel.damageSources().thrown(this, owner), profile.damage());
         if (!hit || !(target instanceof LivingEntity living)) {
             return;
         }
@@ -121,9 +121,9 @@ public class NinjaKnifeEntity extends ThrowableItemProjectile {
         if (!(level() instanceof ServerLevel serverLevel)) {
             return;
         }
-        LightningBolt bolt = EntityType.LIGHTNING_BOLT.create(serverLevel);
+        LightningBolt bolt = EntityType.LIGHTNING_BOLT.create(serverLevel, EntitySpawnReason.TRIGGERED);
         if (bolt != null) {
-            bolt.moveTo(target.getX(), target.getY(), target.getZ());
+            bolt.snapTo(target.getX(), target.getY(), target.getZ());
             bolt.setVisualOnly(true);
             if (owner instanceof ServerPlayer player) {
                 bolt.setCause(player);
@@ -131,32 +131,26 @@ public class NinjaKnifeEntity extends ThrowableItemProjectile {
             serverLevel.addFreshEntity(bolt);
         }
         target.invulnerableTime = 0;
-        target.hurt(serverLevel.damageSources().lightningBolt(), profile.lightningDamage());
+        target.hurtServer(serverLevel, serverLevel.damageSources().lightningBolt(), profile.lightningDamage());
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag tag) {
-        super.addAdditionalSaveData(tag);
-        tag.putString(TYPE_TAG, spiritusType.getSerializedName());
-        KnifeProfile.CODEC.encodeStart(NbtOps.INSTANCE, profile).result().ifPresent(encoded -> tag.put(PROFILE_TAG, encoded));
+    protected void addAdditionalSaveData(ValueOutput output) {
+        super.addAdditionalSaveData(output);
+        output.putString(TYPE_TAG, spiritusType.getSerializedName());
+        output.store(PROFILE_TAG, KnifeProfile.CODEC, profile);
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag tag) {
-        super.readAdditionalSaveData(tag);
-        if (tag.contains(TYPE_TAG)) {
-            String name = tag.getString(TYPE_TAG);
-            for (SpiritusType type : SpiritusType.values()) {
-                if (type.getSerializedName().equals(name)) {
-                    spiritusType = type;
-                    break;
-                }
+    protected void readAdditionalSaveData(ValueInput input) {
+        super.readAdditionalSaveData(input);
+        String name = input.getStringOr(TYPE_TAG, "");
+        for (SpiritusType type : SpiritusType.values()) {
+            if (type.getSerializedName().equals(name)) {
+                spiritusType = type;
+                break;
             }
         }
-        if (tag.contains(PROFILE_TAG)) {
-            KnifeProfile.CODEC.parse(NbtOps.INSTANCE, tag.get(PROFILE_TAG)).result().ifPresent(decoded -> profile = decoded);
-        } else {
-            profile = DemonNinjaSigilEffect.DEFAULT.knife(spiritusType);
-        }
+        profile = input.read(PROFILE_TAG, KnifeProfile.CODEC).orElseGet(() -> DemonNinjaSigilEffect.DEFAULT.knife(spiritusType));
     }
 }

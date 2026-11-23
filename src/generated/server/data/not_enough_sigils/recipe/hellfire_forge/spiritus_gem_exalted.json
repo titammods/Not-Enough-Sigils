@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 1600.0,
+  "inputs": [
+    "neovitae:spiritus_gem_grand",
+    "neovitae:animus_mote",
+    "neovitae:deus_shard",
+    "minecraft:nether_star"
+  ],
+  "minDrain": 16000.0,
+  "output": {
+    "id": "not_enough_sigils:spiritus_gem_exalted"
+  }
+}

@@ -10,8 +10,7 @@ import com.titammods.not_enough_sigils.setup.ModItems;
 import com.titammods.not_enough_sigils.setup.ModMenus;
 import com.titammods.not_enough_sigils.setup.ModRituals;
 import com.titammods.not_enough_sigils.setup.ModSigilEffects;
-import net.minecraft.resources.ResourceLocation;
-import net.neoforged.api.distmarker.Dist;
+import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLEnvironment;
@@ -30,16 +29,17 @@ public class NotEnoughSigils {
         ModCreativeTabs.TABS.register(modEventBus);
 
         modEventBus.addListener(ModNetworking::register);
-        modEventBus.addListener(DataGenerators::gather);
+        DataGenerators.register(modEventBus);
         modEventBus.addListener(ModEntities::registerAttributes);
+        modEventBus.addListener(ModItems::modifyComponents);
         NeoForge.EVENT_BUS.addListener(SaerethSettings::onAddReloadListeners);
 
-        if (FMLEnvironment.dist == Dist.CLIENT) {
+        if (FMLEnvironment.getDist().isClient()) {
             ClientSetup.register(modEventBus);
         }
     }
 
-    public static ResourceLocation rl(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MODID, path);
+    public static Identifier rl(String path) {
+        return Identifier.fromNamespaceAndPath(MODID, path);
     }
 }

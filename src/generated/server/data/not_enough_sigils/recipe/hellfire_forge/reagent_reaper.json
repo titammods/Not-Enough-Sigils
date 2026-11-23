@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 256.0,
+  "inputs": [
+    "minecraft:wither_skeleton_skull",
+    "minecraft:soul_sand",
+    "minecraft:diamond_hoe",
+    "minecraft:bone_block"
+  ],
+  "minDrain": 512.0,
+  "output": {
+    "id": "not_enough_sigils:reagent_reaper"
+  }
+}

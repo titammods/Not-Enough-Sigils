@@ -4,8 +4,6 @@ import com.titammods.not_enough_sigils.setup.ModDamageTypes;
 import com.titammods.not_enough_sigils.setup.ModEntities;
 import com.titammods.not_enough_sigils.sigil.config.MobEffectSpec;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -16,6 +14,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -40,7 +40,8 @@ public class MagicMissileEntity extends ThrowableProjectile {
     }
 
     public MagicMissileEntity(Level level, LivingEntity shooter, float damage, boolean homing, Optional<MobEffectSpec> effect) {
-        super(ModEntities.MAGIC_MISSILE.get(), shooter, level);
+        super(ModEntities.MAGIC_MISSILE.get(), shooter.getX(), shooter.getEyeY() - 0.1D, shooter.getZ(), level);
+        setOwner(shooter);
         this.damage = damage;
         this.homing = homing;
         this.effect = effect;
@@ -101,7 +102,7 @@ public class MagicMissileEntity extends ThrowableProjectile {
         Vec3 desired = best.getBoundingBox().getCenter().subtract(position()).normalize();
         Vec3 steered = direction.add(desired.subtract(direction).scale(HOMING_STRENGTH)).normalize().scale(speed);
         setDeltaMovement(steered);
-        hasImpulse = true;
+        needsSync = true;
     }
 
     @Override
@@ -112,10 +113,10 @@ public class MagicMissileEntity extends ThrowableProjectile {
         }
         Entity target = result.getEntity();
         Entity owner = getOwner();
-        if (target == owner || !(target instanceof LivingEntity living)) {
+        if (target == owner || !(target instanceof LivingEntity living) || !(level() instanceof ServerLevel serverLevel)) {
             return;
         }
-        boolean hit = living.hurt(ModDamageTypes.arcane(level(), this, owner), damage);
+        boolean hit = living.hurtServer(serverLevel, ModDamageTypes.arcane(serverLevel, this, owner), damage);
         if (hit) {
             effect.ifPresent(spec -> spec.apply(living, owner));
         }
@@ -151,20 +152,18 @@ public class MagicMissileEntity extends ThrowableProjectile {
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag tag) {
-        super.addAdditionalSaveData(tag);
-        tag.putFloat(DAMAGE_TAG, damage);
-        tag.putBoolean(HOMING_TAG, homing);
-        effect.flatMap(spec -> MobEffectSpec.CODEC.encodeStart(NbtOps.INSTANCE, spec).result()).ifPresent(encoded -> tag.put(EFFECT_TAG, encoded));
+    protected void addAdditionalSaveData(ValueOutput output) {
+        super.addAdditionalSaveData(output);
+        output.putFloat(DAMAGE_TAG, damage);
+        output.putBoolean(HOMING_TAG, homing);
+        effect.ifPresent(spec -> output.store(EFFECT_TAG, MobEffectSpec.CODEC, spec));
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag tag) {
-        super.readAdditionalSaveData(tag);
-        if (tag.contains(DAMAGE_TAG)) {
-            damage = tag.getFloat(DAMAGE_TAG);
-        }
-        homing = tag.getBoolean(HOMING_TAG);
-        effect = tag.contains(EFFECT_TAG) ? MobEffectSpec.CODEC.parse(NbtOps.INSTANCE, tag.get(EFFECT_TAG)).result() : Optional.empty();
+    protected void readAdditionalSaveData(ValueInput input) {
+        super.readAdditionalSaveData(input);
+        damage = input.getFloatOr(DAMAGE_TAG, damage);
+        homing = input.getBooleanOr(HOMING_TAG, false);
+        effect = input.read(EFFECT_TAG, MobEffectSpec.CODEC);
     }
 }

@@ -27,7 +27,7 @@ public class HellbrandEvents {
             return;
         }
         LivingEntity target = event.getEntity();
-        if (target == player || event.getNewDamage() <= 0.0F || !target.isAlive()) {
+        if (target == player || event.getHealthDamage() <= 0.0F || !target.isAlive()) {
             return;
         }
         HellbrandSigilEffect config = SigilTracker.getEffect(player, SigilTracker.Kind.HELLBRAND, HellbrandSigilEffect.class);
@@ -35,10 +35,10 @@ public class HellbrandEvents {
             return;
         }
 
-        ServerLevel level = player.serverLevel();
+        ServerLevel level = (ServerLevel) player.level();
         long now = level.getGameTime();
         CompoundTag data = target.getPersistentData();
-        int stacks = now - data.getLong(TICK_TAG) > config.stackDuration() ? 0 : data.getInt(STACKS_TAG);
+        int stacks = now - data.getLongOr(TICK_TAG, 0L) > config.stackDuration() ? 0 : data.getIntOr(STACKS_TAG, 0);
         stacks++;
         data.putLong(TICK_TAG, now);
 

@@ -15,10 +15,10 @@ public class ModDataMapProvider extends DataMapProvider {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    protected void gather() {
+    protected void gather(HolderLookup.Provider provider) {
         builder(NVDataMaps.SPIRITUS_GEM_MAX_AMOUNTS)
-                .add(ModItems.SPIRITUS_GEM_EXALTED, 32768.0D, false)
-                .add(ModItems.SPIRITUS_GEM_PRIMORDIAL, 65536.0D, false);
+                .add(ModItems.SPIRITUS_GEM_EXALTED.getKey(), 32768.0D, false)
+                .add(ModItems.SPIRITUS_GEM_PRIMORDIAL.getKey(), 65536.0D, false)
+                .build();
     }
 }

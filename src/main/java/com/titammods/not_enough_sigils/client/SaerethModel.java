@@ -1,34 +1,35 @@
 package com.titammods.not_enough_sigils.client;
 
+import com.titammods.not_enough_sigils.NotEnoughSigils;
 import com.titammods.not_enough_sigils.saereth.SaerethEntity;
-import net.minecraft.client.model.PlayerModel;
+import net.minecraft.client.model.player.PlayerModel;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import net.minecraft.util.Mth;
+import net.minecraft.util.context.ContextKey;
 
-public class SaerethModel extends PlayerModel<SaerethEntity> {
+public class SaerethModel extends PlayerModel {
+    public static final ContextKey<SaerethEntity.Action> ACTION = new ContextKey<>(NotEnoughSigils.rl("saereth_action"));
 
     public SaerethModel(ModelPart root) {
         super(root, false);
     }
 
     @Override
-    public void setupAnim(SaerethEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        SaerethEntity.Action action = entity.getAction();
-        crouching = action == SaerethEntity.Action.DRAW;
-        super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+    public void setupAnim(AvatarRenderState state) {
+        super.setupAnim(state);
+        SaerethEntity.Action action = state.getRenderData(ACTION);
+        if (action == null) {
+            return;
+        }
+        float age = state.ageInTicks;
         switch (action) {
-            case DRAW -> draw(ageInTicks);
-            case PLACE -> place(ageInTicks);
-            case CAST -> cast(ageInTicks);
+            case DRAW -> draw(age);
+            case PLACE -> place(age);
+            case CAST -> cast(age);
             default -> {
             }
         }
-        hat.copyFrom(head);
-        jacket.copyFrom(body);
-        leftSleeve.copyFrom(leftArm);
-        rightSleeve.copyFrom(rightArm);
-        leftPants.copyFrom(leftLeg);
-        rightPants.copyFrom(rightLeg);
     }
 
     private void draw(float age) {

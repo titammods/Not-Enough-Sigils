@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 256.0,
+  "inputs": [
+    "minecraft:spyglass",
+    "minecraft:echo_shard",
+    "minecraft:ender_pearl",
+    "minecraft:pufferfish"
+  ],
+  "minDrain": 512.0,
+  "output": {
+    "id": "not_enough_sigils:reagent_brunimneets"
+  }
+}

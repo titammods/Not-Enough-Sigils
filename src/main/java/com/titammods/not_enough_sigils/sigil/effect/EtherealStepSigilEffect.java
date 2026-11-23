@@ -49,7 +49,7 @@ public record EtherealStepSigilEffect(double range, int cooldown) implements ISi
     }
 
     private boolean blink(Level level, Player player, ItemStack stack) {
-        if (player == null || player.getCooldowns().isOnCooldown(stack.getItem())) {
+        if (player == null || player.getCooldowns().isOnCooldown(stack)) {
             return false;
         }
         if (level.isClientSide()) {
@@ -84,7 +84,7 @@ public record EtherealStepSigilEffect(double range, int cooldown) implements ISi
         serverPlayer.teleportTo(destination.x, destination.y, destination.z);
         serverPlayer.resetFallDistance();
         if (cooldown > 0) {
-            player.getCooldowns().addCooldown(stack.getItem(), cooldown);
+            player.getCooldowns().addCooldown(stack, cooldown);
         }
 
         serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, origin.x, origin.y + 1.0D, origin.z, 30, 0.3D, 0.6D, 0.3D, 0.05D);

@@ -4,7 +4,7 @@ import com.titammods.not_enough_sigils.sigil.effect.BrunimneetsSigilEffect;
 import com.titammods.not_enough_sigils.NotEnoughSigils;
 import com.titammods.not_enough_sigils.sigil.SigilTracker;
 import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -19,9 +19,9 @@ public class BrunimneetsEvents {
     private static final double PLAYER_HEIGHT = 1.8D;
     private static final double PIXEL = 1.0D / 16.0D;
 
-    private static final ResourceLocation SCALE_ID = NotEnoughSigils.rl("brunimneets_scale");
-    private static final ResourceLocation BLOCK_RANGE_ID = NotEnoughSigils.rl("brunimneets_block_range");
-    private static final ResourceLocation ENTITY_RANGE_ID = NotEnoughSigils.rl("brunimneets_entity_range");
+    private static final Identifier SCALE_ID = NotEnoughSigils.rl("brunimneets_scale");
+    private static final Identifier BLOCK_RANGE_ID = NotEnoughSigils.rl("brunimneets_block_range");
+    private static final Identifier ENTITY_RANGE_ID = NotEnoughSigils.rl("brunimneets_entity_range");
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
@@ -40,7 +40,7 @@ public class BrunimneetsEvents {
         update(player, Attributes.ENTITY_INTERACTION_RANGE, ENTITY_RANGE_ID, entityRange, AttributeModifier.Operation.ADD_VALUE, active);
     }
 
-    private static void update(Player player, Holder<Attribute> attribute, ResourceLocation id, double amount,
+    private static void update(Player player, Holder<Attribute> attribute, Identifier id, double amount,
                                AttributeModifier.Operation operation, boolean active) {
         AttributeInstance instance = player.getAttribute(attribute);
         if (instance == null) {

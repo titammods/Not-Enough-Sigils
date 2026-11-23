@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 1024.0,
+  "inputs": [
+    "not_enough_sigils:reagent_ponymeal",
+    "minecraft:ghast_tear",
+    "minecraft:glistering_melon_slice",
+    "neovitae:animus_mote"
+  ],
+  "minDrain": 2048.0,
+  "output": {
+    "id": "not_enough_sigils:reagent_fairys_blessing"
+  }
+}

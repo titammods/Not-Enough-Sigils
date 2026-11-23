@@ -1,0 +1,6 @@
+// 26.1.2	2026-11-22T22:39:38.3579899	Tags for minecraft:item mod id not_enough_sigils
+aab249ba34ff66757e72fa226ab3bc462aa302d9 data/curios/tags/item/charm.json
+ec3be72972614495eed898499e18c3142a8a503c data/curios/tags/item/necklace.json
+ec3be72972614495eed898499e18c3142a8a503c data/curios/tags/item/sentient_armour_socket.json
+242527bb3a21af911e402dc48c62569e8b39f704 data/c/tags/item/hidden_from_recipe_viewers.json
+ec3be72972614495eed898499e18c3142a8a503c data/neovitae/tags/item/spiritus_gems.json

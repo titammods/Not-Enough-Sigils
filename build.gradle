@@ -3,7 +3,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.137'
+    id 'net.neoforged.moddev' version '2.0.148'
 }
 
 version = mod_version
@@ -13,12 +13,13 @@ base {
     archivesName = mod_id + "-neoforge-" + minecraft_version
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 sourceSets {
     main {
         resources {
-            srcDir 'src/generated/resources'
+            srcDir 'src/generated/client'
+            srcDir 'src/generated/server'
         }
     }
 }
@@ -38,9 +39,20 @@ neoForge {
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
 
-        data {
-            data()
-            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+        clientData {
+            clientData()
+            programArguments.addAll '--mod', project.mod_id,
+                    '--output', file('src/generated/client/').getAbsolutePath(),
+                    '--existing', file('src/main/resources/').getAbsolutePath(),
+                    '--existing', file('src/generated/server/').getAbsolutePath()
+        }
+
+        serverData {
+            serverData()
+            programArguments.addAll '--mod', project.mod_id,
+                    '--output', file('src/generated/server/').getAbsolutePath(),
+                    '--existing', file('src/main/resources/').getAbsolutePath(),
+                    '--existing', file('src/generated/client/').getAbsolutePath()
         }
     }
 
@@ -53,66 +65,65 @@ neoForge {
 
 repositories {
     maven {
+        name = "Curios"
         url = "https://maven.theillusivec4.top/"
     }
     maven {
-        url = "https://jitpack.io"
-        content {
-            includeGroup "com.github.rtyley"
-        }
-    }
-    maven {
-        name = "Team Resourceful Maven"
-        url = "https://maven.teamresourceful.com/repository/maven-public/"
+        name = "BlameJared"
+        url = "https://maven.blamejared.com"
     }
     maven {
         name = "BreakInBlocks"
         url = "https://maven.breakinblocks.com/releases"
     }
     maven {
-        name = "GeckoLib"
-        url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"
-    }
-    maven {
-        name = "Curios"
-        url = "https://maven.theillusivec4.top/"
-    }
-    maven {
         name = "KliKli"
         url = "https://dl.cloudsmith.io/public/klikli-dev/mods/maven/"
+        content {
+            includeGroup "com.klikli_dev"
+        }
+    }
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+        content {
+            includeGroup "maven.modrinth"
+        }
+    }
+    maven {
+        url = "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
     }
 }
 
 dependencies {
-    compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
-    runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+    runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
     implementation "com.breakinblocks.animusnv:AnimusNV:${animus_version}"
     implementation "com.breakinblocks.neovitae:neovitae:${neovitae_version}"
-    runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+    runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}+${minecraft_version}"
+    runtimeOnly("com.klikli_dev:modonomicon-${minecraft_version}-neoforge:${modonomicon_version}") { transitive = false }
+    implementation "curse.maven:geckolib-388172:8327201"
 }
 
 tasks.withType(ProcessResources).configureEach {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
     var replaceProperties = [
-            minecraft_version   : minecraft_version,
-            neoforge_version    : neoforge_version,
-            mod_id              : mod_id,
-            mod_version         : mod_version
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neoforge_version       : neoforge_version,
+            neoforge_version_range : neoforge_version_range,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_version            : mod_version
     ]
     inputs.properties replaceProperties
 
     filesMatching(['META-INF/neoforge.mods.toml']) {
         expand replaceProperties + [project: project]
-    }
-}
-
-tasks.named('runData').configure {
-    doLast {
-        def cacheDir = file('src/generated/resources/.cache')
-        if (cacheDir.exists()) {
-            cacheDir.deleteDir()
-        }
     }
 }
 

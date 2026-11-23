@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 2048.0,
+  "inputs": [
+    "minecraft:totem_of_undying",
+    "minecraft:nether_star",
+    "minecraft:blaze_rod",
+    "neovitae:animus_mote"
+  ],
+  "minDrain": 4096.0,
+  "output": {
+    "id": "not_enough_sigils:reagent_soul_phoenix"
+  }
+}

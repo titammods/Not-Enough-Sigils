@@ -4,38 +4,35 @@ import com.titammods.not_enough_sigils.NotEnoughSigils;
 import com.titammods.not_enough_sigils.holding.GreaterHoldingMenu;
 import com.titammods.not_enough_sigils.holding.GreaterHoldingSigilItem;
 import com.titammods.not_enough_sigils.network.GreaterHoldingSelectPayload;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
-import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
 public class GreaterHoldingScreen extends AbstractContainerScreen<GreaterHoldingMenu> {
-    private static final ResourceLocation BACKGROUND_ONE_ROW = NotEnoughSigils.rl("textures/gui/sigil_holding_greater.png");
-    private static final ResourceLocation BACKGROUND_TWO_ROWS = NotEnoughSigils.rl("textures/gui/sigil_holding_supreme.png");
+    private static final Identifier BACKGROUND_ONE_ROW = NotEnoughSigils.rl("textures/gui/sigil_holding_greater.png");
+    private static final Identifier BACKGROUND_TWO_ROWS = NotEnoughSigils.rl("textures/gui/sigil_holding_supreme.png");
+    private static final int TEXTURE_SIZE = 256;
+    private static final int IMAGE_WIDTH = 176;
     private static final int SLOT_SIZE = 16;
     private static final int SELECTION_COLOR = 0xFFE0B040;
 
-    private final ResourceLocation background;
+    private final Identifier background;
 
     public GreaterHoldingScreen(GreaterHoldingMenu menu, Inventory playerInventory, Component title) {
-        super(menu, playerInventory, title);
+        super(menu, playerInventory, title, IMAGE_WIDTH, menu.getPlayerInventoryY() + 82);
         this.background = menu.getRows() > 1 ? BACKGROUND_TWO_ROWS : BACKGROUND_ONE_ROW;
-        this.imageWidth = 176;
-        this.imageHeight = menu.getPlayerInventoryY() + 82;
         this.inventoryLabelY = menu.getPlayerInventoryY() - 11;
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        super.render(guiGraphics, mouseX, mouseY, partialTick);
-        this.renderTooltip(guiGraphics, mouseX, mouseY);
-    }
-
-    @Override
-    protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
-        guiGraphics.blit(background, leftPos, topPos, 0, 0, imageWidth, imageHeight);
+    public void extractBackground(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTick) {
+        super.extractBackground(guiGraphics, mouseX, mouseY, partialTick);
+        guiGraphics.blit(RenderPipelines.GUI_TEXTURED, background, leftPos, topPos, 0.0F, 0.0F, imageWidth, imageHeight, TEXTURE_SIZE, TEXTURE_SIZE);
 
         int selected = menu.getSelectedSlot();
         int x = leftPos + slotX(selected) - 1;
@@ -48,19 +45,19 @@ public class GreaterHoldingScreen extends AbstractContainerScreen<GreaterHolding
     }
 
     @Override
-    public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if (button == 0 && !hasShiftDown()) {
+    public boolean mouseClicked(MouseButtonEvent event, boolean dragging) {
+        if (event.button() == 0 && (minecraft == null || !minecraft.hasShiftDown())) {
             for (int i = 0; i < menu.getSize(); i++) {
                 int slotX = leftPos + slotX(i);
                 int slotY = topPos + slotY(i);
-                if (mouseX >= slotX && mouseX < slotX + SLOT_SIZE && mouseY >= slotY && mouseY < slotY + SLOT_SIZE) {
+                if (event.x() >= slotX && event.x() < slotX + SLOT_SIZE && event.y() >= slotY && event.y() < slotY + SLOT_SIZE) {
                     menu.setSelectedSlot(i);
-                    PacketDistributor.sendToServer(new GreaterHoldingSelectPayload(i));
+                    ClientPacketDistributor.sendToServer(new GreaterHoldingSelectPayload(i));
                     return true;
                 }
             }
         }
-        return super.mouseClicked(mouseX, mouseY, button);
+        return super.mouseClicked(event, dragging);
     }
 
     private static int slotX(int index) {

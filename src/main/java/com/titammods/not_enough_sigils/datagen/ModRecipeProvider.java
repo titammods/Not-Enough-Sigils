@@ -8,14 +8,17 @@ import com.titammods.not_enough_sigils.NotEnoughSigils;
 import com.titammods.not_enough_sigils.setup.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 
 import java.util.Arrays;
@@ -25,12 +28,13 @@ import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider {
 
-    public ModRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries);
+    protected ModRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
+        super(registries, output);
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput output) {
+    protected void buildRecipes() {
+        RecipeOutput output = this.output;
         forgeRecipes(output);
         arrayRecipes(output);
         altarRecipes(output);
@@ -60,7 +64,7 @@ public class ModRecipeProvider extends RecipeProvider {
         ForgeTransformRecipe spiritualMonk = new ForgeTransformRecipe(4096, 2000,
                 List.of(Ingredient.of(nv("raw_crystal_shard")), Ingredient.of(Items.BLAST_FURNACE), Ingredient.of(Items.NETHERITE_INGOT)),
                 Ingredient.of(item("animusnv", "sigil_monk")),
-                new ItemStack(ModItems.SIGIL_SPIRITUAL_MONK.get()));
+                new ItemStackTemplate(ModItems.SIGIL_SPIRITUAL_MONK.get()));
         output.accept(id("hellfire_forge/", ModItems.SIGIL_SPIRITUAL_MONK.get()), spiritualMonk, null);
     }
 
@@ -94,24 +98,24 @@ public class ModRecipeProvider extends RecipeProvider {
 
     private static void forge(RecipeOutput output, Item result, double drain, double minDrain, ItemLike... inputs) {
         List<Ingredient> ingredients = Arrays.stream(inputs).map(Ingredient::of).toList();
-        ForgeRecipe recipe = new ForgeRecipe(minDrain, drain, ingredients, new ItemStack(result), Optional.empty());
+        ForgeRecipe recipe = new ForgeRecipe(minDrain, drain, ingredients, new ItemStackTemplate(result), Optional.empty());
         output.accept(id("hellfire_forge/", result), recipe, null);
     }
 
     private static void array(RecipeOutput output, Item result, Item reagent, String tabula, String texture) {
         AlchemyArrayRecipe recipe = new AlchemyArrayRecipe(
-                ResourceLocation.fromNamespaceAndPath("neovitae", "textures/models/alchemyarrays/" + texture + ".png"),
-                Ingredient.of(reagent), Ingredient.of(nv(tabula)), new ItemStack(result));
+                Identifier.fromNamespaceAndPath("neovitae", "textures/models/alchemyarrays/" + texture + ".png"),
+                Ingredient.of(reagent), Ingredient.of(nv(tabula)), new ItemStackTemplate(result));
         output.accept(id("array/", result), recipe, null);
     }
 
     private static void altar(RecipeOutput output, Item result, ItemLike input, int tier, int blood, int craftSpeed, int drainSpeed) {
-        AraVitaeRecipe recipe = new AraVitaeRecipe(Ingredient.of(input), new ItemStack(result), tier, blood, craftSpeed, drainSpeed, true);
+        AraVitaeRecipe recipe = new AraVitaeRecipe(Ingredient.of(input), new ItemStackTemplate(result), tier, blood, craftSpeed, drainSpeed, true);
         output.accept(id("ara_vitae/", result), recipe, null);
     }
 
-    private static ResourceLocation id(String folder, Item item) {
-        return NotEnoughSigils.rl(folder + BuiltInRegistries.ITEM.getKey(item).getPath());
+    private static ResourceKey<Recipe<?>> id(String folder, Item item) {
+        return ResourceKey.create(Registries.RECIPE, NotEnoughSigils.rl(folder + BuiltInRegistries.ITEM.getKey(item).getPath()));
     }
 
     private static Item nv(String path) {
@@ -119,10 +123,26 @@ public class ModRecipeProvider extends RecipeProvider {
     }
 
     private static Item item(String namespace, String path) {
-        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(namespace, path);
+        Identifier location = Identifier.fromNamespaceAndPath(namespace, path);
         if (!BuiltInRegistries.ITEM.containsKey(location)) {
             throw new IllegalStateException("Missing item " + location);
         }
-        return BuiltInRegistries.ITEM.get(location);
+        return BuiltInRegistries.ITEM.getValue(location);
+    }
+
+    public static class Runner extends RecipeProvider.Runner {
+        public Runner(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+            super(output, registries);
+        }
+
+        @Override
+        protected RecipeProvider createRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
+            return new ModRecipeProvider(registries, output);
+        }
+
+        @Override
+        public String getName() {
+            return "Not Enough Sigils Recipes";
+        }
     }
 }

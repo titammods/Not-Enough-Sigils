@@ -65,17 +65,17 @@ public class SpiritualMonkEvents {
                 continue;
             }
             SingleRecipeInput input = new SingleRecipeInput(stack);
-            Optional<RecipeHolder<SmeltingRecipe>> recipe = level.getRecipeManager().getRecipeFor(RecipeType.SMELTING, input, level);
+            Optional<RecipeHolder<SmeltingRecipe>> recipe = level.recipeAccess().getRecipeFor(RecipeType.SMELTING, input, level);
             if (recipe.isEmpty()) {
                 continue;
             }
-            ItemStack result = recipe.get().value().assemble(input, level.registryAccess());
+            ItemStack result = recipe.get().value().assemble(input);
             if (result.isEmpty()) {
                 continue;
             }
             int count = Math.min(result.getMaxStackSize(), result.getCount() * stack.getCount());
             drop.setItem(result.copyWithCount(count));
-            experience += recipe.get().value().getExperience() * stack.getCount();
+            experience += recipe.get().value().experience() * stack.getCount();
         }
 
         if (experience > 0.0F) {

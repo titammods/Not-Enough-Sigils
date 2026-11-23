@@ -29,7 +29,7 @@ public record SpiritualMonkSigilEffect(TagKey<Block> smeltable, Map<SpiritusType
             SpiritusType.RAW, new PunchProfile(1.25F, Optional.empty(), 0, 0, 0.0F, 0.0F, 0.0F),
             SpiritusType.RUINA, new PunchProfile(1.0F, Optional.of(new MobEffectSpec(MobEffects.WITHER, 100, 1)), 0, 0, 0.0F, 0.0F, 0.0F),
             SpiritusType.VINDICTA, new PunchProfile(1.0F, Optional.empty(), 0, 4, 0.0F, 0.0F, 0.0F),
-            SpiritusType.INVICTUS, new PunchProfile(1.0F, Optional.of(new MobEffectSpec(MobEffects.MOVEMENT_SLOWDOWN, 60, 2)), 100, 0, 0.0F, 0.0F, 0.0F),
+            SpiritusType.INVICTUS, new PunchProfile(1.0F, Optional.of(new MobEffectSpec(MobEffects.SLOWNESS, 60, 2)), 100, 0, 0.0F, 0.0F, 0.0F),
             SpiritusType.NIHILUM, new PunchProfile(1.0F, Optional.empty(), 0, 0, 4.0F, 0.05F, 20.0F)
     );
 
@@ -59,7 +59,7 @@ public record SpiritualMonkSigilEffect(TagKey<Block> smeltable, Map<SpiritusType
         if (!level.isClientSide()) {
             MonkMode mode = MonkMode.get(stack).next();
             MonkMode.set(stack, mode);
-            player.displayClientMessage(Component.translatable("monk_mode.not_enough_sigils.changed", mode.displayName()), true);
+            player.sendOverlayMessage(Component.translatable("monk_mode.not_enough_sigils.changed", mode.displayName()));
         }
         return true;
     }

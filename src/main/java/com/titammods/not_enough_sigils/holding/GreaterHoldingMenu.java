@@ -8,11 +8,12 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ClickType;
+import net.minecraft.world.inventory.ContainerInput;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.items.ItemStackHandler;
-import net.neoforged.neoforge.items.SlotItemHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
+import net.neoforged.neoforge.transfer.item.ResourceHandlerSlot;
 
 public class GreaterHoldingMenu extends AbstractContainerMenu {
     public static final int SLOT_X = 8;
@@ -23,7 +24,7 @@ public class GreaterHoldingMenu extends AbstractContainerMenu {
     private final int holdingSlot;
     private final int size;
     private final int rows;
-    private final ItemStackHandler sigilInventory;
+    private final SigilInventory sigilInventory;
     private int selectedSlot;
 
     public GreaterHoldingMenu(int containerId, Inventory playerInventory, ItemStack holdingStack, int holdingSlot) {
@@ -33,37 +34,22 @@ public class GreaterHoldingMenu extends AbstractContainerMenu {
         this.size = GreaterHoldingSigilItem.sizeOf(holdingStack);
         this.rows = Math.max(1, (size + GreaterHoldingSigilItem.ROW_SIZE - 1) / GreaterHoldingSigilItem.ROW_SIZE);
         this.selectedSlot = GreaterHoldingSigilItem.readSelected(holdingStack);
-
-        this.sigilInventory = new ItemStackHandler(size) {
-            @Override
-            public boolean isItemValid(int slot, ItemStack stack) {
-                return isAcceptedSigil(stack);
-            }
-
-            @Override
-            public int getSlotLimit(int slot) {
-                return 1;
-            }
-
-            @Override
-            protected void onContentsChanged(int slot) {
-                saveToHoldingStack();
-            }
-        };
+        this.sigilInventory = new SigilInventory(size);
 
         NonNullList<ItemStack> stored = GreaterHoldingSigilItem.readInventory(holdingStack);
         for (int i = 0; i < size; i++) {
-            sigilInventory.setStackInSlot(i, stored.get(i).copy());
+            sigilInventory.load(i, stored.get(i).copy());
         }
+        sigilInventory.loading = false;
 
         for (int i = 0; i < size; i++) {
             final int index = i;
             int x = SLOT_X + (i % GreaterHoldingSigilItem.ROW_SIZE) * SLOT_SPACING;
             int y = SLOT_Y + (i / GreaterHoldingSigilItem.ROW_SIZE) * SLOT_SPACING;
-            this.addSlot(new SlotItemHandler(sigilInventory, i, x, y) {
+            this.addSlot(new ResourceHandlerSlot(sigilInventory, sigilInventory::set, i, x, y) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
-                    return sigilInventory.isItemValid(index, stack);
+                    return sigilInventory.isValid(index, ItemResource.of(stack));
                 }
             });
         }
@@ -92,6 +78,40 @@ public class GreaterHoldingMenu extends AbstractContainerMenu {
 
     private GreaterHoldingMenu(int containerId, Inventory playerInventory, int slot) {
         this(containerId, playerInventory, playerInventory.getItem(slot), slot);
+    }
+
+    private class SigilInventory extends ItemStacksResourceHandler {
+        private boolean loading = true;
+
+        private SigilInventory(int size) {
+            super(size);
+        }
+
+        @Override
+        public boolean isValid(int index, ItemResource resource) {
+            return resource.isEmpty() || isAcceptedSigil(resource.toStack(1));
+        }
+
+        @Override
+        protected int getCapacity(int index, ItemResource resource) {
+            return 1;
+        }
+
+        @Override
+        protected void onContentsChanged(int index, ItemStack previousContents) {
+            if (!loading) {
+                saveToHoldingStack();
+            }
+        }
+
+        private ItemStack getStackInSlot(int slot) {
+            ItemResource resource = getResource(slot);
+            return resource.isEmpty() ? ItemStack.EMPTY : resource.toStack(getAmountAsInt(slot));
+        }
+
+        private void load(int slot, ItemStack stack) {
+            set(slot, ItemResource.of(stack), stack.getCount());
+        }
     }
 
     public static boolean isAcceptedSigil(ItemStack stack) {
@@ -161,17 +181,17 @@ public class GreaterHoldingMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public void clicked(int slotId, int button, ClickType clickType, Player player) {
+    public void clicked(int slotId, int button, ContainerInput input, Player player) {
         if (slotId >= 0 && slotId < this.slots.size()) {
             Slot slot = this.slots.get(slotId);
             if (slot.getItem().getItem() instanceof ItemSigilHolding) {
                 return;
             }
         }
-        if (clickType == ClickType.SWAP && button == holdingSlot) {
+        if (input == ContainerInput.SWAP && button == holdingSlot) {
             return;
         }
-        super.clicked(slotId, button, clickType, player);
+        super.clicked(slotId, button, input, player);
     }
 
     @Override

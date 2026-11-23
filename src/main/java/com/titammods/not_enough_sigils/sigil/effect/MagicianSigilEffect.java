@@ -37,7 +37,7 @@ public record MagicianSigilEffect(int missiles, boolean homing, int cooldown, fl
             SpiritusType.RUINA, new MissileProfile(0.75F, 1.0F, true, Optional.empty()),
             SpiritusType.VINDICTA, new MissileProfile(1.4F, 0.6F, false, Optional.empty()),
             SpiritusType.INVICTUS, new MissileProfile(0.75F, 1.6F, false, Optional.empty()),
-            SpiritusType.NIHILUM, new MissileProfile(0.7F, 1.0F, false, Optional.of(new MobEffectSpec(MobEffects.MOVEMENT_SLOWDOWN, 80, 2)))
+            SpiritusType.NIHILUM, new MissileProfile(0.7F, 1.0F, false, Optional.of(new MobEffectSpec(MobEffects.SLOWNESS, 80, 2)))
     );
 
     public static final MagicianSigilEffect DEFAULT = basic(DEFAULT_MISSILES, false, DEFAULT_COOLDOWN);
@@ -66,7 +66,7 @@ public record MagicianSigilEffect(int missiles, boolean homing, int cooldown, fl
 
     @Override
     public boolean useOnAir(Level level, Player player, ItemStack stack) {
-        if (player.getCooldowns().isOnCooldown(stack.getItem())) {
+        if (player.getCooldowns().isOnCooldown(stack)) {
             return false;
         }
         if (level.isClientSide()) {
@@ -85,7 +85,7 @@ public record MagicianSigilEffect(int missiles, boolean homing, int cooldown, fl
             level.addFreshEntity(missile);
         }
         if (cooldown > 0) {
-            player.getCooldowns().addCooldown(stack.getItem(), cooldown);
+            player.getCooldowns().addCooldown(stack, cooldown);
         }
         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.EVOKER_CAST_SPELL, SoundSource.PLAYERS, 0.8F, 1.4F);
         return true;

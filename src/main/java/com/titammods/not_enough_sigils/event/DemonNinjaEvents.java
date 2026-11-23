@@ -20,7 +20,7 @@ public class DemonNinjaEvents {
         if (!(event.getEntity() instanceof Player player) || player.level().isClientSide()) {
             return;
         }
-        if (event.getNewDamage() <= 0.0F) {
+        if (event.getHealthDamage() <= 0.0F) {
             return;
         }
         Entity attacker = event.getSource().getEntity();

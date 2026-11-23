@@ -12,14 +12,16 @@ import com.breakinblocks.neovitae.common.recipe.alchemyarray.AlchemyArrayRecipe;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.UUIDUtil;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.permissions.Permissions;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
@@ -40,20 +42,28 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.storage.TagValueOutput;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.util.ProblemReporter;
+import com.mojang.serialization.Codec;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.ItemHandlerHelper;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.ResourceHandlerUtil;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.item.ItemUtil;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 public class SaerethEntity extends PathfinderMob {
@@ -69,7 +79,7 @@ public class SaerethEntity extends PathfinderMob {
     private Status status = Status.NOT_LINKED;
     private int phaseTicks;
     private int scanCooldown;
-    private ResourceLocation recipeId;
+    private ResourceKey<Recipe<?>> recipeId;
     private ItemStack carried = ItemStack.EMPTY;
 
     public SaerethEntity(EntityType<? extends PathfinderMob> type, Level level) {
@@ -138,7 +148,7 @@ public class SaerethEntity extends PathfinderMob {
     }
 
     public boolean isOwner(Player player) {
-        return owner == null || owner.equals(player.getUUID()) || player.hasPermissions(2);
+        return owner == null || owner.equals(player.getUUID()) || player.permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER);
     }
 
     @Override
@@ -165,7 +175,7 @@ public class SaerethEntity extends PathfinderMob {
     }
 
     @Override
-    public boolean isInvulnerableTo(DamageSource source) {
+    public boolean isInvulnerableTo(ServerLevel level, DamageSource source) {
         return !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY);
     }
 
@@ -201,7 +211,7 @@ public class SaerethEntity extends PathfinderMob {
         }
         scanCooldown = Math.max(5, settings.scanInterval());
 
-        IItemHandler chest = validate(level, settings);
+        ResourceHandler<ItemResource> chest = validate(level, settings);
         if (chest == null) {
             return;
         }
@@ -217,7 +227,7 @@ public class SaerethEntity extends PathfinderMob {
         recipeId = recipe.id();
         status = Status.WORKING;
         startPhase(Phase.DRAW);
-        setItemSlot(EquipmentSlot.MAINHAND, chest.getStackInSlot(findAsh(chest)).copyWithCount(1));
+        setItemSlot(EquipmentSlot.MAINHAND, ItemUtil.getStack(chest, findAsh(chest)).copyWithCount(1));
         setAction(Action.DRAW);
     }
 
@@ -231,13 +241,13 @@ public class SaerethEntity extends PathfinderMob {
         if (phaseTicks < settings.drawTicks()) {
             return;
         }
-        IItemHandler chest = validate(level, settings);
+        ResourceHandler<ItemResource> chest = validate(level, settings);
         int ashSlot = chest == null ? -1 : findAsh(chest);
         if (chest == null || ashSlot < 0) {
             abort(level);
             return;
         }
-        ItemStack ash = chest.extractItem(ashSlot, 1, false);
+        ItemStack ash = extract(chest, ashSlot, 1);
         if (ash.isEmpty() || !placeArray(level, ash)) {
             if (!ash.isEmpty()) {
                 returnToChest(chest, ash, level);
@@ -247,7 +257,7 @@ public class SaerethEntity extends PathfinderMob {
         }
         ash.setDamageValue(ash.getDamageValue() + 1);
         if (ash.getDamageValue() >= ash.getMaxDamage()) {
-            level.playSound(null, blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.NEUTRAL, 0.6F, 1.0F);
+            level.playSound(null, blockPosition(), SoundEvents.ITEM_BREAK.value(), SoundSource.NEUTRAL, 0.6F, 1.0F);
         } else {
             returnToChest(chest, ash, level);
         }
@@ -257,7 +267,7 @@ public class SaerethEntity extends PathfinderMob {
     private void place(ServerLevel level, SaerethSettings settings, boolean base) {
         setAction(Action.PLACE);
         if (phaseTicks == 1) {
-            IItemHandler chest = validate(level, settings);
+            ResourceHandler<ItemResource> chest = validate(level, settings);
             AlchemyArrayRecipe recipe = currentRecipe(level);
             if (chest == null || recipe == null) {
                 abort(level);
@@ -270,7 +280,7 @@ public class SaerethEntity extends PathfinderMob {
                 abort(level);
                 return;
             }
-            carried = chest.extractItem(slot, 1, false);
+            carried = extract(chest, slot, 1);
             setItemSlot(EquipmentSlot.MAINHAND, carried.copy());
             return;
         }
@@ -318,13 +328,13 @@ public class SaerethEntity extends PathfinderMob {
             array.dropItems();
             level.removeBlock(arrayPos, false);
         }
-        IItemHandler chest = chestHandler(level);
+        ResourceHandler<ItemResource> chest = chestHandler(level);
         collect(level, chest);
         level.playSound(null, blockPosition(), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.NEUTRAL, 0.8F, 1.0F);
         finish();
     }
 
-    private void collect(ServerLevel level, IItemHandler chest) {
+    private void collect(ServerLevel level, ResourceHandler<ItemResource> chest) {
         AABB area = new AABB(arrayPos).inflate(0.75D);
         List<ItemEntity> items = level.getEntitiesOfClass(ItemEntity.class, area, Entity::isAlive);
         for (ItemEntity item : items) {
@@ -332,7 +342,7 @@ public class SaerethEntity extends PathfinderMob {
                 status = Status.CHEST_FULL;
                 return;
             }
-            ItemStack remainder = ItemHandlerHelper.insertItemStacked(chest, item.getItem().copy(), false);
+            ItemStack remainder = insert(chest, item.getItem().copy());
             if (remainder.isEmpty()) {
                 item.discard();
             } else {
@@ -344,7 +354,7 @@ public class SaerethEntity extends PathfinderMob {
 
     private void abort(ServerLevel level) {
         if (!carried.isEmpty()) {
-            IItemHandler chest = chestHandler(level);
+            ResourceHandler<ItemResource> chest = chestHandler(level);
             if (chest != null) {
                 returnToChest(chest, carried, level);
             } else {
@@ -376,8 +386,8 @@ public class SaerethEntity extends PathfinderMob {
         phaseTicks = 0;
     }
 
-    private void returnToChest(IItemHandler chest, ItemStack stack, ServerLevel level) {
-        ItemStack remainder = ItemHandlerHelper.insertItemStacked(chest, stack, false);
+    private void returnToChest(ResourceHandler<ItemResource> chest, ItemStack stack, ServerLevel level) {
+        ItemStack remainder = insert(chest, stack);
         if (!remainder.isEmpty()) {
             spawnAtLevel(level, remainder);
             status = Status.CHEST_FULL;
@@ -388,7 +398,7 @@ public class SaerethEntity extends PathfinderMob {
         level.addFreshEntity(new ItemEntity(level, getX(), getY() + 0.5D, getZ(), stack));
     }
 
-    private IItemHandler validate(ServerLevel level, SaerethSettings settings) {
+    private ResourceHandler<ItemResource> validate(ServerLevel level, SaerethSettings settings) {
         if (chestPos == null || arrayPos == null) {
             status = Status.NOT_LINKED;
             return null;
@@ -401,7 +411,7 @@ public class SaerethEntity extends PathfinderMob {
             status = Status.TOO_FAR;
             return null;
         }
-        IItemHandler chest = chestHandler(level);
+        ResourceHandler<ItemResource> chest = chestHandler(level);
         if (chest == null) {
             status = Status.CHEST_MISSING;
             return null;
@@ -418,11 +428,11 @@ public class SaerethEntity extends PathfinderMob {
         return pos.distToCenterSqr(position()) <= range * range;
     }
 
-    private IItemHandler chestHandler(ServerLevel level) {
+    private ResourceHandler<ItemResource> chestHandler(ServerLevel level) {
         if (chestPos == null || !level.isLoaded(chestPos)) {
             return null;
         }
-        return level.getCapability(Capabilities.ItemHandler.BLOCK, chestPos, null);
+        return level.getCapability(Capabilities.Item.BLOCK, chestPos, null);
     }
 
     private boolean arraySpotFree(ServerLevel level) {
@@ -464,9 +474,29 @@ public class SaerethEntity extends PathfinderMob {
         return true;
     }
 
-    private static int findAsh(IItemHandler chest) {
-        for (int slot = 0; slot < chest.getSlots(); slot++) {
-            ItemStack stack = chest.getStackInSlot(slot);
+    private static ItemStack extract(ResourceHandler<ItemResource> chest, int slot, int amount) {
+        ItemResource resource = chest.getResource(slot);
+        if (resource.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+        try (Transaction transaction = Transaction.openRoot()) {
+            int extracted = chest.extract(slot, resource, amount, transaction);
+            transaction.commit();
+            return extracted <= 0 ? ItemStack.EMPTY : resource.toStack(extracted);
+        }
+    }
+
+    private static ItemStack insert(ResourceHandler<ItemResource> chest, ItemStack stack) {
+        if (stack.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+        int inserted = ResourceHandlerUtil.insertStacking(chest, ItemResource.of(stack), stack.getCount(), null);
+        return inserted >= stack.getCount() ? ItemStack.EMPTY : stack.copyWithCount(stack.getCount() - inserted);
+    }
+
+    private static int findAsh(ResourceHandler<ItemResource> chest) {
+        for (int slot = 0; slot < chest.size(); slot++) {
+            ItemStack stack = ItemUtil.getStack(chest, slot);
             if (stack.getItem() instanceof ItemArcaneScribeTool && (!stack.isDamageableItem() || stack.getDamageValue() < stack.getMaxDamage())) {
                 return slot;
             }
@@ -474,9 +504,9 @@ public class SaerethEntity extends PathfinderMob {
         return -1;
     }
 
-    private static int findMatching(IItemHandler chest, Ingredient ingredient, int skipSlot, int needed) {
-        for (int slot = 0; slot < chest.getSlots(); slot++) {
-            ItemStack stack = chest.getStackInSlot(slot);
+    private static int findMatching(ResourceHandler<ItemResource> chest, Ingredient ingredient, int skipSlot, int needed) {
+        for (int slot = 0; slot < chest.size(); slot++) {
+            ItemStack stack = ItemUtil.getStack(chest, slot);
             if (stack.isEmpty() || stack.getItem() instanceof ItemArcaneScribeTool || !ingredient.test(stack)) {
                 continue;
             }
@@ -488,8 +518,8 @@ public class SaerethEntity extends PathfinderMob {
         return -1;
     }
 
-    private static RecipeHolder<AlchemyArrayRecipe> findRecipe(ServerLevel level, IItemHandler chest) {
-        for (RecipeHolder<AlchemyArrayRecipe> holder : level.getRecipeManager().getAllRecipesFor(NVRecipes.ALCHEMY_ARRAY_TYPE.get())) {
+    private static RecipeHolder<AlchemyArrayRecipe> findRecipe(ServerLevel level, ResourceHandler<ItemResource> chest) {
+        for (RecipeHolder<AlchemyArrayRecipe> holder : level.recipeAccess().recipeMap().byType(NVRecipes.ALCHEMY_ARRAY_TYPE.get())) {
             AlchemyArrayRecipe recipe = holder.value();
             AlchemyArrayEffectType type = recipe.getEffectType();
             if ((type != AlchemyArrayEffectType.CRAFTING && type != AlchemyArrayEffectType.BINDING) || recipe.getOutput().isEmpty()) {
@@ -510,8 +540,12 @@ public class SaerethEntity extends PathfinderMob {
         if (recipeId == null) {
             return null;
         }
-        Optional<RecipeHolder<?>> holder = level.getRecipeManager().byKey(recipeId);
-        return holder.map(RecipeHolder::value).filter(AlchemyArrayRecipe.class::isInstance).map(AlchemyArrayRecipe.class::cast).orElse(null);
+        for (RecipeHolder<AlchemyArrayRecipe> holder : level.recipeAccess().recipeMap().byType(NVRecipes.ALCHEMY_ARRAY_TYPE.get())) {
+            if (holder.id().equals(recipeId)) {
+                return holder.value();
+            }
+        }
+        return null;
     }
 
     public boolean isBusy() {
@@ -539,64 +573,64 @@ public class SaerethEntity extends PathfinderMob {
             return super.mobInteract(player, hand);
         }
         if (!level().isClientSide()) {
-            player.displayClientMessage(Component.translatable("status.not_enough_sigils.saereth." + status.key()).withStyle(status.color()), false);
+            player.sendSystemMessage(Component.translatable("status.not_enough_sigils.saereth." + status.key()).withStyle(status.color()));
             if (chestPos != null && arrayPos != null) {
-                player.displayClientMessage(Component.translatable("status.not_enough_sigils.saereth.links",
-                        chestPos.toShortString(), arrayPos.toShortString()).withStyle(ChatFormatting.GRAY), false);
+                player.sendSystemMessage(Component.translatable("status.not_enough_sigils.saereth.links",
+                        chestPos.toShortString(), arrayPos.toShortString()).withStyle(ChatFormatting.GRAY));
             }
         }
-        return InteractionResult.sidedSuccess(level().isClientSide());
+        return InteractionResult.SUCCESS;
     }
 
     public ItemStack captureInto(ItemStack sigil) {
         if (level() instanceof ServerLevel serverLevel && phase != Phase.IDLE) {
             abort(serverLevel);
         }
-        CompoundTag tag = new CompoundTag();
-        saveWithoutId(tag);
-        SaerethSigilItem.storeCaptured(sigil, tag);
+        TagValueOutput output = TagValueOutput.createWithContext(ProblemReporter.DISCARDING, registryAccess());
+        saveWithoutId(output);
+        SaerethSigilItem.storeCaptured(sigil, output.buildResult());
         discard();
         return sigil;
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag tag) {
-        super.addAdditionalSaveData(tag);
+    protected void addAdditionalSaveData(ValueOutput output) {
+        super.addAdditionalSaveData(output);
         if (owner != null) {
-            tag.putUUID("SaerethOwner", owner);
+            output.store("SaerethOwner", UUIDUtil.CODEC, owner);
         }
-        tag.putString("SaerethOwnerName", ownerName);
+        output.putString("SaerethOwnerName", ownerName);
         if (chestPos != null) {
-            tag.putLong("SaerethChest", chestPos.asLong());
+            output.putLong("SaerethChest", chestPos.asLong());
         }
         if (arrayPos != null) {
-            tag.putLong("SaerethArray", arrayPos.asLong());
+            output.putLong("SaerethArray", arrayPos.asLong());
         }
-        tag.putString("SaerethPhase", phase.name());
-        tag.putInt("SaerethPhaseTicks", phaseTicks);
+        output.putString("SaerethPhase", phase.name());
+        output.putInt("SaerethPhaseTicks", phaseTicks);
         if (recipeId != null) {
-            tag.putString("SaerethRecipe", recipeId.toString());
+            output.store("SaerethRecipe", ResourceKey.codec(Registries.RECIPE), recipeId);
         }
         if (!carried.isEmpty()) {
-            tag.put("SaerethCarried", carried.save(registryAccess()));
+            output.store("SaerethCarried", ItemStack.OPTIONAL_CODEC, carried);
         }
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag tag) {
-        super.readAdditionalSaveData(tag);
-        owner = tag.hasUUID("SaerethOwner") ? tag.getUUID("SaerethOwner") : null;
-        ownerName = tag.getString("SaerethOwnerName");
-        chestPos = tag.contains("SaerethChest") ? BlockPos.of(tag.getLong("SaerethChest")) : null;
-        arrayPos = tag.contains("SaerethArray") ? BlockPos.of(tag.getLong("SaerethArray")) : null;
+    protected void readAdditionalSaveData(ValueInput input) {
+        super.readAdditionalSaveData(input);
+        owner = input.read("SaerethOwner", UUIDUtil.CODEC).orElse(null);
+        ownerName = input.getStringOr("SaerethOwnerName", "");
+        chestPos = input.read("SaerethChest", Codec.LONG).map(BlockPos::of).orElse(null);
+        arrayPos = input.read("SaerethArray", Codec.LONG).map(BlockPos::of).orElse(null);
         try {
-            phase = Phase.valueOf(tag.getString("SaerethPhase"));
+            phase = Phase.valueOf(input.getStringOr("SaerethPhase", Phase.IDLE.name()));
         } catch (IllegalArgumentException exception) {
             phase = Phase.IDLE;
         }
-        phaseTicks = tag.getInt("SaerethPhaseTicks");
-        recipeId = tag.contains("SaerethRecipe") ? ResourceLocation.tryParse(tag.getString("SaerethRecipe")) : null;
-        carried = tag.contains("SaerethCarried") ? ItemStack.parseOptional(registryAccess(), tag.getCompound("SaerethCarried")) : ItemStack.EMPTY;
+        phaseTicks = input.getIntOr("SaerethPhaseTicks", 0);
+        recipeId = input.read("SaerethRecipe", ResourceKey.codec(Registries.RECIPE)).orElse(null);
+        carried = input.read("SaerethCarried", ItemStack.OPTIONAL_CODEC).orElse(ItemStack.EMPTY);
         status = chestPos != null && arrayPos != null ? Status.READY : Status.NOT_LINKED;
         if (phase != Phase.IDLE && recipeId == null) {
             phase = Phase.IDLE;

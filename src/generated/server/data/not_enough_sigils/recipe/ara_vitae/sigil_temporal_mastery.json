@@ -1,0 +1,12 @@
+{
+  "type": "neovitae:ara_vitae_recipe",
+  "bloodNeeded": 100000,
+  "copyInputComponents": true,
+  "craftSpeed": 40,
+  "drainSpeed": 100,
+  "input": "animusnv:sigil_temporal_dominance",
+  "minTier": 5,
+  "output": {
+    "id": "not_enough_sigils:sigil_temporal_mastery"
+  }
+}

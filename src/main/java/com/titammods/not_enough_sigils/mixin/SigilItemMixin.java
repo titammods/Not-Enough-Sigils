@@ -10,8 +10,6 @@ import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(value = SigilItem.class, remap = false)
 public abstract class SigilItemMixin extends Item {
-    private static final int ENCHANTMENT_VALUE = 15;
-
     private SigilItemMixin(Properties properties) {
         super(properties);
     }
@@ -30,21 +28,5 @@ public abstract class SigilItemMixin extends Item {
             return MonkSigilEnchantments.isAllowed(enchantment);
         }
         return super.isPrimaryItemFor(stack, enchantment);
-    }
-
-    @Override
-    public boolean isEnchantable(ItemStack stack) {
-        if (MonkSigilEnchantments.isMonkSigil(stack)) {
-            return true;
-        }
-        return super.isEnchantable(stack);
-    }
-
-    @Override
-    public int getEnchantmentValue(ItemStack stack) {
-        if (MonkSigilEnchantments.isMonkSigil(stack)) {
-            return ENCHANTMENT_VALUE;
-        }
-        return super.getEnchantmentValue(stack);
     }
 }

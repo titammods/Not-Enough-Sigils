@@ -30,7 +30,7 @@ public class DelayedDamage {
             if (!target.isAlive() || !(target.level() instanceof ServerLevel level)) {
                 continue;
             }
-            target.hurt(ModDamageTypes.arcane(level, null, entry.source()), entry.damage());
+            target.hurtServer(level, ModDamageTypes.arcane(level, null, entry.source()), entry.damage());
             if (entry.afterHit() != null) {
                 entry.afterHit().accept(target);
             }

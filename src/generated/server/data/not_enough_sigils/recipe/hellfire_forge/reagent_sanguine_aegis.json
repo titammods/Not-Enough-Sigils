@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 5000.0,
+  "inputs": [
+    "minecraft:netherite_block",
+    "minecraft:conduit",
+    "neovitae:deus_shard",
+    "neovitae:spiritus_gem_grand"
+  ],
+  "minDrain": 5000.0,
+  "output": {
+    "id": "not_enough_sigils:reagent_sanguine_aegis"
+  }
+}

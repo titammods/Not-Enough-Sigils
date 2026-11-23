@@ -6,11 +6,18 @@ import com.breakinblocks.neovitae.registry.SigilTypeRegistry;
 import com.titammods.not_enough_sigils.NotEnoughSigils;
 import com.titammods.not_enough_sigils.holding.GreaterHoldingSigilItem;
 import com.titammods.not_enough_sigils.saereth.SaerethSigilItem;
+import com.breakinblocks.animusnv.registry.AnimusItems;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.enchantment.Enchantable;
+import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModItems {
+    public static final int MONK_ENCHANTMENT_VALUE = 15;
+
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(NotEnoughSigils.MODID);
 
     public static final DeferredItem<SigilItem> SIGIL_SOUL_PHOENIX = registerSigil("sigil_soul_phoenix", "soul_phoenix");
@@ -34,12 +41,13 @@ public class ModItems {
     public static final DeferredItem<SigilItem> SIGIL_TEMPORAL_MASTERY = registerSigil("sigil_temporal_mastery", "temporal_mastery");
     public static final DeferredItem<SigilItem> SIGIL_CURSE_OF_GLUTTONY = registerSigil("sigil_curse_of_gluttony", "curse_of_gluttony");
     public static final DeferredItem<SigilItem> SIGIL_FAIRYS_BLESSING = registerSigil("sigil_fairys_blessing", "fairys_blessing");
-    public static final DeferredItem<SaerethSigilItem> SAERETH_SIGIL = ITEMS.register("saereth_sigil", SaerethSigilItem::new);
+    public static final DeferredItem<SaerethSigilItem> SAERETH_SIGIL = ITEMS.registerItem("saereth_sigil", SaerethSigilItem::new,
+            properties -> properties.stacksTo(1).rarity(Rarity.EPIC).fireResistant());
 
     public static final DeferredItem<GreaterHoldingSigilItem> SIGIL_HOLDING_GREATER =
-            ITEMS.register("sigil_holding_greater", () -> new GreaterHoldingSigilItem(9, "tooltip.not_enough_sigils.sigil_holding_greater.desc"));
+            ITEMS.registerItem("sigil_holding_greater", properties -> new GreaterHoldingSigilItem(properties, 9, "tooltip.not_enough_sigils.sigil_holding_greater.desc"));
     public static final DeferredItem<GreaterHoldingSigilItem> SIGIL_HOLDING_SUPREME =
-            ITEMS.register("sigil_holding_supreme", () -> new GreaterHoldingSigilItem(18, "tooltip.not_enough_sigils.sigil_holding_supreme.desc"));
+            ITEMS.registerItem("sigil_holding_supreme", properties -> new GreaterHoldingSigilItem(properties, 18, "tooltip.not_enough_sigils.sigil_holding_supreme.desc"));
 
     public static final DeferredItem<Item> REAGENT_SOUL_PHOENIX = ITEMS.registerSimpleItem("reagent_soul_phoenix");
     public static final DeferredItem<Item> REAGENT_DEMON_NINJA = ITEMS.registerSimpleItem("reagent_demon_ninja");
@@ -60,8 +68,8 @@ public class ModItems {
     public static final DeferredItem<Item> REAGENT_CURSE_OF_GLUTTONY = ITEMS.registerSimpleItem("reagent_curse_of_gluttony");
     public static final DeferredItem<Item> REAGENT_FAIRYS_BLESSING = ITEMS.registerSimpleItem("reagent_fairys_blessing");
 
-    public static final DeferredItem<SpiritusGemItem> SPIRITUS_GEM_EXALTED = ITEMS.register("spiritus_gem_exalted", SpiritusGemItem::new);
-    public static final DeferredItem<SpiritusGemItem> SPIRITUS_GEM_PRIMORDIAL = ITEMS.register("spiritus_gem_primordial", SpiritusGemItem::new);
+    public static final DeferredItem<SpiritusGemItem> SPIRITUS_GEM_EXALTED = ITEMS.registerItem("spiritus_gem_exalted", SpiritusGemItem::new);
+    public static final DeferredItem<SpiritusGemItem> SPIRITUS_GEM_PRIMORDIAL = ITEMS.registerItem("spiritus_gem_primordial", SpiritusGemItem::new);
 
     public static final DeferredItem<Item> NINJA_KNIFE = ITEMS.registerSimpleItem("ninja_knife");
     public static final DeferredItem<Item> NINJA_KNIFE_EXPLOSIVE = ITEMS.registerSimpleItem("ninja_knife_explosive");
@@ -74,7 +82,12 @@ public class ModItems {
                 || item == NINJA_KNIFE_FROST.get() || item == NINJA_KNIFE_FIRE.get();
     }
 
+    public static void modifyComponents(ModifyDefaultComponentsEvent event) {
+        event.modify(AnimusItems.SIGIL_MONK.get(), (components, context, item) -> components.set(DataComponents.ENCHANTABLE, new Enchantable(MONK_ENCHANTMENT_VALUE)));
+        event.modify(SIGIL_SPIRITUAL_MONK.get(), (components, context, item) -> components.set(DataComponents.ENCHANTABLE, new Enchantable(MONK_ENCHANTMENT_VALUE)));
+    }
+
     private static DeferredItem<SigilItem> registerSigil(String name, String sigilType) {
-        return ITEMS.register(name, () -> new SigilItem(SigilTypeRegistry.key(NotEnoughSigils.rl(sigilType))));
+        return ITEMS.registerItem(name, properties -> new SigilItem(properties, SigilTypeRegistry.key(NotEnoughSigils.rl(sigilType))));
     }
 }

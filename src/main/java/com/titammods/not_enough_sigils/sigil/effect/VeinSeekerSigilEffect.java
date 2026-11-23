@@ -58,7 +58,7 @@ public record VeinSeekerSigilEffect(int radius, int maxResults, int duration, in
     }
 
     private boolean seek(Level level, Player player, ItemStack stack) {
-        if (player == null || player.getCooldowns().isOnCooldown(stack.getItem())) {
+        if (player == null || player.getCooldowns().isOnCooldown(stack)) {
             return false;
         }
         if (level.isClientSide()) {
@@ -84,7 +84,7 @@ public record VeinSeekerSigilEffect(int radius, int maxResults, int duration, in
 
         PacketDistributor.sendToPlayer(serverPlayer, new VeinSeekerPayload(found, duration));
         if (cooldown > 0) {
-            player.getCooldowns().addCooldown(stack.getItem(), cooldown);
+            player.getCooldowns().addCooldown(stack, cooldown);
         }
         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 1.0F, 1.0F);
         return true;

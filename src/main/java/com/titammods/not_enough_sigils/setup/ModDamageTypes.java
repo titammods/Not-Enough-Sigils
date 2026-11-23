@@ -15,7 +15,7 @@ public class ModDamageTypes {
 
     public static DamageSource arcane(Level level, @Nullable Entity directEntity, @Nullable Entity attacker) {
         return new DamageSource(
-                level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ARCANE),
+                level.registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE).getOrThrow(ARCANE),
                 directEntity,
                 attacker
         );

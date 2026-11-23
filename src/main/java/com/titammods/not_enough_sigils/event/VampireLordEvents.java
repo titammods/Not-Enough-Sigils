@@ -33,13 +33,13 @@ public class VampireLordEvents {
     @SubscribeEvent
     public static void onDamagePost(LivingDamageEvent.Post event) {
         ServerPlayer player = meleeAttacker(event.getSource().getEntity(), event.getSource().getDirectEntity(), event.getEntity());
-        if (player == null || event.getNewDamage() <= 0.0F) {
+        if (player == null || event.getHealthDamage() <= 0.0F) {
             return;
         }
         if (!SigilTracker.isActive(player, SigilTracker.Kind.VAMPIRE_LORD)) {
             return;
         }
-        player.heal(event.getNewDamage() * config(player).lifesteal());
+        player.heal(event.getHealthDamage() * config(player).lifesteal());
     }
 
     private static VampireLordSigilEffect config(ServerPlayer player) {

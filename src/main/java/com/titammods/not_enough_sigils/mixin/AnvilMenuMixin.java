@@ -32,7 +32,7 @@ public abstract class AnvilMenuMixin {
         player.giveExperiencePoints(levels);
     }
 
-    @ModifyConstant(method = "createResult", constant = @Constant(intValue = 40))
+    @ModifyConstant(method = "createResultInternal", constant = @Constant(intValue = 40))
     private int not_enough_sigils$removeTooExpensive(int limit) {
         return Integer.MAX_VALUE;
     }

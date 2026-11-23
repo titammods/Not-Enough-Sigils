@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 1000.0,
+  "inputs": [
+    "minecraft:blaze_rod",
+    "minecraft:golden_apple",
+    "minecraft:diamond_axe",
+    "minecraft:redstone_block"
+  ],
+  "minDrain": 2048.0,
+  "output": {
+    "id": "not_enough_sigils:reagent_berserk"
+  }
+}

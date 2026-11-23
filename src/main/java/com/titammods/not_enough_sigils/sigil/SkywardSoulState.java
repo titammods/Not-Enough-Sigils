@@ -17,7 +17,7 @@ public class SkywardSoulState {
         CompoundTag data = serverPlayer.getPersistentData();
         data.putBoolean(FLIGHT_TAG, true);
         data.remove(FALL_SAFE_TAG);
-        serverPlayer.fallDistance = 0.0F;
+        serverPlayer.resetFallDistance();
 
         if (!serverPlayer.getAbilities().mayfly) {
             serverPlayer.getAbilities().mayfly = true;
@@ -33,7 +33,7 @@ public class SkywardSoulState {
 
     public static void revokeFlight(ServerPlayer player) {
         CompoundTag data = player.getPersistentData();
-        if (!data.getBoolean(FLIGHT_TAG)) {
+        if (!data.getBooleanOr(FLIGHT_TAG, false)) {
             return;
         }
         data.remove(FLIGHT_TAG);

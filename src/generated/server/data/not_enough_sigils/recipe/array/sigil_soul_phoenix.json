@@ -1,0 +1,9 @@
+{
+  "type": "neovitae:array",
+  "addedinput": "neovitae:tabula_aetherea",
+  "baseinput": "not_enough_sigils:reagent_soul_phoenix",
+  "output": {
+    "id": "not_enough_sigils:sigil_soul_phoenix"
+  },
+  "texture": "neovitae:textures/models/alchemyarrays/sunarray.png"
+}

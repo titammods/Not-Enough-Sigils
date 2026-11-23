@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 256.0,
+  "inputs": [
+    "minecraft:cake",
+    "minecraft:golden_carrot",
+    "minecraft:rabbit_stew",
+    "minecraft:fermented_spider_eye"
+  ],
+  "minDrain": 512.0,
+  "output": {
+    "id": "not_enough_sigils:reagent_curse_of_gluttony"
+  }
+}

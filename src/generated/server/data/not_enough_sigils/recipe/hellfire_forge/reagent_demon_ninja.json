@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 64.0,
+  "inputs": [
+    "minecraft:fermented_spider_eye",
+    "minecraft:golden_carrot",
+    "minecraft:phantom_membrane",
+    "minecraft:black_wool"
+  ],
+  "minDrain": 128.0,
+  "output": {
+    "id": "not_enough_sigils:reagent_demon_ninja"
+  }
+}

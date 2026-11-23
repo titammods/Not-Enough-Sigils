@@ -41,12 +41,12 @@ public class BulletTimeState {
 
         for (Projectile projectile : player.level().getEntitiesOfClass(Projectile.class, area,
                 entity -> entity.isAlive() && entity.getOwner() != player && entity.distanceToSqr(player) <= radiusSqr)) {
-            if (projectile.getPersistentData().getBoolean(SLOWED_TAG)) {
+            if (projectile.getPersistentData().getBooleanOr(SLOWED_TAG, false)) {
                 continue;
             }
             projectile.getPersistentData().putBoolean(SLOWED_TAG, true);
             projectile.setDeltaMovement(projectile.getDeltaMovement().scale(config.projectileSpeedFactor()));
-            projectile.hasImpulse = true;
+            projectile.needsSync = true;
             projectile.hurtMarked = true;
         }
 
@@ -55,7 +55,7 @@ public class BulletTimeState {
         }
         for (Mob mob : player.level().getEntitiesOfClass(Mob.class, area,
                 entity -> entity.isAlive() && entity.distanceToSqr(player) <= radiusSqr)) {
-            mob.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, SLOW_DURATION, config.slowAmplifier(), false, true, true), player);
+            mob.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, SLOW_DURATION, config.slowAmplifier(), false, true, true), player);
         }
     }
 

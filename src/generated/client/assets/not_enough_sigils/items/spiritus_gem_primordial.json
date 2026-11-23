@@ -1,0 +1,41 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "not_enough_sigils:item/variant/spiritus_gem_primordial_ruina"
+        },
+        "when": "ruina"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "not_enough_sigils:item/variant/spiritus_gem_primordial_nihilum"
+        },
+        "when": "nihilum"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "not_enough_sigils:item/variant/spiritus_gem_primordial_invictus"
+        },
+        "when": "invictus"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "not_enough_sigils:item/variant/spiritus_gem_primordial_vindicta"
+        },
+        "when": "vindicta"
+      }
+    ],
+    "component": "neovitae:spiritus_type",
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "not_enough_sigils:item/variant/spiritus_gem_primordial_raw"
+    },
+    "property": "minecraft:component"
+  }
+}

@@ -38,7 +38,7 @@ public class BerserkEvents {
             return;
         }
         LivingEntity target = event.getEntity();
-        if (target == player || event.getNewDamage() <= 0.0F) {
+        if (target == player || event.getHealthDamage() <= 0.0F) {
             return;
         }
         BerserkSigilEffect config = SigilTracker.getEffect(player, SigilTracker.Kind.BERSERK, BerserkSigilEffect.class);
@@ -63,7 +63,7 @@ public class BerserkEvents {
         state.hits++;
         if (state.hits < config.hitsRequired()) {
             if (config.speedAmplifier() >= 0 && config.comboSpeedDuration() > 0) {
-                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, config.comboSpeedDuration(), config.speedAmplifier(), false, true, false));
+                player.addEffect(new MobEffectInstance(MobEffects.SPEED, config.comboSpeedDuration(), config.speedAmplifier(), false, true, false));
             }
             return;
         }
@@ -72,7 +72,7 @@ public class BerserkEvents {
         state.hits = 0;
         state.rageUntil = now + config.rageDuration();
         applyRage(player, config);
-        player.displayClientMessage(Component.translatable("message.not_enough_sigils.berserk.rage"), true);
+        player.sendOverlayMessage(Component.translatable("message.not_enough_sigils.berserk.rage"));
         player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.RAVAGER_ROAR, SoundSource.PLAYERS, 0.6F, 1.3F);
     }
 
@@ -83,10 +83,10 @@ public class BerserkEvents {
 
     private static void applyRage(ServerPlayer player, BerserkSigilEffect config) {
         if (config.strengthAmplifier() >= 0) {
-            player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, config.rageDuration(), config.strengthAmplifier(), false, true, false));
+            player.addEffect(new MobEffectInstance(MobEffects.STRENGTH, config.rageDuration(), config.strengthAmplifier(), false, true, false));
         }
         if (config.speedAmplifier() >= 0) {
-            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, config.rageDuration(), config.speedAmplifier(), false, true, false));
+            player.addEffect(new MobEffectInstance(MobEffects.SPEED, config.rageDuration(), config.speedAmplifier(), false, true, false));
         }
     }
 }

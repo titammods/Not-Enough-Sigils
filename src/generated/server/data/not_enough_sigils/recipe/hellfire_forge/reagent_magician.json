@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 256.0,
+  "inputs": [
+    "minecraft:amethyst_block",
+    "minecraft:ender_eye",
+    "minecraft:chorus_fruit",
+    "minecraft:book"
+  ],
+  "minDrain": 512.0,
+  "output": {
+    "id": "not_enough_sigils:reagent_magician"
+  }
+}

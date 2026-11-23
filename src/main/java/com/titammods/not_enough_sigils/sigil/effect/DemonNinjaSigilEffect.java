@@ -35,7 +35,7 @@ public record DemonNinjaSigilEffect(int revealTicks, int knifeCooldown, float kn
             SpiritusType.RAW, KnifeProfile.damage(DEFAULT_RAW_DAMAGE),
             SpiritusType.NIHILUM, new KnifeProfile(5.0F, 1.5F, 0.0F, Optional.empty(), 0, 0),
             SpiritusType.RUINA, new KnifeProfile(5.0F, 0.0F, 5.0F, Optional.empty(), 0, 0),
-            SpiritusType.INVICTUS, new KnifeProfile(5.0F, 0.0F, 0.0F, Optional.of(new MobEffectSpec(MobEffects.MOVEMENT_SLOWDOWN, 100, 2)), 100, 0),
+            SpiritusType.INVICTUS, new KnifeProfile(5.0F, 0.0F, 0.0F, Optional.of(new MobEffectSpec(MobEffects.SLOWNESS, 100, 2)), 100, 0),
             SpiritusType.VINDICTA, new KnifeProfile(5.0F, 0.0F, 0.0F, Optional.empty(), 0, 5)
     );
 
@@ -66,7 +66,7 @@ public record DemonNinjaSigilEffect(int revealTicks, int knifeCooldown, float kn
 
     @Override
     public boolean useOnAir(Level level, Player player, ItemStack stack) {
-        if (player.getCooldowns().isOnCooldown(stack.getItem())) {
+        if (player.getCooldowns().isOnCooldown(stack)) {
             return false;
         }
         if (level.isClientSide()) {
@@ -77,7 +77,7 @@ public record DemonNinjaSigilEffect(int revealTicks, int knifeCooldown, float kn
         knife.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, knifeVelocity, knifeInaccuracy);
         level.addFreshEntity(knife);
         if (knifeCooldown > 0) {
-            player.getCooldowns().addCooldown(stack.getItem(), knifeCooldown);
+            player.getCooldowns().addCooldown(stack, knifeCooldown);
         }
         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 0.6F, 1.8F);
         return true;
