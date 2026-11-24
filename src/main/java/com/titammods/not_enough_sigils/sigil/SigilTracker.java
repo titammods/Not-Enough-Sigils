@@ -31,7 +31,8 @@ public class SigilTracker {
         REAPER,
         SPIRITUAL_MONK,
         HELLBRAND,
-        WARDING_GALE
+        WARDING_GALE,
+        SANCTUARY
     }
 
     private record Entry(long tick, ItemStack stack, ISigilEffect effect) {

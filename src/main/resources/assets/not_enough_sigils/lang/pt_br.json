@@ -396,5 +396,13 @@
   "book.not_enough_sigils.guide.sigils.alchemist.name": "Selo do Alquimista",
   "book.not_enough_sigils.guide.sigils.alchemist.description": "Transmuta experiência e Essentia Vitae.",
   "book.not_enough_sigils.guide.sigils.alchemist.effect.title": "Selo do Alquimista",
-  "book.not_enough_sigils.guide.sigils.alchemist.effect.text": "Cada uso transmuta até 100 pontos de experiência. Agache e use para trocar a direção; a descrição do item mostra a atual.\\\n\\\n[#](8B0000)Experiência para EV:[#]() 10 EV por ponto, nunca além da capacidade do melhor Orbe de Sangue que você carrega.\\\n[#](8B0000)EV para Experiência:[#]() 20 EV por ponto. A ida e volta sempre perde sangue."
+  "book.not_enough_sigils.guide.sigils.alchemist.effect.text": "Cada uso transmuta até 100 pontos de experiência. Agache e use para trocar a direção; a descrição do item mostra a atual.\\\n\\\n[#](8B0000)Experiência para EV:[#]() 10 EV por ponto, nunca além da capacidade do melhor Orbe de Sangue que você carrega.\\\n[#](8B0000)EV para Experiência:[#]() 20 EV por ponto. A ida e volta sempre perde sangue.",
+  "item.not_enough_sigils.sigil_sanctuary": "Selo do Santuário",
+  "item.not_enough_sigils.reagent_sanctuary": "Reagente: Santuário",
+  "sigil.not_enough_sigils.sanctuary": "Selo do Santuário",
+  "tooltip.neovitae.sigil.sanctuary.desc": "Enquanto ativo, criaturas hostis não nascem a até 32 blocos de você",
+  "book.not_enough_sigils.guide.sigils.sanctuary.name": "Selo do Santuário",
+  "book.not_enough_sigils.guide.sigils.sanctuary.description": "Impede que criaturas hostis nasçam ao seu redor.",
+  "book.not_enough_sigils.guide.sigils.sanctuary.effect.title": "Selo do Santuário",
+  "book.not_enough_sigils.guide.sigils.sanctuary.effect.text": "Enquanto ativo, nenhuma criatura hostil nasce naturalmente a até 32 blocos de você: nem no escuro, nem em patrulhas, nem em cercos. Um leve anel de luz marca a proteção.\\\n\\\nSpawners de monstros e spawners de desafio continuam funcionando, então suas farms estão seguras.\\\n\\\n[#](8B0000)Manutenção:[#]() 120 EV a cada 5 segundos enquanto ativo"
 }

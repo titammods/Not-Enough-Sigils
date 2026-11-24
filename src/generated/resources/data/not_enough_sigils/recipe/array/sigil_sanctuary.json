@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:array",
+  "addedinput": {
+    "item": "neovitae:tabula_aetherea"
+  },
+  "baseinput": {
+    "item": "not_enough_sigils:reagent_sanctuary"
+  },
+  "output": {
+    "count": 1,
+    "id": "not_enough_sigils:sigil_sanctuary"
+  },
+  "texture": "neovitae:textures/models/alchemyarrays/suppressionsigil.png"
+}

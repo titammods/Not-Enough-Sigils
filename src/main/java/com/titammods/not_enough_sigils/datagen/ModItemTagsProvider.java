@@ -48,6 +48,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 ModItems.SIGIL_FAIRYS_BLESSING.get(),
                 ModItems.SIGIL_FAIRYS_BLESSING_DIVINE.get(),
                 ModItems.SIGIL_BERSERK_DIVINE.get(),
+                ModItems.SIGIL_SANCTUARY.get(),
                 ModItems.SIGIL_HOLDING_DIVINE.get()
         );
         tag(CURIOS_NECKLACE).add(ModItems.SPIRITUS_GEM_EXALTED.get(), ModItems.SPIRITUS_GEM_PRIMORDIAL.get());

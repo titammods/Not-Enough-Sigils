@@ -396,5 +396,13 @@
   "book.not_enough_sigils.guide.sigils.alchemist.name": "Sigil of the Alchemist",
   "book.not_enough_sigils.guide.sigils.alchemist.description": "Transmutes experience and Essentia Vitae.",
   "book.not_enough_sigils.guide.sigils.alchemist.effect.title": "Sigil of the Alchemist",
-  "book.not_enough_sigils.guide.sigils.alchemist.effect.text": "Each use transmutes up to 100 experience points. Sneak and use to switch the direction; the tooltip shows the current one.\\\n\\\n[#](8B0000)Experience to EV:[#]() 10 EV per point, never beyond the capacity of the best Blood Orb you carry.\\\n[#](8B0000)EV to Experience:[#]() 20 EV per point. The round trip always loses blood."
+  "book.not_enough_sigils.guide.sigils.alchemist.effect.text": "Each use transmutes up to 100 experience points. Sneak and use to switch the direction; the tooltip shows the current one.\\\n\\\n[#](8B0000)Experience to EV:[#]() 10 EV per point, never beyond the capacity of the best Blood Orb you carry.\\\n[#](8B0000)EV to Experience:[#]() 20 EV per point. The round trip always loses blood.",
+  "item.not_enough_sigils.sigil_sanctuary": "Sigil of Sanctuary",
+  "item.not_enough_sigils.reagent_sanctuary": "Reagent: Sanctuary",
+  "sigil.not_enough_sigils.sanctuary": "Sigil of Sanctuary",
+  "tooltip.neovitae.sigil.sanctuary.desc": "While active, hostile creatures cannot spawn within 32 blocks of you",
+  "book.not_enough_sigils.guide.sigils.sanctuary.name": "Sigil of Sanctuary",
+  "book.not_enough_sigils.guide.sigils.sanctuary.description": "Keeps hostile creatures from spawning around you.",
+  "book.not_enough_sigils.guide.sigils.sanctuary.effect.title": "Sigil of Sanctuary",
+  "book.not_enough_sigils.guide.sigils.sanctuary.effect.text": "While active, no hostile creature can spawn naturally within 32 blocks of you: not in the dark, not in patrols, not in sieges. A faint ring of light marks the ward.\\\n\\\nMonster spawners and trial spawners keep working, so your farms are safe.\\\n\\\n[#](8B0000)Upkeep:[#]() 120 EV every 5 seconds while active"
 }
