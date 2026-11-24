@@ -1,0 +1,62 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "sigils",
+  "condition": {
+    "type": "modonomicon:entry_read",
+    "entry_id": "sigils/introduction"
+  },
+  "description": "book.not_enough_sigils.guide.sigils.skyward_soul.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "not_enough_sigils:sigil_skyward_soul"
+  },
+  "name": "book.not_enough_sigils.guide.sigils.skyward_soul.name",
+  "pages": [
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.sigils.skyward_soul.effect.text",
+      "title": "book.not_enough_sigils.guide.sigils.skyward_soul.effect.title",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "neovitae:hellfire_forge_recipe",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "recipe_id_1": "not_enough_sigils:hellfire_forge/reagent_skyward_soul",
+      "text": "",
+      "title1": "",
+      "title2": ""
+    },
+    {
+      "type": "neovitae:alchemy_array_recipe",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "recipe_id_1": "not_enough_sigils:array/sigil_skyward_soul",
+      "text": "",
+      "title1": "",
+      "title2": ""
+    }
+  ],
+  "parents": [
+    {
+      "draw_arrow": true,
+      "entry": "sigils/introduction",
+      "line_enabled": true,
+      "line_reversed": false
+    }
+  ],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 9,
+  "x": -4,
+  "y": 1
+}

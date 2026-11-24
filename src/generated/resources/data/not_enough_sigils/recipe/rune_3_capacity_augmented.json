@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "d": {
+      "item": "neovitae:deus_shard"
+    },
+    "h": {
+      "item": "neovitae:hellforged_parts"
+    },
+    "n": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "r": {
+      "item": "neovitae:rune_2_capacity_augmented"
+    }
+  },
+  "pattern": [
+    "nhn",
+    "drd",
+    "nhn"
+  ],
+  "result": {
+    "count": 1,
+    "id": "not_enough_sigils:rune_3_capacity_augmented"
+  }
+}

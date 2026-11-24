@@ -9,8 +9,10 @@ import com.titammods.not_enough_sigils.setup.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -34,6 +36,16 @@ public class ModRecipeProvider extends RecipeProvider {
         forgeRecipes(output);
         arrayRecipes(output);
         altarRecipes(output);
+        runeRecipes(output);
+        guideRecipe(output);
+    }
+
+    private void guideRecipe(RecipeOutput output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GUIDE_BOOK.get())
+                .pattern(" g ").pattern("gbg").pattern(" g ")
+                .define('g', Items.GOLD_NUGGET).define('b', Items.BOOK)
+                .unlockedBy("has_book", has(Items.BOOK))
+                .save(output, NotEnoughSigils.rl("guide_book"));
     }
 
     private void forgeRecipes(RecipeOutput output) {
@@ -84,12 +96,33 @@ public class ModRecipeProvider extends RecipeProvider {
         array(output, ModItems.SIGIL_CURSE_OF_GLUTTONY.get(), ModItems.REAGENT_CURSE_OF_GLUTTONY.get(), "tabula_spiritus", "fountainarray");
     }
 
+    private void runeRecipes(RecipeOutput output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.RUNE_3_CAPACITY_AUGMENTED.get())
+                .pattern("nhn").pattern("drd").pattern("nhn")
+                .define('n', Items.NETHERITE_INGOT).define('h', nv("hellforged_parts")).define('d', nv("deus_shard")).define('r', nv("rune_2_capacity_augmented"))
+                .unlockedBy("has_rune", has(nv("rune_2_capacity_augmented")))
+                .save(output, NotEnoughSigils.rl("rune_3_capacity_augmented"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.RUNE_3_SPEED.get())
+                .pattern("nhn").pattern("drd").pattern("nhn")
+                .define('n', Items.NETHERITE_INGOT).define('h', nv("hellforged_parts")).define('d', nv("deus_shard")).define('r', nv("rune_2_speed"))
+                .unlockedBy("has_rune", has(nv("rune_2_speed")))
+                .save(output, NotEnoughSigils.rl("rune_3_speed"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.RUNE_ETERNITY.get())
+                .pattern("dsd").pattern("hrh").pattern("dsd")
+                .define('d', nv("deus_shard")).define('s', Items.NETHER_STAR).define('h', nv("hellforged_parts")).define('r', nv("rune_2_efficiency"))
+                .unlockedBy("has_rune", has(nv("rune_2_efficiency")))
+                .save(output, NotEnoughSigils.rl("rune_eternity"));
+    }
+
     private void altarRecipes(RecipeOutput output) {
         altar(output, ModItems.SIGIL_HOLDING_GREATER.get(), nv("sigil_holding"), 4, 50000, 30, 50);
         altar(output, ModItems.SIGIL_SOUL_PHOENIX_GREATER.get(), ModItems.SIGIL_SOUL_PHOENIX.get(), 6, 250000, 80, 200);
         altar(output, ModItems.SIGIL_ARCHMAGE.get(), ModItems.SIGIL_MAGICIAN.get(), 6, 250000, 80, 200);
         altar(output, ModItems.SIGIL_HOLDING_SUPREME.get(), ModItems.SIGIL_HOLDING_GREATER.get(), 6, 300000, 80, 200);
         altar(output, ModItems.SIGIL_TEMPORAL_MASTERY.get(), item("animusnv", "sigil_temporal_dominance"), 7, 600000, 120, 300);
+        altar(output, ModItems.SIGIL_FAIRYS_BLESSING_DIVINE.get(), ModItems.SIGIL_FAIRYS_BLESSING.get(), 6, 250000, 80, 200);
+        altar(output, ModItems.SIGIL_BERSERK_DIVINE.get(), ModItems.SIGIL_BERSERK.get(), 6, 250000, 80, 200);
+        altar(output, ModItems.SIGIL_HOLDING_DIVINE.get(), ModItems.SIGIL_HOLDING_SUPREME.get(), 7, 800000, 120, 300);
         orb(output, ModItems.BLOOD_ORB_ASCENDANT.get(), ModItems.SPIRITUS_GEM_EXALTED.get(), 6, 500000, 150, 300);
         orb(output, ModItems.BLOOD_ORB_DIVINE.get(), ModItems.SPIRITUS_GEM_PRIMORDIAL.get(), 7, 1200000, 200, 400);
     }

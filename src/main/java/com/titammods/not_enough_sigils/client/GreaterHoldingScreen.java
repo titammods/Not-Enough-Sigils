@@ -14,6 +14,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
 public class GreaterHoldingScreen extends AbstractContainerScreen<GreaterHoldingMenu> {
     private static final ResourceLocation BACKGROUND_ONE_ROW = NotEnoughSigils.rl("textures/gui/sigil_holding_greater.png");
     private static final ResourceLocation BACKGROUND_TWO_ROWS = NotEnoughSigils.rl("textures/gui/sigil_holding_supreme.png");
+    private static final ResourceLocation BACKGROUND_THREE_ROWS = NotEnoughSigils.rl("textures/gui/sigil_holding_divine.png");
     private static final int SLOT_SIZE = 16;
     private static final int SELECTION_COLOR = 0xFFE0B040;
 
@@ -21,7 +22,7 @@ public class GreaterHoldingScreen extends AbstractContainerScreen<GreaterHolding
 
     public GreaterHoldingScreen(GreaterHoldingMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
-        this.background = menu.getRows() > 1 ? BACKGROUND_TWO_ROWS : BACKGROUND_ONE_ROW;
+        this.background = menu.getRows() > 2 ? BACKGROUND_THREE_ROWS : menu.getRows() > 1 ? BACKGROUND_TWO_ROWS : BACKGROUND_ONE_ROW;
         this.imageWidth = 176;
         this.imageHeight = menu.getPlayerInventoryY() + 82;
         this.inventoryLabelY = menu.getPlayerInventoryY() - 11;

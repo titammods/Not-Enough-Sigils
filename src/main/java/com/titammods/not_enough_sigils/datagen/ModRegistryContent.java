@@ -58,6 +58,8 @@ public class ModRegistryContent {
         register(context, "temporal_mastery", 0, 0, 0, TemporalMasterySigilEffect.DEFAULT);
         toggle(context, "curse_of_gluttony", 0, CurseOfGluttonySigilEffect.DEFAULT);
         toggle(context, "fairys_blessing", 60, FairysBlessingSigilEffect.DEFAULT);
+        toggle(context, "fairys_blessing_divine", 150, new FairysBlessingSigilEffect(4, FairysBlessingSigilEffect.DEFAULT_DURATION, FairysBlessingSigilEffect.DEFAULT_REFRESH_BELOW));
+        toggle(context, "berserk_divine", 80, new BerserkSigilEffect(6, 300, 600, 4, 2, 140));
     }
 
     private static void toggle(BootstrapContext<SigilType> context, String name, int active, ISigilEffect effect) {

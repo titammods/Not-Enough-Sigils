@@ -1,0 +1,83 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "altar",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.not_enough_sigils.guide.altar.ascended_tiers.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "neovitae:ara_vitae"
+  },
+  "name": "book.not_enough_sigils.guide.altar.ascended_tiers.name",
+  "pages": [
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.altar.ascended_tiers.intro.text",
+      "title": "book.not_enough_sigils.guide.altar.ascended_tiers.intro.title",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "neovitae:altar_tier_info",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "title": "book.not_enough_sigils.guide.altar.ascended_tiers.tier_table.title"
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.altar.ascended_tiers.tier6_text.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:multiblock",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "multiblock_id": "not_enough_sigils:altar_seven",
+      "multiblock_name": "book.not_enough_sigils.guide.altar.ascended_tiers.tier6.title",
+      "show_visualize_button": true,
+      "text": "book.not_enough_sigils.guide.altar.ascended_tiers.tier6.text"
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.altar.ascended_tiers.tier7_text.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:multiblock",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "multiblock_id": "not_enough_sigils:altar_eight",
+      "multiblock_name": "book.not_enough_sigils.guide.altar.ascended_tiers.tier7.title",
+      "show_visualize_button": true,
+      "text": "book.not_enough_sigils.guide.altar.ascended_tiers.tier7.text"
+    }
+  ],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 0,
+  "x": 0,
+  "y": -3
+}

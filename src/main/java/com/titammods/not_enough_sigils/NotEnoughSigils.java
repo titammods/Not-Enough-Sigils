@@ -2,10 +2,13 @@ package com.titammods.not_enough_sigils;
 
 import com.breakinblocks.neovitae.common.item.OrbFluidHandler;
 import com.titammods.not_enough_sigils.altar.AltarBookSync;
+import com.titammods.not_enough_sigils.altar.AscendedRuneStats;
+import com.titammods.not_enough_sigils.altar.AscendedRunes;
 import com.titammods.not_enough_sigils.client.ClientSetup;
 import com.titammods.not_enough_sigils.datagen.DataGenerators;
 import com.titammods.not_enough_sigils.network.ModNetworking;
 import com.titammods.not_enough_sigils.saereth.SaerethSettings;
+import com.titammods.not_enough_sigils.setup.ModBlocks;
 import com.titammods.not_enough_sigils.setup.ModCreativeTabs;
 import com.titammods.not_enough_sigils.setup.ModEntities;
 import com.titammods.not_enough_sigils.setup.ModItems;
@@ -27,6 +30,7 @@ public class NotEnoughSigils {
 
     public NotEnoughSigils(IEventBus modEventBus) {
         ModSigilEffects.SIGIL_EFFECTS.register(modEventBus);
+        ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModEntities.ENTITY_TYPES.register(modEventBus);
         ModRituals.RITUALS.register(modEventBus);
@@ -37,6 +41,9 @@ public class NotEnoughSigils {
         modEventBus.addListener(DataGenerators::gather);
         modEventBus.addListener(ModEntities::registerAttributes);
         modEventBus.addListener(NotEnoughSigils::registerCapabilities);
+        modEventBus.addListener(AscendedRuneStats::register);
+        modEventBus.addListener(AscendedRunes::onCommonSetup);
+        NeoForge.EVENT_BUS.addListener(AscendedRunes::onCalculateStats);
         NeoForge.EVENT_BUS.addListener(SaerethSettings::onAddReloadListeners);
         AltarBookSync.register(NeoForge.EVENT_BUS);
 

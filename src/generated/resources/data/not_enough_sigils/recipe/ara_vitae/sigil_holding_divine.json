@@ -1,0 +1,15 @@
+{
+  "type": "neovitae:ara_vitae_recipe",
+  "bloodNeeded": 800000,
+  "copyInputComponents": true,
+  "craftSpeed": 120,
+  "drainSpeed": 300,
+  "input": {
+    "item": "not_enough_sigils:sigil_holding_supreme"
+  },
+  "minTier": 7,
+  "output": {
+    "count": 1,
+    "id": "not_enough_sigils:sigil_holding_divine"
+  }
+}

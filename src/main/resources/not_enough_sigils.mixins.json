@@ -4,6 +4,7 @@
   "package": "com.titammods.not_enough_sigils.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "AraVitaeTileMixin",
     "AnvilMenuMixin",
     "ItemSigilHoldingMixin",
     "LivingEntityMixin",

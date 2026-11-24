@@ -1,0 +1,62 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "saereth",
+  "condition": {
+    "type": "modonomicon:entry_read",
+    "entry_id": "saereth/ritual"
+  },
+  "description": "book.not_enough_sigils.guide.saereth.sigil.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "not_enough_sigils:saereth_sigil"
+  },
+  "name": "book.not_enough_sigils.guide.saereth.sigil.name",
+  "pages": [
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.saereth.sigil.intro.text",
+      "title": "book.not_enough_sigils.guide.saereth.sigil.intro.title",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.saereth.sigil.linking.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.saereth.sigil.capture.text",
+      "title": "",
+      "use_markdown_in_title": false
+    }
+  ],
+  "parents": [
+    {
+      "draw_arrow": true,
+      "entry": "saereth/ritual",
+      "line_enabled": true,
+      "line_reversed": false
+    }
+  ],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 1,
+  "x": -3,
+  "y": 0
+}

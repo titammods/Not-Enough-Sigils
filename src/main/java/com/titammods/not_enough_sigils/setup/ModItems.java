@@ -2,17 +2,24 @@ package com.titammods.not_enough_sigils.setup;
 
 import com.breakinblocks.neovitae.common.item.BloodOrbItem;
 import com.breakinblocks.neovitae.common.item.SpiritusGemItem;
+import com.breakinblocks.neovitae.common.item.block.RuneBlockItem;
 import com.breakinblocks.neovitae.common.item.sigil.SigilItem;
 import com.breakinblocks.neovitae.registry.SigilTypeRegistry;
 import com.titammods.not_enough_sigils.NotEnoughSigils;
+import com.titammods.not_enough_sigils.book.GuideBookItem;
 import com.titammods.not_enough_sigils.holding.GreaterHoldingSigilItem;
 import com.titammods.not_enough_sigils.saereth.SaerethSigilItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(NotEnoughSigils.MODID);
+
+    public static final DeferredItem<GuideBookItem> GUIDE_BOOK = ITEMS.register("guide_book", GuideBookItem::new);
 
     public static final DeferredItem<SigilItem> SIGIL_SOUL_PHOENIX = registerSigil("sigil_soul_phoenix", "soul_phoenix");
     public static final DeferredItem<SigilItem> SIGIL_DEMON_NINJA = registerSigil("sigil_demon_ninja", "demon_ninja");
@@ -34,6 +41,8 @@ public class ModItems {
     public static final DeferredItem<SigilItem> SIGIL_PONYMEAL = registerSigil("sigil_ponymeal", "ponymeal");
     public static final DeferredItem<SigilItem> SIGIL_TEMPORAL_MASTERY = registerSigil("sigil_temporal_mastery", "temporal_mastery");
     public static final DeferredItem<SigilItem> SIGIL_CURSE_OF_GLUTTONY = registerSigil("sigil_curse_of_gluttony", "curse_of_gluttony");
+    public static final DeferredItem<SigilItem> SIGIL_FAIRYS_BLESSING_DIVINE = registerSigil("sigil_fairys_blessing_divine", "fairys_blessing_divine");
+    public static final DeferredItem<SigilItem> SIGIL_BERSERK_DIVINE = registerSigil("sigil_berserk_divine", "berserk_divine");
     public static final DeferredItem<SigilItem> SIGIL_FAIRYS_BLESSING = registerSigil("sigil_fairys_blessing", "fairys_blessing");
     public static final DeferredItem<BloodOrbItem> BLOOD_ORB_ASCENDANT = ITEMS.register("blood_orb_ascendant", BloodOrbItem::new);
     public static final DeferredItem<BloodOrbItem> BLOOD_ORB_DIVINE = ITEMS.register("blood_orb_divine", BloodOrbItem::new);
@@ -43,6 +52,12 @@ public class ModItems {
             ITEMS.register("sigil_holding_greater", () -> new GreaterHoldingSigilItem(9, "tooltip.not_enough_sigils.sigil_holding_greater.desc"));
     public static final DeferredItem<GreaterHoldingSigilItem> SIGIL_HOLDING_SUPREME =
             ITEMS.register("sigil_holding_supreme", () -> new GreaterHoldingSigilItem(18, "tooltip.not_enough_sigils.sigil_holding_supreme.desc"));
+    public static final DeferredItem<GreaterHoldingSigilItem> SIGIL_HOLDING_DIVINE =
+            ITEMS.register("sigil_holding_divine", () -> new GreaterHoldingSigilItem(27, "tooltip.not_enough_sigils.sigil_holding_divine.desc"));
+
+    public static final DeferredItem<RuneBlockItem> RUNE_3_CAPACITY_AUGMENTED = rune(ModBlocks.RUNE_3_CAPACITY_AUGMENTED, "rune.capacity_augmented", "rune.ascended");
+    public static final DeferredItem<RuneBlockItem> RUNE_3_SPEED = rune(ModBlocks.RUNE_3_SPEED, "rune.speed", "rune.ascended");
+    public static final DeferredItem<RuneBlockItem> RUNE_ETERNITY = rune(ModBlocks.RUNE_ETERNITY, "rune.eternity", "rune.ascended");
 
     public static final DeferredItem<Item> REAGENT_SOUL_PHOENIX = ITEMS.registerSimpleItem("reagent_soul_phoenix");
     public static final DeferredItem<Item> REAGENT_DEMON_NINJA = ITEMS.registerSimpleItem("reagent_demon_ninja");
@@ -75,6 +90,14 @@ public class ModItems {
     public static boolean isHiddenFromTab(Item item) {
         return item == NINJA_KNIFE.get() || item == NINJA_KNIFE_EXPLOSIVE.get() || item == NINJA_KNIFE_LIGHTNING.get()
                 || item == NINJA_KNIFE_FROST.get() || item == NINJA_KNIFE_FIRE.get();
+    }
+
+    private static DeferredItem<RuneBlockItem> rune(DeferredBlock<Block> block, String... tooltips) {
+        String[] keys = new String[tooltips.length];
+        for (int i = 0; i < tooltips.length; i++) {
+            keys[i] = "tooltip." + NotEnoughSigils.MODID + "." + tooltips[i];
+        }
+        return ITEMS.register(block.getId().getPath(), () -> new RuneBlockItem(block.get(), new Item.Properties().rarity(Rarity.EPIC), keys));
     }
 
     private static DeferredItem<SigilItem> registerSigil(String name, String sigilType) {

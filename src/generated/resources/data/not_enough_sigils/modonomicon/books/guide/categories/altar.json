@@ -1,0 +1,28 @@
+{
+  "background": "modonomicon:textures/gui/dark_slate_seamless.png",
+  "background_height": 512,
+  "background_parallax_layers": [
+    {
+      "background": "not_enough_sigils:textures/gui/parallax/altar_base.png"
+    },
+    {
+      "background": "not_enough_sigils:textures/gui/parallax/altar_layer_1.png"
+    },
+    {
+      "background": "not_enough_sigils:textures/gui/parallax/altar_layer_2.png"
+    }
+  ],
+  "background_texture_zoom_multiplier": 1.0,
+  "background_width": 512,
+  "description": "book.not_enough_sigils.guide.altar.description",
+  "display_mode": "node",
+  "entry_textures": "modonomicon:textures/gui/entry_textures.png",
+  "icon": {
+    "item": "neovitae:ara_vitae"
+  },
+  "max_scroll_x": 512,
+  "max_scroll_y": 512,
+  "name": "book.not_enough_sigils.guide.altar.name",
+  "show_category_button": true,
+  "sort_number": 2
+}

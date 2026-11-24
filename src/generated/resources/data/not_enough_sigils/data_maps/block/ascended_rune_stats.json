@@ -1,0 +1,14 @@
+{
+  "values": {
+    "not_enough_sigils:rune_3_capacity_augmented": {
+      "augmented_capacity_power": 1.3354691406249999
+    },
+    "not_enough_sigils:rune_3_speed": {
+      "acceleration_mod": 1,
+      "consumption_mod": 1.0
+    },
+    "not_enough_sigils:rune_eternity": {
+      "cost_reduction": 0.02
+    }
+  }
+}

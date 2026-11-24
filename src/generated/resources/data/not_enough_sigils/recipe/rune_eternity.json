@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "d": {
+      "item": "neovitae:deus_shard"
+    },
+    "h": {
+      "item": "neovitae:hellforged_parts"
+    },
+    "r": {
+      "item": "neovitae:rune_2_efficiency"
+    },
+    "s": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "pattern": [
+    "dsd",
+    "hrh",
+    "dsd"
+  ],
+  "result": {
+    "count": 1,
+    "id": "not_enough_sigils:rune_eternity"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "sigils",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.not_enough_sigils.guide.sigils.introduction.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "not_enough_sigils:reagent_soul_phoenix"
+  },
+  "name": "book.not_enough_sigils.guide.sigils.introduction.name",
+  "pages": [
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.sigils.introduction.intro.text",
+      "title": "book.not_enough_sigils.guide.sigils.introduction.intro.title",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.sigils.introduction.reagents.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.sigils.introduction.arrays.text",
+      "title": "",
+      "use_markdown_in_title": false
+    }
+  ],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 0,
+  "x": 0,
+  "y": -4
+}

@@ -1,0 +1,11 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:berserk",
+    "combo_speed_duration": 140,
+    "hits_required": 6,
+    "rage_duration": 600,
+    "speed_amplifier": 2,
+    "strength_amplifier": 4
+  },
+  "lp_cost_active": 80
+}

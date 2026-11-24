@@ -1,0 +1,7 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:fairys_blessing",
+    "amplifier": 4
+  },
+  "lp_cost_active": 150
+}

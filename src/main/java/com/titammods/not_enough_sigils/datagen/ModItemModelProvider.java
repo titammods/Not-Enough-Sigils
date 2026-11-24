@@ -6,6 +6,7 @@ import com.titammods.not_enough_sigils.NotEnoughSigils;
 import com.titammods.not_enough_sigils.setup.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
@@ -34,6 +35,8 @@ public class ModItemModelProvider extends ItemModelProvider {
                 spiritusGem(holder.getId().getPath());
             } else if (item instanceof BloodOrbItem) {
                 bloodOrb(holder.getId().getPath());
+            } else if (item instanceof BlockItem) {
+                getBuilder(holder.getId().getPath()).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + holder.getId().getPath())));
             } else {
                 basicItem(item);
             }

@@ -1,0 +1,92 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "altar",
+  "condition": {
+    "type": "modonomicon:entry_read",
+    "entry_id": "altar/ascended_tiers"
+  },
+  "description": "book.not_enough_sigils.guide.altar.blood_orbs.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "not_enough_sigils:blood_orb_divine"
+  },
+  "name": "book.not_enough_sigils.guide.altar.blood_orbs.name",
+  "pages": [
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.altar.blood_orbs.intro.text",
+      "title": "book.not_enough_sigils.guide.altar.blood_orbs.intro.title",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.altar.blood_orbs.ascendant.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "neovitae:ara_vitae_recipe",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "recipe_id_1": "not_enough_sigils:ara_vitae/blood_orb_ascendant",
+      "text": "",
+      "title1": "",
+      "title2": ""
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.altar.blood_orbs.divine.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "neovitae:ara_vitae_recipe",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "recipe_id_1": "not_enough_sigils:ara_vitae/blood_orb_divine",
+      "text": "",
+      "title1": "",
+      "title2": ""
+    },
+    {
+      "type": "neovitae:blood_orb_stats",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "title": "book.not_enough_sigils.guide.altar.blood_orbs.orb_tiers.title"
+    }
+  ],
+  "parents": [
+    {
+      "draw_arrow": true,
+      "entry": "altar/ascended_tiers",
+      "line_enabled": true,
+      "line_reversed": false
+    }
+  ],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 1,
+  "x": -3,
+  "y": 0
+}

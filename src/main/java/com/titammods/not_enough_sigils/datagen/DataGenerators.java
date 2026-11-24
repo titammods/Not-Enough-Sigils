@@ -22,7 +22,9 @@ public class DataGenerators {
                 .add(SigilTypeRegistry.SIGIL_TYPE_KEY, ModRegistryContent::sigilTypes)
                 .add(NVRegistries.Keys.ALTAR_TIER_KEY, ModAltarTiers::bootstrap));
 
+        generator.addProvider(event.includeClient(), new ModBlockStateProvider(output, fileHelper));
         generator.addProvider(event.includeClient(), new ModItemModelProvider(output, fileHelper));
+        generator.addProvider(event.includeServer(), ModBlockLootProvider.create(output, event.getLookupProvider()));
 
         ModBlockTagsProvider blockTags = generator.addProvider(event.includeServer(),
                 new ModBlockTagsProvider(output, event.getLookupProvider(), fileHelper));
