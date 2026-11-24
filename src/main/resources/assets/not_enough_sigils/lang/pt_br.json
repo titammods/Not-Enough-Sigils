@@ -404,5 +404,16 @@
   "book.not_enough_sigils.guide.sigils.sanctuary.name": "Selo do Santuário",
   "book.not_enough_sigils.guide.sigils.sanctuary.description": "Impede que criaturas hostis nasçam ao seu redor.",
   "book.not_enough_sigils.guide.sigils.sanctuary.effect.title": "Selo do Santuário",
-  "book.not_enough_sigils.guide.sigils.sanctuary.effect.text": "Enquanto ativo, nenhuma criatura hostil nasce naturalmente a até 32 blocos de você: nem no escuro, nem em patrulhas, nem em cercos. Um leve anel de luz marca a proteção.\\\n\\\nSpawners de monstros e spawners de desafio continuam funcionando, então suas farms estão seguras.\\\n\\\n[#](8B0000)Manutenção:[#]() 120 EV a cada 5 segundos enquanto ativo"
+  "book.not_enough_sigils.guide.sigils.sanctuary.effect.text": "Enquanto ativo, nenhuma criatura hostil nasce naturalmente a até 32 blocos de você: nem no escuro, nem em patrulhas, nem em cercos. Um leve anel de luz marca a proteção.\\\n\\\nSpawners de monstros e spawners de desafio continuam funcionando, então suas farms estão seguras.\\\n\\\n[#](8B0000)Manutenção:[#]() 120 EV a cada 5 segundos enquanto ativo",
+  "item.not_enough_sigils.sigil_executioner": "Selo do Carrasco",
+  "item.not_enough_sigils.reagent_executioner": "Reagente: Carrasco",
+  "sigil.not_enough_sigils.executioner": "Selo do Carrasco",
+  "tooltip.neovitae.sigil.executioner.desc": "Golpes corpo a corpo executam inimigos abaixo de 15% de vida. Chefes são imunes",
+  "death.attack.not_enough_sigils.execution": "%1$s foi executado por %2$s",
+  "death.attack.not_enough_sigils.execution.item": "%1$s foi executado por %2$s usando %3$s",
+  "death.attack.not_enough_sigils.execution.player": "%1$s foi executado enquanto lutava contra %2$s",
+  "book.not_enough_sigils.guide.sigils.executioner.name": "Selo do Carrasco",
+  "book.not_enough_sigils.guide.sigils.executioner.description": "Finaliza inimigos enfraquecidos com um golpe.",
+  "book.not_enough_sigils.guide.sigils.executioner.effect.title": "Selo do Carrasco",
+  "book.not_enough_sigils.guide.sigils.executioner.effect.text": "Enquanto ativo, qualquer golpe corpo a corpo que deixe uma criatura abaixo de 15% da vida máxima a executa na hora, ignorando armadura e proteção.\\\n\\\nChefes são imunes. Jogadores nunca são executados.\\\n\\\n[#](8B0000)Manutenção:[#]() 30 EV a cada 5 segundos enquanto ativo\\\n[#](8B0000)Custo:[#]() 50 EV por execução"
 }

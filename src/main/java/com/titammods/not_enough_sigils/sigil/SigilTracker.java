@@ -32,7 +32,8 @@ public class SigilTracker {
         SPIRITUAL_MONK,
         HELLBRAND,
         WARDING_GALE,
-        SANCTUARY
+        SANCTUARY,
+        EXECUTIONER
     }
 
     private record Entry(long tick, ItemStack stack, ISigilEffect effect) {

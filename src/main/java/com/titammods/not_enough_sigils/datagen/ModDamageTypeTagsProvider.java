@@ -26,5 +26,12 @@ public class ModDamageTypeTagsProvider extends TagsProvider<DamageType> {
         tag(DamageTypeTags.BYPASSES_ENCHANTMENTS).add(ModDamageTypes.ARCANE);
         tag(DamageTypeTags.BYPASSES_SHIELD).add(ModDamageTypes.ARCANE);
         tag(DamageTypeTags.BYPASSES_COOLDOWN).add(ModDamageTypes.ARCANE);
+        tag(DamageTypeTags.BYPASSES_ARMOR).add(ModDamageTypes.EXECUTION);
+        tag(DamageTypeTags.BYPASSES_EFFECTS).add(ModDamageTypes.EXECUTION);
+        tag(DamageTypeTags.BYPASSES_RESISTANCE).add(ModDamageTypes.EXECUTION);
+        tag(DamageTypeTags.BYPASSES_ENCHANTMENTS).add(ModDamageTypes.EXECUTION);
+        tag(DamageTypeTags.BYPASSES_SHIELD).add(ModDamageTypes.EXECUTION);
+        tag(DamageTypeTags.BYPASSES_COOLDOWN).add(ModDamageTypes.EXECUTION);
+        tag(DamageTypeTags.NO_KNOCKBACK).add(ModDamageTypes.EXECUTION);
     }
 }

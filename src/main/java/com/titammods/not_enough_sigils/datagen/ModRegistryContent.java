@@ -16,6 +16,7 @@ import com.titammods.not_enough_sigils.sigil.effect.HellbrandSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.MagicianSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.PonymealSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.AlchemistSigilEffect;
+import com.titammods.not_enough_sigils.sigil.effect.ExecutionerSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.RecallSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.SanctuarySigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.ReaperSigilEffect;
@@ -37,6 +38,7 @@ public class ModRegistryContent {
 
     public static void damageTypes(BootstrapContext<DamageType> context) {
         context.register(ModDamageTypes.ARCANE, new DamageType("not_enough_sigils.arcane", DamageScaling.NEVER, 0.0F));
+        context.register(ModDamageTypes.EXECUTION, new DamageType("not_enough_sigils.execution", DamageScaling.NEVER, 0.0F));
     }
 
     public static void sigilTypes(BootstrapContext<SigilType> context) {
@@ -65,6 +67,7 @@ public class ModRegistryContent {
         register(context, "recall", 0, 0, 0, RecallSigilEffect.DEFAULT);
         register(context, "alchemist", 0, 0, 0, AlchemistSigilEffect.DEFAULT);
         toggle(context, "sanctuary", 120, SanctuarySigilEffect.DEFAULT);
+        toggle(context, "executioner", 30, ExecutionerSigilEffect.DEFAULT);
         toggle(context, "berserk_divine", 80, new BerserkSigilEffect(6, 300, 600, 4, 2, 140));
     }
 

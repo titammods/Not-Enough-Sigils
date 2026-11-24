@@ -19,6 +19,7 @@ import com.titammods.not_enough_sigils.sigil.effect.EtherealStepSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.FairysBlessingSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.SkywardSoulSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.AlchemistSigilEffect;
+import com.titammods.not_enough_sigils.sigil.effect.ExecutionerSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.RecallSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.SanctuarySigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.ReaperSigilEffect;
@@ -105,4 +106,7 @@ public class ModSigilEffects {
 
     public static final Supplier<MapCodec<SanctuarySigilEffect>> SANCTUARY =
             SIGIL_EFFECTS.register("sanctuary", () -> SanctuarySigilEffect.CODEC);
+
+    public static final Supplier<MapCodec<ExecutionerSigilEffect>> EXECUTIONER =
+            SIGIL_EFFECTS.register("executioner", () -> ExecutionerSigilEffect.CODEC);
 }

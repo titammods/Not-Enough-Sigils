@@ -12,6 +12,11 @@ import javax.annotation.Nullable;
 
 public class ModDamageTypes {
     public static final ResourceKey<DamageType> ARCANE = ResourceKey.create(Registries.DAMAGE_TYPE, NotEnoughSigils.rl("arcane"));
+    public static final ResourceKey<DamageType> EXECUTION = ResourceKey.create(Registries.DAMAGE_TYPE, NotEnoughSigils.rl("execution"));
+
+    public static DamageSource execution(Level level, Entity attacker) {
+        return new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(EXECUTION), attacker, attacker);
+    }
 
     public static DamageSource arcane(Level level, @Nullable Entity directEntity, @Nullable Entity attacker) {
         return new DamageSource(

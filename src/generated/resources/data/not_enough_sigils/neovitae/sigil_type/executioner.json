@@ -1,0 +1,6 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:executioner"
+  },
+  "lp_cost_active": 30
+}

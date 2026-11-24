@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:array",
+  "addedinput": {
+    "item": "neovitae:tabula_spiritus"
+  },
+  "baseinput": {
+    "item": "not_enough_sigils:reagent_executioner"
+  },
+  "output": {
+    "count": 1,
+    "id": "not_enough_sigils:sigil_executioner"
+  },
+  "texture": "neovitae:textures/models/alchemyarrays/enderseverarray.png"
+}

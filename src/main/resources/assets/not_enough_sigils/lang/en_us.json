@@ -404,5 +404,16 @@
   "book.not_enough_sigils.guide.sigils.sanctuary.name": "Sigil of Sanctuary",
   "book.not_enough_sigils.guide.sigils.sanctuary.description": "Keeps hostile creatures from spawning around you.",
   "book.not_enough_sigils.guide.sigils.sanctuary.effect.title": "Sigil of Sanctuary",
-  "book.not_enough_sigils.guide.sigils.sanctuary.effect.text": "While active, no hostile creature can spawn naturally within 32 blocks of you: not in the dark, not in patrols, not in sieges. A faint ring of light marks the ward.\\\n\\\nMonster spawners and trial spawners keep working, so your farms are safe.\\\n\\\n[#](8B0000)Upkeep:[#]() 120 EV every 5 seconds while active"
+  "book.not_enough_sigils.guide.sigils.sanctuary.effect.text": "While active, no hostile creature can spawn naturally within 32 blocks of you: not in the dark, not in patrols, not in sieges. A faint ring of light marks the ward.\\\n\\\nMonster spawners and trial spawners keep working, so your farms are safe.\\\n\\\n[#](8B0000)Upkeep:[#]() 120 EV every 5 seconds while active",
+  "item.not_enough_sigils.sigil_executioner": "Sigil of the Executioner",
+  "item.not_enough_sigils.reagent_executioner": "Reagent: Executioner",
+  "sigil.not_enough_sigils.executioner": "Sigil of the Executioner",
+  "tooltip.neovitae.sigil.executioner.desc": "Melee hits execute foes left below 15% health. Bosses are immune",
+  "death.attack.not_enough_sigils.execution": "%1$s was executed by %2$s",
+  "death.attack.not_enough_sigils.execution.item": "%1$s was executed by %2$s using %3$s",
+  "death.attack.not_enough_sigils.execution.player": "%1$s was executed whilst fighting %2$s",
+  "book.not_enough_sigils.guide.sigils.executioner.name": "Sigil of the Executioner",
+  "book.not_enough_sigils.guide.sigils.executioner.description": "Finishes off weakened foes in one blow.",
+  "book.not_enough_sigils.guide.sigils.executioner.effect.title": "Sigil of the Executioner",
+  "book.not_enough_sigils.guide.sigils.executioner.effect.text": "While active, any melee hit that leaves a creature below 15% of its maximum health executes it on the spot, ignoring armor and protection.\\\n\\\nBosses are immune. Players are never executed.\\\n\\\n[#](8B0000)Upkeep:[#]() 30 EV every 5 seconds while active\\\n[#](8B0000)Cost:[#]() 50 EV per execution"
 }
