@@ -344,5 +344,19 @@
   "book.not_enough_sigils.guide.saereth.workshop.crafting.title": "The Workshop",
   "book.not_enough_sigils.guide.saereth.workshop.crafting.text": "Fill the linked chest with an [#](8B0000)Arcane Scribe Tool[#]() and the ingredients of any alchemy array recipe. Saereth takes them, draws the array on the marked spot and casts it.\\\n\\\nResults go back into the chest. If it is full, they are left on the ground.",
   "book.not_enough_sigils.guide.saereth.workshop.status.text": "[#](B8860B)Status[#]()\\\nUse an empty hand on Saereth to see what he is doing: waiting for links, ready, crafting, or what is stopping him, such as a missing scribe tool, a full chest or a blocked array spot.\\\n\\\nServer owners can tune his range and speed in the datapack file [#](8B0000)data/not_enough_sigils/saereth/settings.json[#]().",
-  "item.not_enough_sigils.guide_book": "Not Enough Sigils"
+  "item.not_enough_sigils.guide_book": "Not Enough Sigils",
+  "item.not_enough_sigils.soul_fragment": "Soul Fragment",
+  "item.not_enough_sigils.ascended_essence": "Ascended Essence",
+  "item.not_enough_sigils.divine_essence": "Divine Essence",
+  "tooltip.not_enough_sigils.soul_fragment": "Torn from creatures slain under the Sigil of the Reaper",
+  "tooltip.not_enough_sigils.ascended_essence": "Condensed in a Tier 6 Ara Vitae",
+  "tooltip.not_enough_sigils.divine_essence": "Purified in a Tier 7 Ara Vitae",
+  "book.not_enough_sigils.guide.sigils.reaper.fragments.text": "[#](B8860B)Soul Fragments[#]()\\\nWhile the Reaper is active, creatures with at least 10 maximum health have a 5% chance to drop a [#](8B0000)Soul Fragment[#](), plus 2.5% for each level of Looting.\\\n\\\nFragments are the first step toward the ascended materials.",
+  "book.not_enough_sigils.guide.altar.progression.name": "Ascended Materials",
+  "book.not_enough_sigils.guide.altar.progression.description": "The materials that only the ascended altars can make.",
+  "book.not_enough_sigils.guide.altar.progression.intro.title": "Ascended Materials",
+  "book.not_enough_sigils.guide.altar.progression.intro.text": "Each ascended tier has a material that only it can create. These essences are the heart of every greater sigil and relic: without them, the higher rites cannot begin.\\\n\\\nThe chain always starts with a [#](8B0000)Soul Fragment[#]().",
+  "book.not_enough_sigils.guide.altar.progression.soul_fragment.text": "[#](B8860B)Soul Fragment[#]()\\\nDropped by creatures slain while the [#](8B0000)Sigil of the Reaper[#]() is active. Stronger foes and Looting improve the odds.\\\n\\\nOnly creatures with at least 10 maximum health can yield a fragment.",
+  "book.not_enough_sigils.guide.altar.progression.ascended.text": "[#](B8860B)Ascended Essence[#]()\\\nA Soul Fragment condensed in a [#](8B0000)Tier 6[#]() Ara Vitae. The base material of every Tier 6 creation.",
+  "book.not_enough_sigils.guide.altar.progression.divine.text": "[#](B8860B)Divine Essence[#]()\\\nAn Ascended Essence purified in a [#](8B0000)Tier 7[#]() Ara Vitae. Reserved for the mightiest relics."
 }

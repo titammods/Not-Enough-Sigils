@@ -1,0 +1,95 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "altar",
+  "condition": {
+    "type": "modonomicon:entry_read",
+    "entry_id": "altar/ascended_tiers"
+  },
+  "description": "book.not_enough_sigils.guide.altar.progression.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "not_enough_sigils:divine_essence"
+  },
+  "name": "book.not_enough_sigils.guide.altar.progression.name",
+  "pages": [
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.altar.progression.intro.text",
+      "title": "book.not_enough_sigils.guide.altar.progression.intro.title",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.altar.progression.soul_fragment.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.altar.progression.ascended.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "neovitae:ara_vitae_recipe",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "recipe_id_1": "not_enough_sigils:ara_vitae/ascended_essence",
+      "text": "",
+      "title1": "",
+      "title2": ""
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.altar.progression.divine.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "neovitae:ara_vitae_recipe",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "recipe_id_1": "not_enough_sigils:ara_vitae/divine_essence",
+      "text": "",
+      "title1": "",
+      "title2": ""
+    }
+  ],
+  "parents": [
+    {
+      "draw_arrow": true,
+      "entry": "altar/ascended_tiers",
+      "line_enabled": true,
+      "line_reversed": false
+    }
+  ],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 3,
+  "x": 0,
+  "y": 3
+}

@@ -8,6 +8,7 @@ import com.breakinblocks.neovitae.registry.SigilTypeRegistry;
 import com.titammods.not_enough_sigils.NotEnoughSigils;
 import com.titammods.not_enough_sigils.book.GuideBookItem;
 import com.titammods.not_enough_sigils.holding.GreaterHoldingSigilItem;
+import com.titammods.not_enough_sigils.item.ProgressionItem;
 import com.titammods.not_enough_sigils.saereth.SaerethSigilItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -81,6 +82,10 @@ public class ModItems {
     public static final DeferredItem<SpiritusGemItem> SPIRITUS_GEM_EXALTED = ITEMS.register("spiritus_gem_exalted", SpiritusGemItem::new);
     public static final DeferredItem<SpiritusGemItem> SPIRITUS_GEM_PRIMORDIAL = ITEMS.register("spiritus_gem_primordial", SpiritusGemItem::new);
 
+    public static final DeferredItem<ProgressionItem> SOUL_FRAGMENT = material("soul_fragment", Rarity.UNCOMMON);
+    public static final DeferredItem<ProgressionItem> ASCENDED_ESSENCE = material("ascended_essence", Rarity.RARE);
+    public static final DeferredItem<ProgressionItem> DIVINE_ESSENCE = material("divine_essence", Rarity.EPIC);
+
     public static final DeferredItem<Item> NINJA_KNIFE = ITEMS.registerSimpleItem("ninja_knife");
     public static final DeferredItem<Item> NINJA_KNIFE_EXPLOSIVE = ITEMS.registerSimpleItem("ninja_knife_explosive");
     public static final DeferredItem<Item> NINJA_KNIFE_LIGHTNING = ITEMS.registerSimpleItem("ninja_knife_lightning");
@@ -90,6 +95,10 @@ public class ModItems {
     public static boolean isHiddenFromTab(Item item) {
         return item == NINJA_KNIFE.get() || item == NINJA_KNIFE_EXPLOSIVE.get() || item == NINJA_KNIFE_LIGHTNING.get()
                 || item == NINJA_KNIFE_FROST.get() || item == NINJA_KNIFE_FIRE.get();
+    }
+
+    private static DeferredItem<ProgressionItem> material(String name, Rarity rarity) {
+        return ITEMS.register(name, () -> new ProgressionItem(new Item.Properties().rarity(rarity), "tooltip." + NotEnoughSigils.MODID + "." + name));
     }
 
     private static DeferredItem<RuneBlockItem> rune(DeferredBlock<Block> block, String... tooltips) {

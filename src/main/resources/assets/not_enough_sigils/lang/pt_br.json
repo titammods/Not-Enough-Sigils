@@ -344,5 +344,19 @@
   "book.not_enough_sigils.guide.saereth.workshop.crafting.title": "A Oficina",
   "book.not_enough_sigils.guide.saereth.workshop.crafting.text": "Encha o baú vinculado com uma [#](8B0000)Arcane Scribe Tool[#]() e os ingredientes de qualquer receita de arranjo alquímico. Saereth pega tudo, desenha o arranjo no local marcado e o ativa.\\\n\\\nOs resultados voltam para o baú. Se estiver cheio, ficam no chão.",
   "book.not_enough_sigils.guide.saereth.workshop.status.text": "[#](B8860B)Status[#]()\\\nUse a mão vazia em Saereth para ver o que ele está fazendo: esperando vínculos, pronto, criando, ou o que o impede, como falta da scribe tool, baú cheio ou local do arranjo bloqueado.\\\n\\\nDonos de servidor podem ajustar alcance e velocidade dele no arquivo de datapack [#](8B0000)data/not_enough_sigils/saereth/settings.json[#]().",
-  "item.not_enough_sigils.guide_book": "Not Enough Sigils"
+  "item.not_enough_sigils.guide_book": "Not Enough Sigils",
+  "item.not_enough_sigils.soul_fragment": "Fragmento de Alma",
+  "item.not_enough_sigils.ascended_essence": "Essência Ascendida",
+  "item.not_enough_sigils.divine_essence": "Essência Divina",
+  "tooltip.not_enough_sigils.soul_fragment": "Arrancado de criaturas mortas sob o Selo do Ceifador",
+  "tooltip.not_enough_sigils.ascended_essence": "Condensada em um Ara Vitae Tier 6",
+  "tooltip.not_enough_sigils.divine_essence": "Purificada em um Ara Vitae Tier 7",
+  "book.not_enough_sigils.guide.sigils.reaper.fragments.text": "[#](B8860B)Fragmentos de Alma[#]()\\\nCom o Ceifador ativo, criaturas com pelo menos 10 de vida máxima têm 5% de chance de dropar um [#](8B0000)Fragmento de Alma[#](), mais 2,5% por nível de Pilhagem.\\\n\\\nOs fragmentos são o primeiro passo para os materiais ascendidos.",
+  "book.not_enough_sigils.guide.altar.progression.name": "Materiais Ascendidos",
+  "book.not_enough_sigils.guide.altar.progression.description": "Os materiais que só os altares ascendidos conseguem fazer.",
+  "book.not_enough_sigils.guide.altar.progression.intro.title": "Materiais Ascendidos",
+  "book.not_enough_sigils.guide.altar.progression.intro.text": "Cada tier ascendido tem um material que só ele consegue criar. Essas essências são o coração de todo selo e relíquia superior: sem elas, os ritos maiores não começam.\\\n\\\nA cadeia sempre começa com um [#](8B0000)Fragmento de Alma[#]().",
+  "book.not_enough_sigils.guide.altar.progression.soul_fragment.text": "[#](B8860B)Fragmento de Alma[#]()\\\nDropado por criaturas mortas com o [#](8B0000)Selo do Ceifador[#]() ativo. Pilhagem aumenta a chance.\\\n\\\nSó criaturas com pelo menos 10 de vida máxima podem dar um fragmento.",
+  "book.not_enough_sigils.guide.altar.progression.ascended.text": "[#](B8860B)Essência Ascendida[#]()\\\nUm Fragmento de Alma condensado em um Ara Vitae [#](8B0000)Tier 6[#](). O material base de toda criação Tier 6.",
+  "book.not_enough_sigils.guide.altar.progression.divine.text": "[#](B8860B)Essência Divina[#]()\\\nUma Essência Ascendida purificada em um Ara Vitae [#](8B0000)Tier 7[#](). Reservada às relíquias mais poderosas."
 }

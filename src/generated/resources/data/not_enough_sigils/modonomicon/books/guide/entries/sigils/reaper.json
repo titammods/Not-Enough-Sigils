@@ -25,6 +25,17 @@
       "use_markdown_in_title": false
     },
     {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.not_enough_sigils.guide.sigils.reaper.fragments.text",
+      "title": "",
+      "use_markdown_in_title": false
+    },
+    {
       "type": "neovitae:hellfire_forge_recipe",
       "anchor": "",
       "condition": {

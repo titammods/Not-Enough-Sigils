@@ -1,0 +1,15 @@
+{
+  "type": "neovitae:ara_vitae_recipe",
+  "bloodNeeded": 300000,
+  "copyInputComponents": true,
+  "craftSpeed": 120,
+  "drainSpeed": 300,
+  "input": {
+    "item": "not_enough_sigils:ascended_essence"
+  },
+  "minTier": 7,
+  "output": {
+    "count": 1,
+    "id": "not_enough_sigils:divine_essence"
+  }
+}

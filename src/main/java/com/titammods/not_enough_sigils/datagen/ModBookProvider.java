@@ -58,9 +58,12 @@ public class ModBookProvider implements DataProvider {
                 .text("intro", true).text("reagents", false).text("arrays", false);
         for (int i = 0; i < BASIC_SIGILS.length; i++) {
             String sigil = BASIC_SIGILS[i];
-            category.add(sigil, own("sigil_" + sigil), -6 + (i % 7) * 2, -1 + (i / 7) * 2).parent(intro)
-                    .text("effect", true)
-                    .forge(recipe("hellfire_forge/reagent_" + sigil))
+            Entry entry = category.add(sigil, own("sigil_" + sigil), -6 + (i % 7) * 2, -1 + (i / 7) * 2).parent(intro)
+                    .text("effect", true);
+            if (sigil.equals("reaper")) {
+                entry.text("fragments", false);
+            }
+            entry.forge(recipe("hellfire_forge/reagent_" + sigil))
                     .array(recipe("array/sigil_" + sigil));
         }
         return category;
@@ -113,6 +116,13 @@ public class ModBookProvider implements DataProvider {
                 .crafting(recipe("rune_3_speed"))
                 .text("eternity", false)
                 .crafting(recipe("rune_eternity"));
+        category.add("progression", own("divine_essence"), 0, 3).parent(tiers)
+                .text("intro", true)
+                .text("soul_fragment", false)
+                .text("ascended", false)
+                .altar(recipe("ara_vitae/ascended_essence"))
+                .text("divine", false)
+                .altar(recipe("ara_vitae/divine_essence"));
         return category;
     }
 

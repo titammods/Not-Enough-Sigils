@@ -5,18 +5,22 @@ import com.breakinblocks.neovitae.api.NeoVitaeAPI;
 import com.breakinblocks.neovitae.api.spiritus.IPlayerSpiritusHandler;
 import com.breakinblocks.neovitae.common.datacomponent.SpiritusType;
 import com.titammods.not_enough_sigils.NotEnoughSigils;
+import com.titammods.not_enough_sigils.setup.ModItems;
 import com.titammods.not_enough_sigils.sigil.SigilTracker;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingExperienceDropEvent;
 
 @EventBusSubscriber(modid = NotEnoughSigils.MODID)
@@ -43,6 +47,26 @@ public class ReaperEvents {
         IPlayerSpiritusHandler handler = NeoVitaeAPI.getInstance().getPlayerSpiritusHandler();
         SpiritusType type = handler.getLargestSpiritusType(player);
         handler.addSpiritus(type == null ? SpiritusType.RAW : type, player, amount);
+    }
+
+    @SubscribeEvent
+    public static void onDrops(LivingDropsEvent event) {
+        if (!(event.getSource().getEntity() instanceof ServerPlayer player)) {
+            return;
+        }
+        LivingEntity target = event.getEntity();
+        if (target instanceof Player || !SigilTracker.isActive(player, SigilTracker.Kind.REAPER)) {
+            return;
+        }
+        ReaperSigilEffect config = config(player);
+        if (target.getMaxHealth() < config.soulFragmentMinHealth()) {
+            return;
+        }
+        double chance = config.soulFragmentChance() + config.soulFragmentPerLooting() * getLooting(player);
+        if (chance <= 0.0D || target.getRandom().nextDouble() >= chance) {
+            return;
+        }
+        event.getDrops().add(new ItemEntity(target.level(), target.getX(), target.getY(), target.getZ(), new ItemStack(ModItems.SOUL_FRAGMENT.get())));
     }
 
     @SubscribeEvent

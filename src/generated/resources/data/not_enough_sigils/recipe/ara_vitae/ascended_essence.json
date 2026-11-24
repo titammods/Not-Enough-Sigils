@@ -1,0 +1,15 @@
+{
+  "type": "neovitae:ara_vitae_recipe",
+  "bloodNeeded": 100000,
+  "copyInputComponents": true,
+  "craftSpeed": 80,
+  "drainSpeed": 200,
+  "input": {
+    "item": "not_enough_sigils:soul_fragment"
+  },
+  "minTier": 6,
+  "output": {
+    "count": 1,
+    "id": "not_enough_sigils:ascended_essence"
+  }
+}

@@ -12,19 +12,27 @@ import net.minecraft.world.level.Level;
 
 import java.util.UUID;
 
-public record ReaperSigilEffect(double spiritusPerHealth, double maxSpiritusPerKill, float xpMultiplier, float xpPerLooting) implements ISigilEffect {
+public record ReaperSigilEffect(double spiritusPerHealth, double maxSpiritusPerKill, float xpMultiplier, float xpPerLooting,
+                                double soulFragmentChance, double soulFragmentPerLooting, float soulFragmentMinHealth) implements ISigilEffect {
     public static final double DEFAULT_SPIRITUS_PER_HEALTH = 0.075D;
     public static final double DEFAULT_MAX_SPIRITUS_PER_KILL = 96.0D;
     public static final float DEFAULT_XP_MULTIPLIER = 1.5F;
     public static final float DEFAULT_XP_PER_LOOTING = 0.25F;
+    public static final double DEFAULT_SOUL_FRAGMENT_CHANCE = 0.05D;
+    public static final double DEFAULT_SOUL_FRAGMENT_PER_LOOTING = 0.025D;
+    public static final float DEFAULT_SOUL_FRAGMENT_MIN_HEALTH = 10.0F;
 
-    public static final ReaperSigilEffect DEFAULT = new ReaperSigilEffect(DEFAULT_SPIRITUS_PER_HEALTH, DEFAULT_MAX_SPIRITUS_PER_KILL, DEFAULT_XP_MULTIPLIER, DEFAULT_XP_PER_LOOTING);
+    public static final ReaperSigilEffect DEFAULT = new ReaperSigilEffect(DEFAULT_SPIRITUS_PER_HEALTH, DEFAULT_MAX_SPIRITUS_PER_KILL, DEFAULT_XP_MULTIPLIER, DEFAULT_XP_PER_LOOTING,
+            DEFAULT_SOUL_FRAGMENT_CHANCE, DEFAULT_SOUL_FRAGMENT_PER_LOOTING, DEFAULT_SOUL_FRAGMENT_MIN_HEALTH);
 
     public static final MapCodec<ReaperSigilEffect> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Codec.DOUBLE.optionalFieldOf("spiritus_per_health", DEFAULT_SPIRITUS_PER_HEALTH).forGetter(ReaperSigilEffect::spiritusPerHealth),
             Codec.DOUBLE.optionalFieldOf("max_spiritus_per_kill", DEFAULT_MAX_SPIRITUS_PER_KILL).forGetter(ReaperSigilEffect::maxSpiritusPerKill),
             Codec.FLOAT.optionalFieldOf("xp_multiplier", DEFAULT_XP_MULTIPLIER).forGetter(ReaperSigilEffect::xpMultiplier),
-            Codec.FLOAT.optionalFieldOf("xp_per_looting", DEFAULT_XP_PER_LOOTING).forGetter(ReaperSigilEffect::xpPerLooting)
+            Codec.FLOAT.optionalFieldOf("xp_per_looting", DEFAULT_XP_PER_LOOTING).forGetter(ReaperSigilEffect::xpPerLooting),
+            Codec.DOUBLE.optionalFieldOf("soul_fragment_chance", DEFAULT_SOUL_FRAGMENT_CHANCE).forGetter(ReaperSigilEffect::soulFragmentChance),
+            Codec.DOUBLE.optionalFieldOf("soul_fragment_per_looting", DEFAULT_SOUL_FRAGMENT_PER_LOOTING).forGetter(ReaperSigilEffect::soulFragmentPerLooting),
+            Codec.FLOAT.optionalFieldOf("soul_fragment_min_health", DEFAULT_SOUL_FRAGMENT_MIN_HEALTH).forGetter(ReaperSigilEffect::soulFragmentMinHealth)
     ).apply(instance, ReaperSigilEffect::new));
 
     @Override
