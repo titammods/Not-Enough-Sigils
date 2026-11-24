@@ -15,6 +15,7 @@ import com.titammods.not_enough_sigils.sigil.effect.FairysBlessingSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.HellbrandSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.MagicianSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.PonymealSigilEffect;
+import com.titammods.not_enough_sigils.sigil.effect.AlchemistSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.RecallSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.ReaperSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.SanguineAegisSigilEffect;
@@ -61,6 +62,7 @@ public class ModRegistryContent {
         toggle(context, "fairys_blessing", 60, FairysBlessingSigilEffect.DEFAULT);
         toggle(context, "fairys_blessing_divine", 150, new FairysBlessingSigilEffect(4, FairysBlessingSigilEffect.DEFAULT_DURATION, FairysBlessingSigilEffect.DEFAULT_REFRESH_BELOW));
         register(context, "recall", 0, 0, 0, RecallSigilEffect.DEFAULT);
+        register(context, "alchemist", 0, 0, 0, AlchemistSigilEffect.DEFAULT);
         toggle(context, "berserk_divine", 80, new BerserkSigilEffect(6, 300, 600, 4, 2, 140));
     }
 

@@ -66,6 +66,7 @@ public class ModRecipeProvider extends RecipeProvider {
         forge(output, ModItems.REAGENT_PONYMEAL.get(), 32, 64, Items.BONE_BLOCK, Items.SUNFLOWER, Items.PEONY, Items.PINK_TULIP);
         forge(output, ModItems.REAGENT_FAIRYS_BLESSING.get(), 1024, 2048, ModItems.REAGENT_PONYMEAL.get(), Items.GHAST_TEAR, Items.GLISTERING_MELON_SLICE, nv("animus_mote"));
         forge(output, ModItems.REAGENT_RECALL.get(), 512, 1024, Items.ENDER_EYE, Items.LODESTONE, Items.RECOVERY_COMPASS, nv("animus_mote"));
+        forge(output, ModItems.REAGENT_ALCHEMIST.get(), 256, 512, Items.EXPERIENCE_BOTTLE, Items.ENCHANTING_TABLE, Items.LAPIS_BLOCK, Items.GHAST_TEAR);
         forge(output, ModItems.REAGENT_CURSE_OF_GLUTTONY.get(), 256, 512, Items.CAKE, Items.GOLDEN_CARROT, Items.RABBIT_STEW, Items.FERMENTED_SPIDER_EYE);
         forge(output, ModItems.SPIRITUS_GEM_EXALTED.get(), 1600, 16000, nv("spiritus_gem_grand"), nv("animus_mote"), nv("deus_shard"), Items.NETHER_STAR);
         forge(output, ModItems.SPIRITUS_GEM_PRIMORDIAL.get(), 3200, 32000, ModItems.SPIRITUS_GEM_EXALTED.get(), nv("deus_shard"), Items.NETHER_STAR, Items.NETHERITE_BLOCK);
@@ -95,6 +96,7 @@ public class ModRecipeProvider extends RecipeProvider {
         array(output, ModItems.SIGIL_PONYMEAL.get(), ModItems.REAGENT_PONYMEAL.get(), "tabula_rasa", "growthsigil");
         array(output, ModItems.SIGIL_FAIRYS_BLESSING.get(), ModItems.REAGENT_FAIRYS_BLESSING.get(), "tabula_aetherea", "growtharray");
         array(output, ModItems.SIGIL_RECALL.get(), ModItems.REAGENT_RECALL.get(), "tabula_animata", "telepositionsigil");
+        array(output, ModItems.SIGIL_ALCHEMIST.get(), ModItems.REAGENT_ALCHEMIST.get(), "tabula_spiritus", "liquifiedexperiencearray");
         array(output, ModItems.SIGIL_CURSE_OF_GLUTTONY.get(), ModItems.REAGENT_CURSE_OF_GLUTTONY.get(), "tabula_spiritus", "fountainarray");
     }
 

@@ -18,6 +18,7 @@ import com.titammods.not_enough_sigils.sigil.effect.CurseOfGluttonySigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.EtherealStepSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.FairysBlessingSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.SkywardSoulSigilEffect;
+import com.titammods.not_enough_sigils.sigil.effect.AlchemistSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.RecallSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.ReaperSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.HellbrandSigilEffect;
@@ -97,4 +98,7 @@ public class ModSigilEffects {
 
     public static final Supplier<MapCodec<RecallSigilEffect>> RECALL =
             SIGIL_EFFECTS.register("recall", () -> RecallSigilEffect.CODEC);
+
+    public static final Supplier<MapCodec<AlchemistSigilEffect>> ALCHEMIST =
+            SIGIL_EFFECTS.register("alchemist", () -> AlchemistSigilEffect.CODEC);
 }
