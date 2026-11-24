@@ -20,7 +20,7 @@ public class ModBookProvider implements DataProvider {
     private static final String[] BASIC_SIGILS = {
             "soul_phoenix", "demon_ninja", "berserk", "magician", "brunimneets", "sanguine_aegis",
             "vampire_lord", "ethereal_step", "skyward_soul", "reaper", "hellbrand", "vein_seeker",
-            "warding_gale", "bullet_time", "ponymeal", "curse_of_gluttony", "fairys_blessing"
+            "warding_gale", "bullet_time", "ponymeal", "curse_of_gluttony", "fairys_blessing", "recall"
     };
     private static final String[] ALTAR_UPGRADES = {
             "soul_phoenix_greater", "archmage", "berserk_divine", "fairys_blessing_divine", "temporal_mastery"

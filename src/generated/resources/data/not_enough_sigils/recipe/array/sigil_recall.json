@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:array",
+  "addedinput": {
+    "item": "neovitae:tabula_animata"
+  },
+  "baseinput": {
+    "item": "not_enough_sigils:reagent_recall"
+  },
+  "output": {
+    "count": 1,
+    "id": "not_enough_sigils:sigil_recall"
+  },
+  "texture": "neovitae:textures/models/alchemyarrays/telepositionsigil.png"
+}
