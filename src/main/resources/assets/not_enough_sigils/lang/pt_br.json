@@ -423,5 +423,13 @@
   "book.not_enough_sigils.guide.sigils.chains.name": "Selo das Correntes",
   "book.not_enough_sigils.guide.sigils.chains.description": "Correntes espectrais que arrastam inimigos, ou você.",
   "book.not_enough_sigils.guide.sigils.chains.effect.title": "Selo das Correntes",
-  "book.not_enough_sigils.guide.sigils.chains.effect.text": "Use o selo olhando para uma criatura a até 24 blocos para arrastá-la até seus pés. Chefes não podem ser movidos.\\\n\\\nAgache e use para se puxar até uma criatura ou um bloco, como um gancho. Cair depois de um puxão nunca machuca.\\\n\\\n[#](8B0000)Custo:[#]() 40 EV por uso, 1 segundo de recarga"
+  "book.not_enough_sigils.guide.sigils.chains.effect.text": "Use o selo olhando para uma criatura a até 24 blocos para arrastá-la até seus pés. Chefes não podem ser movidos.\\\n\\\nAgache e use para se puxar até uma criatura ou um bloco, como um gancho. Cair depois de um puxão nunca machuca.\\\n\\\n[#](8B0000)Custo:[#]() 40 EV por uso, 1 segundo de recarga",
+  "item.not_enough_sigils.sigil_harvest": "Selo da Colheita",
+  "item.not_enough_sigils.reagent_harvest": "Reagente: Colheita",
+  "sigil.not_enough_sigils.harvest": "Selo da Colheita",
+  "tooltip.neovitae.sigil.harvest.desc": "Enquanto ativo, colhe e replanta plantações maduras ao seu redor, mandando a colheita para o seu inventário",
+  "book.not_enough_sigils.guide.sigils.harvest.name": "Selo da Colheita",
+  "book.not_enough_sigils.guide.sigils.harvest.description": "Colhe e replanta plantações ao seu redor.",
+  "book.not_enough_sigils.guide.sigils.harvest.effect.title": "Selo da Colheita",
+  "book.not_enough_sigils.guide.sigils.harvest.effect.text": "Enquanto ativo, a cada 3 segundos o selo colhe toda plantação madura a até 5 blocos de você e a replanta com uma das próprias sementes. O resto vai direto para o seu inventário, ou para o chão se estiver cheio.\\\n\\\nFunciona em plantações, fungo do Nether, cacau e frutas doces. Uma enxada com Fortuna na mão principal aumenta a colheita.\\\n\\\n[#](8B0000)Manutenção:[#]() 40 EV a cada 5 segundos enquanto ativo"
 }

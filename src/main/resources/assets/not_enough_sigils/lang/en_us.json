@@ -423,5 +423,13 @@
   "book.not_enough_sigils.guide.sigils.chains.name": "Sigil of Chains",
   "book.not_enough_sigils.guide.sigils.chains.description": "Spectral chains that drag foes, or you.",
   "book.not_enough_sigils.guide.sigils.chains.effect.title": "Sigil of Chains",
-  "book.not_enough_sigils.guide.sigils.chains.effect.text": "Use the sigil while looking at a creature up to 24 blocks away to drag it to your feet. Bosses cannot be moved.\\\n\\\nSneak and use to pull yourself toward a creature or a block instead, like a grappling hook. Landing after a pull never hurts.\\\n\\\n[#](8B0000)Cost:[#]() 40 EV per use, 1 second cooldown"
+  "book.not_enough_sigils.guide.sigils.chains.effect.text": "Use the sigil while looking at a creature up to 24 blocks away to drag it to your feet. Bosses cannot be moved.\\\n\\\nSneak and use to pull yourself toward a creature or a block instead, like a grappling hook. Landing after a pull never hurts.\\\n\\\n[#](8B0000)Cost:[#]() 40 EV per use, 1 second cooldown",
+  "item.not_enough_sigils.sigil_harvest": "Sigil of the Harvest",
+  "item.not_enough_sigils.reagent_harvest": "Reagent: Harvest",
+  "sigil.not_enough_sigils.harvest": "Sigil of the Harvest",
+  "tooltip.neovitae.sigil.harvest.desc": "While active, harvests and replants mature crops around you, sending the yield to your inventory",
+  "book.not_enough_sigils.guide.sigils.harvest.name": "Sigil of the Harvest",
+  "book.not_enough_sigils.guide.sigils.harvest.description": "Harvests and replants crops around you.",
+  "book.not_enough_sigils.guide.sigils.harvest.effect.title": "Sigil of the Harvest",
+  "book.not_enough_sigils.guide.sigils.harvest.effect.text": "While active, every 3 seconds the sigil reaps every mature crop within 5 blocks of you and replants it with one of its own seeds. The rest of the yield goes straight into your inventory, or to the ground if it is full.\\\n\\\nWorks on crops, nether wart, cocoa and sweet berries. A Fortune hoe in your main hand improves the yield.\\\n\\\n[#](8B0000)Upkeep:[#]() 40 EV every 5 seconds while active"
 }

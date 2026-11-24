@@ -70,6 +70,7 @@ public class ModRecipeProvider extends RecipeProvider {
         forge(output, ModItems.REAGENT_SANCTUARY.get(), 1024, 2048, Items.BELL, Items.GOLDEN_APPLE, Items.SEA_LANTERN, nv("animus_mote"));
         forge(output, ModItems.REAGENT_EXECUTIONER.get(), 512, 1024, Items.DIAMOND_AXE, Items.WITHER_ROSE, Items.SKELETON_SKULL, Items.REDSTONE_BLOCK);
         forge(output, ModItems.REAGENT_CHAINS.get(), 128, 256, Items.CHAIN, Items.FISHING_ROD, Items.LEAD, Items.STRING);
+        forge(output, ModItems.REAGENT_HARVEST.get(), 128, 256, Items.GOLDEN_HOE, Items.HAY_BLOCK, Items.COMPOSTER, Items.PUMPKIN);
         forge(output, ModItems.REAGENT_CURSE_OF_GLUTTONY.get(), 256, 512, Items.CAKE, Items.GOLDEN_CARROT, Items.RABBIT_STEW, Items.FERMENTED_SPIDER_EYE);
         forge(output, ModItems.SPIRITUS_GEM_EXALTED.get(), 1600, 16000, nv("spiritus_gem_grand"), nv("animus_mote"), nv("deus_shard"), Items.NETHER_STAR);
         forge(output, ModItems.SPIRITUS_GEM_PRIMORDIAL.get(), 3200, 32000, ModItems.SPIRITUS_GEM_EXALTED.get(), nv("deus_shard"), Items.NETHER_STAR, Items.NETHERITE_BLOCK);
@@ -103,6 +104,7 @@ public class ModRecipeProvider extends RecipeProvider {
         array(output, ModItems.SIGIL_SANCTUARY.get(), ModItems.REAGENT_SANCTUARY.get(), "tabula_aetherea", "suppressionsigil");
         array(output, ModItems.SIGIL_EXECUTIONER.get(), ModItems.REAGENT_EXECUTIONER.get(), "tabula_spiritus", "enderseverarray");
         array(output, ModItems.SIGIL_CHAINS.get(), ModItems.REAGENT_CHAINS.get(), "tabula_animata", "magnetismsigil");
+        array(output, ModItems.SIGIL_HARVEST.get(), ModItems.REAGENT_HARVEST.get(), "tabula_rasa", "growtharray");
         array(output, ModItems.SIGIL_CURSE_OF_GLUTTONY.get(), ModItems.REAGENT_CURSE_OF_GLUTTONY.get(), "tabula_spiritus", "fountainarray");
     }
 

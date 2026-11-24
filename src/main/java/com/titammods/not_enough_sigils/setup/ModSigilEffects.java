@@ -21,6 +21,7 @@ import com.titammods.not_enough_sigils.sigil.effect.SkywardSoulSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.AlchemistSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.ExecutionerSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.ChainsSigilEffect;
+import com.titammods.not_enough_sigils.sigil.effect.HarvestSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.RecallSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.SanctuarySigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.ReaperSigilEffect;
@@ -113,4 +114,7 @@ public class ModSigilEffects {
 
     public static final Supplier<MapCodec<ChainsSigilEffect>> CHAINS =
             SIGIL_EFFECTS.register("chains", () -> ChainsSigilEffect.CODEC);
+
+    public static final Supplier<MapCodec<HarvestSigilEffect>> HARVEST =
+            SIGIL_EFFECTS.register("harvest", () -> HarvestSigilEffect.CODEC);
 }

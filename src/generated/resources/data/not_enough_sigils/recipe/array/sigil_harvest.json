@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:array",
+  "addedinput": {
+    "item": "neovitae:tabula_rasa"
+  },
+  "baseinput": {
+    "item": "not_enough_sigils:reagent_harvest"
+  },
+  "output": {
+    "count": 1,
+    "id": "not_enough_sigils:sigil_harvest"
+  },
+  "texture": "neovitae:textures/models/alchemyarrays/growtharray.png"
+}

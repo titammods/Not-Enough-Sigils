@@ -20,6 +20,7 @@
     "not_enough_sigils:sigil_berserk_divine",
     "not_enough_sigils:sigil_sanctuary",
     "not_enough_sigils:sigil_executioner",
+    "not_enough_sigils:sigil_harvest",
     "not_enough_sigils:sigil_holding_divine"
   ]
 }

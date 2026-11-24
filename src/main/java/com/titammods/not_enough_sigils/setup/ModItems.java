@@ -50,6 +50,7 @@ public class ModItems {
     public static final DeferredItem<SigilItem> SIGIL_SANCTUARY = registerSigil("sigil_sanctuary", "sanctuary");
     public static final DeferredItem<SigilItem> SIGIL_EXECUTIONER = registerSigil("sigil_executioner", "executioner");
     public static final DeferredItem<SigilItem> SIGIL_CHAINS = registerSigil("sigil_chains", "chains");
+    public static final DeferredItem<SigilItem> SIGIL_HARVEST = registerSigil("sigil_harvest", "harvest");
     public static final DeferredItem<BloodOrbItem> BLOOD_ORB_ASCENDANT = ITEMS.register("blood_orb_ascendant", BloodOrbItem::new);
     public static final DeferredItem<BloodOrbItem> BLOOD_ORB_DIVINE = ITEMS.register("blood_orb_divine", BloodOrbItem::new);
     public static final DeferredItem<SaerethSigilItem> SAERETH_SIGIL = ITEMS.register("saereth_sigil", SaerethSigilItem::new);
@@ -88,6 +89,7 @@ public class ModItems {
     public static final DeferredItem<Item> REAGENT_SANCTUARY = ITEMS.registerSimpleItem("reagent_sanctuary");
     public static final DeferredItem<Item> REAGENT_EXECUTIONER = ITEMS.registerSimpleItem("reagent_executioner");
     public static final DeferredItem<Item> REAGENT_CHAINS = ITEMS.registerSimpleItem("reagent_chains");
+    public static final DeferredItem<Item> REAGENT_HARVEST = ITEMS.registerSimpleItem("reagent_harvest");
 
     public static final DeferredItem<SpiritusGemItem> SPIRITUS_GEM_EXALTED = ITEMS.register("spiritus_gem_exalted", SpiritusGemItem::new);
     public static final DeferredItem<SpiritusGemItem> SPIRITUS_GEM_PRIMORDIAL = ITEMS.register("spiritus_gem_primordial", SpiritusGemItem::new);
