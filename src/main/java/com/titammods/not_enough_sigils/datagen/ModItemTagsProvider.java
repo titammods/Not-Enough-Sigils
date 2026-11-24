@@ -51,6 +51,13 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 ModItems.SIGIL_SANCTUARY.get(),
                 ModItems.SIGIL_EXECUTIONER.get(),
                 ModItems.SIGIL_HARVEST.get(),
+                ModItems.SIGIL_WARDING_GALE_GREATER.get(),
+                ModItems.SIGIL_SANGUINE_AEGIS_GREATER.get(),
+                ModItems.SIGIL_VAMPIRE_LORD_GREATER.get(),
+                ModItems.SIGIL_HELLBRAND_GREATER.get(),
+                ModItems.SIGIL_REAPER_GREATER.get(),
+                ModItems.SIGIL_SKYWARD_SOUL_GREATER.get(),
+                ModItems.SIGIL_DEMON_NINJA_GREATER.get(),
                 ModItems.SIGIL_HOLDING_DIVINE.get()
         );
         tag(CURIOS_NECKLACE).add(ModItems.SPIRITUS_GEM_EXALTED.get(), ModItems.SPIRITUS_GEM_PRIMORDIAL.get());

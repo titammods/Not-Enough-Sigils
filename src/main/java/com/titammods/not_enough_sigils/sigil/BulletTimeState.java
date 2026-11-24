@@ -5,9 +5,13 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -17,12 +21,15 @@ public class BulletTimeState {
     private static final int SLOW_DURATION = 20;
     private static final int PULSE_INTERVAL = 5;
 
-    private record Active(long until, BulletTimeSigilEffect config) {}
+    private record Active(long until, BulletTimeSigilEffect config, List<Projectile> frozen) {}
 
     private static final Map<UUID, Active> ACTIVE = new ConcurrentHashMap<>();
 
     public static void start(Player player, BulletTimeSigilEffect config) {
-        ACTIVE.put(player.getUUID(), new Active(player.level().getGameTime() + config.duration(), config));
+        Active previous = ACTIVE.put(player.getUUID(), new Active(player.level().getGameTime() + config.duration(), config, new ArrayList<>()));
+        if (previous != null) {
+            release(previous);
+        }
     }
 
     public static void tick(Player player) {
@@ -32,6 +39,7 @@ public class BulletTimeState {
         }
         if (player.level().getGameTime() >= active.until() || !player.isAlive()) {
             ACTIVE.remove(player.getUUID());
+            release(active);
             return;
         }
 
@@ -45,9 +53,20 @@ public class BulletTimeState {
                 continue;
             }
             projectile.getPersistentData().putBoolean(SLOWED_TAG, true);
+            if (config.freezeProjectiles()) {
+                active.frozen().add(projectile);
+                continue;
+            }
             projectile.setDeltaMovement(projectile.getDeltaMovement().scale(config.projectileSpeedFactor()));
             projectile.hasImpulse = true;
             projectile.hurtMarked = true;
+        }
+        for (Projectile projectile : active.frozen()) {
+            if (projectile.isAlive()) {
+                projectile.setNoGravity(true);
+                projectile.setDeltaMovement(Vec3.ZERO);
+                projectile.hurtMarked = true;
+            }
         }
 
         if (config.slowAmplifier() < 0 || player.tickCount % PULSE_INTERVAL != 0) {
@@ -60,6 +79,25 @@ public class BulletTimeState {
     }
 
     public static void clear(UUID playerId) {
-        ACTIVE.remove(playerId);
+        Active active = ACTIVE.remove(playerId);
+        if (active != null) {
+            release(active);
+        }
+    }
+
+    private static void release(Active active) {
+        for (Projectile projectile : active.frozen()) {
+            if (!projectile.isAlive()) {
+                continue;
+            }
+            if (projectile instanceof AbstractHurtingProjectile) {
+                projectile.discard();
+                continue;
+            }
+            projectile.setNoGravity(false);
+            projectile.setDeltaMovement(0.0D, -0.1D, 0.0D);
+            projectile.hurtMarked = true;
+        }
+        active.frozen().clear();
     }
 }

@@ -1,0 +1,11 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:reaper",
+    "max_spiritus_per_kill": 192.0,
+    "soul_fragment_chance": 0.15,
+    "soul_fragment_per_looting": 0.05,
+    "spiritus_per_health": 0.15,
+    "xp_multiplier": 2.0
+  },
+  "lp_cost_active": 40
+}

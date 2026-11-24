@@ -25,7 +25,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public record DemonNinjaSigilEffect(int revealTicks, int knifeCooldown, float knifeVelocity, float knifeInaccuracy,
-                                    Map<SpiritusType, KnifeProfile> knives) implements ISigilEffect {
+                                    Map<SpiritusType, KnifeProfile> knives, int knifeCount, float knifeSpread) implements ISigilEffect {
     public static final int DEFAULT_REVEAL_TICKS = 600;
     public static final int DEFAULT_KNIFE_COOLDOWN = 10;
     public static final float DEFAULT_KNIFE_VELOCITY = 2.2F;
@@ -40,14 +40,16 @@ public record DemonNinjaSigilEffect(int revealTicks, int knifeCooldown, float kn
     );
 
     public static final DemonNinjaSigilEffect DEFAULT = new DemonNinjaSigilEffect(DEFAULT_REVEAL_TICKS, DEFAULT_KNIFE_COOLDOWN,
-            DEFAULT_KNIFE_VELOCITY, DEFAULT_KNIFE_INACCURACY, Map.of());
+            DEFAULT_KNIFE_VELOCITY, DEFAULT_KNIFE_INACCURACY, Map.of(), 1, 10.0F);
 
     public static final MapCodec<DemonNinjaSigilEffect> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Codec.INT.optionalFieldOf("reveal_ticks", DEFAULT_REVEAL_TICKS).forGetter(DemonNinjaSigilEffect::revealTicks),
             Codec.INT.optionalFieldOf("knife_cooldown", DEFAULT_KNIFE_COOLDOWN).forGetter(DemonNinjaSigilEffect::knifeCooldown),
             Codec.FLOAT.optionalFieldOf("knife_velocity", DEFAULT_KNIFE_VELOCITY).forGetter(DemonNinjaSigilEffect::knifeVelocity),
             Codec.FLOAT.optionalFieldOf("knife_inaccuracy", DEFAULT_KNIFE_INACCURACY).forGetter(DemonNinjaSigilEffect::knifeInaccuracy),
-            SpiritusProfiles.codec(KnifeProfile.CODEC).optionalFieldOf("knives", Map.of()).forGetter(DemonNinjaSigilEffect::knives)
+            SpiritusProfiles.codec(KnifeProfile.CODEC).optionalFieldOf("knives", Map.of()).forGetter(DemonNinjaSigilEffect::knives),
+            Codec.INT.optionalFieldOf("knife_count", 1).forGetter(DemonNinjaSigilEffect::knifeCount),
+            Codec.FLOAT.optionalFieldOf("knife_spread", 10.0F).forGetter(DemonNinjaSigilEffect::knifeSpread)
     ).apply(instance, DemonNinjaSigilEffect::new));
 
     public KnifeProfile knife(SpiritusType type) {
@@ -73,9 +75,13 @@ public record DemonNinjaSigilEffect(int revealTicks, int knifeCooldown, float kn
             return true;
         }
         SpiritusType type = SpiritusAffinity.of(player);
-        NinjaKnifeEntity knife = new NinjaKnifeEntity(level, player, type, knife(type));
-        knife.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, knifeVelocity, knifeInaccuracy);
-        level.addFreshEntity(knife);
+        int count = Math.max(1, knifeCount);
+        for (int i = 0; i < count; i++) {
+            float offset = (i - (count - 1) / 2.0F) * knifeSpread;
+            NinjaKnifeEntity knife = new NinjaKnifeEntity(level, player, type, knife(type));
+            knife.shootFromRotation(player, player.getXRot(), player.getYRot() + offset, 0.0F, knifeVelocity, knifeInaccuracy);
+            level.addFreshEntity(knife);
+        }
         if (knifeCooldown > 0) {
             player.getCooldowns().addCooldown(stack.getItem(), knifeCooldown);
         }

@@ -80,6 +80,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 Ingredient.of(item("animusnv", "sigil_monk")),
                 new ItemStack(ModItems.SIGIL_SPIRITUAL_MONK.get()));
         output.accept(id("hellfire_forge/", ModItems.SIGIL_SPIRITUAL_MONK.get()), spiritualMonk, null);
+
+        upgrade(output, ModItems.SIGIL_ETHEREAL_STEP_GREATER.get(), ModItems.SIGIL_ETHEREAL_STEP.get(), ModItems.ASCENDED_ESSENCE.get(), Items.SHULKER_SHELL, Items.ENDER_EYE);
+        upgrade(output, ModItems.SIGIL_VEIN_SEEKER_GREATER.get(), ModItems.SIGIL_VEIN_SEEKER.get(), ModItems.ASCENDED_ESSENCE.get(), Items.SPYGLASS, Items.DIAMOND_BLOCK);
+        upgrade(output, ModItems.SIGIL_BULLET_TIME_GREATER.get(), ModItems.SIGIL_BULLET_TIME.get(), ModItems.ASCENDED_ESSENCE.get(), Items.ECHO_SHARD, Items.SLIME_BLOCK);
+        upgrade(output, ModItems.SIGIL_WARDING_GALE_GREATER.get(), ModItems.SIGIL_WARDING_GALE.get(), ModItems.ASCENDED_ESSENCE.get(), Items.BREEZE_ROD, Items.WIND_CHARGE);
+        upgrade(output, ModItems.SIGIL_SANGUINE_AEGIS_GREATER.get(), ModItems.SIGIL_SANGUINE_AEGIS.get(), ModItems.ASCENDED_ESSENCE.get(), Items.NETHERITE_INGOT, Items.TOTEM_OF_UNDYING);
+        upgrade(output, ModItems.SIGIL_VAMPIRE_LORD_GREATER.get(), ModItems.SIGIL_VAMPIRE_LORD.get(), ModItems.ASCENDED_ESSENCE.get(), Items.GHAST_TEAR, Items.GOLDEN_APPLE);
+        upgrade(output, ModItems.SIGIL_HELLBRAND_GREATER.get(), ModItems.SIGIL_HELLBRAND.get(), ModItems.ASCENDED_ESSENCE.get(), Items.FIRE_CHARGE, Items.NETHERITE_SCRAP);
+        upgrade(output, ModItems.SIGIL_REAPER_GREATER.get(), ModItems.SIGIL_REAPER.get(), ModItems.ASCENDED_ESSENCE.get(), ModItems.SOUL_FRAGMENT.get(), Items.WITHER_SKELETON_SKULL);
+        upgrade(output, ModItems.SIGIL_SKYWARD_SOUL_GREATER.get(), ModItems.SIGIL_SKYWARD_SOUL.get(), ModItems.ASCENDED_ESSENCE.get(), Items.FIREWORK_ROCKET, Items.PHANTOM_MEMBRANE);
+        upgrade(output, ModItems.SIGIL_DEMON_NINJA_GREATER.get(), ModItems.SIGIL_DEMON_NINJA.get(), ModItems.ASCENDED_ESSENCE.get(), Items.ECHO_SHARD, Items.FERMENTED_SPIDER_EYE);
+        upgrade(output, ModItems.SIGIL_RECALL_GREATER.get(), ModItems.SIGIL_RECALL.get(), ModItems.DIVINE_ESSENCE.get(), Items.RESPAWN_ANCHOR, Items.ENDER_EYE);
     }
 
     private void arrayRecipes(RecipeOutput output) {
@@ -144,6 +156,14 @@ public class ModRecipeProvider extends RecipeProvider {
     private static void forge(RecipeOutput output, Item result, double drain, double minDrain, ItemLike... inputs) {
         List<Ingredient> ingredients = Arrays.stream(inputs).map(Ingredient::of).toList();
         ForgeRecipe recipe = new ForgeRecipe(minDrain, drain, ingredients, new ItemStack(result), Optional.empty());
+        output.accept(id("hellfire_forge/", result), recipe, null);
+    }
+
+    private static void upgrade(RecipeOutput output, Item result, Item input, Item essence, ItemLike first, ItemLike second) {
+        boolean divine = essence == ModItems.DIVINE_ESSENCE.get();
+        ForgeTransformRecipe recipe = new ForgeTransformRecipe(divine ? 8192 : 4096, divine ? 3000 : 1500,
+                List.of(Ingredient.of(essence), Ingredient.of(first), Ingredient.of(second)),
+                Ingredient.of(input), new ItemStack(result));
         output.accept(id("hellfire_forge/", result), recipe, null);
     }
 

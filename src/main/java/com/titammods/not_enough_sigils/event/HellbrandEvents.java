@@ -11,10 +11,15 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.phys.AABB;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @EventBusSubscriber(modid = NotEnoughSigils.MODID)
 public class HellbrandEvents {
@@ -43,15 +48,40 @@ public class HellbrandEvents {
         data.putLong(TICK_TAG, now);
 
         if (stacks >= Math.max(1, config.maxStacks())) {
-            data.remove(STACKS_TAG);
-            float damage = Math.min(config.maxBurst(), config.baseBurst() + target.getMaxHealth() * config.burstHealthRatio());
-            DelayedDamage.arcane(target, player, damage, HellbrandEvents::burstEffects);
+            detonate(level, player, target, config, config.chainDepth(), new HashSet<>());
         } else {
             data.putInt(STACKS_TAG, stacks);
         }
 
         level.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, target.getX(), target.getY() + target.getBbHeight() * 0.6D, target.getZ(),
                 stacks * 3, 0.3D, 0.3D, 0.3D, 0.02D);
+    }
+
+    private static void detonate(ServerLevel level, ServerPlayer player, LivingEntity target, HellbrandSigilEffect config, int depth, Set<LivingEntity> chain) {
+        chain.add(target);
+        target.getPersistentData().remove(STACKS_TAG);
+        float damage = Math.min(config.maxBurst(), config.baseBurst() + target.getMaxHealth() * config.burstHealthRatio());
+        DelayedDamage.arcane(target, player, damage, HellbrandEvents::burstEffects);
+        if (config.spreadMarks() <= 0) {
+            return;
+        }
+        int max = Math.max(1, config.maxStacks());
+        long now = level.getGameTime();
+        AABB area = target.getBoundingBox().inflate(config.spreadRadius());
+        for (LivingEntity other : level.getEntitiesOfClass(LivingEntity.class, area,
+                entity -> entity.isAlive() && entity != player && entity instanceof Enemy && !chain.contains(entity))) {
+            CompoundTag data = other.getPersistentData();
+            int stacks = now - data.getLong(TICK_TAG) > config.stackDuration() ? 0 : data.getInt(STACKS_TAG);
+            stacks += config.spreadMarks();
+            data.putLong(TICK_TAG, now);
+            level.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, other.getX(), other.getY() + other.getBbHeight() * 0.6D, other.getZ(),
+                    6, 0.3D, 0.3D, 0.3D, 0.02D);
+            if (stacks >= max && depth > 0) {
+                detonate(level, player, other, config, depth - 1, chain);
+            } else {
+                data.putInt(STACKS_TAG, Math.min(stacks, max - 1));
+            }
+        }
     }
 
     private static void burstEffects(LivingEntity target) {

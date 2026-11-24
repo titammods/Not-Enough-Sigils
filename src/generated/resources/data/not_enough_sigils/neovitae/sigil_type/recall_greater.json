@@ -1,0 +1,7 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:recall",
+    "cross_dimension": true,
+    "max_cost": 20000
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:sanguine_aegis",
+    "bonus_reduction": 0.2,
+    "ev_per_health": 25,
+    "reduction_min_ev": 100000
+  },
+  "lp_cost_active": 150
+}

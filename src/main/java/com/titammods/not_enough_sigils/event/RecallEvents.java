@@ -16,7 +16,7 @@ public class RecallEvents {
     @SubscribeEvent
     public static void onTooltip(ItemTooltipEvent event) {
         ItemStack stack = event.getItemStack();
-        if (!stack.is(ModItems.SIGIL_RECALL.get())) {
+        if (!stack.is(ModItems.SIGIL_RECALL.get()) && !stack.is(ModItems.SIGIL_RECALL_GREATER.get())) {
             return;
         }
         RecallSigilEffect.Mark mark = RecallSigilEffect.Mark.get(stack);

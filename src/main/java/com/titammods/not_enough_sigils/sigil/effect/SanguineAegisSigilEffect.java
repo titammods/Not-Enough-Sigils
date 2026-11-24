@@ -12,13 +12,15 @@ import net.minecraft.world.level.Level;
 
 import java.util.UUID;
 
-public record SanguineAegisSigilEffect(int evPerHealth) implements ISigilEffect {
+public record SanguineAegisSigilEffect(int evPerHealth, float bonusReduction, int reductionMinEv) implements ISigilEffect {
     public static final int DEFAULT_EV_PER_HEALTH = 40;
 
-    public static final SanguineAegisSigilEffect DEFAULT = new SanguineAegisSigilEffect(DEFAULT_EV_PER_HEALTH);
+    public static final SanguineAegisSigilEffect DEFAULT = new SanguineAegisSigilEffect(DEFAULT_EV_PER_HEALTH, 0.0F, 0);
 
     public static final MapCodec<SanguineAegisSigilEffect> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-            Codec.INT.optionalFieldOf("ev_per_health", DEFAULT_EV_PER_HEALTH).forGetter(SanguineAegisSigilEffect::evPerHealth)
+            Codec.INT.optionalFieldOf("ev_per_health", DEFAULT_EV_PER_HEALTH).forGetter(SanguineAegisSigilEffect::evPerHealth),
+            Codec.FLOAT.optionalFieldOf("bonus_reduction", 0.0F).forGetter(SanguineAegisSigilEffect::bonusReduction),
+            Codec.INT.optionalFieldOf("reduction_min_ev", 0).forGetter(SanguineAegisSigilEffect::reductionMinEv)
     ).apply(instance, SanguineAegisSigilEffect::new));
 
     @Override

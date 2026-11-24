@@ -3,6 +3,7 @@ package com.titammods.not_enough_sigils.sigil;
 import com.titammods.not_enough_sigils.sigil.effect.WardingGaleSigilEffect;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
@@ -42,7 +43,14 @@ public class WardingGaleAura {
             if (motion.lengthSqr() < 1.0E-3D || motion.dot(toPlayer) <= 0.0D) {
                 continue;
             }
-            projectile.setDeltaMovement(motion.scale(config.deflectFactor()));
+            if (config.reflect() && projectile.getOwner() instanceof LivingEntity shooter && shooter.isAlive() && shooter != player
+                    && shooter.level() == serverLevel) {
+                Vec3 direction = shooter.getEyePosition().subtract(projectile.position()).normalize();
+                projectile.setDeltaMovement(direction.scale(Math.max(1.0D, motion.length())));
+                projectile.setOwner(player);
+            } else {
+                projectile.setDeltaMovement(motion.scale(config.deflectFactor()));
+            }
             projectile.hasImpulse = true;
             projectile.hurtMarked = true;
             serverLevel.sendParticles(ParticleTypes.GUST, projectile.getX(), projectile.getY(), projectile.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);

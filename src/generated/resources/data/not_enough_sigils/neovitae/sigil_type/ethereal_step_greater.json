@@ -1,0 +1,10 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:ethereal_step",
+    "cooldown": 5,
+    "phase_depth": 2,
+    "range": 32.0
+  },
+  "lp_cost_air": 40,
+  "lp_cost_block": 40
+}

@@ -1,0 +1,10 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:warding_gale",
+    "push_lift": 0.18,
+    "push_strength": 0.55,
+    "radius": 5.0,
+    "reflect": true
+  },
+  "lp_cost_active": 60
+}

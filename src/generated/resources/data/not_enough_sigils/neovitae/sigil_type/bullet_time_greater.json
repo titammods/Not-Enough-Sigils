@@ -1,0 +1,7 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:bullet_time",
+    "freeze_projectiles": true
+  },
+  "lp_cost_air": 500
+}

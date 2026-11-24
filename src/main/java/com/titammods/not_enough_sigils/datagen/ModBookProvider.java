@@ -25,6 +25,10 @@ public class ModBookProvider implements DataProvider {
     private static final String[] ALTAR_UPGRADES = {
             "soul_phoenix_greater", "archmage", "berserk_divine", "fairys_blessing_divine", "temporal_mastery"
     };
+    private static final String[] FORGE_UPGRADES = {
+            "ethereal_step_greater", "vein_seeker_greater", "bullet_time_greater", "warding_gale_greater", "sanguine_aegis_greater",
+            "vampire_lord_greater", "hellbrand_greater", "reaper_greater", "skyward_soul_greater", "demon_ninja_greater", "recall_greater"
+    };
     private static final String[] HOLDING = {"holding_greater", "holding_supreme", "holding_divine"};
 
     private final PackOutput.PathProvider pathProvider;
@@ -88,6 +92,12 @@ public class ModBookProvider implements DataProvider {
             previous = category.add(sigil, own("sigil_" + sigil), -2 + i * 2, 2).parent(previous)
                     .text("effect", true)
                     .altar(recipe("ara_vitae/sigil_" + sigil));
+        }
+        for (int i = 0; i < FORGE_UPGRADES.length; i++) {
+            String sigil = FORGE_UPGRADES[i];
+            category.add(sigil, own("sigil_" + sigil), -6 + (i % 7) * 2, 5 + (i / 7) * 2).parent(intro)
+                    .text("effect", true)
+                    .forge(recipe("hellfire_forge/sigil_" + sigil));
         }
         return category;
     }

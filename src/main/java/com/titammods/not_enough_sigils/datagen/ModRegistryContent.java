@@ -72,6 +72,17 @@ public class ModRegistryContent {
         toggle(context, "executioner", 30, ExecutionerSigilEffect.DEFAULT);
         register(context, "chains", 40, 40, 0, ChainsSigilEffect.DEFAULT);
         toggle(context, "harvest", 40, HarvestSigilEffect.DEFAULT);
+        register(context, "ethereal_step_greater", 40, 40, 0, new EtherealStepSigilEffect(32.0D, 5, 2));
+        register(context, "vein_seeker_greater", 100, 100, 0, new VeinSeekerSigilEffect(24, 1024, 300, 100, VeinSeekerSigilEffect.DEFAULT.targets(), true));
+        register(context, "bullet_time_greater", 500, 0, 0, new BulletTimeSigilEffect(200, 600, 16.0D, 0.2D, 4, true));
+        toggle(context, "warding_gale_greater", 60, new WardingGaleSigilEffect(5.0D, 0.55D, 0.18D, -0.6D, 2, true));
+        toggle(context, "sanguine_aegis_greater", 150, new SanguineAegisSigilEffect(25, 0.2F, 100000));
+        toggle(context, "vampire_lord_greater", 40, new VampireLordSigilEffect(0.25F, 50, 5000, 8.0F));
+        toggle(context, "hellbrand_greater", 45, new HellbrandSigilEffect(5, 200, 6.0F, 0.15F, 60.0F, 2, 4.0D, 3));
+        toggle(context, "reaper_greater", 40, new ReaperSigilEffect(0.15D, 192.0D, 2.0F, 0.25F, 0.15D, 0.05D, 10.0F));
+        toggle(context, "skyward_soul_greater", 150, new SkywardSoulSigilEffect(30, 1.5D, 50, 20));
+        register(context, "demon_ninja_greater", 40, 0, 40, new DemonNinjaSigilEffect(200, 10, 2.2F, 0.5F, DemonNinjaSigilEffect.DEFAULT.knives(), 3, 10.0F));
+        register(context, "recall_greater", 0, 0, 0, new RecallSigilEffect(100, 1.0D, 20000, true, 5000, 100));
         toggle(context, "berserk_divine", 80, new BerserkSigilEffect(6, 300, 600, 4, 2, 140));
     }
 

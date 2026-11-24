@@ -1,0 +1,11 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:vein_seeker",
+    "duration": 300,
+    "filterable": true,
+    "max_results": 1024,
+    "radius": 24
+  },
+  "lp_cost_air": 100,
+  "lp_cost_block": 100
+}

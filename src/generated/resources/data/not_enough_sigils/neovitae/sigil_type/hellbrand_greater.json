@@ -1,0 +1,10 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:hellbrand",
+    "base_burst": 6.0,
+    "chain_depth": 3,
+    "max_burst": 60.0,
+    "spread_marks": 2
+  },
+  "lp_cost_active": 45
+}

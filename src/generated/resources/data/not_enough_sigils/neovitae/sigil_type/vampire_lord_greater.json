@@ -1,0 +1,8 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:vampire_lord",
+    "lifesteal": 0.25,
+    "overheal_cap": 8.0
+  },
+  "lp_cost_active": 40
+}

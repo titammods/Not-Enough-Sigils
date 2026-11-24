@@ -1,0 +1,9 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:demon_ninja",
+    "knife_count": 3,
+    "reveal_ticks": 200
+  },
+  "lp_cost_active": 40,
+  "lp_cost_air": 40
+}

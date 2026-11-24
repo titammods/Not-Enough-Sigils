@@ -1,0 +1,23 @@
+{
+  "type": "neovitae:hellfire_forge_transform",
+  "catalysts": [
+    {
+      "item": "not_enough_sigils:ascended_essence"
+    },
+    {
+      "item": "minecraft:echo_shard"
+    },
+    {
+      "item": "minecraft:slime_block"
+    }
+  ],
+  "drain": 1500.0,
+  "minDrain": 4096.0,
+  "output": {
+    "count": 1,
+    "id": "not_enough_sigils:sigil_bullet_time_greater"
+  },
+  "transformInput": {
+    "item": "not_enough_sigils:sigil_bullet_time"
+  }
+}

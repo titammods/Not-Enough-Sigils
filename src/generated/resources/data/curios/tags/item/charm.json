@@ -21,6 +21,13 @@
     "not_enough_sigils:sigil_sanctuary",
     "not_enough_sigils:sigil_executioner",
     "not_enough_sigils:sigil_harvest",
+    "not_enough_sigils:sigil_warding_gale_greater",
+    "not_enough_sigils:sigil_sanguine_aegis_greater",
+    "not_enough_sigils:sigil_vampire_lord_greater",
+    "not_enough_sigils:sigil_hellbrand_greater",
+    "not_enough_sigils:sigil_reaper_greater",
+    "not_enough_sigils:sigil_skyward_soul_greater",
+    "not_enough_sigils:sigil_demon_ninja_greater",
     "not_enough_sigils:sigil_holding_divine"
   ]
 }

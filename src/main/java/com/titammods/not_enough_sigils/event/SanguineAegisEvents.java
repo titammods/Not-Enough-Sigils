@@ -30,9 +30,13 @@ public class SanguineAegisEvents {
             return;
         }
         SanguineAegisSigilEffect config = SigilTracker.getEffect(player, SigilTracker.Kind.SANGUINE_AEGIS, SanguineAegisSigilEffect.class);
-        int evPerHealth = Math.max(1, (config == null ? SanguineAegisSigilEffect.DEFAULT : config).evPerHealth());
+        SanguineAegisSigilEffect settings = config == null ? SanguineAegisSigilEffect.DEFAULT : config;
+        int evPerHealth = Math.max(1, settings.evPerHealth());
 
         int available = SigilTracker.getEV(sigil);
+        if (settings.bonusReduction() > 0.0F && available >= settings.reductionMinEv()) {
+            damage *= 1.0F - Math.min(1.0F, settings.bonusReduction());
+        }
         int cost = (int) Math.ceil(damage * evPerHealth);
         if (available >= cost) {
             SigilTracker.drainEV(player, sigil, cost);

@@ -1,0 +1,8 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:skyward_soul",
+    "boost_strength": 1.5,
+    "flight_ev_per_second": 30
+  },
+  "lp_cost_active": 150
+}

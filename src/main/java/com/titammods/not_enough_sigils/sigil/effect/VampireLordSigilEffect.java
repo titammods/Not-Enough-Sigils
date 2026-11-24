@@ -12,17 +12,18 @@ import net.minecraft.world.level.Level;
 
 import java.util.UUID;
 
-public record VampireLordSigilEffect(float lifesteal, int evPerOverkill, int maxEvPerKill) implements ISigilEffect {
+public record VampireLordSigilEffect(float lifesteal, int evPerOverkill, int maxEvPerKill, float overhealCap) implements ISigilEffect {
     public static final float DEFAULT_LIFESTEAL = 0.15F;
     public static final int DEFAULT_EV_PER_OVERKILL = 50;
     public static final int DEFAULT_MAX_EV_PER_KILL = 5000;
 
-    public static final VampireLordSigilEffect DEFAULT = new VampireLordSigilEffect(DEFAULT_LIFESTEAL, DEFAULT_EV_PER_OVERKILL, DEFAULT_MAX_EV_PER_KILL);
+    public static final VampireLordSigilEffect DEFAULT = new VampireLordSigilEffect(DEFAULT_LIFESTEAL, DEFAULT_EV_PER_OVERKILL, DEFAULT_MAX_EV_PER_KILL, 0.0F);
 
     public static final MapCodec<VampireLordSigilEffect> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Codec.FLOAT.optionalFieldOf("lifesteal", DEFAULT_LIFESTEAL).forGetter(VampireLordSigilEffect::lifesteal),
             Codec.INT.optionalFieldOf("ev_per_overkill", DEFAULT_EV_PER_OVERKILL).forGetter(VampireLordSigilEffect::evPerOverkill),
-            Codec.INT.optionalFieldOf("max_ev_per_kill", DEFAULT_MAX_EV_PER_KILL).forGetter(VampireLordSigilEffect::maxEvPerKill)
+            Codec.INT.optionalFieldOf("max_ev_per_kill", DEFAULT_MAX_EV_PER_KILL).forGetter(VampireLordSigilEffect::maxEvPerKill),
+            Codec.FLOAT.optionalFieldOf("overheal_cap", 0.0F).forGetter(VampireLordSigilEffect::overhealCap)
     ).apply(instance, VampireLordSigilEffect::new));
 
     @Override

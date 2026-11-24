@@ -16,7 +16,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.UUID;
 
-public record BulletTimeSigilEffect(int duration, int cooldown, double radius, double projectileSpeedFactor, int slowAmplifier) implements ISigilEffect {
+public record BulletTimeSigilEffect(int duration, int cooldown, double radius, double projectileSpeedFactor, int slowAmplifier, boolean freezeProjectiles) implements ISigilEffect {
     public static final int DEFAULT_DURATION = 200;
     public static final int DEFAULT_COOLDOWN = 600;
     public static final double DEFAULT_RADIUS = 16.0D;
@@ -24,14 +24,15 @@ public record BulletTimeSigilEffect(int duration, int cooldown, double radius, d
     public static final int DEFAULT_SLOW_AMPLIFIER = 4;
 
     public static final BulletTimeSigilEffect DEFAULT = new BulletTimeSigilEffect(DEFAULT_DURATION, DEFAULT_COOLDOWN, DEFAULT_RADIUS,
-            DEFAULT_PROJECTILE_SPEED_FACTOR, DEFAULT_SLOW_AMPLIFIER);
+            DEFAULT_PROJECTILE_SPEED_FACTOR, DEFAULT_SLOW_AMPLIFIER, false);
 
     public static final MapCodec<BulletTimeSigilEffect> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Codec.INT.optionalFieldOf("duration", DEFAULT_DURATION).forGetter(BulletTimeSigilEffect::duration),
             Codec.INT.optionalFieldOf("cooldown", DEFAULT_COOLDOWN).forGetter(BulletTimeSigilEffect::cooldown),
             Codec.DOUBLE.optionalFieldOf("radius", DEFAULT_RADIUS).forGetter(BulletTimeSigilEffect::radius),
             Codec.DOUBLE.optionalFieldOf("projectile_speed_factor", DEFAULT_PROJECTILE_SPEED_FACTOR).forGetter(BulletTimeSigilEffect::projectileSpeedFactor),
-            Codec.INT.optionalFieldOf("slow_amplifier", DEFAULT_SLOW_AMPLIFIER).forGetter(BulletTimeSigilEffect::slowAmplifier)
+            Codec.INT.optionalFieldOf("slow_amplifier", DEFAULT_SLOW_AMPLIFIER).forGetter(BulletTimeSigilEffect::slowAmplifier),
+            Codec.BOOL.optionalFieldOf("freeze_projectiles", false).forGetter(BulletTimeSigilEffect::freezeProjectiles)
     ).apply(instance, BulletTimeSigilEffect::new));
 
     @Override

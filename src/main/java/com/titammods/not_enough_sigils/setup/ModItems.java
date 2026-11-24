@@ -51,6 +51,17 @@ public class ModItems {
     public static final DeferredItem<SigilItem> SIGIL_EXECUTIONER = registerSigil("sigil_executioner", "executioner");
     public static final DeferredItem<SigilItem> SIGIL_CHAINS = registerSigil("sigil_chains", "chains");
     public static final DeferredItem<SigilItem> SIGIL_HARVEST = registerSigil("sigil_harvest", "harvest");
+    public static final DeferredItem<SigilItem> SIGIL_ETHEREAL_STEP_GREATER = registerSigil("sigil_ethereal_step_greater", "ethereal_step_greater");
+    public static final DeferredItem<SigilItem> SIGIL_VEIN_SEEKER_GREATER = registerSigil("sigil_vein_seeker_greater", "vein_seeker_greater");
+    public static final DeferredItem<SigilItem> SIGIL_BULLET_TIME_GREATER = registerSigil("sigil_bullet_time_greater", "bullet_time_greater");
+    public static final DeferredItem<SigilItem> SIGIL_WARDING_GALE_GREATER = registerSigil("sigil_warding_gale_greater", "warding_gale_greater");
+    public static final DeferredItem<SigilItem> SIGIL_SANGUINE_AEGIS_GREATER = registerSigil("sigil_sanguine_aegis_greater", "sanguine_aegis_greater");
+    public static final DeferredItem<SigilItem> SIGIL_VAMPIRE_LORD_GREATER = registerSigil("sigil_vampire_lord_greater", "vampire_lord_greater");
+    public static final DeferredItem<SigilItem> SIGIL_HELLBRAND_GREATER = registerSigil("sigil_hellbrand_greater", "hellbrand_greater");
+    public static final DeferredItem<SigilItem> SIGIL_REAPER_GREATER = registerSigil("sigil_reaper_greater", "reaper_greater");
+    public static final DeferredItem<SigilItem> SIGIL_SKYWARD_SOUL_GREATER = registerSigil("sigil_skyward_soul_greater", "skyward_soul_greater");
+    public static final DeferredItem<SigilItem> SIGIL_DEMON_NINJA_GREATER = registerSigil("sigil_demon_ninja_greater", "demon_ninja_greater");
+    public static final DeferredItem<SigilItem> SIGIL_RECALL_GREATER = registerSigil("sigil_recall_greater", "recall_greater");
     public static final DeferredItem<BloodOrbItem> BLOOD_ORB_ASCENDANT = ITEMS.register("blood_orb_ascendant", BloodOrbItem::new);
     public static final DeferredItem<BloodOrbItem> BLOOD_ORB_DIVINE = ITEMS.register("blood_orb_divine", BloodOrbItem::new);
     public static final DeferredItem<SaerethSigilItem> SAERETH_SIGIL = ITEMS.register("saereth_sigil", SaerethSigilItem::new);
