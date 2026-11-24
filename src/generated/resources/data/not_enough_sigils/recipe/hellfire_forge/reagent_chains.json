@@ -1,0 +1,23 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 128.0,
+  "inputs": [
+    {
+      "item": "minecraft:chain"
+    },
+    {
+      "item": "minecraft:fishing_rod"
+    },
+    {
+      "item": "minecraft:lead"
+    },
+    {
+      "item": "minecraft:string"
+    }
+  ],
+  "minDrain": 256.0,
+  "output": {
+    "count": 1,
+    "id": "not_enough_sigils:reagent_chains"
+  }
+}

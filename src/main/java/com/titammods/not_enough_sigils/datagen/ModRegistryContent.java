@@ -17,6 +17,7 @@ import com.titammods.not_enough_sigils.sigil.effect.MagicianSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.PonymealSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.AlchemistSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.ExecutionerSigilEffect;
+import com.titammods.not_enough_sigils.sigil.effect.ChainsSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.RecallSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.SanctuarySigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.ReaperSigilEffect;
@@ -68,6 +69,7 @@ public class ModRegistryContent {
         register(context, "alchemist", 0, 0, 0, AlchemistSigilEffect.DEFAULT);
         toggle(context, "sanctuary", 120, SanctuarySigilEffect.DEFAULT);
         toggle(context, "executioner", 30, ExecutionerSigilEffect.DEFAULT);
+        register(context, "chains", 40, 40, 0, ChainsSigilEffect.DEFAULT);
         toggle(context, "berserk_divine", 80, new BerserkSigilEffect(6, 300, 600, 4, 2, 140));
     }
 

@@ -1,0 +1,7 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:chains"
+  },
+  "lp_cost_air": 40,
+  "lp_cost_block": 40
+}

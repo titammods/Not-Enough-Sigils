@@ -415,5 +415,13 @@
   "book.not_enough_sigils.guide.sigils.executioner.name": "Selo do Carrasco",
   "book.not_enough_sigils.guide.sigils.executioner.description": "Finaliza inimigos enfraquecidos com um golpe.",
   "book.not_enough_sigils.guide.sigils.executioner.effect.title": "Selo do Carrasco",
-  "book.not_enough_sigils.guide.sigils.executioner.effect.text": "Enquanto ativo, qualquer golpe corpo a corpo que deixe uma criatura abaixo de 15% da vida máxima a executa na hora, ignorando armadura e proteção.\\\n\\\nChefes são imunes. Jogadores nunca são executados.\\\n\\\n[#](8B0000)Manutenção:[#]() 30 EV a cada 5 segundos enquanto ativo\\\n[#](8B0000)Custo:[#]() 50 EV por execução"
+  "book.not_enough_sigils.guide.sigils.executioner.effect.text": "Enquanto ativo, qualquer golpe corpo a corpo que deixe uma criatura abaixo de 15% da vida máxima a executa na hora, ignorando armadura e proteção.\\\n\\\nChefes são imunes. Jogadores nunca são executados.\\\n\\\n[#](8B0000)Manutenção:[#]() 30 EV a cada 5 segundos enquanto ativo\\\n[#](8B0000)Custo:[#]() 50 EV por execução",
+  "item.not_enough_sigils.sigil_chains": "Selo das Correntes",
+  "item.not_enough_sigils.reagent_chains": "Reagente: Correntes",
+  "sigil.not_enough_sigils.chains": "Selo das Correntes",
+  "tooltip.neovitae.sigil.chains.desc": "Use para puxar a criatura que você olha até você. Agache + use para se puxar até ela, ou até um bloco",
+  "book.not_enough_sigils.guide.sigils.chains.name": "Selo das Correntes",
+  "book.not_enough_sigils.guide.sigils.chains.description": "Correntes espectrais que arrastam inimigos, ou você.",
+  "book.not_enough_sigils.guide.sigils.chains.effect.title": "Selo das Correntes",
+  "book.not_enough_sigils.guide.sigils.chains.effect.text": "Use o selo olhando para uma criatura a até 24 blocos para arrastá-la até seus pés. Chefes não podem ser movidos.\\\n\\\nAgache e use para se puxar até uma criatura ou um bloco, como um gancho. Cair depois de um puxão nunca machuca.\\\n\\\n[#](8B0000)Custo:[#]() 40 EV por uso, 1 segundo de recarga"
 }
