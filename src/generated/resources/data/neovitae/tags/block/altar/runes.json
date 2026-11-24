@@ -2,6 +2,11 @@
   "values": [
     "not_enough_sigils:rune_3_capacity_augmented",
     "not_enough_sigils:rune_3_speed",
-    "not_enough_sigils:rune_eternity"
+    "not_enough_sigils:rune_eternity",
+    "not_enough_sigils:rune_3_sacrifice",
+    "not_enough_sigils:rune_3_sacrifice_self",
+    "not_enough_sigils:rune_3_orb",
+    "not_enough_sigils:rune_3_dislocation",
+    "not_enough_sigils:rune_3_charging"
   ]
 }

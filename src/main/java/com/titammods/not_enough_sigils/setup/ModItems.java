@@ -76,6 +76,11 @@ public class ModItems {
     public static final DeferredItem<RuneBlockItem> RUNE_3_CAPACITY_AUGMENTED = rune(ModBlocks.RUNE_3_CAPACITY_AUGMENTED, "rune.capacity_augmented", "rune.ascended");
     public static final DeferredItem<RuneBlockItem> RUNE_3_SPEED = rune(ModBlocks.RUNE_3_SPEED, "rune.speed", "rune.ascended");
     public static final DeferredItem<RuneBlockItem> RUNE_ETERNITY = rune(ModBlocks.RUNE_ETERNITY, "rune.eternity", "rune.ascended");
+    public static final DeferredItem<RuneBlockItem> RUNE_3_SACRIFICE = rune(ModBlocks.RUNE_3_SACRIFICE, "rune.sacrifice", "rune.ascended");
+    public static final DeferredItem<RuneBlockItem> RUNE_3_SACRIFICE_SELF = rune(ModBlocks.RUNE_3_SACRIFICE_SELF, "rune.sacrifice_self", "rune.ascended");
+    public static final DeferredItem<RuneBlockItem> RUNE_3_ORB = rune(ModBlocks.RUNE_3_ORB, "rune.orb", "rune.ascended");
+    public static final DeferredItem<RuneBlockItem> RUNE_3_DISLOCATION = rune(ModBlocks.RUNE_3_DISLOCATION, "rune.dislocation", "rune.ascended");
+    public static final DeferredItem<RuneBlockItem> RUNE_3_CHARGING = rune(ModBlocks.RUNE_3_CHARGING, "rune.charging", "rune.ascended");
 
     public static final DeferredItem<Item> REAGENT_SOUL_PHOENIX = ITEMS.registerSimpleItem("reagent_soul_phoenix");
     public static final DeferredItem<Item> REAGENT_DEMON_NINJA = ITEMS.registerSimpleItem("reagent_demon_ninja");

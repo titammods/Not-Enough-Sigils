@@ -513,5 +513,20 @@
   "chat.not_enough_sigils.vein_seeker.filter_cleared": "Seeking every ore again",
   "tooltip.not_enough_sigils.vein_seeker.filter": "Seeking: %s",
   "tooltip.not_enough_sigils.vein_seeker.all_ores": "All ores",
-  "tooltip.not_enough_sigils.vein_seeker.filter_hint": "Sneak + use on an ore to filter, in the air to clear"
+  "tooltip.not_enough_sigils.vein_seeker.filter_hint": "Sneak + use on an ore to filter, in the air to clear",
+  "block.not_enough_sigils.rune_3_sacrifice": "Ascended Rune of Sacrifice",
+  "tooltip.not_enough_sigils.rune.sacrifice": "Greatly increases the EV gained from sacrificing creatures",
+  "book.not_enough_sigils.guide.altar.ascended_runes.sacrifice.text": "[#](B8860B)Ascended Rune of Sacrifice[#]()\\\nEach rune adds +50% to the EV gained from creatures slain at the altar, against +20% from the Reinforced rune.",
+  "block.not_enough_sigils.rune_3_sacrifice_self": "Ascended Rune of Self Sacrifice",
+  "tooltip.not_enough_sigils.rune.sacrifice_self": "Greatly increases the EV gained from your own blood",
+  "book.not_enough_sigils.guide.altar.ascended_runes.sacrifice_self.text": "[#](B8860B)Ascended Rune of Self Sacrifice[#]()\\\nEach rune adds +50% to the EV gained from your own blood, against +20% from the Reinforced rune.",
+  "block.not_enough_sigils.rune_3_orb": "Ascended Rune of the Orb",
+  "tooltip.not_enough_sigils.rune.orb": "Greatly increases the maximum EV your Blood Orbs can hold",
+  "book.not_enough_sigils.guide.altar.ascended_runes.orb.text": "[#](B8860B)Ascended Rune of the Orb[#]()\\\nEach rune adds +100% to the capacity of the orb filled at the altar, against +40% from the Reinforced rune.",
+  "block.not_enough_sigils.rune_3_dislocation": "Ascended Displacement Rune",
+  "tooltip.not_enough_sigils.rune.dislocation": "Multiplies the altar's fluid input and output rate",
+  "book.not_enough_sigils.guide.altar.ascended_runes.dislocation.text": "[#](B8860B)Ascended Displacement Rune[#]()\\\nEach rune multiplies the altar's fluid transfer by 2.07, against 1.44 from the Reinforced rune. They compound.",
+  "block.not_enough_sigils.rune_3_charging": "Ascended Charging Rune",
+  "tooltip.not_enough_sigils.rune.charging": "Stores far more charge for instant crafting",
+  "book.not_enough_sigils.guide.altar.ascended_runes.charging.text": "[#](B8860B)Ascended Charging Rune[#]()\\\nEach rune adds 50 charge per cycle, against 20 from the Reinforced rune, and enlarges the charge tank like any Charging Rune."
 }

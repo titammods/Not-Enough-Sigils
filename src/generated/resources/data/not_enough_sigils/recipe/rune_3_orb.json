@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "e": {
+      "item": "not_enough_sigils:ascended_essence"
+    },
+    "h": {
+      "item": "neovitae:hellforged_parts"
+    },
+    "n": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "r": {
+      "item": "neovitae:rune_2_orb"
+    }
+  },
+  "pattern": [
+    "nhn",
+    "ere",
+    "nhn"
+  ],
+  "result": {
+    "count": 1,
+    "id": "not_enough_sigils:rune_3_orb"
+  }
+}

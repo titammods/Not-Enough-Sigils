@@ -513,5 +513,20 @@
   "chat.not_enough_sigils.vein_seeker.filter_cleared": "Buscando todos os minérios de novo",
   "tooltip.not_enough_sigils.vein_seeker.filter": "Buscando: %s",
   "tooltip.not_enough_sigils.vein_seeker.all_ores": "Todos os minérios",
-  "tooltip.not_enough_sigils.vein_seeker.filter_hint": "Agache + use num minério para filtrar, no ar para limpar"
+  "tooltip.not_enough_sigils.vein_seeker.filter_hint": "Agache + use num minério para filtrar, no ar para limpar",
+  "block.not_enough_sigils.rune_3_sacrifice": "Runa de Sacrifício Ascendida",
+  "tooltip.not_enough_sigils.rune.sacrifice": "Aumenta muito o EV ganho ao sacrificar criaturas",
+  "book.not_enough_sigils.guide.altar.ascended_runes.sacrifice.text": "[#](B8860B)Runa de Sacrifício Ascendida[#]()\\\nCada runa soma +50% ao EV ganho com criaturas mortas no altar, contra +20% da runa Reforçada.",
+  "block.not_enough_sigils.rune_3_sacrifice_self": "Runa de Autossacrifício Ascendida",
+  "tooltip.not_enough_sigils.rune.sacrifice_self": "Aumenta muito o EV ganho com o seu próprio sangue",
+  "book.not_enough_sigils.guide.altar.ascended_runes.sacrifice_self.text": "[#](B8860B)Runa de Autossacrifício Ascendida[#]()\\\nCada runa soma +50% ao EV ganho com o seu próprio sangue, contra +20% da runa Reforçada.",
+  "block.not_enough_sigils.rune_3_orb": "Runa do Orbe Ascendida",
+  "tooltip.not_enough_sigils.rune.orb": "Aumenta muito o EV máximo que seus Orbes de Sangue guardam",
+  "book.not_enough_sigils.guide.altar.ascended_runes.orb.text": "[#](B8860B)Runa do Orbe Ascendida[#]()\\\nCada runa soma +100% à capacidade do orbe enchido no altar, contra +40% da runa Reforçada.",
+  "block.not_enough_sigils.rune_3_dislocation": "Runa de Deslocamento Ascendida",
+  "tooltip.not_enough_sigils.rune.dislocation": "Multiplica a taxa de entrada e saída de fluido do altar",
+  "book.not_enough_sigils.guide.altar.ascended_runes.dislocation.text": "[#](B8860B)Runa de Deslocamento Ascendida[#]()\\\nCada runa multiplica a transferência de fluido do altar por 2,07, contra 1,44 da runa Reforçada. Elas se acumulam.",
+  "block.not_enough_sigils.rune_3_charging": "Runa de Carregamento Ascendida",
+  "tooltip.not_enough_sigils.rune.charging": "Armazena muito mais carga para criação instantânea",
+  "book.not_enough_sigils.guide.altar.ascended_runes.charging.text": "[#](B8860B)Runa de Carregamento Ascendida[#]()\\\nCada runa soma 50 de carga por ciclo, contra 20 da runa Reforçada, e aumenta o tanque de carga como qualquer Runa de Carregamento."
 }

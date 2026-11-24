@@ -3,6 +3,21 @@
     "not_enough_sigils:rune_3_capacity_augmented": {
       "augmented_capacity_power": 1.3354691406249999
     },
+    "not_enough_sigils:rune_3_charging": {
+      "charge_amount_mod": 50
+    },
+    "not_enough_sigils:rune_3_dislocation": {
+      "dislocation_power": 2.0736
+    },
+    "not_enough_sigils:rune_3_orb": {
+      "orb_capacity_mod": 1.0
+    },
+    "not_enough_sigils:rune_3_sacrifice": {
+      "sacrifice_mod": 0.5
+    },
+    "not_enough_sigils:rune_3_sacrifice_self": {
+      "self_sacrifice_mod": 0.5
+    },
     "not_enough_sigils:rune_3_speed": {
       "acceleration_mod": 1,
       "consumption_mod": 1.0

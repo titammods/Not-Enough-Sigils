@@ -136,6 +136,19 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('d', nv("deus_shard")).define('s', Items.NETHER_STAR).define('h', nv("hellforged_parts")).define('r', nv("rune_2_efficiency"))
                 .unlockedBy("has_rune", has(nv("rune_2_efficiency")))
                 .save(output, NotEnoughSigils.rl("rune_eternity"));
+        ascendedRune(output, ModItems.RUNE_3_SACRIFICE.get(), nv("rune_2_sacrifice"), "rune_3_sacrifice");
+        ascendedRune(output, ModItems.RUNE_3_SACRIFICE_SELF.get(), nv("rune_2_sacrifice_self"), "rune_3_sacrifice_self");
+        ascendedRune(output, ModItems.RUNE_3_ORB.get(), nv("rune_2_orb"), "rune_3_orb");
+        ascendedRune(output, ModItems.RUNE_3_DISLOCATION.get(), nv("rune_2_dislocation"), "rune_3_dislocation");
+        ascendedRune(output, ModItems.RUNE_3_CHARGING.get(), nv("rune_2_charging"), "rune_3_charging");
+    }
+
+    private static void ascendedRune(RecipeOutput output, Item result, Item center, String name) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, result)
+                .pattern("nhn").pattern("ere").pattern("nhn")
+                .define('n', Items.NETHERITE_INGOT).define('h', nv("hellforged_parts")).define('e', ModItems.ASCENDED_ESSENCE.get()).define('r', center)
+                .unlockedBy("has_rune", has(center))
+                .save(output, NotEnoughSigils.rl(name));
     }
 
     private void altarRecipes(RecipeOutput output) {

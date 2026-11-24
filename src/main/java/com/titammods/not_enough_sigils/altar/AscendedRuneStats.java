@@ -9,7 +9,8 @@ import net.neoforged.neoforge.registries.datamaps.DataMapType;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 
 public record AscendedRuneStats(int minTier, double capacityMod, double augmentedCapacityPower, double consumptionMod, int accelerationMod,
-                                double costReduction, double maxCostReduction) {
+                                double costReduction, double maxCostReduction, double sacrificeMod, double selfSacrificeMod,
+                                double orbCapacityMod, double dislocationPower, int chargeAmountMod) {
     public static final int DEFAULT_MIN_TIER = 6;
 
     public static final Codec<AscendedRuneStats> CODEC = RecordCodecBuilder.create(instance -> instance.group(
@@ -19,7 +20,12 @@ public record AscendedRuneStats(int minTier, double capacityMod, double augmente
             Codec.DOUBLE.optionalFieldOf("consumption_mod", 0.0D).forGetter(AscendedRuneStats::consumptionMod),
             Codec.INT.optionalFieldOf("acceleration_mod", 0).forGetter(AscendedRuneStats::accelerationMod),
             Codec.DOUBLE.optionalFieldOf("cost_reduction", 0.0D).forGetter(AscendedRuneStats::costReduction),
-            Codec.DOUBLE.optionalFieldOf("max_cost_reduction", 0.5D).forGetter(AscendedRuneStats::maxCostReduction)
+            Codec.DOUBLE.optionalFieldOf("max_cost_reduction", 0.5D).forGetter(AscendedRuneStats::maxCostReduction),
+            Codec.DOUBLE.optionalFieldOf("sacrifice_mod", 0.0D).forGetter(AscendedRuneStats::sacrificeMod),
+            Codec.DOUBLE.optionalFieldOf("self_sacrifice_mod", 0.0D).forGetter(AscendedRuneStats::selfSacrificeMod),
+            Codec.DOUBLE.optionalFieldOf("orb_capacity_mod", 0.0D).forGetter(AscendedRuneStats::orbCapacityMod),
+            Codec.DOUBLE.optionalFieldOf("dislocation_power", 1.0D).forGetter(AscendedRuneStats::dislocationPower),
+            Codec.INT.optionalFieldOf("charge_amount_mod", 0).forGetter(AscendedRuneStats::chargeAmountMod)
     ).apply(instance, AscendedRuneStats::new));
 
     public static final DataMapType<Block, AscendedRuneStats> DATA_MAP = DataMapType.builder(
@@ -31,14 +37,34 @@ public record AscendedRuneStats(int minTier, double capacityMod, double augmente
     }
 
     public static AscendedRuneStats augmentedCapacity(double power) {
-        return new AscendedRuneStats(DEFAULT_MIN_TIER, 0.0D, power, 0.0D, 0, 0.0D, 0.5D);
+        return new AscendedRuneStats(DEFAULT_MIN_TIER, 0.0D, power, 0.0D, 0, 0.0D, 0.5D, 0.0D, 0.0D, 0.0D, 1.0D, 0);
     }
 
     public static AscendedRuneStats speed(double amount, int acceleration) {
-        return new AscendedRuneStats(DEFAULT_MIN_TIER, 0.0D, 1.0D, amount, acceleration, 0.0D, 0.5D);
+        return new AscendedRuneStats(DEFAULT_MIN_TIER, 0.0D, 1.0D, amount, acceleration, 0.0D, 0.5D, 0.0D, 0.0D, 0.0D, 1.0D, 0);
     }
 
     public static AscendedRuneStats eternity(double reduction, double max) {
-        return new AscendedRuneStats(DEFAULT_MIN_TIER, 0.0D, 1.0D, 0.0D, 0, reduction, max);
+        return new AscendedRuneStats(DEFAULT_MIN_TIER, 0.0D, 1.0D, 0.0D, 0, reduction, max, 0.0D, 0.0D, 0.0D, 1.0D, 0);
+    }
+
+    public static AscendedRuneStats sacrifice(double amount) {
+        return new AscendedRuneStats(DEFAULT_MIN_TIER, 0.0D, 1.0D, 0.0D, 0, 0.0D, 0.5D, amount, 0.0D, 0.0D, 1.0D, 0);
+    }
+
+    public static AscendedRuneStats selfSacrifice(double amount) {
+        return new AscendedRuneStats(DEFAULT_MIN_TIER, 0.0D, 1.0D, 0.0D, 0, 0.0D, 0.5D, 0.0D, amount, 0.0D, 1.0D, 0);
+    }
+
+    public static AscendedRuneStats orb(double amount) {
+        return new AscendedRuneStats(DEFAULT_MIN_TIER, 0.0D, 1.0D, 0.0D, 0, 0.0D, 0.5D, 0.0D, 0.0D, amount, 1.0D, 0);
+    }
+
+    public static AscendedRuneStats dislocation(double power) {
+        return new AscendedRuneStats(DEFAULT_MIN_TIER, 0.0D, 1.0D, 0.0D, 0, 0.0D, 0.5D, 0.0D, 0.0D, 0.0D, power, 0);
+    }
+
+    public static AscendedRuneStats charging(int amount) {
+        return new AscendedRuneStats(DEFAULT_MIN_TIER, 0.0D, 1.0D, 0.0D, 0, 0.0D, 0.5D, 0.0D, 0.0D, 0.0D, 1.0D, amount);
     }
 }

@@ -125,7 +125,17 @@ public class ModBookProvider implements DataProvider {
                 .text("speed", false)
                 .crafting(recipe("rune_3_speed"))
                 .text("eternity", false)
-                .crafting(recipe("rune_eternity"));
+                .crafting(recipe("rune_eternity"))
+                .text("sacrifice", false)
+                .crafting(recipe("rune_3_sacrifice"))
+                .text("sacrifice_self", false)
+                .crafting(recipe("rune_3_sacrifice_self"))
+                .text("orb", false)
+                .crafting(recipe("rune_3_orb"))
+                .text("dislocation", false)
+                .crafting(recipe("rune_3_dislocation"))
+                .text("charging", false)
+                .crafting(recipe("rune_3_charging"));
         category.add("progression", own("divine_essence"), 0, 3).parent(tiers)
                 .text("intro", true)
                 .text("soul_fragment", false)
