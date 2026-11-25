@@ -20,6 +20,7 @@ import com.titammods.not_enough_sigils.sigil.effect.ExecutionerSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.ChainsSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.HarvestSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.RecallSigilEffect;
+import com.titammods.not_enough_sigils.sigil.effect.QuicksilverSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.SanctuarySigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.ReaperSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.SanguineAegisSigilEffect;
@@ -72,6 +73,7 @@ public class ModRegistryContent {
         toggle(context, "executioner", 30, ExecutionerSigilEffect.DEFAULT);
         register(context, "chains", 40, 40, 0, ChainsSigilEffect.DEFAULT);
         toggle(context, "harvest", 40, HarvestSigilEffect.DEFAULT);
+        toggle(context, "quicksilver", 40, QuicksilverSigilEffect.DEFAULT);
         register(context, "ethereal_step_greater", 40, 40, 0, new EtherealStepSigilEffect(32.0D, 5, 2));
         register(context, "vein_seeker_greater", 100, 100, 0, new VeinSeekerSigilEffect(24, 1024, 300, 100, VeinSeekerSigilEffect.DEFAULT.targets(), true));
         register(context, "bullet_time_greater", 500, 0, 0, new BulletTimeSigilEffect(200, 600, 16.0D, 0.2D, 4, true));

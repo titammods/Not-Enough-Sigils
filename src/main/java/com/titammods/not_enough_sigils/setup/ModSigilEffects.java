@@ -23,6 +23,7 @@ import com.titammods.not_enough_sigils.sigil.effect.ExecutionerSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.ChainsSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.HarvestSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.RecallSigilEffect;
+import com.titammods.not_enough_sigils.sigil.effect.QuicksilverSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.SanctuarySigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.ReaperSigilEffect;
 import com.titammods.not_enough_sigils.sigil.effect.HellbrandSigilEffect;
@@ -117,4 +118,7 @@ public class ModSigilEffects {
 
     public static final Supplier<MapCodec<HarvestSigilEffect>> HARVEST =
             SIGIL_EFFECTS.register("harvest", () -> HarvestSigilEffect.CODEC);
+
+    public static final Supplier<MapCodec<QuicksilverSigilEffect>> QUICKSILVER =
+            SIGIL_EFFECTS.register("quicksilver", () -> QuicksilverSigilEffect.CODEC);
 }

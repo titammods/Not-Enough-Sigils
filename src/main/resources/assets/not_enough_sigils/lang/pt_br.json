@@ -535,5 +535,13 @@
   "book.not_enough_sigils.guide.saereth.library.intro.title": "A Biblioteca Viva",
   "book.not_enough_sigils.guide.saereth.library.intro.text": "Quando não há array para desenhar, Saereth se volta ao seu arquivo. Ele procura no baú vinculado dois [#](8B0000)livros encantados idênticos[#](), chama os dois para o ar e os entrelaça ao redor de si num ritual de sangue e tinta.\\\n\\\nOs dois livros viram um só, com cada encantamento subindo um nível, e o novo tomo volta flutuando para o baú.",
   "book.not_enough_sigils.guide.saereth.library.rules.text": "[#](B8860B)Regras[#]()\\\n- Os dois livros precisam ter exatamente os mesmos encantamentos nos mesmos níveis.\\\n- Os livros continuam subindo até o nível 255, mesmo com encantamentos vanilla.\\\n- Crafts de array sempre têm prioridade.\\\n\\\n[#](8B0000)Custo:[#]() 1.000 EV da rede do dono por nível do livro resultante, pago no momento da união.",
-  "book.not_enough_sigils.guide.saereth.library.settings.text": "[#](B8860B)Configuração[#]()\\\nModpacks podem ajustar a biblioteca em [#](8B0000)data/not_enough_sigils/saereth/settings.json[#]():\\\n- library_enabled\\\n- library_ev_per_level\\\n- library_max_level (255 por padrão; qualquer valor de 1 a 254 define um limite menor)"
+  "book.not_enough_sigils.guide.saereth.library.settings.text": "[#](B8860B)Configuração[#]()\\\nModpacks podem ajustar a biblioteca em [#](8B0000)data/not_enough_sigils/saereth/settings.json[#]():\\\n- library_enabled\\\n- library_ev_per_level\\\n- library_max_level (255 por padrão; qualquer valor de 1 a 254 define um limite menor)",
+  "item.not_enough_sigils.sigil_quicksilver": "Selo de Mercúrio",
+  "item.not_enough_sigils.reagent_quicksilver": "Reagente: Mercúrio",
+  "sigil.not_enough_sigils.quicksilver": "Selo de Mercúrio",
+  "tooltip.neovitae.sigil.quicksilver.desc": "Enquanto ativo, mercúrio corre nas suas veias, concedendo Velocidade II sem fim",
+  "book.not_enough_sigils.guide.sigils.quicksilver.name": "Selo de Mercúrio",
+  "book.not_enough_sigils.guide.sigils.quicksilver.description": "Velocidade sem fim enquanto ativo.",
+  "book.not_enough_sigils.guide.sigils.quicksilver.effect.title": "Selo de Mercúrio",
+  "book.not_enough_sigils.guide.sigils.quicksilver.effect.text": "Enquanto ativo, mercúrio corre nas suas veias e mantém você sob Velocidade II sem fim. Como todo selo deste livro, o efeito só aparece no inventário, nunca na tela.\\\n\\\n[#](8B0000)Manutenção:[#]() 40 EV a cada 5 segundos enquanto ativo"
 }

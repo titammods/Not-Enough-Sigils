@@ -1,0 +1,23 @@
+{
+  "type": "neovitae:hellfire_forge",
+  "drain": 128.0,
+  "inputs": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:rabbit_foot"
+    },
+    {
+      "item": "minecraft:feather"
+    },
+    {
+      "item": "minecraft:redstone"
+    }
+  ],
+  "minDrain": 256.0,
+  "output": {
+    "count": 1,
+    "id": "not_enough_sigils:reagent_quicksilver"
+  }
+}

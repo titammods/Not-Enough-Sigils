@@ -1,0 +1,14 @@
+{
+  "type": "neovitae:array",
+  "addedinput": {
+    "item": "neovitae:tabula_aetherea"
+  },
+  "baseinput": {
+    "item": "not_enough_sigils:reagent_quicksilver"
+  },
+  "output": {
+    "count": 1,
+    "id": "not_enough_sigils:sigil_quicksilver"
+  },
+  "texture": "neovitae:textures/models/alchemyarrays/movementarray.png"
+}

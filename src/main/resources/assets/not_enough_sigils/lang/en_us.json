@@ -535,5 +535,13 @@
   "book.not_enough_sigils.guide.saereth.library.intro.title": "The Living Library",
   "book.not_enough_sigils.guide.saereth.library.intro.text": "When there is no array to draw, Saereth turns to his archive. He looks in the linked chest for two [#](8B0000)identical enchanted books[#](), calls them out into the air and weaves them around himself in a ritual of blood and ink.\\\n\\\nThe two books become one, every enchantment raised by one level, and the new tome drifts back into the chest.",
   "book.not_enough_sigils.guide.saereth.library.rules.text": "[#](B8860B)Rules[#]()\\\n- Both books must hold exactly the same enchantments at the same levels.\\\n- Books keep growing up to level 255, even for vanilla enchantments.\\\n- Array crafts always come first.\\\n\\\n[#](8B0000)Cost:[#]() 1,000 EV from the owner's network for each level of the resulting book, paid when the books are bound.",
-  "book.not_enough_sigils.guide.saereth.library.settings.text": "[#](B8860B)Settings[#]()\\\nModpacks can change the library in [#](8B0000)data/not_enough_sigils/saereth/settings.json[#]():\\\n- library_enabled\\\n- library_ev_per_level\\\n- library_max_level (255 by default; any value from 1 to 254 sets a lower cap)"
+  "book.not_enough_sigils.guide.saereth.library.settings.text": "[#](B8860B)Settings[#]()\\\nModpacks can change the library in [#](8B0000)data/not_enough_sigils/saereth/settings.json[#]():\\\n- library_enabled\\\n- library_ev_per_level\\\n- library_max_level (255 by default; any value from 1 to 254 sets a lower cap)",
+  "item.not_enough_sigils.sigil_quicksilver": "Sigil of Quicksilver",
+  "item.not_enough_sigils.reagent_quicksilver": "Reagent: Quicksilver",
+  "sigil.not_enough_sigils.quicksilver": "Sigil of Quicksilver",
+  "tooltip.neovitae.sigil.quicksilver.desc": "While active, quicksilver runs through your veins, granting endless Speed II",
+  "book.not_enough_sigils.guide.sigils.quicksilver.name": "Sigil of Quicksilver",
+  "book.not_enough_sigils.guide.sigils.quicksilver.description": "Endless Speed while active.",
+  "book.not_enough_sigils.guide.sigils.quicksilver.effect.title": "Sigil of Quicksilver",
+  "book.not_enough_sigils.guide.sigils.quicksilver.effect.text": "While active, quicksilver runs through your veins and keeps you under endless Speed II. Like every sigil of this book, the effect only shows in your inventory, never on your screen.\\\n\\\n[#](8B0000)Upkeep:[#]() 40 EV every 5 seconds while active"
 }

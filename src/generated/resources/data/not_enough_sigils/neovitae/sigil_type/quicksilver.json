@@ -1,0 +1,6 @@
+{
+  "effect": {
+    "type": "not_enough_sigils:quicksilver"
+  },
+  "lp_cost_active": 40
+}

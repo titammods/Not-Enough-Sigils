@@ -51,6 +51,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 ModItems.SIGIL_SANCTUARY.get(),
                 ModItems.SIGIL_EXECUTIONER.get(),
                 ModItems.SIGIL_HARVEST.get(),
+                ModItems.SIGIL_QUICKSILVER.get(),
                 ModItems.SIGIL_WARDING_GALE_GREATER.get(),
                 ModItems.SIGIL_SANGUINE_AEGIS_GREATER.get(),
                 ModItems.SIGIL_VAMPIRE_LORD_GREATER.get(),
