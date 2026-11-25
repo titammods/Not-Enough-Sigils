@@ -10,6 +10,8 @@ import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.neoforged.neoforge.items.IItemHandler;
 
 public class LibraryMerge {
+    public static final int MAX_LEVEL = 255;
+
     public record Match(int first, int second, ItemStack result, int levels) {
     }
 
@@ -53,7 +55,7 @@ public class LibraryMerge {
         int levels = 0;
         for (Object2IntMap.Entry<Holder<Enchantment>> entry : enchantments.entrySet()) {
             int level = entry.getIntValue();
-            int cap = maxLevelOverride > 0 ? maxLevelOverride : entry.getKey().value().getMaxLevel();
+            int cap = maxLevelOverride > 0 ? Math.min(MAX_LEVEL, maxLevelOverride) : MAX_LEVEL;
             if (level < cap) {
                 mutable.set(entry.getKey(), level + 1);
                 levels += level + 1;
