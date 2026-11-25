@@ -8,7 +8,6 @@ import com.titammods.not_enough_sigils.NotEnoughSigils;
 import com.titammods.not_enough_sigils.setup.ModEntities;
 import com.titammods.not_enough_sigils.setup.ModItems;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -46,7 +45,7 @@ public class RitualSaereth extends Ritual {
             level.addFreshEntity(saereth);
         }
 
-        ItemEntity sigil = new ItemEntity(level, spawn.getX() + 0.5D, spawn.getY() + 0.5D, spawn.getZ() + 0.5D, new ItemStack(ModItems.SAERETH_SIGIL.get()));
+        ItemEntity sigil = new ItemEntity(level, spawn.getX() + 0.5D, spawn.getY() + 0.5D, spawn.getZ() + 0.5D, new ItemStack(ModItems.SIGIL_SOUL_CAPTURE.get()));
         sigil.setDefaultPickUpDelay();
         level.addFreshEntity(sigil);
 
@@ -56,7 +55,7 @@ public class RitualSaereth extends Ritual {
             bolt.setVisualOnly(true);
             level.addFreshEntity(bolt);
         }
-        level.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, spawn.getX() + 0.5D, spawn.getY() + 1.0D, spawn.getZ() + 0.5D, 60, 0.6D, 1.0D, 0.6D, 0.05D);
+        SaerethFx.summon(level, master, spawn);
         level.playSound(null, spawn, SoundEvents.EVOKER_PREPARE_SUMMON, SoundSource.BLOCKS, 1.0F, 0.8F);
 
         masterRitualStone.stopRitual(BreakType.DEACTIVATE);

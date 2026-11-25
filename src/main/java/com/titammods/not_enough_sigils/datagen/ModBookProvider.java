@@ -161,15 +161,17 @@ public class ModBookProvider implements DataProvider {
     }
 
     private static Category saereth() {
-        Category category = new Category("saereth", own("saereth_sigil"), "saereth");
+        Category category = new Category("saereth", own("sigil_soul_capture"), "saereth");
         Entry ritual = category.add("ritual", "neovitae:master_ritual_stone", 0, -3)
                 .text("intro", true)
                 .ritualInfo("info");
-        category.add("sigil", own("saereth_sigil"), -3, 0).parent(ritual)
+        category.add("sigil", own("sigil_soul_capture"), -3, 0).parent(ritual)
                 .text("intro", true).text("linking", false).text("capture", false);
-        category.add("workshop", own("saereth_sigil"), 3, 0).parent(ritual)
+        category.add("workshop", own("sigil_soul_capture"), 3, 0).parent(ritual)
                 .entity("saereth", NotEnoughSigils.rl("saereth"))
                 .text("crafting", true).text("status", false);
+        category.add("library", "minecraft:enchanted_book", 0, 3).parent(ritual)
+                .text("intro", true).text("rules", false).text("settings", false);
         return category;
     }
 

@@ -5,7 +5,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -29,13 +28,13 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import java.util.List;
 import java.util.UUID;
 
-public class SaerethSigilItem extends Item {
+public class SoulCaptureSigilItem extends Item {
     private static final String CHEST = "SaerethChest";
     private static final String ARRAY = "SaerethArray";
     private static final String DIMENSION = "SaerethDimension";
     private static final String CAPTURED = "SaerethCaptured";
 
-    public SaerethSigilItem() {
+    public SoulCaptureSigilItem() {
         super(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant());
     }
 
@@ -78,6 +77,9 @@ public class SaerethSigilItem extends Item {
                 player.displayClientMessage(Component.translatable("chat.not_enough_sigils.saereth.already_holding").withStyle(ChatFormatting.RED), true);
                 return InteractionResult.FAIL;
             }
+            if (player.level() instanceof ServerLevel serverLevel) {
+                SaerethFx.capture(serverLevel, saereth, player);
+            }
             saereth.captureInto(held);
             player.level().playSound(null, saereth.blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 0.6F, 1.4F);
             player.displayClientMessage(Component.translatable("chat.not_enough_sigils.saereth.captured").withStyle(ChatFormatting.LIGHT_PURPLE), true);
@@ -103,6 +105,9 @@ public class SaerethSigilItem extends Item {
             return InteractionResult.FAIL;
         }
         saereth.link(chest, array);
+        if (player.level() instanceof ServerLevel serverLevel) {
+            SaerethFx.link(serverLevel, saereth, chest, array);
+        }
         player.level().playSound(null, saereth.blockPosition(), SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.PLAYERS, 0.8F, 1.2F);
         player.displayClientMessage(Component.translatable("chat.not_enough_sigils.saereth.linked").withStyle(ChatFormatting.GREEN), true);
         return InteractionResult.SUCCESS;
@@ -167,7 +172,7 @@ public class SaerethSigilItem extends Item {
         CustomData.set(DataComponents.CUSTOM_DATA, stack, tag);
         level.playSound(null, pos, SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 0.6F, 0.9F);
         if (level instanceof ServerLevel serverLevel) {
-            serverLevel.sendParticles(ParticleTypes.PORTAL, saereth.getX(), saereth.getY() + 1.0D, saereth.getZ(), 40, 0.3D, 0.8D, 0.3D, 0.2D);
+            SaerethFx.release(serverLevel, player, saereth);
         }
         player.displayClientMessage(Component.translatable("chat.not_enough_sigils.saereth.released").withStyle(ChatFormatting.LIGHT_PURPLE), true);
         return InteractionResult.SUCCESS;
@@ -206,10 +211,10 @@ public class SaerethSigilItem extends Item {
         BlockPos chest = getPos(tag, CHEST);
         BlockPos array = getPos(tag, ARRAY);
         if (chest != null) {
-            level.addParticle(ParticleTypes.END_ROD, chest.getX() + 0.5D, chest.getY() + 1.1D, chest.getZ() + 0.5D, 0.0D, 0.02D, 0.0D);
+            SaerethFx.marker(level, chest, SaerethFx.CHEST_MARK, 1.1D);
         }
         if (array != null) {
-            level.addParticle(ParticleTypes.WITCH, array.getX() + 0.5D, array.getY() + 0.1D, array.getZ() + 0.5D, 0.0D, 0.0D, 0.0D);
+            SaerethFx.marker(level, array, SaerethFx.ARRAY_MARK, 0.1D);
         }
     }
 

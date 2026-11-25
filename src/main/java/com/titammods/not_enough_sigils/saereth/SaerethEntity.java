@@ -1,5 +1,8 @@
 package com.titammods.not_enough_sigils.saereth;
 
+import com.breakinblocks.neovitae.api.NeoVitaeAPI;
+import com.breakinblocks.neovitae.api.soul.AnimaTicket;
+import com.breakinblocks.neovitae.api.soul.IAnima;
 import com.breakinblocks.neovitae.common.alchemyarray.AlchemyArrayEffectType;
 import com.breakinblocks.neovitae.common.block.AlchemyArrayBlock;
 import com.breakinblocks.neovitae.common.block.NVBlocks;
@@ -12,8 +15,10 @@ import com.breakinblocks.neovitae.common.recipe.alchemyarray.AlchemyArrayRecipe;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.util.Mth;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -52,6 +57,7 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -71,6 +77,12 @@ public class SaerethEntity extends PathfinderMob {
     private int scanCooldown;
     private ResourceLocation recipeId;
     private ItemStack carried = ItemStack.EMPTY;
+    private final List<ItemStack> libraryItems = new ArrayList<>();
+    private final List<FloatingBook> books = new ArrayList<>();
+    private ItemStack libraryResult = ItemStack.EMPTY;
+    private int libraryCost;
+    private Vec3 libraryCenter;
+    private float librarySpin;
 
     public SaerethEntity(EntityType<? extends PathfinderMob> type, Level level) {
         super(type, level);
@@ -181,7 +193,7 @@ public class SaerethEntity extends PathfinderMob {
     private void work(ServerLevel level) {
         SaerethSettings settings = SaerethSettings.get();
         phaseTicks++;
-        if (arrayPos != null && phase != Phase.IDLE) {
+        if (arrayPos != null && phase != Phase.IDLE && phase != Phase.LIBRARY) {
             Vec3 center = Vec3.atCenterOf(arrayPos);
             getLookControl().setLookAt(center.x, center.y - 0.5D, center.z);
         }
@@ -191,11 +203,15 @@ public class SaerethEntity extends PathfinderMob {
             case PLACE_BASE -> place(level, settings, true);
             case PLACE_ADDED -> place(level, settings, false);
             case CAST -> cast(level, settings);
+            case LIBRARY -> library(level);
         }
     }
 
     private void idle(ServerLevel level, SaerethSettings settings) {
         setAction(Action.IDLE);
+        if (status == Status.READY && tickCount % 6 == 0) {
+            SaerethFx.idle(level, this, tickCount);
+        }
         if (--scanCooldown > 0) {
             return;
         }
@@ -205,13 +221,20 @@ public class SaerethEntity extends PathfinderMob {
         if (chest == null) {
             return;
         }
-        if (findAsh(chest) < 0) {
-            status = Status.NO_ASH;
-            return;
-        }
-        RecipeHolder<AlchemyArrayRecipe> recipe = findRecipe(level, chest);
+        boolean hasAsh = findAsh(chest) >= 0;
+        RecipeHolder<AlchemyArrayRecipe> recipe = hasAsh ? findRecipe(level, chest) : null;
         if (recipe == null) {
-            status = Status.NO_RECIPE;
+            if (settings.libraryEnabled()) {
+                int library = tryLibrary(level, chest, settings);
+                if (library > 0) {
+                    return;
+                }
+                if (library < 0) {
+                    status = Status.NO_EV;
+                    return;
+                }
+            }
+            status = hasAsh ? Status.NO_RECIPE : Status.NO_ASH;
             return;
         }
         recipeId = recipe.id();
@@ -223,9 +246,10 @@ public class SaerethEntity extends PathfinderMob {
 
     private void draw(ServerLevel level, SaerethSettings settings) {
         setAction(Action.DRAW);
+        if (phaseTicks % 2 == 0) {
+            SaerethFx.drawing(level, this, arrayPos, phaseTicks);
+        }
         if (phaseTicks % 4 == 0) {
-            Vec3 center = Vec3.atBottomCenterOf(arrayPos);
-            level.sendParticles(ParticleTypes.ASH, center.x, center.y + 0.05D, center.z, 6, 0.4D, 0.02D, 0.4D, 0.0D);
             level.playSound(null, arrayPos, SoundEvents.SAND_STEP, SoundSource.NEUTRAL, 0.4F, 0.8F + random.nextFloat() * 0.4F);
         }
         if (phaseTicks < settings.drawTicks()) {
@@ -299,13 +323,8 @@ public class SaerethEntity extends PathfinderMob {
     private void cast(ServerLevel level, SaerethSettings settings) {
         setAction(Action.CAST);
         boolean arrayPresent = level.getBlockEntity(arrayPos) instanceof AlchemyArrayBlockEntity;
-        if (arrayPresent && phaseTicks % 3 == 0) {
-            Vec3 hands = position().add(0.0D, 2.1D, 0.0D);
-            Vec3 target = Vec3.atCenterOf(arrayPos).subtract(hands);
-            double progress = (phaseTicks % 15) / 15.0D;
-            Vec3 point = hands.add(target.scale(progress));
-            level.sendParticles(ParticleTypes.ENCHANT, hands.x, hands.y, hands.z, 3, 0.25D, 0.1D, 0.25D, 0.4D);
-            level.sendParticles(ParticleTypes.DRIPPING_DRIPSTONE_LAVA, point.x, point.y, point.z, 1, 0.05D, 0.05D, 0.05D, 0.0D);
+        if (arrayPresent && phaseTicks % 15 == 1) {
+            SaerethFx.channel(level, this, arrayPos);
         }
         if (arrayPresent && level.getBlockEntity(arrayPos) instanceof AlchemyArrayBlockEntity array
                 && phaseTicks > 20 && !array.isActive && phaseTicks < settings.castTimeout()) {
@@ -318,8 +337,12 @@ public class SaerethEntity extends PathfinderMob {
             array.dropItems();
             level.removeBlock(arrayPos, false);
         }
+        SaerethFx.complete(level, arrayPos);
         IItemHandler chest = chestHandler(level);
         collect(level, chest);
+        if (chest != null && chestPos != null) {
+            SaerethFx.deliver(level, arrayPos, chestPos);
+        }
         level.playSound(null, blockPosition(), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.NEUTRAL, 0.8F, 1.0F);
         finish();
     }
@@ -343,6 +366,10 @@ public class SaerethEntity extends PathfinderMob {
     }
 
     private void abort(ServerLevel level) {
+        if (phase == Phase.LIBRARY) {
+            abortLibrary(level);
+            return;
+        }
         if (!carried.isEmpty()) {
             IItemHandler chest = chestHandler(level);
             if (chest != null) {
@@ -514,6 +541,226 @@ public class SaerethEntity extends PathfinderMob {
         return holder.map(RecipeHolder::value).filter(AlchemyArrayRecipe.class::isInstance).map(AlchemyArrayRecipe.class::cast).orElse(null);
     }
 
+    private static final int LIB_SUMMON = 24;
+    private static final int LIB_ORBIT = 80;
+    private static final int LIB_BIND = 96;
+    private static final int LIB_HOVER = 112;
+    private static final int LIB_RETURN = 136;
+
+    private int tryLibrary(ServerLevel level, IItemHandler chest, SaerethSettings settings) {
+        LibraryMerge.Match match = LibraryMerge.find(chest, settings.libraryMaxLevel());
+        if (match == null) {
+            return 0;
+        }
+        int cost = match.levels() * Math.max(0, settings.libraryEvPerLevel());
+        IAnima network = owner == null ? null : NeoVitaeAPI.getInstance().getAnima(owner);
+        if (cost > 0 && (network == null || network.getCurrentEV() < cost)) {
+            return -1;
+        }
+        ItemStack first = chest.extractItem(match.first(), 1, false);
+        ItemStack second = chest.extractItem(match.second(), 1, false);
+        if (first.isEmpty() || second.isEmpty()) {
+            if (!first.isEmpty()) {
+                returnToChest(chest, first, level);
+            }
+            if (!second.isEmpty()) {
+                returnToChest(chest, second, level);
+            }
+            return 0;
+        }
+        libraryItems.clear();
+        libraryItems.add(first);
+        libraryItems.add(second);
+        libraryResult = match.result();
+        libraryCost = cost;
+        Vec3 toChest = Vec3.atCenterOf(chestPos).subtract(position()).multiply(1.0D, 0.0D, 1.0D);
+        Vec3 forward = toChest.lengthSqr() < 1.0E-4D ? Vec3.ZERO : toChest.normalize().scale(0.6D);
+        libraryCenter = position().add(forward).add(0.0D, 2.45D, 0.0D);
+        Vec3 chestTop = Vec3.atCenterOf(chestPos).add(0.0D, 0.9D, 0.0D);
+        clearBooks();
+        for (ItemStack book : libraryItems) {
+            FloatingBook floating = FloatingBook.spawn(level, book, chestTop, 0.55F, -1);
+            if (floating != null) {
+                books.add(floating);
+            }
+        }
+        status = Status.WORKING;
+        startPhase(Phase.LIBRARY);
+        SaerethFx.librarySummon(level, chestPos, libraryCenter);
+        level.playSound(null, chestPos, SoundEvents.CHISELED_BOOKSHELF_PICKUP_ENCHANTED, SoundSource.NEUTRAL, 0.9F, 0.9F);
+        return 1;
+    }
+
+    private void library(ServerLevel level) {
+        setAction(Action.LIBRARY);
+        if (libraryCenter == null || books.isEmpty() || books.stream().anyMatch(book -> !book.alive())) {
+            abortLibrary(level);
+            return;
+        }
+        Vec3 center = libraryCenter;
+        getLookControl().setLookAt(center.x, center.y, center.z);
+        Vec3 chestTop = chestPos == null ? center : Vec3.atCenterOf(chestPos).add(0.0D, 0.9D, 0.0D);
+        int t = phaseTicks;
+        if (t < LIB_BIND) {
+            for (int i = 0; i < books.size(); i++) {
+                double offset = Math.PI * i;
+                Vec3 pos;
+                float yaw;
+                float pitch;
+                if (t <= LIB_SUMMON) {
+                    double p = ease(t / (double) LIB_SUMMON);
+                    double angle = LIB_SUMMON * 0.16D + offset;
+                    Vec3 target = orbit(center, angle, 0.95D, LIB_SUMMON, offset);
+                    Vec3 control = chestTop.add(target).scale(0.5D).add(0.0D, 1.6D, 0.0D);
+                    pos = bezier(chestTop, control, target, p);
+                    yaw = (float) Mth.lerp(p, i * 180.0D, -Math.toDegrees(angle));
+                    pitch = (float) (Math.sin(p * Math.PI) * -35.0D);
+                } else if (t <= LIB_ORBIT) {
+                    double angle = t * 0.16D + offset;
+                    pos = orbit(center, angle, 0.95D, t, offset);
+                    yaw = (float) -Math.toDegrees(angle);
+                    pitch = (float) (Math.sin(t * 0.12D + offset) * 18.0D);
+                } else {
+                    double p = (t - LIB_ORBIT) / (double) (LIB_BIND - LIB_ORBIT);
+                    double angle = LIB_ORBIT * 0.16D + offset + (t - LIB_ORBIT) * (0.16D + p * 0.9D);
+                    pos = orbit(center, angle, 0.95D * (1.0D - ease(p)), t, offset);
+                    yaw = (float) -Math.toDegrees(angle);
+                    pitch = (float) (p * 60.0D);
+                }
+                books.get(i).move(pos, yaw, pitch);
+                if (t % 2 == 0) {
+                    SaerethFx.libraryTrail(level, pos, i == 0 ? SaerethFx.ENCHANT : SaerethFx.BLOOD);
+                }
+            }
+            if (t > LIB_SUMMON && t <= LIB_ORBIT) {
+                SaerethFx.libraryOrbit(level, this, center, t);
+                if (t % 14 == 0) {
+                    level.playSound(null, BlockPos.containing(center), SoundEvents.BOOK_PAGE_TURN, SoundSource.NEUTRAL, 0.7F, 0.8F + random.nextFloat() * 0.4F);
+                }
+            } else if (t > LIB_ORBIT) {
+                SaerethFx.libraryConverge(level, center, (t - LIB_ORBIT) / (double) (LIB_BIND - LIB_ORBIT), t);
+                if (t == LIB_ORBIT + 1) {
+                    level.playSound(null, BlockPos.containing(center), SoundEvents.BEACON_POWER_SELECT, SoundSource.NEUTRAL, 0.6F, 1.6F);
+                }
+            }
+            return;
+        }
+        if (t == LIB_BIND) {
+            bindLibrary(level, center);
+            return;
+        }
+        if (books.size() != 1) {
+            abortLibrary(level);
+            return;
+        }
+        FloatingBook result = books.get(0);
+        if (t <= LIB_HOVER) {
+            double p = ease((t - LIB_BIND) / (double) (LIB_HOVER - LIB_BIND));
+            Vec3 pos = center.add(0.0D, 0.35D * p, 0.0D);
+            librarySpin += Math.max(4.0F, 38.0F - (t - LIB_BIND) * 2.2F);
+            result.move(pos, librarySpin, (float) (Math.sin(t * 0.3D) * 8.0D));
+            SaerethFx.libraryHover(level, pos, t);
+            return;
+        }
+        Vec3 start = center.add(0.0D, 0.35D, 0.0D);
+        if (t == LIB_HOVER + 1 && chestPos != null) {
+            SaerethFx.libraryDeliver(level, start, chestPos);
+        }
+        if (t <= LIB_RETURN) {
+            double p = ease((t - LIB_HOVER) / (double) (LIB_RETURN - LIB_HOVER));
+            Vec3 control = start.add(chestTop).scale(0.5D).add(0.0D, 1.4D, 0.0D);
+            Vec3 pos = bezier(start, control, chestTop, p);
+            librarySpin += 6.0F;
+            result.move(pos, librarySpin, (float) (-25.0D * Math.sin(p * Math.PI)));
+            if (t % 2 == 0) {
+                SaerethFx.libraryTrail(level, pos, SaerethFx.ENCHANT);
+            }
+            return;
+        }
+        IItemHandler chest = chestHandler(level);
+        for (ItemStack item : libraryItems) {
+            if (chest != null) {
+                returnToChest(chest, item, level);
+            } else {
+                spawnAtLevel(level, item);
+            }
+        }
+        libraryItems.clear();
+        clearBooks();
+        if (chestPos != null) {
+            SaerethFx.libraryDeposit(level, chestPos);
+            level.playSound(null, chestPos, SoundEvents.CHISELED_BOOKSHELF_INSERT_ENCHANTED, SoundSource.NEUTRAL, 1.0F, 1.0F);
+        }
+        finish();
+    }
+
+    private void bindLibrary(ServerLevel level, Vec3 center) {
+        IAnima network = owner == null ? null : NeoVitaeAPI.getInstance().getAnima(owner);
+        if (libraryCost > 0) {
+            if (network == null || network.getCurrentEV() < libraryCost) {
+                abortLibrary(level);
+                status = Status.NO_EV;
+                return;
+            }
+            network.syphon(AnimaTicket.create(libraryCost));
+        }
+        clearBooks();
+        libraryItems.clear();
+        libraryItems.add(libraryResult.copy());
+        FloatingBook result = FloatingBook.spawn(level, libraryResult, center, 0.75F, SaerethFx.ENCHANT);
+        if (result != null) {
+            books.add(result);
+        }
+        librarySpin = 0.0F;
+        SaerethFx.libraryBind(level, center);
+        BlockPos pos = BlockPos.containing(center);
+        level.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.NEUTRAL, 1.0F, 0.8F);
+        level.playSound(null, pos, SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.NEUTRAL, 1.0F, 0.6F);
+        level.playSound(null, pos, SoundEvents.PLAYER_LEVELUP, SoundSource.NEUTRAL, 0.5F, 0.7F);
+    }
+
+    private void abortLibrary(ServerLevel level) {
+        clearBooks();
+        IItemHandler chest = chestHandler(level);
+        for (ItemStack item : libraryItems) {
+            if (chest != null) {
+                returnToChest(chest, item, level);
+            } else {
+                spawnAtLevel(level, item);
+            }
+        }
+        libraryItems.clear();
+        libraryResult = ItemStack.EMPTY;
+        finish();
+    }
+
+    private void clearBooks() {
+        for (FloatingBook book : books) {
+            book.remove();
+        }
+        books.clear();
+    }
+
+    @Override
+    public void remove(RemovalReason reason) {
+        clearBooks();
+        super.remove(reason);
+    }
+
+    private static Vec3 orbit(Vec3 center, double angle, double radius, int tick, double offset) {
+        return center.add(Math.cos(angle) * radius, Math.sin(tick * 0.2D + offset) * 0.15D, Math.sin(angle) * radius);
+    }
+
+    private static Vec3 bezier(Vec3 a, Vec3 control, Vec3 b, double t) {
+        double u = 1.0D - t;
+        return a.scale(u * u).add(control.scale(2.0D * u * t)).add(b.scale(t * t));
+    }
+
+    private static double ease(double t) {
+        double c = Mth.clamp(t, 0.0D, 1.0D);
+        return c * c * (3.0D - 2.0D * c);
+    }
+
     public boolean isBusy() {
         return phase != Phase.IDLE;
     }
@@ -532,7 +779,7 @@ public class SaerethEntity extends PathfinderMob {
     @Override
     protected InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack held = player.getItemInHand(hand);
-        if (held.getItem() instanceof SaerethSigilItem) {
+        if (held.getItem() instanceof SoulCaptureSigilItem) {
             return InteractionResult.PASS;
         }
         if (hand != InteractionHand.MAIN_HAND || !held.isEmpty()) {
@@ -554,7 +801,7 @@ public class SaerethEntity extends PathfinderMob {
         }
         CompoundTag tag = new CompoundTag();
         saveWithoutId(tag);
-        SaerethSigilItem.storeCaptured(sigil, tag);
+        SoulCaptureSigilItem.storeCaptured(sigil, tag);
         discard();
         return sigil;
     }
@@ -580,6 +827,13 @@ public class SaerethEntity extends PathfinderMob {
         if (!carried.isEmpty()) {
             tag.put("SaerethCarried", carried.save(registryAccess()));
         }
+        if (!libraryItems.isEmpty()) {
+            ListTag list = new ListTag();
+            for (ItemStack item : libraryItems) {
+                list.add(item.save(registryAccess()));
+            }
+            tag.put("SaerethLibrary", list);
+        }
     }
 
     @Override
@@ -598,8 +852,19 @@ public class SaerethEntity extends PathfinderMob {
         recipeId = tag.contains("SaerethRecipe") ? ResourceLocation.tryParse(tag.getString("SaerethRecipe")) : null;
         carried = tag.contains("SaerethCarried") ? ItemStack.parseOptional(registryAccess(), tag.getCompound("SaerethCarried")) : ItemStack.EMPTY;
         status = chestPos != null && arrayPos != null ? Status.READY : Status.NOT_LINKED;
-        if (phase != Phase.IDLE && recipeId == null) {
+        libraryItems.clear();
+        ListTag library = tag.getList("SaerethLibrary", Tag.TAG_COMPOUND);
+        for (int i = 0; i < library.size(); i++) {
+            ItemStack item = ItemStack.parseOptional(registryAccess(), library.getCompound(i));
+            if (!item.isEmpty()) {
+                libraryItems.add(item);
+            }
+        }
+        if (phase != Phase.IDLE && phase != Phase.LIBRARY && recipeId == null) {
             phase = Phase.IDLE;
+        }
+        if (phase == Phase.LIBRARY) {
+            libraryCenter = null;
         }
     }
 
@@ -607,7 +872,8 @@ public class SaerethEntity extends PathfinderMob {
         IDLE,
         DRAW,
         PLACE,
-        CAST
+        CAST,
+        LIBRARY
     }
 
     private enum Phase {
@@ -615,7 +881,8 @@ public class SaerethEntity extends PathfinderMob {
         DRAW,
         PLACE_BASE,
         PLACE_ADDED,
-        CAST
+        CAST,
+        LIBRARY
     }
 
     private enum Status {
@@ -628,7 +895,8 @@ public class SaerethEntity extends PathfinderMob {
         CHEST_FULL("chest_full", ChatFormatting.RED),
         TOO_FAR("too_far", ChatFormatting.RED),
         UNLOADED("unloaded", ChatFormatting.GRAY),
-        BLOCKED("blocked", ChatFormatting.RED);
+        BLOCKED("blocked", ChatFormatting.RED),
+        NO_EV("no_ev", ChatFormatting.RED);
 
         private final String key;
         private final ChatFormatting color;

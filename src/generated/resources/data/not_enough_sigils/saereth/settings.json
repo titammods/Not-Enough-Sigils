@@ -1,6 +1,9 @@
 {
   "cast_timeout": 600,
   "draw_ticks": 40,
+  "library_enabled": true,
+  "library_ev_per_level": 1000,
+  "library_max_level": 0,
   "link_range": 8,
   "place_ticks": 15,
   "scan_interval": 40

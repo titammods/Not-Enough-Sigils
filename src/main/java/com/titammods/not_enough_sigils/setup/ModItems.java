@@ -9,7 +9,7 @@ import com.titammods.not_enough_sigils.NotEnoughSigils;
 import com.titammods.not_enough_sigils.book.GuideBookItem;
 import com.titammods.not_enough_sigils.holding.GreaterHoldingSigilItem;
 import com.titammods.not_enough_sigils.item.ProgressionItem;
-import com.titammods.not_enough_sigils.saereth.SaerethSigilItem;
+import com.titammods.not_enough_sigils.saereth.SoulCaptureSigilItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
@@ -64,7 +64,7 @@ public class ModItems {
     public static final DeferredItem<SigilItem> SIGIL_RECALL_GREATER = registerSigil("sigil_recall_greater", "recall_greater");
     public static final DeferredItem<BloodOrbItem> BLOOD_ORB_ASCENDANT = ITEMS.register("blood_orb_ascendant", BloodOrbItem::new);
     public static final DeferredItem<BloodOrbItem> BLOOD_ORB_DIVINE = ITEMS.register("blood_orb_divine", BloodOrbItem::new);
-    public static final DeferredItem<SaerethSigilItem> SAERETH_SIGIL = ITEMS.register("saereth_sigil", SaerethSigilItem::new);
+    public static final DeferredItem<SoulCaptureSigilItem> SIGIL_SOUL_CAPTURE = ITEMS.register("sigil_soul_capture", SoulCaptureSigilItem::new);
 
     public static final DeferredItem<GreaterHoldingSigilItem> SIGIL_HOLDING_GREATER =
             ITEMS.register("sigil_holding_greater", () -> new GreaterHoldingSigilItem(9, "tooltip.not_enough_sigils.sigil_holding_greater.desc"));

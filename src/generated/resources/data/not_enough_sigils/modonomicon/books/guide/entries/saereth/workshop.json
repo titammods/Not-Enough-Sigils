@@ -9,7 +9,7 @@
   "description": "book.not_enough_sigils.guide.saereth.workshop.description",
   "hide_while_locked": false,
   "icon": {
-    "item": "not_enough_sigils:saereth_sigil"
+    "item": "not_enough_sigils:sigil_soul_capture"
   },
   "name": "book.not_enough_sigils.guide.saereth.workshop.name",
   "pages": [

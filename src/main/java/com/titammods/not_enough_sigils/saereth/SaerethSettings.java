@@ -16,18 +16,22 @@ import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import java.util.Map;
 import java.util.Optional;
 
-public record SaerethSettings(int linkRange, int scanInterval, int drawTicks, int placeTicks, int castTimeout) {
+public record SaerethSettings(int linkRange, int scanInterval, int drawTicks, int placeTicks, int castTimeout,
+                              boolean libraryEnabled, int libraryEvPerLevel, int libraryMaxLevel) {
     public static final String DIRECTORY = "saereth";
     public static final ResourceLocation FILE = NotEnoughSigils.rl("settings");
 
-    public static final SaerethSettings DEFAULT = new SaerethSettings(8, 40, 40, 15, 600);
+    public static final SaerethSettings DEFAULT = new SaerethSettings(8, 40, 40, 15, 600, true, 1000, 0);
 
     public static final Codec<SaerethSettings> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             field(Codec.INT, "link_range", DEFAULT.linkRange()).forGetter(SaerethSettings::linkRange),
             field(Codec.INT, "scan_interval", DEFAULT.scanInterval()).forGetter(SaerethSettings::scanInterval),
             field(Codec.INT, "draw_ticks", DEFAULT.drawTicks()).forGetter(SaerethSettings::drawTicks),
             field(Codec.INT, "place_ticks", DEFAULT.placeTicks()).forGetter(SaerethSettings::placeTicks),
-            field(Codec.INT, "cast_timeout", DEFAULT.castTimeout()).forGetter(SaerethSettings::castTimeout)
+            field(Codec.INT, "cast_timeout", DEFAULT.castTimeout()).forGetter(SaerethSettings::castTimeout),
+            field(Codec.BOOL, "library_enabled", DEFAULT.libraryEnabled()).forGetter(SaerethSettings::libraryEnabled),
+            field(Codec.INT, "library_ev_per_level", DEFAULT.libraryEvPerLevel()).forGetter(SaerethSettings::libraryEvPerLevel),
+            field(Codec.INT, "library_max_level", DEFAULT.libraryMaxLevel()).forGetter(SaerethSettings::libraryMaxLevel)
     ).apply(instance, SaerethSettings::new));
 
     private static SaerethSettings current = DEFAULT;

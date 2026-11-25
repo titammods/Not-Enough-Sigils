@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "not_enough_sigils:item/saereth_sigil"
+    "layer0": "not_enough_sigils:item/sigil_soul_capture"
   }
 }

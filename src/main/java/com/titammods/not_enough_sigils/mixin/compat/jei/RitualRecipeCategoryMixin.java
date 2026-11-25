@@ -26,7 +26,7 @@ public abstract class RitualRecipeCategoryMixin {
     )
     private void not_enough_sigils$addSaerethOutput(IRecipeLayoutBuilder builder, RitualJEIRecipe recipe, IFocusGroup focuses, CallbackInfo ci) {
         if (ModRituals.SAERETH.getId().equals(recipe.ritualId())) {
-            builder.addSlot(RecipeIngredientRole.OUTPUT, OUTPUT_X, OUTPUT_Y).addItemStack(new ItemStack(ModItems.SAERETH_SIGIL.get()));
+            builder.addSlot(RecipeIngredientRole.OUTPUT, OUTPUT_X, OUTPUT_Y).addItemStack(new ItemStack(ModItems.SIGIL_SOUL_CAPTURE.get()));
         }
     }
 }

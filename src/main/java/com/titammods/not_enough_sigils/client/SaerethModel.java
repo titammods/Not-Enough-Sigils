@@ -20,6 +20,7 @@ public class SaerethModel extends PlayerModel<SaerethEntity> {
             case DRAW -> draw(ageInTicks);
             case PLACE -> place(ageInTicks);
             case CAST -> cast(ageInTicks);
+            case LIBRARY -> library(ageInTicks);
             default -> {
             }
         }
@@ -48,6 +49,19 @@ public class SaerethModel extends PlayerModel<SaerethEntity> {
         leftArm.xRot = -0.9F - reach;
         leftArm.yRot = 0.2F;
         head.xRot = 0.35F;
+    }
+
+    private void library(float age) {
+        float weave = Mth.sin(age * 0.16F);
+        float lift = Mth.cos(age * 0.16F);
+        rightArm.xRot = -2.25F + weave * 0.25F;
+        rightArm.yRot = -0.35F + lift * 0.3F;
+        rightArm.zRot = -0.35F - weave * 0.2F;
+        leftArm.xRot = -2.25F - weave * 0.25F;
+        leftArm.yRot = 0.35F - lift * 0.3F;
+        leftArm.zRot = 0.35F + weave * 0.2F;
+        head.xRot = -0.55F + Mth.sin(age * 0.08F) * 0.05F;
+        body.xRot = -0.05F;
     }
 
     private void cast(float age) {
