@@ -543,5 +543,18 @@
   "book.not_enough_sigils.guide.sigils.quicksilver.name": "Selo de Mercúrio",
   "book.not_enough_sigils.guide.sigils.quicksilver.description": "Velocidade sem fim enquanto ativo.",
   "book.not_enough_sigils.guide.sigils.quicksilver.effect.title": "Selo de Mercúrio",
-  "book.not_enough_sigils.guide.sigils.quicksilver.effect.text": "Enquanto ativo, mercúrio corre nas suas veias e mantém você sob Velocidade II sem fim. Como todo selo deste livro, o efeito só aparece no inventário, nunca na tela.\\\n\\\n[#](8B0000)Manutenção:[#]() 40 EV a cada 5 segundos enquanto ativo"
+  "book.not_enough_sigils.guide.sigils.quicksilver.effect.text": "Enquanto ativo, mercúrio corre nas suas veias e mantém você sob Velocidade II sem fim. Como todo selo deste livro, o efeito só aparece no inventário, nunca na tela.\\\n\\\n[#](8B0000)Manutenção:[#]() 40 EV a cada 5 segundos enquanto ativo",
+  "ritual.not_enough_sigils.builder": "Ritual do Construtor",
+  "ritual.not_enough_sigils.builder.info": "Escava todos os blocos dentro da área marcada com o Configurador de Rituais, sem limite de tamanho. Trabalha uma chunk por vez, mantendo essa chunk carregada, e só passa para a próxima quando a atual estiver vazia. Os drops vão para um baú em cima da pedra mestra; o ritual pausa quando o baú enche. Custa 25 EV por bloco.",
+  "ritual.not_enough_sigils.builder.mining": "Mineração: escolha Toque Suave ou Fortuna no Configurador de Rituais. A Fortuna minera com Fortuna VIII.",
+  "book.not_enough_sigils.guide.rituals.name": "Rituais",
+  "book.not_enough_sigils.guide.rituals.description": "Novos rituais para a pedra ritual mestra.",
+  "book.not_enough_sigils.guide.rituals.builder.name": "Ritual do Construtor",
+  "book.not_enough_sigils.guide.rituals.builder.description": "Escava qualquer área que você marcar, chunk por chunk.",
+  "book.not_enough_sigils.guide.rituals.builder.intro.title": "Ritual do Construtor",
+  "book.not_enough_sigils.guide.rituals.builder.intro.text": "Enquanto a Pedreira Infinita caça só minério, o [#](8B0000)Ritual do Construtor[#]() limpa tudo. Ele escava todos os blocos dentro da área que você marcar, camada por camada a partir do topo, e manda cada drop para um baú em cima da pedra mestra.\\\n\\\nEle exige um [#](B8860B)Cristal de Ativação Desperto[#](), forjado num Ara Vitae Tier 4.",
+  "book.not_enough_sigils.guide.rituals.builder.area.text": "[#](B8860B)Marcando a Área[#]()\\\nUse o [#](8B0000)Configurador de Rituais[#]() na pedra mestra, escolha o miningRange e marque os dois cantos no mundo. Não há limite de volume: marque uma sala ou um vale inteiro.\\\n\\\nO ritual trabalha uma chunk por vez e mantém essa chunk carregada. Ele só avança quando a chunk atual está vazia, sempre dentro da altura, largura e profundidade marcadas.",
+  "book.not_enough_sigils.guide.rituals.builder.mining.text": "[#](B8860B)Mineração[#]()\\\nNo Configurador de Rituais, escolha [#](8B0000)Toque Suave[#]() para manter os blocos inteiros, ou [#](8B0000)Fortuna[#]() para minerar com Fortuna VIII.\\\n\\\nOs drops vão para o baú em cima da pedra mestra (o chestRange pode mudar a posição). Quando o baú enche, o ritual pausa, então nada se perde. Quando a área inteira fica limpa, o ritual termina sozinho.\\\n\\\n[#](8B0000)Custo:[#]() 25 EV por bloco, até 8 blocos a cada 5 ticks.",
+  "book.not_enough_sigils.guide.rituals.builder.info.title": "Requisitos do Ritual",
+  "book.not_enough_sigils.guide.rituals.builder.info.text": "[#](8B0000)Custo de Ativação:[#]() 30.000 EV\\\n[#](8B0000)Cristal:[#]() Cristal de Ativação Desperto\\\n\\\n[#](8B0000)Runas Necessárias:[#]()\\\n  12x Pedra Ritual de Terra\\\n  8x Pedra Ritual Tenebrae\\\n  4x Pedra Ritual de Fogo\\\n  4x Pedra Ritual de Ar\\\n  4x Pedra Ritual de Água\\\n  [#](8B0000)Total:[#]() 32 runas"
 }

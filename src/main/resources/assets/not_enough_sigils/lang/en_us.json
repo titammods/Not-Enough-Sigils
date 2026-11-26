@@ -543,5 +543,18 @@
   "book.not_enough_sigils.guide.sigils.quicksilver.name": "Sigil of Quicksilver",
   "book.not_enough_sigils.guide.sigils.quicksilver.description": "Endless Speed while active.",
   "book.not_enough_sigils.guide.sigils.quicksilver.effect.title": "Sigil of Quicksilver",
-  "book.not_enough_sigils.guide.sigils.quicksilver.effect.text": "While active, quicksilver runs through your veins and keeps you under endless Speed II. Like every sigil of this book, the effect only shows in your inventory, never on your screen.\\\n\\\n[#](8B0000)Upkeep:[#]() 40 EV every 5 seconds while active"
+  "book.not_enough_sigils.guide.sigils.quicksilver.effect.text": "While active, quicksilver runs through your veins and keeps you under endless Speed II. Like every sigil of this book, the effect only shows in your inventory, never on your screen.\\\n\\\n[#](8B0000)Upkeep:[#]() 40 EV every 5 seconds while active",
+  "ritual.not_enough_sigils.builder": "Ritual of the Builder",
+  "ritual.not_enough_sigils.builder.info": "Digs out every block inside the area marked with the Ritual Configurator, with no limit on its size. Works one chunk at a time, keeping that chunk loaded, and only moves to the next chunk when the current one is empty. Drops go into a chest on top of the master stone; the ritual pauses when the chest is full. Costs 25 EV per block.",
+  "ritual.not_enough_sigils.builder.mining": "Mining: choose Silk Touch or Fortune in the Ritual Configurator. Fortune mines with Fortune VIII.",
+  "book.not_enough_sigils.guide.rituals.name": "Rituals",
+  "book.not_enough_sigils.guide.rituals.description": "New rituals for the master ritual stone.",
+  "book.not_enough_sigils.guide.rituals.builder.name": "Ritual of the Builder",
+  "book.not_enough_sigils.guide.rituals.builder.description": "Excavates any area you mark, chunk by chunk.",
+  "book.not_enough_sigils.guide.rituals.builder.intro.title": "Ritual of the Builder",
+  "book.not_enough_sigils.guide.rituals.builder.intro.text": "Where the Endless Quarry hunts only ore, the [#](8B0000)Ritual of the Builder[#]() clears everything. It digs out every block inside the area you mark, layer by layer from the top, and sends every drop into a chest on top of the master stone.\\\n\\\nIt needs an [#](B8860B)Awakened Activation Crystal[#](), forged in a Tier 4 Ara Vitae.",
+  "book.not_enough_sigils.guide.rituals.builder.area.text": "[#](B8860B)Marking the Area[#]()\\\nUse the [#](8B0000)Ritual Configurator[#]() on the master stone, pick the miningRange and mark its two corners in the world. There is no limit on the volume: mark a single room or a whole valley.\\\n\\\nThe ritual works one chunk at a time and keeps that chunk loaded. It only moves on when the current chunk is empty, always staying inside your marked height, width and depth.",
+  "book.not_enough_sigils.guide.rituals.builder.mining.text": "[#](B8860B)Mining[#]()\\\nIn the Ritual Configurator, choose [#](8B0000)Silk Touch[#]() to keep blocks whole, or [#](8B0000)Fortune[#]() to mine with Fortune VIII.\\\n\\\nDrops go into the chest above the master stone (the chestRange can move it). When the chest is full the ritual pauses, so nothing is lost. When the whole area is clear, the ritual ends on its own.\\\n\\\n[#](8B0000)Cost:[#]() 25 EV per block, up to 8 blocks every 5 ticks.",
+  "book.not_enough_sigils.guide.rituals.builder.info.title": "Ritual Requirements",
+  "book.not_enough_sigils.guide.rituals.builder.info.text": "[#](8B0000)Activation Cost:[#]() 30,000 EV\\\n[#](8B0000)Crystal:[#]() Awakened Activation Crystal\\\n\\\n[#](8B0000)Rune Requirements:[#]()\\\n  12x Earth Ritual Stone\\\n  8x Tenebrae Ritual Stone\\\n  4x Fire Ritual Stone\\\n  4x Air Ritual Stone\\\n  4x Water Ritual Stone\\\n  [#](8B0000)Total:[#]() 32 runes"
 }

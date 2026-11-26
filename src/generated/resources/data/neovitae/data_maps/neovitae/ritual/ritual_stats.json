@@ -1,0 +1,21 @@
+{
+  "values": {
+    "not_enough_sigils:builder": {
+      "activation_cost": 30000,
+      "crystal_level": 1,
+      "range_limits": {
+        "chestRange": {
+          "max_horizontal_radius": 5,
+          "max_vertical_radius": 5,
+          "max_volume": 1
+        },
+        "miningRange": {
+          "max_horizontal_radius": 1024,
+          "max_vertical_radius": 512
+        }
+      },
+      "refresh_cost": 25,
+      "refresh_time": 5
+    }
+  }
+}

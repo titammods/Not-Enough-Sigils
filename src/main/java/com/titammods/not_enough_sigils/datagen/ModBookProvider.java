@@ -41,7 +41,7 @@ public class ModBookProvider implements DataProvider {
     public CompletableFuture<?> run(CachedOutput cache) {
         List<CompletableFuture<?>> saves = new ArrayList<>();
         saves.add(save(cache, book(), "book"));
-        List<Category> categories = List.of(sigils(), upgrades(), altar(), spiritus(), saereth());
+        List<Category> categories = List.of(sigils(), upgrades(), altar(), spiritus(), saereth(), rituals());
         for (int i = 0; i < categories.size(); i++) {
             Category category = categories.get(i);
             saves.add(save(cache, category.json(i), "categories/" + category.id));
@@ -157,6 +157,16 @@ public class ModBookProvider implements DataProvider {
                 .gemStats("gem_stats");
         category.add("spiritus_sigils", own("sigil_magician"), 0, 1).parent(gems)
                 .text("intro", true).text("sigils", false);
+        return category;
+    }
+
+    private static Category rituals() {
+        Category category = new Category("rituals", "neovitae:master_ritual_stone", "saereth");
+        category.add("builder", "minecraft:netherite_pickaxe", 0, 0)
+                .text("intro", true)
+                .text("area", false)
+                .text("mining", false)
+                .ritualInfo("info");
         return category;
     }
 

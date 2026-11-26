@@ -2,6 +2,9 @@ package com.titammods.not_enough_sigils.datagen;
 
 import com.breakinblocks.neovitae.common.datamap.BloodOrb;
 import com.breakinblocks.neovitae.common.datamap.NVDataMaps;
+import com.breakinblocks.neovitae.common.datamap.RitualStats;
+import com.titammods.not_enough_sigils.NotEnoughSigils;
+import com.titammods.not_enough_sigils.ritual.RitualBuilder;
 import com.titammods.not_enough_sigils.altar.AscendedRuneStats;
 import com.titammods.not_enough_sigils.setup.ModBlocks;
 import com.titammods.not_enough_sigils.setup.ModItems;
@@ -9,6 +12,8 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class ModDataMapProvider extends DataMapProvider {
@@ -32,6 +37,11 @@ public class ModDataMapProvider extends DataMapProvider {
                 .add(ModBlocks.RUNE_3_ORB, AscendedRuneStats.orb(1.0D), false)
                 .add(ModBlocks.RUNE_3_DISLOCATION, AscendedRuneStats.dislocation(Math.pow(1.2D, 4)), false)
                 .add(ModBlocks.RUNE_3_CHARGING, AscendedRuneStats.charging(50), false);
+        builder(NVDataMaps.RITUAL_STATS)
+                .add(NotEnoughSigils.rl(RitualBuilder.NAME), new RitualStats(RitualBuilder.ACTIVATION_COST, 25, 5, 1,
+                        Map.of(RitualBuilder.MINING_RANGE, RitualStats.RangeLimit.of(Integer.MAX_VALUE, 1024, 512),
+                                RitualBuilder.CHEST_RANGE, RitualStats.RangeLimit.of(1, 5, 5)),
+                        true, Optional.empty()), false);
         builder(NVDataMaps.BLOOD_ORB_STATS)
                 .add(ModItems.BLOOD_ORB_ASCENDANT, new BloodOrb(6, 20000, 75000000, 400), false)
                 .add(ModItems.BLOOD_ORB_DIVINE, new BloodOrb(7, 24000, 200000000, 650), false);
